@@ -38,6 +38,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  console.log("Hello")
+
   return (
     <>
       <div className="relative w-full bg-white py-5 border">
