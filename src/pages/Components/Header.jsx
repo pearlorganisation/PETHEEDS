@@ -35,6 +35,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
+    // console.log()
     setIsMenuOpen(!isMenuOpen);
   };
 
