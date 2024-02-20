@@ -1,4 +1,4 @@
-import dog from "../../../images/newdog.png";
+import dog from "../../../images/singledog.png";
 import cat from "../../../images/cat.png";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import dogcat from "../../../images/dogandcat.png";
@@ -10,7 +10,12 @@ import { Pagination } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom/dist";
 const About = () => {
+  const Navigate = useNavigate()
+  const handleNavigate=()=>{
+     Navigate('/booknow')
+  }
   return (
     <>
       <section className="min-h-[80vh] grid place-items-center">
@@ -77,7 +82,8 @@ const About = () => {
                 <button
                   type="button"
                   class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
+                  onClick={handleNavigate}
+               >
                   Make an appointment
                 </button>
               </div>
@@ -189,7 +195,7 @@ const About = () => {
                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
                   <img class="w-full" src={doc} alt="Sunset in the mountains" />
                   <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2"> Sr Dr sofiya</div>
+                    <div class="font-bold text-xl mb-2"> Sr Dr sakuntla</div>
                     <p class="text-gray-700 text-base">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       Voluptatibus quia, nulla! Maiores et perferendis eaque,

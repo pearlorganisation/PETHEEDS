@@ -35,7 +35,7 @@ const Footer = () => {
                 <ul className="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
                   <li>About us</li>
                   <li>Company History</li>
-                  <li>Our Team</li> 
+                  <li>Our Team</li>
                   <li>Our Vision</li>
                   <li>Press Release</li>
                 </ul>

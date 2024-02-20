@@ -4,12 +4,13 @@ import { FaDog } from "react-icons/fa6";
 import { FaBone } from "react-icons/fa";
 import { BiSolidInjection } from "react-icons/bi";
 
-import callback from "../../../images/callback.png";
+
+import Booking from "../Booking";
 const Herosection = () => {
   return (
     <>
       <section>
-        <div className="container grid grid-cols-2 border mx-auto py-5">
+        <div className="container grid grid-cols-2 border mx-auto py-5 rounded">
           <div className="  ">
             <div className="  md:p-14 ">
               <h1 className="font-poppins text-4xl font-medium leading-17 text-black-900">
@@ -27,7 +28,7 @@ const Herosection = () => {
           <div className=" grid grid-cols-2 grid-rows-2 gap-5 ">
             <div className=" border rounded border-blue-300 ">
               <div className="px-2 py-2 ">
-                <PiDog size={25} className="text-[#1A4E8D]" />
+                <PiDog size={25}  className="text-[#1A4E8D]" />
               </div>
               <div className="px-2 ">
                 <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
@@ -106,14 +107,14 @@ const Herosection = () => {
               </div>
             </div>
           </div>
+
+          
+
         </div>
       </section>
 
-      <section>
-        <div className="py-5">
-          <img src={callback} />
-        </div>
-      </section>
+      <Booking/>
+
     </>
   );
 };
