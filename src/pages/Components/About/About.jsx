@@ -195,7 +195,7 @@ const About = () => {
                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
                   <img class="w-full" src={doc} alt="Sunset in the mountains" />
                   <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2"> Sr Dr sakuntla</div>
+                    <div class="font-bold text-xl mb-2"> Sr Dr shakuntla</div>
                     <p class="text-gray-700 text-base">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       Voluptatibus quia, nulla! Maiores et perferendis eaque,

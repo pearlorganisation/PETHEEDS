@@ -4,7 +4,6 @@ import { FaDog } from "react-icons/fa6";
 import { FaBone } from "react-icons/fa";
 import { BiSolidInjection } from "react-icons/bi";
 
-
 import Booking from "../Booking";
 const Herosection = () => {
   return (
@@ -28,7 +27,7 @@ const Herosection = () => {
           <div className=" grid grid-cols-2 grid-rows-2 gap-5 ">
             <div className=" border rounded border-blue-300 ">
               <div className="px-2 py-2 ">
-                <PiDog size={25}  className="text-[#1A4E8D]" />
+                <PiDog size={25} className="text-[#1A4E8D]" />
               </div>
               <div className="px-2 ">
                 <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
@@ -107,14 +106,10 @@ const Herosection = () => {
               </div>
             </div>
           </div>
-
-          
-
         </div>
       </section>
 
-      <Booking/>
-
+      <Booking />
     </>
   );
 };
