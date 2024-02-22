@@ -7,7 +7,7 @@ const menuItems = [
     href: "/",
   },
   {
-    name: "Our Poducts",
+    name: "Our Products",
     href: "/ourProduct",
   },
   {

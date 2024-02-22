@@ -10,6 +10,10 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import Herosection from "./Components/herosection/Herosection";
+import Stats from "./Components/Stats/Stats";
+import Ourvision from "./Components/Ourvision/Ourvision";
+import Booking from "./Components/Booking";
+import OurService from "./Components/OurService/Ourservice";
 const HomePage = () => {
   return (
     <>
@@ -158,21 +162,14 @@ const HomePage = () => {
         </SwiperSlide>
       </Swiper>
 
-      <section>
-        <div className="max-w-lg mx-auto">
-          <div className="relative aspect-w-16 aspect-h-9">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
-      
+     <Stats/>
+       
+    
+      <Ourvision/>
+      <OurService/>
       <Herosection />
+      <Booking/>
+    
     </>
   );
 };
