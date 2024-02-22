@@ -4,113 +4,71 @@ import { FaDog } from "react-icons/fa6";
 import { FaBone } from "react-icons/fa";
 import { BiSolidInjection } from "react-icons/bi";
 
-import Booking from "../Booking";
+
+
 const Herosection = () => {
   return (
     <>
-      <section>
-        <div className="container grid grid-cols-2 border mx-auto py-5 rounded">
-          <div className="  ">
-            <div className="  md:p-14 ">
-              <h1 className="font-poppins text-4xl font-medium leading-17 text-black-900">
+      <section className="px-4 md:px-0 py-5">
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-4  mx-auto py-5 rounded">
+          <div className="flex flex-col justify-center">
+            <div className="md:p-14">
+              <h1 className="font-poppins text-2xl md:text-4xl font-medium leading-10 md:leading-17 text-black-900">
                 Optimal Health for Furry Friends: Comprehensive Veterinary
                 Services
               </h1>
             </div>
             <div className="md:px-10">
-              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                 View More
               </button>
             </div>
           </div>
 
-          <div className=" grid grid-cols-2 grid-rows-2 gap-5 ">
-            <div className=" border rounded border-blue-300 ">
-              <div className="px-2 py-2 ">
-                <PiDog size={25} className="text-[#1A4E8D]" />
-              </div>
-              <div className="px-2 ">
-                <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
-                  Physical Exam
-                </h1>
-              </div>
-              <div>
-                <h1 className="px-2 font-medium">
-                  Exercitation culpa velit non <br /> desedder
-                </h1>
-              </div>
-              <div>
-                <p className="underline px-2 text-blue-500">View</p>
-              </div>
-            </div>
-
-            <div className="">
-              <div className=" border rounded border-blue-300 ">
-                <div className="px-2 py-2  ">
-                  <FaDog size={25} className="text-[#1A4E8D]" />
-                </div>
-                <div className="px-2 ">
-                  <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
-                    Skin Care
-                  </h1>
-                </div>
-                <div>
-                  <h1 className="px-2 font-medium">
-                    Consectetur incididunt esse
-                    <br /> in eiusmod
-                  </h1>
-                </div>
-                <div>
-                  <p className="underline px-2 text-blue-500">View</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className=" border rounded border-blue-300 ">
-                <div className="px-2 py-2">
-                  <BiSolidInjection size={25} className="text-[#1A4E8D]" />
-                </div>
-                <div className="px-2 ">
-                  <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
-                    Pet Vaccination
-                  </h1>
-                </div>
-                <div>
-                  <h1 className="px-2 font-medium">
-                    Exercitation culpa velit non <br /> desedder
-                  </h1>
-                </div>
-                <div>
-                  <p className="underline px-2 text-blue-500">View</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className=" border rounded border-blue-300 ">
-                <div className="px-2 py-2 ">
-                  <FaBone size={25} className="text-[#1A4E8D]" />
-                </div>
-                <div className="px-2 ">
-                  <h1 className="text-[#1A4E8D]  text-lg font-semibold py-0 ">
-                    Pet Nutrition
-                  </h1>
-                </div>
-                <div>
-                  <h1 className="px-2 font-medium">
-                    Exercitation culpa velit non <br /> desedder
-                  </h1>
-                </div>
-                <div>
-                  <p className="underline px-2 text-blue-500">View</p>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 gap-4">
+            <ServiceCard
+              icon={<PiDog size={25} className="text-[#1A4E8D]" />}
+              title="Physical Exam"
+              description="Exercitation culpa velit non desedder"
+            />
+            <ServiceCard
+              icon={<FaDog size={25} className="text-[#1A4E8D]" />}
+              title="Skin Care"
+              description="Consectetur incididunt esse in eiusmod"
+            />
+            <ServiceCard
+              icon={<BiSolidInjection size={25} className="text-[#1A4E8D]" />}
+              title="Pet Vaccination"
+              description="Exercitation culpa velit non desedder"
+            />
+            <ServiceCard
+              icon={<FaBone size={25} className="text-[#1A4E8D]" />}
+              title="Pet Nutrition"
+              description="Exercitation culpa velit non desedder"
+            />
           </div>
         </div>
       </section>
 
-      <Booking />
+     
     </>
+  );
+};
+
+const ServiceCard = ({ icon, title, description }) => {
+  return (
+    <div className="border rounded border-blue-300">
+      <div className="px-2 py-2">{icon}</div>
+      <div className="px-2">
+        <h1 className="text-[#1A4E8D] text-lg font-semibold py-0">{title}</h1>
+      </div>
+      <div>
+        <h1 className="px-2 font-medium">{description}</h1>
+      </div>
+      <div>
+        <p className="underline px-2 text-blue-500">View</p>
+      </div>
+    </div>
   );
 };
 
