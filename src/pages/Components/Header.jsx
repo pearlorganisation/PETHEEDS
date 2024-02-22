@@ -11,12 +11,12 @@ const menuItems = [
     href: "/ourProduct",
   },
   {
-    name: "My Account",
-    href: "#",
+    name: "Book Appointment",
+    href: "/Booknow",
   },
   {
     name: "Blog",
-    href: "#",
+    href: "/blog",
   },
   {
     name: "About Us",
