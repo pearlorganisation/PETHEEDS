@@ -77,7 +77,7 @@ const OurProject = () => {
                       <ChevronDown size={16} />
                     </span>
                   </div>
-                </div>
+                </div> 
               </div>
               <div className="flex items-center justify-between">
                 <span className="title-font text-xl font-bold text-gray-900">

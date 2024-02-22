@@ -4,12 +4,12 @@ import { FaDog } from "react-icons/fa6";
 import { FaBone } from "react-icons/fa";
 import { BiSolidInjection } from "react-icons/bi";
 
-import callback from "../../../images/callback.png";
+import Booking from "../Booking";
 const Herosection = () => {
   return (
     <>
       <section>
-        <div className="container grid grid-cols-2 border mx-auto py-5">
+        <div className="container grid grid-cols-2 border mx-auto py-5 rounded">
           <div className="  ">
             <div className="  md:p-14 ">
               <h1 className="font-poppins text-4xl font-medium leading-17 text-black-900">
@@ -109,11 +109,7 @@ const Herosection = () => {
         </div>
       </section>
 
-      <section>
-        <div className="py-5">
-          <img src={callback} />
-        </div>
-      </section>
+      <Booking />
     </>
   );
 };
