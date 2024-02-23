@@ -1,8 +1,8 @@
-import React from "react";
+// import React from "react";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
-import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
+// import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
+// import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
+// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
 const SingleProduct = () => {
   return (
     <>
