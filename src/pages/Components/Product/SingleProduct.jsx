@@ -3,7 +3,9 @@ import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
 // import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
+
 const SingleProduct = () => {
+  console.log("Dummy");
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 md:px-8 2xl:px-16">
