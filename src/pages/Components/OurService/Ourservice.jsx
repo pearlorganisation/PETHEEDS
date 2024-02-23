@@ -2,7 +2,9 @@ import React from "react";
 
 const OurService = () => {
   return (
-    <div className=" py-16"> {/* Increased py-16 for more vertical padding */}
+    <div className=" py-16">
+      {" "}
+      {/* Increased py-16 for more vertical padding */}
       <div className="container mx-auto px-4 md:px-8 lg:px-16">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
           Our Services

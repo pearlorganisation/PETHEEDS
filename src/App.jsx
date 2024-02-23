@@ -10,6 +10,7 @@ import Blog from "./pages/Components/Blog/Blog";
 import Stats from "./pages/Components/Stats/Stats";
 import Ourvision from "./pages/Components/Ourvision/Ourvision";
 import Ourservice from "./pages/Components/OurService/Ourservice";
+import SingleProduct from "./pages/Components/Product/SingleProduct";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,12 +21,13 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/ourProduct" element={<OurProject/>} />
-        <Route path="booknow" element={<Booknow/>}/>
-        <Route path="blog" element={<Blog/>}/>
-        <Route path="stats" element={<Stats/>}/>
-        <Route path="ourvision" element={<Ourvision/>}/>
-        <Route path="ourservice" element={<Ourservice/>}/>
+        <Route path="/ourProduct" element={<OurProject />} />
+        <Route path="/SingleProduct" element={<SingleProduct />} />
+        <Route path="booknow" element={<Booknow />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="stats" element={<Stats />} />
+        <Route path="ourvision" element={<Ourvision />} />
+        <Route path="ourservice" element={<Ourservice />} />
       </Routes>
       <Footer />
     </div>
