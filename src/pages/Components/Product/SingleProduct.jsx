@@ -56,10 +56,10 @@ const SingleProduct = () => {
               </p>
               <div className="mt-5 flex items-center ">
                 <div className="text-heading pr-2 text-base font-bold md:pr-0 md:text-xl lg:pr-2 lg:text-2xl 2xl:pr-0 2xl:text-4xl">
-                  $40.00
+                  ₹300
                 </div>
                 <span className="font-segoe pl-2 text-sm text-gray-400 line-through md:text-base lg:text-lg xl:text-xl">
-                  $50.00
+                  ₹400
                 </span>
               </div>
             </div>
@@ -85,7 +85,7 @@ const SingleProduct = () => {
                 type="button"
                 className="h-11 w-full rounded-md bg-[#1D4ED8] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
-                Buy from Amazon
+                Buy Now
               </button>
             </div>
             <div className="py-6 ">

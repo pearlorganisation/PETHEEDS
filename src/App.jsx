@@ -11,6 +11,8 @@ import Stats from "./pages/Components/Stats/Stats";
 import Ourvision from "./pages/Components/Ourvision/Ourvision";
 import Ourservice from "./pages/Components/OurService/Ourservice";
 import SingleProduct from "./pages/Components/Product/SingleProduct";
+import ProductList from "./pages/Components/Product/ProductList";
+import { Cart } from "./pages/Components/Product/Cart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,12 +24,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
-        <Route path="/SingleProduct" element={<SingleProduct />} />
+        <Route path="/singleproduct" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
         <Route path="blog" element={<Blog />} />
         <Route path="stats" element={<Stats />} />
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
+        <Route path="productlist" element={<ProductList />} />
+        <Route path="cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>
