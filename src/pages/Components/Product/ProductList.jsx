@@ -2,6 +2,15 @@ import { useNavigate } from "react-router-dom";
 import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
 import { FaShoppingCart } from "react-icons/fa";
+import img3 from "../../../../Images for Website/Bang On Ticks/1.png";
+import img4 from "../../../../Images for Website/Bang On Ticks/2.png";
+import img5 from "../../../../Images for Website/Bang On Ticks/3.png";
+import img6 from "../../../../Images for Website/Bang On Ticks/4.png";
+import img7 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/1.png";
+import img8 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/2.png";
+import img9 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/3.png";
+import img10 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/4.png";
+import img11 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/5.png";
 
 const products = [
   {
@@ -20,7 +29,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img11,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
@@ -30,7 +39,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img3,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
@@ -40,7 +49,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img4,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
@@ -50,7 +59,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img5,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
@@ -60,7 +69,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img6,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
@@ -70,12 +79,42 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
-    imageSrc: img2,
+    imageSrc: img7,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
   {
     id: 8,
+    name: "Nomad Tumbler",
+    quantity: "250ml",
+    href: "#",
+    price: " ₹350",
+    imageSrc: img8,
+    imageAlt:
+      "Olive drab green insulated bottle with flared screw lid and flat top.",
+  },
+  {
+    id: 9,
+    name: "Nomad Tumbler",
+    quantity: "250ml",
+    href: "#",
+    price: " ₹350",
+    imageSrc: img9,
+    imageAlt:
+      "Olive drab green insulated bottle with flared screw lid and flat top.",
+  },
+  {
+    id: 10,
+    name: "Nomad Tumbler",
+    quantity: "250ml",
+    href: "#",
+    price: " ₹350",
+    imageSrc: img10,
+    imageAlt:
+      "Olive drab green insulated bottle with flared screw lid and flat top.",
+  },
+  {
+    id: 11,
     name: "Nomad Tumbler",
     quantity: "250ml",
     href: "#",
@@ -125,14 +164,14 @@ export default function ProductList() {
                 <div className="py-4 flex items-center">
                   <button
                     type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                     onClick={handelnavigate}
                   >
                     Buy Now
                   </button>
                   <button
                     type="button"
-                    class="text-black border border-black bg-transparent hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+                    className="text-black border border-black bg-transparent hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
                   >
                     <div className="flex items-center">
                       <div className="">

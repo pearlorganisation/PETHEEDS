@@ -15,8 +15,6 @@ import ProductList from "./pages/Components/Product/ProductList";
 import { Cart } from "./pages/Components/Product/Cart";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
       <Header />

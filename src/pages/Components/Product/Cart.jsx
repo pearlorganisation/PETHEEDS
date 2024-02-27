@@ -2,6 +2,7 @@ import { Heart, Trash } from "lucide-react";
 import React from "react";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
+
 const products = [
   {
     id: 1,
