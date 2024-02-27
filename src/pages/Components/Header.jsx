@@ -8,7 +8,7 @@ const menuItems = [
   },
   {
     name: "Our Products",
-    href: "/ourProduct",
+    href: "/productlist",
   },
   {
     name: "Book Appointment",
@@ -39,7 +39,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log("Hello")
+  console.log("Hello");
 
   return (
     <>
@@ -54,7 +54,6 @@ const Header = () => {
           </div>
           <div className="hidden grow items-start lg:flex">
             <ul className="ml-12 inline-flex space-x-8">
-
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <a
@@ -62,7 +61,6 @@ const Header = () => {
                     className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
-                   
                   </a>
                 </li>
               ))}
@@ -105,6 +103,7 @@ const Header = () => {
                       </button>
                     </div>
                   </div>
+
                   <div className="mt-6">
                     <nav className="grid gap-y-4">
                       {menuItems.map((item) => (
@@ -123,6 +122,7 @@ const Header = () => {
                       ))}
                     </nav>
                   </div>
+
                   <div className="mt-2 space-y-2">
                     <button
                       type="button"
@@ -143,7 +143,6 @@ const Header = () => {
           )}
         </div>
       </div>
-      
     </>
   );
 };
