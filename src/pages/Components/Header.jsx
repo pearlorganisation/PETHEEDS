@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   {
@@ -32,6 +33,13 @@ const menuItems = [
   },
 ];
 const Header = () => {
+  const navigate= useNavigate();
+  const handelnavigatelogin= () =>{
+     navigate("/login")
+  }
+  const handelnavigatesignup= () =>{
+     navigate("/signup")
+  }
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -70,6 +78,7 @@ const Header = () => {
             <button
               type="button"
               className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              onClick={handelnavigatelogin}
             >
               Log In
             </button>
@@ -77,6 +86,7 @@ const Header = () => {
             <button
               type="button"
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={handelnavigatesignup}
             >
               Sign Up
             </button>
@@ -127,12 +137,14 @@ const Header = () => {
                     <button
                       type="button"
                       className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
+                      onClick={handelnavigatelogin}
+                   >
                       Sign In
                     </button>
                     <button
                       type="button"
                       className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                      onClick={handelnavigatesignup}
                     >
                       Log In
                     </button>
