@@ -2,6 +2,7 @@ import { Heart, Trash } from "lucide-react";
 import React from "react";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
+import { useSelector } from "react-redux";
 
 const products = [
   {
@@ -26,12 +27,15 @@ const products = [
   },
 ];
 
+
+
 export function Cart() {
+  const { cartData } = useSelector(state => state.cart)
   return (
     <div className="mx-auto max-w-7xl px-2 lg:px-0">
       <div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Shopping Cart 
+          Shopping Cart
         </h1>
         <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
           <section
@@ -42,7 +46,7 @@ export function Cart() {
               Items in your shopping cart
             </h2>
             <ul role="list" className="divide-y divide-gray-200">
-              {products.map((product, productIdx) => (
+              {cartData?.map((product, productIdx) => (
                 <div key={product.id} className="">
                   <li className="flex py-6 sm:py-6 ">
                     <div className="flex-shrink-0">
