@@ -15,6 +15,8 @@ import ProductList from "./pages/Components/Product/ProductList";
 import { Cart } from "./pages/Components/Product/Cart";
 import { SignUp } from "./pages/Components/Auth/SignUp";
 import { SignIn } from "./pages/Components/Auth/SignIn";
+import Reset from "./pages/Components/Auth/Reset";
+import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="signup" element={<SignUp/>} />
         <Route path="login" element={<SignIn/>} />
+        <Route path="reset" element={<Reset/>} />
+        <Route path="otp" element={<Otpvarfication/>} />
       </Routes>
       <Footer />
     </div>

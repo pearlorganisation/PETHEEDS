@@ -164,6 +164,11 @@ export function Cart() {
               <div className="px-2 pb-4 font-medium text-green-700">
                 You will save ₹ 100 on this order
               </div>
+              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none 
+              focus:ring-4 focus:ring-blue-300 font-medium 
+              rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2
+               dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirm Payment</button>
+
             </div>
           </section>
         </form>
