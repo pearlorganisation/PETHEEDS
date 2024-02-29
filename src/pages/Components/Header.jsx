@@ -90,6 +90,7 @@ const Header = () => {
             >
               Sign Up
             </button>
+            
           </div>
           <div className="lg:hidden">
             <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
