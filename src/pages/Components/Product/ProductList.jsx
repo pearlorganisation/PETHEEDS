@@ -19,6 +19,7 @@ const products = [
     quantity: "500ml",
     href: "#",
     price: " ₹480",
+    ourprice:"₹450",
     imageSrc: img,
     imageAlt:
       "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
@@ -29,6 +30,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img11,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -39,6 +41,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img3,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -49,6 +52,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img4,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -59,6 +63,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img5,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -69,6 +74,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img6,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -79,6 +85,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img7,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -89,6 +96,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img8,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -99,6 +107,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img9,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -109,6 +118,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img10,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -119,6 +129,7 @@ const products = [
     quantity: "250ml",
     href: "#",
     price: " ₹350",
+    ourprice:"₹450",
     imageSrc: img2,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -130,62 +141,63 @@ export default function ProductList() {
   const handelnavigate = () => {
     navigate("/singleproduct");
   };
+  const handelcart = () => {
+    navigate("/cart");
+  };
   return (
     <>
-      <div className="bg-white ">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8  ">
-          <div className=" py-10">
-            <h1 className="text-center text-2xl font-semibold md:text-3xl">
-              {" "}
-              Explore Our Pet Products{" "}
-            </h1>
-          </div>
+     
 
-          <h2 className="sr-only"> Products </h2>
+<div class="text-center p-10">
+    <h1 class="font-bold text-4xl mb-4">Explore Our Pawsome Product Collection!</h1>
+    <h1 class="text-3xl">Tailwind CSS</h1>
+</div>
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
-              <a key={product.id} href={product.href} className="group">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                  <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"
-                  />
-                </div>
-                <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-                <h3 className="mt-4 text-sm text-gray-700">
-                  {product.quantity}
-                </h3>
-                <p className="mt-1 text-lg font-medium text-gray-900">
-                  {product.price}
-                </p>
 
-                <div className="py-4 flex items-center">
-                  <button
-                    type="button"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    onClick={handelnavigate}
-                  >
-                    Buy Now
-                  </button>
-                  <button
-                    type="button"
-                    className="text-black border border-black bg-transparent hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
-                  >
-                    <div className="flex items-center">
-                      <div className="">
-                        <FaShoppingCart />
-                      </div>
-                      <div> Add to cart</div>
+<section id="Projects"
+    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+     {
+        products.map((el, id)=>{
+            return <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+            <a href="#">
+                <img 
+                src={img}
+                        alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
+                <div class="px-4 py-3 w-72">
+                    <span class="text-gray-400 mr-3 uppercase text-xs">Brand</span>
+                    <p class="text-lg font-bold text-black truncate block capitalize">{el.name}</p>
+                    <div class="flex items-center">
+                        <p class="text-lg font-semibold text-black cursor-auto my-3">{el.ourprice}</p>
+                        <del>
+                            <p class="text-sm text-gray-600 cursor-auto ml-2">{el.price}</p>
+                        </del>
+                        <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                            </svg></div>
                     </div>
-                  </button>
                 </div>
-              </a>
-            ))}
-          </div>
+            </a>
         </div>
-      </div>
+        })
+     }
+   
+ 
+   
+
+</section>
+
+
+
+
+
+
+
+
+      
     </>
   );
 }

@@ -1,11 +1,16 @@
 // import React from "react";
+import { useNavigate } from "react-router-dom";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
 // import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
 
 const SingleProduct = () => {
-  console.log("Dummy");
+  const navigate = useNavigate();
+
+  const handelNavigate = () => {
+    navigate("/cart");
+  };
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 md:px-8 2xl:px-16">
@@ -84,8 +89,9 @@ const SingleProduct = () => {
               <button
                 type="button"
                 className="h-11 w-full rounded-md bg-[#1D4ED8] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                onClick={handelNavigate}
               >
-                Buy Now
+                Add to Cart
               </button>
             </div>
             <div className="py-6 ">

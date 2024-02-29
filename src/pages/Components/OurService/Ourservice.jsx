@@ -4,6 +4,7 @@ import { FaCat } from "react-icons/fa";
 import { MdOutlinePets } from "react-icons/md";
 const OurService = () => {
   return (
+    
     <section className="pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
@@ -42,6 +43,7 @@ const OurService = () => {
         </div>
       </div>
     </section>
+
   );
 };
 
