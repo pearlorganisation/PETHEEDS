@@ -31,7 +31,7 @@ const menuItems = [
   },
   {
     name: "Contact us",
-    href: "#",
+    href: "/contact",
   },
 ];
 const Header = () => {
