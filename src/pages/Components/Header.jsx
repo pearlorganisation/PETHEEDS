@@ -1,6 +1,8 @@
 import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const menuItems = [
   {
@@ -33,14 +35,16 @@ const menuItems = [
   },
 ];
 const Header = () => {
-  const navigate= useNavigate();
-  const handelnavigatelogin= () =>{
-     navigate("/login")
+  const navigate = useNavigate();
+  const handelnavigatelogin = () => {
+    navigate("/login")
   }
-  const handelnavigatesignup= () =>{
-     navigate("/signup")
+  const handelnavigatesignup = () => {
+    navigate("/signup")
   }
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const { cartData } = useSelector(state => state.cart)
 
   const toggleMenu = () => {
     // console.log()
@@ -64,19 +68,17 @@ const Header = () => {
             <ul className="ml-12 inline-flex space-x-8">
               {menuItems.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
-
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="hidden space-x-2 lg:block">
-
+          <div className="hidden space-x-2 lg:flex justify-center items-center">
             <button
               type="button"
               className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -87,12 +89,19 @@ const Header = () => {
 
             <button
               type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={handelnavigatesignup}
             >
               Sign Up
             </button>
-            
+            <Link
+              to='/cart'
+              class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              <FaCartShopping /> <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">{cartData?.length || 0}</span>
+            </Link>
+
+      
           </div>
 
          
@@ -144,7 +153,7 @@ const Header = () => {
                       type="button"
                       className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                       onClick={handelnavigatelogin}
-                   >
+                    >
                       Sign In
                     </button>
                     <button

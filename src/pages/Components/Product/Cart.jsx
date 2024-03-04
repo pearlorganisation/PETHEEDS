@@ -1,7 +1,8 @@
 import { Heart, Trash } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
+import { useSelector } from "react-redux";
 
 const products = [
   {
@@ -26,12 +27,22 @@ const products = [
   },
 ];
 
+
+
 export function Cart() {
+  const [count,setcount] = useState(1)
+  const { cartData } = useSelector(state => state.cart)
+  const handelAddCount= ()=>{
+      setcount(count+1)
+  }
+  const handelSubCount= ()=>{
+      setcount(count-1)
+  }
   return (
     <div className="mx-auto max-w-7xl px-2 lg:px-0">
       <div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Shopping Cart 
+          Shopping Cart
         </h1>
         <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
           <section
@@ -42,7 +53,7 @@ export function Cart() {
               Items in your shopping cart
             </h2>
             <ul role="list" className="divide-y divide-gray-200">
-              {products.map((product, productIdx) => (
+              {cartData?.map((product, productIdx) => (
                 <div key={product.id} className="">
                   <li className="flex py-6 sm:py-6 ">
                     <div className="flex-shrink-0">
@@ -76,6 +87,7 @@ export function Cart() {
                               </p>
                             ) : null}
                           </div>
+                          
                           <div className="mt-1 flex items-end">
                             <p className="text-xs font-medium text-gray-500 line-through">
                               {product.originalPrice}
@@ -90,21 +102,27 @@ export function Cart() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> 
+                  
                   </li>
                   <div className="mb-2 flex">
                     <div className="min-w-24 flex">
-                      <button type="button" className="h-7 w-7">
+                      <button type="button" className="h-7 w-7"
+                      onClick={handelSubCount}>
                         -
                       </button>
-                      <input
-                        type="text"
+                      <span
+                       
                         className="mx-1 h-7 w-9 rounded-md border text-center"
-                        defaultValue={1}
-                      />
+                        
+                        
+                      >
+                        {product.items}
+                      </span>
                       <button
                         type="button"
                         className="flex h-7 w-7 items-center justify-center"
+                        onClick={handelAddCount}
                       >
                         +
                       </button>
