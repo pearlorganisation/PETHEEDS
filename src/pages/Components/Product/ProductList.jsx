@@ -11,9 +11,8 @@ import img8 from "../../../../Images for Website/Bone and Joint and Motleyvit Co
 import img9 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/3.png";
 import img10 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/4.png";
 import img11 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/5.png";
-import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { cartIncrement } from "../../../features/slices/cartSlice";
+import { addToCart } from "../../../features/slices/cartSlice";
 const products = [
   {
     id: 1,
@@ -21,8 +20,8 @@ const products = [
     quantity: "500ml",
     items:1,
     href: "#",
-    price: " ₹480",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img,
     imageAlt:
       "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
@@ -33,8 +32,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img11,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -45,8 +44,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img3,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -57,8 +56,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img4,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -69,8 +68,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img5,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -81,8 +80,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice:450,
     imageSrc: img6,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -93,8 +92,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 500,
+    ourprice: 450,
     imageSrc: img7,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -105,8 +104,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price:500,
+    ourprice: 450,
     imageSrc: img8,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -117,8 +116,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 350,
+    ourprice: 450,
     imageSrc: img9,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -129,8 +128,8 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price: 350,
+    ourprice:450,
     imageSrc: img10,
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
@@ -141,11 +140,10 @@ const products = [
     quantity: "250ml",
     items:1,
     href: "#",
-    price: " ₹350",
-    ourprice: "₹450",
+    price:350,
+    ourprice:450,
     imageSrc: img2,
-    imageAlt:
-      "Olive drab green insulated bottle with flared screw lid and flat top.",
+    imageAlt:"Olive drab green insulated bottle with flared screw lid and flat top.",
   },
 ];
 
@@ -185,7 +183,7 @@ export default function ProductList() {
                     <del>
                       <p class="text-sm text-gray-600 cursor-auto ml-2">{el.price}</p>
                     </del>
-                    <div onClick={() => { dispatch(cartIncrement(el)) }} class="ml-auto">
+                    <div onClick={() => { dispatch(addToCart(el)) }} class="ml-auto">
                       cart
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                         fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
