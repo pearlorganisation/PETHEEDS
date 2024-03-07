@@ -6,28 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { decreaseItem, increaseItem, removeItem } from "../../../features/slices/cartSlice";
 import cart from  "../../../../public/cart.png"
 import { useNavigate } from "react-router-dom";
-const products = [
-  {
-    id: 1,
-    name: "Aloevera Shampoo ",
-    href: "#",
-    price: "₹350",
-    originalPrice: "₹400",
-    discount: "25% Off",
-    size: "250ml",
-    imageSrc: img1,
-  },
-  {
-    id: 2,
-    name: "Aloevera Shampoo",
-    href: "#",
-    price: "₹450",
-    originalPrice: "₹500",
-    discount: "25% Off",
-    size: "500ml",
-    imageSrc: img2,
-  },
-];
 
 
 
@@ -45,6 +23,16 @@ export function Cart() {
   const handelnavigate= ()=>{
      navigate("/productlist")
   }
+
+    const totalPrice = cartData.reduce((acc, product) => acc + product.price * product.items, 0);
+    const totalDiscount = cartData.reduce(
+      (acc, product) => acc + (product.price - product.ourprice) * product.items,
+      0
+    );
+    const finalPrice = totalPrice - totalDiscount;
+
+   
+ 
   return (
     <div className="mx-auto max-w-7xl px-2 lg:px-0">
        {cartData.length>0?<div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
@@ -88,23 +76,23 @@ export function Cart() {
                             <p className="text-sm text-gray-500">
                               {product.color}
                             </p>
-                            {product.size ? (
+                            {product.quantity ? (
                               <p className="ml-4 border-l border-gray-200 pl-4 text-sm text-gray-500">
-                                {product.size}
+                                {product.quantity}
                               </p>
                             ) : null}
                           </div>
                           
                           <div className="mt-1 flex items-end">
                             <p className="text-xs font-medium text-gray-500 line-through">
-                              {product.originalPrice}
+                            ₹{product.price}
                             </p>
                             <p className="text-sm font-medium text-gray-900">
-                              &nbsp;&nbsp;{product.price}
+                              &nbsp;&nbsp; ₹{product.ourprice}
                             </p>
                             &nbsp;&nbsp;
                             <p className="text-sm font-medium text-green-500">
-                              {product.discount}
+                              10% Off
                             </p>
                           </div>
                         </div>
@@ -172,13 +160,13 @@ export function Cart() {
               <dl className=" space-y-1 px-2 py-4">
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-800">Price (2 item)</dt>
-                  <dd className="text-sm font-medium text-gray-900">₹ 800</dd>
+                  <dd className="text-sm font-medium text-gray-900">₹ {totalPrice}</dd>
                 </div>
                 <div className="flex items-center justify-between pt-4">
                   <dt className="flex items-center text-sm text-gray-800">
                     <span>Discount</span>
                   </dt>
-                  <dd className="text-sm font-medium text-green-700">₹ 100</dd>
+                  <dd className="text-sm font-medium text-green-700">₹ {totalDiscount}</dd>
                 </div>
                 <div className="flex items-center justify-between py-4">
                   <dt className="flex text-sm text-gray-800">
@@ -190,7 +178,7 @@ export function Cart() {
                   <dt className="text-base font-medium text-gray-900">
                     Total Amount
                   </dt>
-                  <dd className="text-base font-medium text-gray-900">₹ 800</dd>
+                  <dd className="text-base font-medium text-gray-900">₹ {finalPrice}</dd>
                 </div>
               </dl>
               <div className="px-2 pb-4 font-medium text-green-700">
