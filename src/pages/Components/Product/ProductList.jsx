@@ -13,7 +13,20 @@ import img10 from "../../../../Images for Website/Bone and Joint and Motleyvit C
 import img11 from "../../../../Images for Website/Bone and Joint and Motleyvit Combo/5.png";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../features/slices/cartSlice";
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+
+
 const products = [
+
   {
     id: 1,
     name: "Earthen Bottle ",
@@ -26,6 +39,7 @@ const products = [
     imageAlt:
       "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
   },
+
   {
     id: 2,
     name: "Nomad Tumbler",
@@ -38,6 +52,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 3,
     name: "Earthen Bottle",
@@ -50,6 +65,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 4,
     name: "Nomad Tumbler",
@@ -62,6 +78,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 5,
     name: "Earthen Bottle",
@@ -74,6 +91,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 6,
     name: "Nomad Tumbler",
@@ -86,6 +104,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 7,
     name: "Nomad Tumbler",
@@ -98,6 +117,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 8,
     name: "Nomad Tumbler",
@@ -110,6 +130,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 9,
     name: "Nomad Tumbler",
@@ -122,6 +143,7 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 10,
     name: "Nomad Tumbler",
@@ -134,9 +156,22 @@ const products = [
     imageAlt:
       "Olive drab green insulated bottle with flared screw lid and flat top.",
   },
+
   {
     id: 11,
     name: "Nomad Tumbler",
+    quantity: "250ml",
+    items:1,
+    href: "#",
+    price:350,
+    ourprice:450,
+    imageSrc: img2,
+    imageAlt:"Olive drab green insulated bottle with flared screw lid and flat top.",
+  },
+
+  {
+    id: 12,
+    name: "Nomad Tumbler 250ml ",
     quantity: "250ml",
     items:1,
     href: "#",
@@ -158,6 +193,39 @@ export default function ProductList() {
   };
   return (
     <>
+    <div className="container mx-auto my-5 ">
+    <Swiper
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <div className="flex justify-center items-center ">
+          <img  className = "rounded-lg" src="https://headsupfortails.com/cdn/shop/files/dd-web-65d736c0b38bc_1500x.webp?v=1708611678"/>
+          </div> 
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex justify-center items-center">
+          <img className = "rounded-lg" src="https://headsupfortails.com/cdn/shop/files/treats-web-65d736dde8a86_1500x.webp?v=1708611625" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex justify-center items-center">
+          <img  className = "rounded-lg" src="https://headsupfortails.com/cdn/shop/files/grooming-web-65d736d81ec69_1500x.webp?v=1708611646"/>
+          </div>
+        </SwiperSlide>
+        <div className="flex justify-center items-center">
+        <SwiperSlide>
+          <img className = "rounded-lg" src="https://headsupfortails.com/cdn/shop/files/saras-web-65d736da0ed77_1500x.webp?v=1708611605"/>
+        </SwiperSlide>
+        </div>
+       
+      </Swiper>
+
+      </div>
 
 
       <div class="text-center p-10">

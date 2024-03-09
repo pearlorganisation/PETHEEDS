@@ -55,7 +55,7 @@ const OtpVarfication = () => {
                   <div className="flex flex-col space-y-5">
                     <div>
                       <button
-                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#1D4ED8] border-none text-white text-sm shadow-sm"
+                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#4F46E5] border-none text-white text-sm shadow-sm"
                         type="submit"
                       >
                         Verify Account
@@ -65,7 +65,7 @@ const OtpVarfication = () => {
                     <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                       <p>Didn't receive code?</p>
                       <a
-                        className="flex flex-row items-center text-blue-600"
+                        className="flex flex-row items-center "
                         href="http://"
                         target="_blank"
                         rel="noopener noreferrer"

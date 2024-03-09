@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +68,7 @@ const Reset = () => {
             Not registered yet?{" "}
             <a
               href="/signup"
-              className="text-[#1D4ED8] font-medium inline-flex space-x-1 items-center"
+              className="text-[#4F46E5] font-medium inline-flex space-x-1 items-center"
             >
               <span>Register now </span>
               <span>

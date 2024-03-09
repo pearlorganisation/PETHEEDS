@@ -19,6 +19,7 @@ import { Toaster } from "sonner";
 import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
+import Cart1 from "./pages/Components/Product/Cart1";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route path="reset" element={<Reset/>}/>
         <Route path="otp" element={<Otpvarfication/>}/>
         <Route path="contact" element={<Contactus/>}/>
+        <Route path="cart1" element={<Cart1/>}/>
       </Routes>
       <Footer />
       <Toaster position="top-center" richColors />

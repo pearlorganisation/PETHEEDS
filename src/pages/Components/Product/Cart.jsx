@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { decreaseItem, increaseItem, removeItem } from "../../../features/slices/cartSlice";
 import cart from  "../../../../public/cart.png"
 import { useNavigate } from "react-router-dom";
+
 const products = [
   {
     id: 1,
@@ -28,6 +29,8 @@ const products = [
     imageSrc: img2,
   },
 ];
+
+
 
 
 
