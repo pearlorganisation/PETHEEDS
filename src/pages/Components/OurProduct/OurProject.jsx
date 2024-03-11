@@ -38,6 +38,7 @@ const OurProject = () => {
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
 
+
             <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
               <h2 className="text-sm font-semibold tracking-widest text-gray-500">
                 Nike

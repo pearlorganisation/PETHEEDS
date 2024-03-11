@@ -22,7 +22,7 @@ export function SignIn() {
               title=""
               className="font-semibold text-black transition-all duration-200 hover:underline"
             >
-              Create a free account
+              Create a Free Account
             </a>
           </p>
 
@@ -43,7 +43,8 @@ export function SignIn() {
                     placeholder="Email"
                   ></input>
                 </div>
-              </div>
+              </div>    
+                        
               <div>
                 <div className="flex items-center justify-between">
                   <label
@@ -51,7 +52,7 @@ export function SignIn() {
                     className="text-base font-medium text-gray-900"
                   >
                     {" "}
-                    Password{" "}
+                    Password{" "} 
                   </label>
                   <a
                     href="/reset"
@@ -97,7 +98,7 @@ export function SignIn() {
               </span>
               Sign in with Google
             </button>
-            <button
+            <button           
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
             >
