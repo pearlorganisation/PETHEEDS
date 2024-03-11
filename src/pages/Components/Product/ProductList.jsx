@@ -251,6 +251,61 @@ export default function ProductList() {
           <img src="https://headsupfortails.com/cdn/shop/files/classic-web-04-65e08bd51a648.webp?v=1709214921" />
         </div>
       </div>
+      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
+      <h5 className=" font-bold text-2xl mb-4">○ New In Store</h5>
+      <div className="grid grid-cols-4 gap-4 ">
+        <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"  alt="product"/>
+        <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"  alt="product"/>
+        <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"  alt="product"/>
+        <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"  alt="product"/>
+      </div>
+     </div>
+
+     <div className=" max-w-screen-xl px-4 py-8 mx-auto">
+      <h5 className=" font-bold text-2xl mb-4">○ Specials By Price</h5>
+      <div className="grid grid-cols-4 gap-4 ">
+        <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">
+            ₹199</div>
+            <div className=" h-6 text-2xl text-gray-500">
+           & Under</div>
+           <div className="">
+            <img className="h-10 rounded-full" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin"/>
+           </div>
+            </div>
+        <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">
+            ₹299</div>
+            <div className=" h-6 text-2xl text-gray-500">
+           & Under</div>
+           <div className="">
+            <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin"/>
+           </div>
+            </div>
+        <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">
+            ₹399</div>
+            <div className=" h-6 text-2xl text-gray-500">
+           & Under</div>
+           <div className="">
+            <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin"/>
+           </div>
+            </div>
+        <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">
+            ₹499</div>
+            <div className=" h-6 text-2xl text-gray-500">
+           & Under</div>
+           <div className="">
+            <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin"/>
+           </div>
+            </div>
+          
+          
+          </div>
+    
+     </div>
+
 
       <section
         id="Projects"
