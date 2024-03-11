@@ -15,6 +15,12 @@ import ProductList from "./pages/Components/Product/ProductList";
 import { Cart } from "./pages/Components/Product/Cart";
 import { SignUp } from "./pages/Components/Auth/SignUp";
 import { SignIn } from "./pages/Components/Auth/SignIn";
+import { Toaster } from "sonner";
+import Reset from "./pages/Components/Auth/Reset";
+import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
+import Contactus from "./pages/Components/Contact/Contactus";
+import Cart1 from "./pages/Components/Product/Cart1";
+
 
 function App() {
   return (
@@ -32,10 +38,15 @@ function App() {
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="productlist" element={<ProductList />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="signup" element={<SignUp/>} />
-        <Route path="login" element={<SignIn/>} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<SignIn />} />
+        <Route path="reset" element={<Reset/>}/>
+        <Route path="otp" element={<Otpvarfication/>}/>
+        <Route path="contact" element={<Contactus/>}/>
+        <Route path="cart1" element={<Cart1/>}/>
       </Routes>
       <Footer />
+      <Toaster position="top-center" richColors />
     </div>
   );
 }
