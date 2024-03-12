@@ -211,7 +211,7 @@ export default function ProductList() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center ">
               <img
                 className="rounded-lg"
                 src="https://headsupfortails.com/cdn/shop/files/treats-web-65d736dde8a86_1500x.webp?v=1708611625"
@@ -226,7 +226,7 @@ export default function ProductList() {
               />
             </div>
           </SwiperSlide>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center ">
             <SwiperSlide>
               <img
                 className="rounded-lg"
@@ -236,7 +236,7 @@ export default function ProductList() {
           </div>
         </Swiper>
       </div>
-
+       
       <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500">
         <div>
           <img src="https://headsupfortails.com/cdn/shop/files/grain-free-web-01-65e08bd2dca7d.webp?v=1709214839" />
@@ -427,6 +427,7 @@ export default function ProductList() {
                       </div>
                     </button>
                   </div>
+                  
                 </div>
               </a>
             </div>
