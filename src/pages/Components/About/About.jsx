@@ -64,6 +64,7 @@ const About = () => {
                   </div>
                 </div>
               </div>
+
               <div>
                 <div className="flex flex-col items-center">
                   <div>
@@ -77,6 +78,7 @@ const About = () => {
                 </div>
               </div>
             </div>
+
             <div>
               <div className="flex justify-center py-4">
                 <button
@@ -89,6 +91,7 @@ const About = () => {
               </div>
             </div>
           </div>
+
           <div className="flex justify-center items-center md:block">
             <div className="flex justify-start ">
               <img src={cat} className="  w-[250px]" />
@@ -113,6 +116,7 @@ const About = () => {
                 for your beloved pets in various tailored environments.
               </p>
             </div>
+
             <div>
               <div>
                 <h1 className="text-[#1A4E8DFF] text-xl font-medium">
@@ -205,6 +209,7 @@ const About = () => {
                 </div>
               </div>
             </SwiperSlide>
+
             <SwiperSlide>
               <div className="flex  justify-center items-center ">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
@@ -220,6 +225,7 @@ const About = () => {
                 </div>
               </div>
             </SwiperSlide>
+            
             <SwiperSlide>
               <div className="flex  justify-center items-center ">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg ">
