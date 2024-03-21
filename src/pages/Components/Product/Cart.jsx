@@ -8,6 +8,7 @@ import cart from  "../../../../public/cart.png"
 import { useNavigate } from "react-router-dom";
 
 const products = [
+  
   {
     id: 1,
     name: "Aloevera Shampoo ",
@@ -30,11 +31,8 @@ const products = [
   },
 ];
 
-
-
-
-
 export function Cart() {
+
   const [count,setcount] = useState(1)
   const { cartData } = useSelector(state => state.cart)
   const dispatch = useDispatch()
@@ -48,7 +46,9 @@ export function Cart() {
   const handelnavigate= ()=>{
      navigate("/productlist")
   }
+
   return (
+
     <div className="mx-auto max-w-7xl px-2 lg:px-0">
        {cartData.length>0?<div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
