@@ -20,6 +20,7 @@ import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
 import Cart1 from "./pages/Components/Product/Cart1";
+import BlogDetails from "./pages/Blogs/BlogDetails";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/singleproduct" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="blogDetails" element={<BlogDetails />} />
         <Route path="stats" element={<Stats />} />
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
@@ -40,10 +42,10 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<SignIn />} />
-        <Route path="reset" element={<Reset/>}/>
-        <Route path="otp" element={<Otpvarfication/>}/>
-        <Route path="contact" element={<Contactus/>}/>
-        <Route path="cart1" element={<Cart1/>}/>
+        <Route path="reset" element={<Reset />} />
+        <Route path="otp" element={<Otpvarfication />} />
+        <Route path="contact" element={<Contactus />} />
+        <Route path="cart1" element={<Cart1 />} />
       </Routes>
       <Footer />
       <Toaster position="top-center" richColors />
