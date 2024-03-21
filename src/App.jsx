@@ -20,6 +20,7 @@ import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
 import Cart1 from "./pages/Components/Product/Cart1";
+import { OrderList } from "./pages/Components/Order/OrderList";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="otp" element={<Otpvarfication/>}/>
         <Route path="contact" element={<Contactus/>}/>
         <Route path="cart1" element={<Cart1/>}/>
+        <Route path="orderlist" element={<OrderList/>}/>
       </Routes>
       <Footer />
       <Toaster position="top-center" richColors />
