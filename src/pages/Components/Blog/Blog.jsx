@@ -33,15 +33,14 @@ const Blog = () => {
               </a>
               <div class="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 class="mb-2 text-2xl font-bold line-clamp-2 tracking-tight text-gray-900 dark:text-white">
                     {
                       item?.topic
                     }
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Here are the biggest enterprise technology acquisitions of 2021 so
-                  far, in reverse chronological order.
+                <p class="mb-3 font-normal line-clamp-3 text-gray-700 dark:text-gray-400">
+                  {item?.topicDescription}
 
 
 

@@ -5,11 +5,13 @@ import { combineReducers } from "redux";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import cartReducer from "./slices/cartSlice";
 import blogReducer from "./slices/blogSlice";
+import productReducer from "./slices/productSlice";
 
 // Combine your individual reducers here
 const rootReducer = combineReducers({
   cart: cartReducer,
   blogs: blogReducer,
+  products: productReducer,
 });
 
 // Custom root reducer handling a clear action
