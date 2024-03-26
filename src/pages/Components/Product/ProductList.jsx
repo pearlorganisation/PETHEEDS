@@ -192,7 +192,7 @@ export default function ProductList() {
     <button className="border border-slate-400 rounded-md text-xs p-1 text-slate-600 hover:bg-black hover:text-white hover:border-none">450ml</button>
     
   </div>
-                        <button className="rounded-lg border bg-indigo-700 hover:bg-indigo-600 h-12 flex items-center justify-center">
+                        <button className="rounded-lg border bg-blue-700 hover:bg-blue-800 h-12 flex items-center justify-center">
   <div className="mr-1">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-bag-plus" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // This code is used to access redux store in this file.
 let store;
@@ -9,11 +9,8 @@ export const injectStore = (_store) => {
 // Creating new axios instance
 export const instance = axios.create({
   withCredentials: true,
-  baseURL: `${
-    import.meta.env.VITE_APP_WORKING_ENVIRONMENT === "development"
-      ? import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT
-      : import.meta.env.VITE_APP_API_BASE_URL_MAIN_PRODUCTION
-  }`,
+  headers: { 'Content-Type': 'application/json' },
+  baseURL: "http://localhost:8000/api/v1/",
 });
 
 instance.interceptors.request.use(
@@ -28,25 +25,23 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    console.log(response, "responseeeee");
     return response;
   },
   async (error) => {
-    console.log(error, "::::::error");
-    let errorMessage = "";
+    let errorMessage = '';
     // Do something with response error
     let loggedInUserEmail = store.getState()?.auth?.loggedInUserData?.email;
     let originalRequest = error.config;
 
     if (
-      error?.response?.status === 401 ||
-      (error?.response?.status === 403 && !originalRequest._retry)
+      error.response.status === 401 ||
+      (error.response.status === 403 && !originalRequest._retry)
     ) {
       originalRequest._retry = true;
       try {
         if (loggedInUserEmail) {
           await instance.post(
-            "/auth/refresh",
+            '/auth/refreshToken',
             { email: loggedInUserEmail },
             {
               withCredentials: true,
@@ -54,7 +49,7 @@ instance.interceptors.response.use(
           );
           return instance(originalRequest);
         } else {
-          errorMessage = "Unauthorized Access";
+          errorMessage = 'Unauthorized Access';
           return Promise.reject(errorMessage);
         }
       } catch (error) {
@@ -62,24 +57,23 @@ instance.interceptors.response.use(
       }
     }
 
-    switch (Number(error?.response?.status)) {
+    switch (Number(error.response.status)) {
       case 400:
-        errorMessage = error?.response?.data?.message || "Bad Request";
+        errorMessage = error.response.data.message || 'Bad Request';
         break;
 
       case 404:
-        errorMessage = error?.response?.data?.message || "Resource Not Found";
+        errorMessage = error.response.data.message || 'Resource Not Found';
         break;
 
       case 500:
-        errorMessage =
-          error?.response?.data?.message || "Internal Server Error";
+        errorMessage = error.response.data.message || 'Internal Server Error';
         break;
 
       default:
         errorMessage =
-          error?.response?.data?.message ||
-          "Sorry, something went wrong. Please try again later.";
+          error.response.data.message ||
+          'Sorry, something went wrong. Please try again later.';
     }
     return Promise.reject(errorMessage);
   }

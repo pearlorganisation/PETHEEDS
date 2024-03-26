@@ -4,10 +4,19 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import cartReducer from "../features/slices/cartSlice";
+import auth from "./slices/auth";
+import appointment from "./slices/bookNow";
+import subject from "./slices/subject";
+import contactUs from "./slices/contactUs"
+
 
 // Combine your individual reducers here
 const rootReducer = combineReducers({
   cart: cartReducer,
+  auth,
+  appointment,
+  subject, 
+  contactUs,
 });
 
 // Custom root reducer handling a clear action
