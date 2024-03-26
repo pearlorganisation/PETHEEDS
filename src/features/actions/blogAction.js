@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------------------------------
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../services/instance";
+import { instance } from "../../services/axiosInterceptor";
 
 export const getBlog = createAsyncThunk(
   "blog/getBlog",

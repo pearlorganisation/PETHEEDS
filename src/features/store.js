@@ -7,11 +7,20 @@ import cartReducer from "./slices/cartSlice";
 import blogReducer from "./slices/blogSlice";
 import productReducer from "./slices/productSlice";
 
+import auth from "./slices/auth";
+import appointment from "./slices/bookNow";
+import subject from "./slices/subject";
+import contactUs from "./slices/contactUs";
+
 // Combine your individual reducers here
 const rootReducer = combineReducers({
   cart: cartReducer,
   blogs: blogReducer,
   products: productReducer,
+  auth,
+  appointment,
+  subject,
+  contactUs,
 });
 
 // Custom root reducer handling a clear action

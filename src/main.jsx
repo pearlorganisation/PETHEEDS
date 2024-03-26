@@ -5,7 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { injectStore } from "./services/instance.js";
+import { injectStore } from "./services/axiosInterceptor.js";
 import store from "./features/store.js";
 import persistStore from "redux-persist/es/persistStore";
 
