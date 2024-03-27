@@ -16,6 +16,7 @@ import { addToCart } from "../../../features/slices/cartSlice";
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -23,6 +24,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+
 
 const products = [
   {
@@ -362,16 +364,18 @@ export default function ProductList() {
                 </div>
               </a> */}
 
-              <a href="#">
+              <Link to="/singleproduct">
                 <img
                    src={el.imageSrc}
                   alt="Product"
                   class="h-80 w-72 object-cover rounded-t-xl"
                 />
-                <div class="px-4 py-3 w-72">
+
+                 <div class="px-4 py-3 w-72">
                   <span class="text-gray-400 mr-3 uppercase text-xs">
                     Brand
                   </span>
+
                   <p class="text-lg font-bold text-black truncate block capitalize">
                     {el.name}
                   </p>
@@ -429,7 +433,7 @@ export default function ProductList() {
                   </div>
                   
                 </div>
-              </a>
+              </Link>
             </div>
           );
         })}
