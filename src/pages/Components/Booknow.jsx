@@ -64,16 +64,15 @@ const Booknow = () => {
   return (
     <>
       <div class="py-6 h-[90dvh]  container mx-auto  grid place-items-center">
-        <div class="grid grid-cols-2 h-full w-full ">
-          <div className="relative h-full">
-            <img className="h-full w-full absolute" src="https://source.unsplash.com/Mv9hjnEUHR4/500x800" alt="" srcset="" />
+        <div className="grid lg:grid-cols-2">
+          <div className="border-2 hidden lg:block relative">
+            <img className="w-full h-full absolute" src="https://source.unsplash.com/Mv9hjnEUHR4/500x800" alt="" />
           </div>
-
           <div class="w-full h-full  rounded-lg bg-white p-5  lg:rounded-l-none dark:bg-gray-700">
             <h3 class="py-4 text-center text-2xl text-gray-800 dark:text-white">
               Book Your Pet's Appointment
             </h3>
-            <form class="rounded bg-white  dark:bg-gray-800" onSubmit={handleSubmit(onSubmit)}>
+            <form class="rounded bg-white w-full  dark:bg-gray-800" onSubmit={handleSubmit(onSubmit)}>
               <div class="mb-4">
                 <div class="mb-4 md:mb-0 ">
                   <label

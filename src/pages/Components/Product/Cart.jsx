@@ -146,19 +146,21 @@ export function Cart() {
           </div>
         </form>
       </div> :
-        <>
-          <div>
-            <img src={cart} className="" />
-          </div>
-          <div className="flex justify-center items-center pb-14">
+        <div className=" min-h-[88vh]  grid place-items-center">
+          <div className="">
             <div>
-              <button
-                onClick={handelnavigate}
-                type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 md:px-6 lg:px-8 md:py-3 lg:py-4 text-center md:mb-2 lg:me-2 lg:mb-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full md:w-auto h-10 md:h-auto">Start Shopping</button>
+              <img src={cart} className="max-h-[35rem] " />
+            </div>
+            <div className="flex justify-center items-center pb-14">
+              <div>
+                <button
+                  onClick={handelnavigate}
+                  type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 md:px-6 lg:px-8 md:py-3 lg:py-4 text-center md:mb-2 lg:me-2 lg:mb-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full md:w-auto h-10 md:h-auto">Start Shopping</button>
 
+              </div>
             </div>
           </div>
-        </>}
+        </div>}
     </div>
   );
 }
