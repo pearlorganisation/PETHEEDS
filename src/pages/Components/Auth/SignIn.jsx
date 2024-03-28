@@ -1,7 +1,23 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useDispatch, } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { ClipLoader } from "react-spinners";
+import { logIn } from "../../../features/actions/auth";
 
 export function SignIn() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, formState: { errors }, } = useForm()
+
+  const onSubmit = data => {
+    console.log("data", data)
+    dispatch(logIn(data))
+  }
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -26,9 +42,8 @@ export function SignIn() {
             </a>
           </p>
 
-          <form action="#" method="POST" className="mt-8">
-
-             <div className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
+            <div className="space-y-5">
               <div>
                 <label
                   htmlFor=""
@@ -39,13 +54,19 @@ export function SignIn() {
                 </label>
                 <div className="mt-2">
                   <input
+                    {...register("email", { required: "email is required" })}
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
                     placeholder="Email"
-                  ></input>
+                  />
+                  {errors.email && (
+                    <span className="text-red-500">
+                      Email is required
+                    </span>
+                  )}
                 </div>
-              </div>    
-                        
+              </div>
+
               <div>
                 <div className="flex items-center justify-between">
                   <label
@@ -53,7 +74,7 @@ export function SignIn() {
                     className="text-base font-medium text-gray-900"
                   >
                     {" "}
-                    Password{" "} 
+                    Password{" "}
                   </label>
                   <a
                     href="/reset"
@@ -66,15 +87,22 @@ export function SignIn() {
                 </div>
                 <div className="mt-2">
                   <input
+                    {...register("password", { required: "password is required" })}
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
                     placeholder="Password"
-                  ></input>
+                  />
+                  {errors.password && (
+                    <span className="text-red-500">
+                      Password is required
+                    </span>
+                  )}
+
                 </div>
               </div>
               <div>
                 <button
-                  type="button"
+
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                 >
                   Get started <ArrowRight className="ml-2" size={16} />
@@ -99,7 +127,7 @@ export function SignIn() {
               </span>
               Sign in with Google
             </button>
-            <button           
+            <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
             >
