@@ -10,6 +10,7 @@ import { useEffect } from "react";
 // import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
 
 const SingleProduct = () => {
+  console.log("single product")
    const dispatch = useDispatch()
    const {singleProduct, isLoading} = useSelector(state=>state.products);
   
@@ -20,11 +21,28 @@ const SingleProduct = () => {
     navigate("/cart");
   };
   useEffect(() => {
+    console.log("useeffect")
     dispatch(getSingleProduct({productId}))
 }, [])
 console.log(singleProduct, "dataaqa")
   return <>
-<section class="py-12 sm:py-16"> 
+  <style jsx>{`
+        .custom-loader {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: conic-gradient(#0000 10%, #766DF4);
+          -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+          animation: s3 1s infinite linear;
+        }
+
+        @keyframes s3 {
+          to {
+            transform: rotate(1turn);
+          }
+        }
+      `}</style>
+   {isLoading?<div className="grid place-content-center h-[50vh] w-full"><div class="custom-loader"></div></div>:<section class="py-12 sm:py-16"> 
  <div class="container mx-auto px-4">
    <nav class="flex">
      <ol role="list" class="flex items-center">
@@ -59,15 +77,15 @@ console.log(singleProduct, "dataaqa")
        <div class="lg:flex lg:items-start">
          <div class="lg:order-2 lg:ml-5">
            <div class="max-w-xl overflow-hidden rounded-lg">
-             <img class="h-full w-full max-w-full object-cover" src={singleProduct.productImg.path} alt="" />
+             <img class="h-full w-full max-w-full object-cover" src={singleProduct?.productImg?.path} alt="" />
            </div>
          </div>
 
          <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
 
            <div class="flex flex-row items-start lg:flex-col">
-            {singleProduct.gallery.map((el)=>{return<button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-               <img class="h-full w-full object-cover" src={el.path} alt="" />
+            {singleProduct?.gallery?.map((el)=>{return<button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
+               <img class="h-full w-full object-cover" src={el?.path} alt="" />
              </button>})}
              
     
@@ -104,14 +122,14 @@ console.log(singleProduct, "dataaqa")
 
        <div class="lg:col-span-3">
        <h1 className="text text-xl font-semibold py-2">Discription</h1>
-       <p>{singleProduct.description}</p>
+       <p>{singleProduct?.description}</p>
      </div>
 
     
 
        <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
          <div class="flex items-end">
-           <h1 class="text-3xl font-bold"><span class="">₹ </span>{singleProduct.price}</h1>
+           <h1 class="text-3xl font-bold"><span class="">₹ </span>{singleProduct?.price}</h1>
            
          </div>
 
@@ -143,7 +161,8 @@ console.log(singleProduct, "dataaqa")
      
    </div>
  </div>
-</section>
+</section>}
+
 </>
 };
 
