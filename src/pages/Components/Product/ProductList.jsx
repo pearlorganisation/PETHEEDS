@@ -17,7 +17,6 @@ import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,10 +25,8 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { getProducts } from "../../../features/actions/productActions";
 
-
-
 export default function ProductList() {
-  const { productsData, isLoading } = useSelector(state => state.products)
+  const { productsData, isLoading } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handelnavigate = () => {
@@ -37,9 +34,8 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    dispatch(getProducts())
-  }, [])
-
+    dispatch(getProducts());
+  }, []);
 
   return (
     <>
@@ -49,8 +45,12 @@ export default function ProductList() {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: conic-gradient(#0000 10%, #766DF4);
-          -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+          background: conic-gradient(#0000 10%, #766df4);
+          -webkit-mask: radial-gradient(
+            farthest-side,
+            #0000 calc(100% - 8px),
+            #000 0
+          );
           animation: s3 1s infinite linear;
         }
 
@@ -122,10 +122,26 @@ export default function ProductList() {
       <div className=" max-w-screen-xl px-4 py-8 mx-auto">
         <h5 className=" font-bold text-2xl mb-4">○ New In Store</h5>
         <div className="grid grid-cols-4 gap-4 ">
-          <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835" alt="product" />
-          <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470" alt="product" />
-          <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074" alt="product" />
-          <img className="rounded-md" src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971" alt="product" />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
+            alt="product"
+          />
         </div>
       </div>
 
@@ -133,97 +149,115 @@ export default function ProductList() {
         <h5 className=" font-bold text-2xl mb-4">○ Specials By Price</h5>
         <div className="grid grid-cols-4 gap-4 ">
           <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">
-              ₹199</div>
-            <div className=" h-6 text-2xl text-gray-500">
-              & Under</div>
+            <div className=" font-extrabold text-4xl">₹199</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <img className="h-10 rounded-full" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin" />
+              <img
+                className="h-10 rounded-full"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
           </div>
           <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">
-              ₹299</div>
-            <div className=" h-6 text-2xl text-gray-500">
-              & Under</div>
+            <div className=" font-extrabold text-4xl">₹299</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin" />
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
           </div>
           <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">
-              ₹399</div>
-            <div className=" h-6 text-2xl text-gray-500">
-              & Under</div>
+            <div className=" font-extrabold text-4xl">₹399</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin" />
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
           </div>
           <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">
-              ₹499</div>
-            <div className=" h-6 text-2xl text-gray-500">
-              & Under</div>
+            <div className=" font-extrabold text-4xl">₹499</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <img className="h-10" src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg" alt="coin" />
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
           </div>
-
-
         </div>
-
       </div>
 
+      {isLoading ? (
+        <div className="grid place-content-center h-[50vh] w-full">
+          <div class="custom-loader"></div>
+        </div>
+      ) : (
+        <section
+          id="Projects"
+          class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
+        >
+          {productsData?.map((el, id) => {
+            return (
+              <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                <Link to={`/singleproduct/${el._id}`}>
+                  <img
+                    src={el?.productImg?.path}
+                    alt="Product"
+                    class="h-80 w-72 object-cover rounded-t-xl"
+                  />
 
-     {
-      isLoading ? <div className="grid place-content-center h-[50vh] w-full"><div class="custom-loader"></div></div> :  <section
-      id="Projects"
-      class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
-    > 
-      {productsData?.map((el, id) => {
-        return (
-          <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                  <div class="px-4 py-3 w-72">
+                    <span class="text-gray-400 mr-3 uppercase text-xs">
+                      Brand
+                    </span>
 
-            <Link to={`/singleproduct/${el._id}`}>
-              <img
-                src={el?.productImg?.path}
-                alt="Product"
-                class="h-80 w-72 object-cover rounded-t-xl"
-              />
-
-               <div class="px-4 py-3 w-72">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
-                  Brand
-                </span>
-
-                <p class="text-lg font-bold text-black truncate block capitalize">
-                  {el?.productName}
-                </p>
-                <div class="flex flex-col">
-                  <p class="text-lg font-semibold text-black cursor-auto mt-3 ">
-                    {el?.price}
-                  </p>
-                  <div className="flex items-center">
-                    <del className="text-slate-600 mt-3 mb-3 mr-3">
-                      <p class="text-sm text-slate-500 cursor-auto ml-2 ">
-                        {el.price}
-                      </p>
-                    </del>
-                    <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
-                      10% OFF
+                    <p class="text-lg font-bold text-black truncate block capitalize">
+                      {el?.productName}
                     </p>
+
+                    <div class="flex flex-col">
+                      <p class="text-lg font-semibold text-black cursor-auto mt-3 ">
+                        {el?.price}
+                      </p>
+
+                      <div className="flex items-center">
+                        <del className="text-slate-600 mt-3 mb-3 mr-3">
+                          <p class="text-sm text-slate-500 cursor-auto ml-2 ">
+                            {el.price}
+                          </p>
+                        </del>
+                        <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
+                          10% OFF
+                        </p>
+                      </div>
+
+                      <div className="flex mb-3">
+                        <button className="border border-slate-400 rounded-md text-xs p-1 mr-2 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
+                          450ml
+                        </button>
+                        <button className="border border-slate-400 rounded-md text-xs p-1 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
+                          450ml
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex mb-3">
-                    <button className="border border-slate-400 rounded-md text-xs p-1 mr-2 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
-                      450ml
-                    </button>
-                    <button className="border border-slate-400 rounded-md text-xs p-1 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
-                      450ml
-                    </button>
-                  </div>
-                  <button className="rounded-lg border bg-blue-700 hover:bg-blue-800 h-12 flex items-center justify-center" onClick={() => {
-                    dispatch(addToCart(el));
-                  }}>
+                </Link>
+
+                <div className="w-full">
+                  <button
+                    className="w-full rounded-lg border bg-blue-700 hover:bg-blue-800 h-12 flex items-center justify-center px-4 my-2" // Added margin here
+                    onClick={() => {
+                      dispatch(addToCart(el));
+                    }}
+                  >
                     <div className="mr-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -241,24 +275,14 @@ export default function ProductList() {
                       </svg>
                     </div>
 
-                    <div
-
-
-                      className="text-white font-semibold"
-                    >
-                      ADD TO CART
-
-                    </div>
+                    <div className="text-white font-semibold">ADD TO CART</div>
                   </button>
                 </div>
-
               </div>
-            </Link>
-          </div>
-        );
-      })}
-    </section>
-     }
+            );
+          })}
+        </section>
+      )}
     </>
   );
 }
