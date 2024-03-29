@@ -1,9 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { generateLoginOTP } from "../../../features/actions/auth";
+
 
 const Reset = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const {isOtpSentSuccessfully} = useSelector((state)=>state.auth)
   const {
     register,
     handleSubmit,
@@ -11,14 +16,12 @@ const Reset = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (Object.keys(errors).length === 0) {
-      // No validation errors, proceed with form submission
-      console.log(data); // Log the form data
-      navigate("/otp"); // Navigate to the next page
-    } else {
-      // Validation errors present, do not submit the form
-      console.log("Form has errors");
-    }
+    console.log("data",data)
+  dispatch(generateLoginOTP(data))
+  if(isOtpSentSuccessfully){
+    navigate("/otp")
+  }else{
+    console.log('Mail not sent')}
   };
 
   return (
@@ -35,7 +38,7 @@ const Reset = () => {
             <input
               id="email"
               name="email"
-              type="email"
+          
               className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
               placeholder="Enter email address"
               {...register("email", { required: true })}
@@ -45,7 +48,7 @@ const Reset = () => {
 
           <button
             className="w-full py-3 font-medium rounded-lg text-white bg-[#1D4ED8] hover:shadow inline-flex space-x-2 items-center justify-center"
-            type="submit"
+          
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

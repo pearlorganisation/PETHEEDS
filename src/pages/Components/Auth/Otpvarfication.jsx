@@ -1,8 +1,14 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { verifyOTP } from "../../../features/actions/auth";
+import { useNavigate } from "react-router-dom";
 
 const OtpVarfication = () => {
+  const dispatch =useDispatch();
+  const navigate = useNavigate()
+const {isOtpVerified}= useSelector((state)=>state.auth)
   const {
     register,
     handleSubmit,
@@ -10,7 +16,23 @@ const OtpVarfication = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data); // You can handle OTP verification here
+     // Extract OTP values from the data object
+  const otpValues = Object.values(data);
+
+  // Concatenate OTP values into a single string
+  const otpString = otpValues.join('');
+
+  
+  // Create a new object with the concatenated OTP string
+  const otpData = { otp: otpString };
+
+  console.log(otpData); // Log concatenated OTP string
+
+    dispatch(verifyOTP(otpData)) // You can handle OTP verification here
+
+    if(isOtpVerified){
+      navigate("/changePassword")
+    }
   };
 
   return (
@@ -30,10 +52,10 @@ const OtpVarfication = () => {
             <div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col space-y-16">
-                  <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
+                  <div className="flex flex-row items-center justify-between mx-auto w-full max-w-s">
                     {/* You can use map to generate OTP input fields */}
-                    {[1, 2, 3, 4].map((index) => (
-                      <div key={index} className="w-16 h-16 ">
+                    {[1, 2, 3, 4, 5, 6].map((index) => (
+                      <div key={index} className="w-14 h-16 ">
                         <input
                           {...register(`otp${index}`, {
                             required: true,
@@ -41,7 +63,7 @@ const OtpVarfication = () => {
                             maxLength: 1,
                             pattern: /^[0-9]*$/,
                           })}
-                          className={`w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 ${
+                          className={`w-full h-full  text-center outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 ${
                             errors[`otp${index}`] ? "border-red-500" : ""
                           }`}
                           type="text"

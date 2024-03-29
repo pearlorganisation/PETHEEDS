@@ -19,6 +19,7 @@ import { Toaster } from "sonner";
 import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
+import ChangePassword from "./pages/Components/Auth/ChangePassword";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="login" element={<SignIn />} />
         <Route path="reset" element={<Reset/>}/>
         <Route path="otp" element={<Otpvarfication/>}/>
+        <Route path="/changePassword" element={<ChangePassword/>}/>
         <Route path="contact" element={<Contactus/>}/>
       </Routes>
       <Footer />

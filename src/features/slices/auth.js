@@ -4,9 +4,11 @@ import toast from 'react-hot-toast';
 import {
   signUp,
   generateLoginOTP,
-  generateSignupOTP,
+
   logIn,
   logout,
+  verifyOTP,
+  resetPassword,
 } from "../actions/auth";
 // -------------------------------------------------------------------------------------------
 
@@ -21,9 +23,9 @@ const initialState = {
   isUserLoggedIn: false,
   loggedInUserData: {},
   isOtpVerified: false,
-  isOtpMailSent: false,
+
   isPasswordReset: false,
-  isMailSent: false,
+ 
   userData:[],
 };
 
@@ -52,12 +54,12 @@ const authSlice = createSlice({
       state.isLoading = true;
       state.errorMessage = "";
       state.userSignedSuccess = false;
-      state.isMailSent = false;
+      
     })
     .addCase(signUp.fulfilled, (state, action) => {
       state.isLoading = false;
       state.userSignedSuccess = true;
-      state.isMailSent = false;
+     
       state.userData = action.payload.data;
       toast.success(`Sign Up Successfull.`, {
         position: "top-center",
@@ -66,7 +68,7 @@ const authSlice = createSlice({
     .addCase(signUp.rejected, (state, action) => {
       state.isLoading = false;
       state.userSignedSuccess = false;
-      state.isMailSent = false;
+    
       state.errorMessage = action.payload;
       toast.error("Internal server error", { position: "top-center" });
     })
@@ -90,27 +92,74 @@ const authSlice = createSlice({
     //     toast.error(action.payload, { position: "top-center" });
     //   })
       // sendOtpForLogin cases
-    //   .addCase(generateLoginOTP.pending, (state, action) => {
-    //     state.isLoading = true;
-    //     state.isSuccess = false;
-    //     state.isOtpSentSuccessfully = false;
-    //     state.errorMessage = "";
-    //   })
-    //   .addCase(generateLoginOTP.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isSuccess = true;
-    //     state.isOtpSentSuccessfully = true;
-    //   })
-    //   .addCase(generateLoginOTP.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isSuccess = false;
-    //     state.isOtpSentSuccessfully = false;
-    //     state.errorMessage = action.payload;
-    //     toast.error(state?.errorMessage, {
-    //       position: "top-right",
-    //     });
-    //   })
-      // verifyOtpAndLogin cases
+      .addCase(generateLoginOTP.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.isOtpSentSuccessfully = false;
+        state.errorMessage = "";
+      })
+      .addCase(generateLoginOTP.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isOtpSentSuccessfully = true;
+        
+      })
+      .addCase(generateLoginOTP.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isOtpSentSuccessfully = false;
+        state.errorMessage = action.payload;
+        toast.error(state?.errorMessage, {
+          position: "top-right",
+        });
+      })
+      // verifyOtp
+      .addCase(verifyOTP.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.isOtpVerified = false;
+        state.errorMessage = "";
+      })
+      .addCase(verifyOTP.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isOtpVerified= true;
+        
+      })
+      .addCase(verifyOTP.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isOtpVerified = false;  
+        state.errorMessage = action.payload;
+        toast.error(state?.errorMessage, {
+          position: "top-right",
+        });
+      })
+
+      // reset password
+      .addCase(resetPassword.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.isPasswordReset = false;
+        state.errorMessage = "";
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isPasswordReset= true;
+        
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isPasswordReset = false;  
+        state.errorMessage = action.payload;
+        toast.error(state?.errorMessage, {
+          position: "top-right",
+        });
+      })
+
+// Login cases
       .addCase(logIn.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
@@ -155,7 +204,7 @@ const authSlice = createSlice({
         state.isUserLoggedIn = false;
         state.loggedInUserData = null;
         state.isOtpVerified = false;
-        state.isOtpMailSent = false;
+       
         state.isPasswordReset = false;
         localStorage.clear();
         sessionStorage.clear();
