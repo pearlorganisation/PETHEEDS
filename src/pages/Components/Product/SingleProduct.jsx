@@ -1,169 +1,169 @@
 // import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleProduct } from "../../../features/actions/productActions";
+import { useEffect } from "react";
+
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
 // import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
 
 const SingleProduct = () => {
+  console.log("single product")
+   const dispatch = useDispatch()
+   const {singleProduct, isLoading} = useSelector(state=>state.products);
+  
   const navigate = useNavigate();
-
+  const {productId} = useParams();
+  console.log(productId,"product id hai")
   const handelNavigate = () => {
     navigate("/cart");
   };
-  return (
-    <>
-      <div className="mx-auto max-w-7xl px-4 md:px-8 2xl:px-16">
-        <div className="pt-8">
-          <div className="flex items-center">
-            <ol className="flex w-full items-center overflow-hidden">
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a href="#">Home</a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  products
-                </a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  Aloevera Shampoo 250 ML
-                </a>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div className="block grid-cols-9 items-start gap-x-10 pb-10 pt-7 lg:grid lg:pb-14 xl:gap-x-14 2xl:pb-20">
-          <div className="col-span-5 grid grid-cols-2 gap-2.5">
-            {Array.from({ length: 4 }, (_, i) => (
-              <div
-                key={i}
-                className="col-span-1 transition duration-150 ease-in hover:opacity-90"
-              >
-                <img
-                  src={img1}
-                  alt="Nike Air Max 95 By You--0"
-                  className="w-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="col-span-4 pt-8 lg:pt-0">
-            <div className="mb-7 border-b border-gray-300 pb-7">
-              <h2 className="text-heading mb-3.5 text-lg font-bold md:text-xl lg:text-2xl 2xl:text-3xl">
-                Aloevera Shampoo 250 ML
-              </h2>
-              <p className="text-body text-sm leading-6  lg:text-base lg:leading-8">
-                Dry to Normal Hair | Coconut Oil, Extracts of Shikakai, Aloevera
-                & Areetha
-              </p>
-              <div className="mt-5 flex items-center ">
-                <div className="text-heading pr-2 text-base font-bold md:pr-0 md:text-xl lg:pr-2 lg:text-2xl 2xl:pr-0 2xl:text-4xl">
-                  ₹300
-                </div>
-                <span className="font-segoe pl-2 text-sm text-gray-400 line-through md:text-base lg:text-lg xl:text-xl">
-                  ₹400
-                </span>
-              </div>
-            </div>
-            <div className="border-b border-gray-300 pb-3  ">
-              <div className="mb-4">
-                <h3 className="text-heading mb-2.5 text-base font-semibold capitalize md:text-lg">
-                  size
-                </h3>
-                <ul className="colors -mr-3 flex flex-wrap">
-                  {["250ml"].map((size) => (
-                    <li
-                      key={size}
-                      className="text-heading mb-2 mr-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-11 md:text-sm "
-                    >
-                      {size}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="space-s-4 3xl:pr-48 flex items-center gap-2 border-b border-gray-300 py-8  md:pr-32 lg:pr-12 2xl:pr-32">
-              <button
-                type="button"
-                className="h-11 w-full rounded-md bg-[#1D4ED8] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                onClick={handelNavigate}
-              >
-                Add to Cart
-              </button>
-            </div>
-            <div className="py-6 ">
-              <ul className="space-y-5 pb-1 text-sm">
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    SKU:
-                  </span>
-                  N/A
-                </li>
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Category:
-                  </span>
-                  <a
-                    className="hover:text-heading transition hover:underline"
-                    href="#"
-                  >
-                    kids
-                  </a>
-                </li>
-                <li className="productTags">
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Tags:
-                  </span>
-                  <a
-                    className="hover:text-heading inline-block pr-1.5 transition last:pr-0 hover:underline"
-                    href="#"
-                  >
-                    Sneakers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="shadow-sm ">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Product Details
-                </h2>
-                <div className="relative flex h-4 w-4 flex-shrink-0 items-center justify-center">
-                  <div className="bg-heading h-0.5 w-full rounded-sm" />
-                  <div className="bg-heading absolute bottom-0 h-full w-0.5 origin-bottom scale-0 transform rounded-sm transition-transform duration-500 ease-in-out" />
-                </div>
-              </header>
-              <div>
-                <div className="pb-6 text-sm leading-7 text-gray-600 md:pb-7">
-                  Our Customer Experience Team is available 7 days a week and we
-                  offer 2 ways to get in contact.Email and Chat . We try to
-                  reply quickly, so you need not to wait too long for a
-                  response!.
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Additional Information
-                </h2>
-              </header>
-            </div>
-            <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Customer Reviews
-                </h2>
-              </header>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  useEffect(() => {
+    console.log("useeffect")
+    dispatch(getSingleProduct({productId}))
+}, [])
+console.log(singleProduct, "dataaqa")
+  return <>
+  <style jsx>{`
+        .custom-loader {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: conic-gradient(#0000 10%, #766DF4);
+          -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+          animation: s3 1s infinite linear;
+        }
+
+        @keyframes s3 {
+          to {
+            transform: rotate(1turn);
+          }
+        }
+      `}</style>
+   {isLoading?<div className="grid place-content-center h-[50vh] w-full"><div class="custom-loader"></div></div>:<section class="py-12 sm:py-16"> 
+ <div class="container mx-auto px-4">
+   <nav class="flex">
+     <ol role="list" class="flex items-center">
+       <li class="text-left">
+         <div class="-m-1">
+           <a href="#" class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> Home </a>
+         </div>
+       </li>
+
+       <li class="text-left">
+         <div class="flex items-center">
+           <span class="mx-2 text-gray-400">/</span>
+           <div class="-m-1">
+             <a href="#" class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"> Products </a>
+           </div>
+         </div> 
+       </li>
+
+       <li class="text-left">
+         <div class="flex items-center">
+           <span class="mx-2 text-gray-400">/</span>
+           <div class="-m-1">
+             <a href="#" class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800" aria-current="page"> Coffee </a>
+           </div>
+         </div>
+       </li>
+     </ol>
+   </nav>
+
+   <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
+     <div class="lg:col-span-3 lg:row-end-1">
+       <div class="lg:flex lg:items-start">
+         <div class="lg:order-2 lg:ml-5">
+           <div class="max-w-xl overflow-hidden rounded-lg">
+             <img class="h-full w-full max-w-full object-cover" src={singleProduct?.productImg?.path} alt="" />
+           </div>
+         </div>
+
+         <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
+
+           <div class="flex flex-row items-start lg:flex-col">
+            {singleProduct?.gallery?.map((el)=>{return<button type="button" class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
+               <img class="h-full w-full object-cover" src={el?.path} alt="" />
+             </button>})}
+             
+    
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
+       <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
+        {singleProduct?.productName}
+       </h1>
+
+       <div class="mt-5 flex items-center">
+         <div class="flex items-center">
+           <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class=""></path>
+           </svg>
+           <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class=""></path>
+           </svg>
+           <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class=""></path>
+           </svg>
+           <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class=""></path>
+           </svg>
+           <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class=""></path>
+           </svg>
+         </div>
+         <p class="ml-2 text-sm font-medium text-gray-500">1,209 Reviews</p>
+       </div>
+
+       <div class="lg:col-span-3">
+       <h1 className="text text-xl font-semibold py-2">Discription</h1>
+       <p>{singleProduct?.description}</p>
+     </div>
+
+    
+
+       <div class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+         <div class="flex items-end">
+           <h1 class="text-3xl font-bold"><span class="">₹ </span>{singleProduct?.price}</h1>
+           
+         </div>
+
+         <button type="button" class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]">
+           <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+           </svg>
+           Add to cart
+         </button>
+       </div>
+
+       <ul class="mt-8 space-y-2">
+         <li class="flex items-center text-left text-sm font-medium text-gray-600">
+           <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" class=""></path>
+           </svg>
+           Free shipping worldwide
+         </li>
+
+         <li class="flex items-center text-left text-sm font-medium text-gray-600">
+           <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" class=""></path>
+           </svg>
+           Cancel Anytime
+         </li>
+       </ul>
+     </div>
+
+     
+   </div>
+ </div>
+</section>}
+
+</>
 };
 
 export default SingleProduct;
