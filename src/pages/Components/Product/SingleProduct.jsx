@@ -43,7 +43,7 @@ console.log(singleProduct, "dataaqa")
         }
       `}</style>
    {isLoading?<div className="grid place-content-center h-[50vh] w-full"><div class="custom-loader"></div></div>:<section class="py-12 sm:py-16"> 
- <div class="container mx-auto px-4">
+ <div class="container mx-auto px-4 md:px-32">
    <nav class="flex">
      <ol role="list" class="flex items-center">
        <li class="text-left">
