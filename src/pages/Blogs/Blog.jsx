@@ -1,29 +1,38 @@
 import React, { useEffect } from "react";
-import blog from "../../../images/blog.png";
-import funnydog from "../../../images/funnydog.jpg"
+
 import { useDispatch, useSelector } from "react-redux";
-import { getBlog } from "../../../features/actions/blogAction";
+// import { getBlog } from "../../../features/actions/blogAction";
+import {getBlog} from "../../features/actions/blogAction"
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
-const Blog = () => {
-  const { blogData } = useSelector(state => state.blogs)
-  const dispatch = useDispatch()
+const Blog= () => {
+  const { blogData } = useSelector((state) => state.blogs);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBlog())
-  }, [])
+    dispatch(getBlog());
+  }, []);
 
   return (
     <>
       <div className="container mx-auto ">
-        <img src={blog} className=" mx-auto" />
+        <div className="text-center p-5">
+          <span className="text-xs font-semibold text-gray-500 uppercase">
+            Our Blog
+          </span>
+          <h1 className="mt-2 text-4xl font-bold">News & Articles</h1>
+        </div>
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
       </div>
 
-      <div className="grid md:grid-cols-3 md:grid-rows-3 gap-4 gap-y-6 container mx-auto place-items-center py-5 ">
-
-        {
-          blogData?.map(item => {
-            return <Link to='/blogDetails' state={item} class="max-w-sm grid  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-rows-3 gap-4 gap-y-6 container mx-auto place-items-center py-5 ">
+        {blogData?.map((item) => {
+          return (
+            <Link
+              to="/blogDetails"
+              state={item}
+              class="max-w-sm grid  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            >
               <a className="" href="#">
                 <img
                   class="rounded-t-lg h-[15rem] border w-full object-cover"
@@ -33,18 +42,12 @@ const Blog = () => {
               </a>
               <div class="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold line-clamp-2 tracking-tight text-gray-900 dark:text-white">
-                    {
-                      item?.topic
-                    }
+                  <h5 class="mb-2 text-2xl  font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">
+                    {item?.topic}
                   </h5>
                 </a>
                 <p class="mb-3 font-normal line-clamp-3 text-gray-700 dark:text-gray-400">
                   {item?.topicDescription}
-
-
-
-
                 </p>
                 <a
                   href="#"
@@ -69,11 +72,8 @@ const Blog = () => {
                 </a>
               </div>
             </Link>
-          })
-        }
-
-
-
+          );
+        })}
       </div>
     </>
   );

@@ -16,5 +16,19 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+export const getSingleProduct = createAsyncThunk(
+  "products/getSingleProduct",
+  async ({ productId }, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`product/${productId}`, {
+        withCredentials: true,
+      });
+      console.log(data, "action data");
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 // ================================================== THE END ==================================================
