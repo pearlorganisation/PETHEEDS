@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import blog from "../../../images/blog.png";
-import funnydog from "../../../images/funnydog.jpg";
+
 import { useDispatch, useSelector } from "react-redux";
-import { getBlog } from "../../../features/actions/blogAction";
+// import { getBlog } from "../../../features/actions/blogAction";
+import {getBlog} from "../../features/actions/blogAction"
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
-const Blog = () => {
+const Blog= () => {
   const { blogData } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
 
