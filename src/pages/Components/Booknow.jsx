@@ -68,7 +68,6 @@ const Booknow = () => {
           <div className="relative h-full ">
             <img className="h-full w-full absolute" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
           </div>
-
           <div class="w-full h-full  rounded-lg bg-white p-5  lg:rounded-l-none dark:bg-gray-700">
             <h3 class="py-4 text-center text-2xl text-gray-800 dark:text-white">
               Book Your Pet's Appointment

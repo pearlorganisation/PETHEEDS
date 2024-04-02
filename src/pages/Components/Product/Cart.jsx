@@ -10,7 +10,7 @@ import {
 } from "../../../features/slices/cartSlice";
 import cart from "../../../../public/cart.png";
 import { useNavigate } from "react-router-dom";
-import catimg from  "../../../images/cat11.jpg"
+import catimg from "../../../images/cat11.jpg"
 export function Cart() {
   const [count, setcount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -72,7 +72,7 @@ export function Cart() {
 
                           <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
                             <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                            ₹{product?.price}
+                              ₹{product?.price}
                             </p>
 
                             <div class="sm:order-1">
@@ -205,24 +205,24 @@ export function Cart() {
                 </p>
               </div>
               <div class="relative mt-10 flex">
-              <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none dark:focus:ring-blue-800">Buy</button>
+                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none dark:focus:ring-blue-800">Buy</button>
 
-               
-                
+
+
               </div>
             </div>
-            
+
           </form>
-          
+
         </div>
       ) : (
         <>
           <div>
             <img src={cart} className="" />
           </div>
-          
-          
-         
+
+
+
           <div className="flex justify-center items-center pb-14">
             <div>
               <button
