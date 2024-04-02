@@ -41,7 +41,7 @@ export default function ProductList() {
     <>
       {/* Your component content */}
       <style jsx>{`
-        .custom-loader {
+        .custom-loader { 
           width: 50px;
           height: 50px;
           border-radius: 50%;
@@ -119,8 +119,9 @@ export default function ProductList() {
           <img src="https://headsupfortails.com/cdn/shop/files/classic-web-04-65e08bd51a648.webp?v=1709214921" />
         </div>
       </div>
+
       <div className=" max-w-screen-xl px-4 py-8 mx-auto">
-        <h5 className=" font-bold text-2xl mb-4">○ New In Store</h5>
+        <h5 className=" font-bold text-2xl mb-4">○ New In Store </h5>
         <div className="grid grid-cols-4 gap-4 ">
           <img
             className="rounded-md"
@@ -146,7 +147,7 @@ export default function ProductList() {
       </div>
 
       <div className=" max-w-screen-xl px-4 py-8 mx-auto">
-        <h5 className=" font-bold text-2xl mb-4">○ Specials By Price</h5>
+        <h5 className=" font-bold text-2xl mb-4">○ Specials By Price </h5>
         <div className="grid grid-cols-4 gap-4 ">
           <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
             <div className=" font-extrabold text-4xl">₹199</div>
@@ -225,13 +226,13 @@ export default function ProductList() {
 
                     <div class="flex flex-col">
                       <p class="text-lg font-semibold text-black cursor-auto mt-3 ">
-                        {el?.price}
+                      ₹{el?.price}
                       </p>
 
                       <div className="flex items-center">
                         <del className="text-slate-600 mt-3 mb-3 mr-3">
                           <p class="text-sm text-slate-500 cursor-auto ml-2 ">
-                            {el.price}
+                          ₹{el.price}
                           </p>
                         </del>
                         <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">

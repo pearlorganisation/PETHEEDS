@@ -65,6 +65,7 @@ const Booknow = () => {
     <>
       <div class="py-6 min-h-[90dvh] w-[80%] container mx-auto  grid place-items-center">
         <div class="grid grid-cols-2 h-full w-full ">
+          
           <div className="relative h-full ">
             <img className="h-full w-full absolute" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
           </div>
