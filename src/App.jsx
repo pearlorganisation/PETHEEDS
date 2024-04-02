@@ -25,6 +25,7 @@ import BlogDetails from "./pages/Blogs/BlogDetails";
 import Blog from "./pages/Blogs/Blog";
 import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
+import { Order } from "./pages/Components/Product/Order";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
         <Route path="booknow" element={<Booknow />} />
         <Route path="blog" element={<Blog/>} />
         <Route path="blogDetails" element={<BlogDetails />} />
-        <Route path="stats" element={<Stats />} />
+        <Route path="stats" element={<Stats />} /> 
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="productlist" element={<ProductList />} />
@@ -52,6 +53,7 @@ function App() {
         
         <Route path="addnewaddress" element={<NewAddress/>} />
         <Route path="billing" element={<Billing/>} />
+        <Route path="order" element={<Order/>} />
         
       </Routes>
       <Footer />

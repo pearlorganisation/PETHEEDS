@@ -17,6 +17,7 @@ import OurService from "./Components/OurService/Ourservice";
 const HomePage = () => {
   return (
     <>
+
       <Swiper
         spaceBetween={30}
         pagination={{
@@ -25,6 +26,7 @@ const HomePage = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
+   
         <SwiperSlide>
           <section class="bg-white dark:bg-gray-900">
             <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -61,7 +63,7 @@ const HomePage = () => {
                   Speak to Sales 
                 </a>
               </div>
-              <div class="lg:hidden">
+              <div class="lg:hidden mt-5">
                 <img src={dog} alt="mockup" class="w-full h-auto" />
               </div>
               <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -103,10 +105,10 @@ const HomePage = () => {
                   href="#"
                   class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                 >
-                  Speak to Sales
+                  Speak to Sales 
                 </a>
               </div>
-              <div class="lg:hidden">
+              <div class="lg:hidden mt-5">
                 <img src={dog} alt="mockup" class="w-full h-auto" />
               </div>
               <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -148,10 +150,10 @@ const HomePage = () => {
                   href="#"
                   class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                 >
-                  Speak to Sales
+                  Speak to Sales 
                 </a>
               </div>
-              <div class="lg:hidden">
+              <div class="lg:hidden mt-5">
                 <img src={dog} alt="mockup" class="w-full h-auto" />
               </div>
               <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -160,7 +162,10 @@ const HomePage = () => {
             </div>
           </section>
         </SwiperSlide>
+    
+        
       </Swiper>
+     
      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
       <h5 className=" font-bold text-2xl mb-4">○ New In Store</h5>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
