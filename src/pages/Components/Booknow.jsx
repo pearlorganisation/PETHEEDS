@@ -13,7 +13,6 @@ import { clearAppointment } from "../../features/slices/bookNow";
 
 
 
-
 const Booknow = () => {
 
   const dispatch = useDispatch();
@@ -73,7 +72,7 @@ const Booknow = () => {
           <div class="w-full h-full  rounded-lg bg-white p-5  lg:rounded-l-none dark:bg-gray-700">
             <h3 class="py-4 text-center text-2xl text-gray-800 dark:text-white">
               Book Your Pet's Appointment
-            </h3>
+            </h3> 
             <form class="rounded bg-white  dark:bg-gray-800" onSubmit={handleSubmit(onSubmit)}>
               <div class="mb-4">
                 <div class="mb-4 md:mb-0 ">
@@ -126,7 +125,7 @@ const Booknow = () => {
                   for="email"
                 >
                   {" "}
-                  Phone Number{" "}
+                  Phone Number {" "}
                 </label>
                 <input
                   {...register("phoneNumber", {

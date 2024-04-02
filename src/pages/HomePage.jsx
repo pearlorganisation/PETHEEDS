@@ -88,7 +88,7 @@ const HomePage = () => {
                   class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
                 >
                   Get started
-                  <svg
+                  <svg 
                     class="w-5 h-5 ml-2 -mr-1"
                     fill="currentColor"
                     viewBox="0 0 20 20"

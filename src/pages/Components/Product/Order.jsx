@@ -4,19 +4,18 @@ import { X } from 'lucide-react'
 const products = [
   {
     id: 1,
-    name: 'Nike Air Force 1 07 LV8',
+    name: 'Pedigree PRO Expert Nutrition for Large Breed Puppy(3 to 18 Months) Dry Food',
     href: '#',
     price: '₹47,199',
     originalPrice: '₹48,900',
     discount: '5% Off',
     color: 'Orange',
     size: '8 UK',
-    imageSrc:
-      'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png',
+    imageSrc:'https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_8_f8bdf03e-8eb3-4487-a04a-3412bd61fe6f.jpg?v=1710935989'
   },
   {
     id: 2,
-    name: 'Nike Blazer Low 77 SE',
+    name: 'Pedigree Chicken and Vegetables Adult Dry Dog Food',
     href: '#',
     price: '₹1,549',
     originalPrice: '₹2,499',
@@ -24,19 +23,17 @@ const products = [
     color: 'White',
     leadTime: '3-4 weeks',
     size: '8 UK',
-    imageSrc:
-      'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e48d6035-bd8a-4747-9fa1-04ea596bb074/blazer-low-77-se-shoes-0w2HHV.png',
+    imageSrc:"https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_2_521cc2a4-d6db-4aaf-a0f2-7fe4a40e52a9.jpg?v=1710934438",
   },
   {
     id: 3,
-    name: 'Nike Air Max 90',
+    name: 'Nike Air Max 90Drools Chicken and Egg Adult Dog Dry Food',
     href: '#',
     price: '₹2219 ',
     originalPrice: '₹999',
     discount: '78% off',
     color: 'Black',
-    imageSrc:
-      'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fd17b420-b388-4c8a-aaaa-e0a98ddf175f/dunk-high-retro-shoe-DdRmMZ.png',
+    imageSrc:"https://cdn.shopify.com/s/files/1/0565/8021/0861/files/image1482_878e65b0-42f6-4b73-97cf-e89d36df8ecb.png?v=1710395772",
   },
 ]
 
