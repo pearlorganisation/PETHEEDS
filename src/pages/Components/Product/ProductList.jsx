@@ -1,161 +1,281 @@
-import React from "react";
-import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
-import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
-const ProductList = () => {
+import { Link, useNavigate } from "react-router-dom";
+import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
+import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
+import { FaShoppingCart } from "react-icons/fa";
+
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../features/slices/cartSlice";
+import React, { useEffect, useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination } from "swiper/modules";
+import { getProducts } from "../../../features/actions/productActions";
+
+export default function ProductList() {
+  const { productsData, isLoading } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handelnavigate = () => {
+    navigate("/singleproduct");
+  };
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 md:px-8 2xl:px-16">
-        <div className="pt-8">
-          <div className="flex items-center">
-            <ol className="flex w-full items-center overflow-hidden">
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a href="#">Home</a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  products
-                </a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  Nike Shoes
-                </a>
-              </li>
-            </ol>
+      {/* Your component content */}
+      <style jsx>{`
+        .custom-loader { 
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: conic-gradient(#0000 10%, #766df4);
+          -webkit-mask: radial-gradient(
+            farthest-side,
+            #0000 calc(100% - 8px),
+            #000 0
+          );
+          animation: s3 1s infinite linear;
+        }
+
+        @keyframes s3 {
+          to {
+            transform: rotate(1turn);
+          }
+        }
+      `}</style>
+
+      <div className="container mx-auto my-5 ">
+        <Swiper
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div className="flex justify-center items-center ">
+              <img
+                className="rounded-lg"
+                src="https://headsupfortails.com/cdn/shop/files/dd-web-65d736c0b38bc_1500x.webp?v=1708611678"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex justify-center items-center ">
+              <img
+                className="rounded-lg"
+                src="https://headsupfortails.com/cdn/shop/files/treats-web-65d736dde8a86_1500x.webp?v=1708611625"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex justify-center items-center">
+              <img
+                className="rounded-lg"
+                src="https://headsupfortails.com/cdn/shop/files/grooming-web-65d736d81ec69_1500x.webp?v=1708611646"
+              />
+            </div>
+          </SwiperSlide>
+          <div className="flex justify-center items-center ">
+            <SwiperSlide>
+              <img
+                className="rounded-lg"
+                src="https://headsupfortails.com/cdn/shop/files/saras-web-65d736da0ed77_1500x.webp?v=1708611605"
+              />
+            </SwiperSlide>
           </div>
+        </Swiper>
+      </div>
+
+      <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500">
+        <div>
+          <img src="https://headsupfortails.com/cdn/shop/files/grain-free-web-01-65e08bd2dca7d.webp?v=1709214839" />
         </div>
-        <div className="block grid-cols-9 items-start gap-x-10 pb-10 pt-7 lg:grid lg:pb-14 xl:gap-x-14 2xl:pb-20">
-          <div className="col-span-5 grid grid-cols-2 gap-2.5">
-            {Array.from({ length: 4 }, (_, i) => (
-              <div
-                key={i}
-                className="col-span-1 transition duration-150 ease-in hover:opacity-90"
-              >
-                <img
-                  src={img1}
-                  alt="Nike Air Max 95 By You--0"
-                  className="w-full object-cover"
-                />
-              </div>
-            ))}
+        <div>
+          <img src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942" />
+        </div>
+        <div>
+          <img src="https://headsupfortails.com/cdn/shop/files/flavours-of-india-web-03-65e08bd4cf3d9.webp?v=1709214910" />
+        </div>
+        <div>
+          <img src="https://headsupfortails.com/cdn/shop/files/classic-web-04-65e08bd51a648.webp?v=1709214921" />
+        </div>
+      </div>
+
+      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
+        <h5 className=" font-bold text-2xl mb-4">○ New In Store </h5>
+        <div className="grid grid-cols-4 gap-4 ">
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
+            alt="product"
+          />
+          <img
+            className="rounded-md"
+            src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
+            alt="product"
+          />
+        </div>
+      </div>
+
+      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
+        <h5 className=" font-bold text-2xl mb-4">○ Specials By Price </h5>
+        <div className="grid grid-cols-4 gap-4 ">
+          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">₹199</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
+            <div className="">
+              <img
+                className="h-10 rounded-full"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
+            </div>
           </div>
-          <div className="col-span-4 pt-8 lg:pt-0">
-            <div className="mb-7 border-b border-gray-300 pb-7">
-              <h2 className="text-heading mb-3.5 text-lg font-bold md:text-xl lg:text-2xl 2xl:text-3xl">
-                Aloevera Shampoo 250 ML
-              </h2>
-              <p className="text-body text-sm leading-6  lg:text-base lg:leading-8">
-                Dry to Normal Hair | Coconut Oil, Extracts of Shikakai, Aloevera
-                & Areetha
-              </p>
-              <div className="mt-5 flex items-center ">
-                <div className="text-heading pr-2 text-base font-bold md:pr-0 md:text-xl lg:pr-2 lg:text-2xl 2xl:pr-0 2xl:text-4xl">
-                  $40.00
-                </div>
-                <span className="font-segoe pl-2 text-sm text-gray-400 line-through md:text-base lg:text-lg xl:text-xl">
-                  $50.00
-                </span>
-              </div>
-            </div>
-            <div className="border-b border-gray-300 pb-3  ">
-              <div className="mb-4">
-                <h3 className="text-heading mb-2.5 text-base font-semibold capitalize md:text-lg">
-                  size
-                </h3>
-                <ul className="colors -mr-3 flex flex-wrap">
-                  {["250ml"].map((size) => (
-                    <li
-                      key={size}
-                      className="text-heading mb-2 mr-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-11 md:text-sm "
-                    >
-                      {size}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="space-s-4 3xl:pr-48 flex items-center gap-2 border-b border-gray-300 py-8  md:pr-32 lg:pr-12 2xl:pr-32">
-              <button
-                type="button"
-                className="h-11 w-full rounded-md bg-[#1D4ED8] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                Buy from Amazon
-              </button>
-            </div>
-            <div className="py-6 ">
-              <ul className="space-y-5 pb-1 text-sm">
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    SKU:
-                  </span>
-                  N/A
-                </li>
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Category:
-                  </span>
-                  <a
-                    className="hover:text-heading transition hover:underline"
-                    href="#"
-                  >
-                    kids
-                  </a>
-                </li>
-                <li className="productTags">
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Tags:
-                  </span>
-                  <a
-                    className="hover:text-heading inline-block pr-1.5 transition last:pr-0 hover:underline"
-                    href="#"
-                  >
-                    Sneakers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="shadow-sm ">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Product Details
-                </h2>
-                <div className="relative flex h-4 w-4 flex-shrink-0 items-center justify-center">
-                  <div className="bg-heading h-0.5 w-full rounded-sm" />
-                  <div className="bg-heading absolute bottom-0 h-full w-0.5 origin-bottom scale-0 transform rounded-sm transition-transform duration-500 ease-in-out" />
-                </div>
-              </header>
-              <div>
-                <div className="pb-6 text-sm leading-7 text-gray-600 md:pb-7">
-                  Our Customer Experience Team is available 7 days a week and we
-                  offer 2 ways to get in contact.Email and Chat . We try to
-                  reply quickly, so you need not to wait too long for a
-                  response!.
-                </div>
-              </div>
-            </div>
+          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">₹299</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Additional Information
-                </h2>
-              </header>
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
+          </div>
+          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">₹399</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
             <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Customer Reviews
-                </h2>
-              </header>
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
+            </div>
+          </div>
+          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
+            <div className=" font-extrabold text-4xl">₹499</div>
+            <div className=" h-6 text-2xl text-gray-500">& Under</div>
+            <div className="">
+              <img
+                className="h-10"
+                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
+                alt="coin"
+              />
             </div>
           </div>
         </div>
       </div>
+
+      {isLoading ? (
+        <div className="grid place-content-center h-[50vh] w-full">
+          <div class="custom-loader"></div>
+        </div>
+      ) : (
+        <section
+          id="Projects"
+          class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
+        >
+          {productsData?.map((el, id) => {
+            return (
+              <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                <Link to={`/singleproduct/${el._id}`}>
+                  <img
+                    src={el?.productImg?.path}
+                    alt="Product"
+                    class="h-80 w-72 object-cover rounded-t-xl"
+                  />
+
+                  <div class="px-4 py-3 w-72">
+                    <span class="text-gray-400 mr-3 uppercase text-xs">
+                      Brand
+                    </span>
+
+                    <p class="text-lg font-bold text-black truncate block capitalize">
+                      {el?.productName}
+                    </p>
+
+                    <div class="flex flex-col">
+                      <p class="text-lg font-semibold text-black cursor-auto mt-3 ">
+                      ₹{el?.price}
+                      </p>
+
+                      <div className="flex items-center">
+                        <del className="text-slate-600 mt-3 mb-3 mr-3">
+                          <p class="text-sm text-slate-500 cursor-auto ml-2 ">
+                          ₹{el.price}
+                          </p>
+                        </del>
+                        <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
+                          10% OFF
+                        </p>
+                      </div>
+
+                      <div className="flex mb-3">
+                        <button className="border border-slate-400 rounded-md text-xs p-1 mr-2 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
+                          450ml
+                        </button>
+                        <button className="border border-slate-400 rounded-md text-xs p-1 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
+                          450ml
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+
+                <div className="w-full">
+                  <button
+                    className="w-full rounded-lg border bg-blue-700 hover:bg-blue-800 h-12 flex items-center justify-center px-4 my-2" // Added margin here
+                    onClick={() => {
+                      dispatch(addToCart(el));
+                    }}
+                  >
+                    <div className="mr-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="white"
+                        class="bi bi-bag-plus"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"
+                        />
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                      </svg>
+                    </div>
+
+                    <div className="text-white font-semibold">ADD TO CART</div>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      )}
     </>
   );
-};
-
-export default ProductList;
+}
