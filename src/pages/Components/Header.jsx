@@ -37,14 +37,14 @@ const menuItems = [
 const Header = () => {
   const navigate = useNavigate();
   const handelnavigatelogin = () => {
-    navigate("/login")
-  }
+    navigate("/login");
+  };
   const handelnavigatesignup = () => {
-    navigate("/signup")
-  }
+    navigate("/signup");
+  };
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const { cartData } = useSelector(state => state.cart)
+  const { cartData } = useSelector((state) => state.cart);
 
   const toggleMenu = () => {
     // console.log()
@@ -94,18 +94,17 @@ const Header = () => {
             >
               Sign Up
             </button>
-
-
-
           </div>
-
 
           <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
-              to='/cart'
+              to="/cart"
               class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              <FaCartShopping /> <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">{cartData?.length || 0}</span>
+              <FaCartShopping />{" "}
+              <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
+                {cartData?.length || 0}
+              </span>
             </Link>
             <div className="lg:hidden">
               <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
@@ -170,7 +169,6 @@ const Header = () => {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </>
