@@ -94,20 +94,22 @@ const Header = () => {
             >
               Sign Up
             </button>
+
+
+
+          </div>
+
+
+          <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
               to='/cart'
               class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               <FaCartShopping /> <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">{cartData?.length || 0}</span>
             </Link>
-
-      
-          </div>
-
-         
-
-          <div className="lg:hidden">
-            <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+            <div className="lg:hidden">
+              <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+            </div>
           </div>
           {isMenuOpen && (
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
@@ -168,6 +170,7 @@ const Header = () => {
               </div>
             </div>
           )}
+
         </div>
       </div>
     </>

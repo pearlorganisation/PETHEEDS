@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import toast from 'react-hot-toast';
 
 import {
   signUp,
@@ -8,6 +7,7 @@ import {
   logIn,
   logout,
 } from "../actions/auth";
+import { toast } from "sonner";
 // -------------------------------------------------------------------------------------------
 
 // initialState -- initial state of authentication
@@ -24,7 +24,7 @@ const initialState = {
   isOtpMailSent: false,
   isPasswordReset: false,
   isMailSent: false,
-  userData:[],
+  userData: [],
 };
 
 // -------------------------------------- Slices------------------------------------------------
@@ -46,86 +46,87 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    
-    // signUp lifecycle methods
-    .addCase(signUp.pending, (state, action) => {
-      state.isLoading = true;
-      state.errorMessage = "";
-      state.userSignedSuccess = false;
-      state.isMailSent = false;
-    })
-    .addCase(signUp.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.userSignedSuccess = true;
-      state.isMailSent = false;
-      state.userData = action.payload.data;
-      toast.success(`Sign Up Successfull.`, {
-        position: "top-center",
-      });
-    })
-    .addCase(signUp.rejected, (state, action) => {
-      state.isLoading = false;
-      state.userSignedSuccess = false;
-      state.isMailSent = false;
-      state.errorMessage = action.payload;
-      toast.error("Internal server error", { position: "top-center" });
-    })
+
+      // signUp lifecycle methods
+      .addCase(signUp.pending, (state, action) => {
+        state.isLoading = true;
+        state.errorMessage = "";
+        state.userSignedSuccess = false;
+        state.isMailSent = false;
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userSignedSuccess = true;
+        state.isMailSent = false;
+        state.userData = action.payload.data;
+        toast.success(`Sign Up Successfull.`, {
+          position: "top-center",
+        });
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.isLoading = false;
+        state.userSignedSuccess = false;
+        state.isMailSent = false;
+        state.errorMessage = action.payload;
+
+        toast.error(action.payload || "Error on signUp");
+      })
       // SignOtp Generate
-    //   .addCase(generateSignupOTP.pending, (state, action) => {
-    //     state.isLoading = true;
-    //     state.errorMessage = "";
-    //     state.signOtpGenrated = false;
-    //     state.isMailSent = false;
-    //   })
-    //   .addCase(generateSignupOTP.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.signOtpGenrated = true;
-    //     state.isMailSent = false;
-    //   })
-    //   .addCase(generateSignupOTP.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.errorMessage = action.payload;
-    //     state.signOtpGenrated = false;
-    //     state.isMailSent = false;
-    //     toast.error(action.payload, { position: "top-center" });
-    //   })
+      //   .addCase(generateSignupOTP.pending, (state, action) => {
+      //     state.isLoading = true;
+      //     state.errorMessage = "";
+      //     state.signOtpGenrated = false;
+      //     state.isMailSent = false;
+      //   })
+      //   .addCase(generateSignupOTP.fulfilled, (state, action) => {
+      //     state.isLoading = false;
+      //     state.signOtpGenrated = true;
+      //     state.isMailSent = false;
+      //   })
+      //   .addCase(generateSignupOTP.rejected, (state, action) => {
+      //     state.isLoading = false;
+      //     state.errorMessage = action.payload;
+      //     state.signOtpGenrated = false;
+      //     state.isMailSent = false;
+      //     toast.error(action.payload, { position: "top-center" });
+      //   })
       // sendOtpForLogin cases
-    //   .addCase(generateLoginOTP.pending, (state, action) => {
-    //     state.isLoading = true;
-    //     state.isSuccess = false;
-    //     state.isOtpSentSuccessfully = false;
-    //     state.errorMessage = "";
-    //   })
-    //   .addCase(generateLoginOTP.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isSuccess = true;
-    //     state.isOtpSentSuccessfully = true;
-    //   })
-    //   .addCase(generateLoginOTP.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isSuccess = false;
-    //     state.isOtpSentSuccessfully = false;
-    //     state.errorMessage = action.payload;
-    //     toast.error(state?.errorMessage, {
-    //       position: "top-right",
-    //     });
-    //   })
+      //   .addCase(generateLoginOTP.pending, (state, action) => {
+      //     state.isLoading = true;
+      //     state.isSuccess = false;
+      //     state.isOtpSentSuccessfully = false;
+      //     state.errorMessage = "";
+      //   })
+      //   .addCase(generateLoginOTP.fulfilled, (state, action) => {
+      //     state.isLoading = false;
+      //     state.isSuccess = true;
+      //     state.isOtpSentSuccessfully = true;
+      //   })
+      //   .addCase(generateLoginOTP.rejected, (state, action) => {
+      //     state.isLoading = false;
+      //     state.isSuccess = false;
+      //     state.isOtpSentSuccessfully = false;
+      //     state.errorMessage = action.payload;
+      //     toast.error(state?.errorMessage, {
+      //       position: "top-right",
+      //     });
+      //   })
       // verifyOtpAndLogin cases
       .addCase(logIn.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
-        state.isLogInSuccess = false; 
+        state.isLogInSuccess = false;
         state.isUserLoggedIn = false;
         state.errorMessage = "";
-    
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.loggedInUserData = action.payload;
+
         state.isUserLoggedIn = true;
         state.isLogInSuccess = true;
-        state.userData= action.payload.data
+        state.userData = action.payload.data;
+        toast.success("Login Successful...");
       })
       .addCase(logIn.rejected, (state, action) => {
         state.isLoading = false;

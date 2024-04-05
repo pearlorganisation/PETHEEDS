@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import { useDispatch, } from "react-redux";
+import { useDispatch, useSelector, } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
@@ -8,6 +8,7 @@ import { logIn } from "../../../features/actions/auth";
 
 export function SignIn() {
 
+  const { userData, isLoading } = useSelector((state) => state.auth)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,6 +18,12 @@ export function SignIn() {
     console.log("data", data)
     dispatch(logIn(data))
   }
+  useEffect(() => {
+    if (userData?.status) {
+      navigate('/')
+    }
+  }, [userData])
+
 
   return (
     <section>
