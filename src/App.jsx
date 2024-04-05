@@ -36,28 +36,27 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
-        <Route path="/singleproduct/:productId" element={<SingleProduct/>} />
+        <Route path="/singleproduct/:productId" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
-        <Route path="blog" element={<Blog/>} />
+        <Route path="blog" element={<Blog />} />
         <Route path="blogDetails" element={<BlogDetails />} />
-        <Route path="stats" element={<Stats />} /> 
+        <Route path="stats" element={<Stats />} />
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="productlist" element={<ProductList />} />
-        <Route path="cart" element={<Cart/>} />
+        <Route path="cart" element={<Cart />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<SignIn />} />
         <Route path="reset" element={<Reset />} />
         <Route path="otp" element={<Otpvarfication />} />
         <Route path="contact" element={<Contactus />} />
-        
-        <Route path="addnewaddress" element={<NewAddress/>} />
-        <Route path="billing" element={<Billing/>} />
-        <Route path="order" element={<Order/>} />
-        
+
+        <Route path="addnewaddress" element={<NewAddress />} />
+        <Route path="billing" element={<Billing />} />
+        <Route path="order" element={<Order />} />
+
       </Routes>
       <Footer />
-      <Toaster position="top-center" richColors />
     </div>
   );
 }

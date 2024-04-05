@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
 import { FaShoppingCart } from "react-icons/fa";
-
+import newimg from "../../../images/new.png"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../features/slices/cartSlice";
 import React, { useEffect, useRef, useState } from "react";
@@ -33,7 +33,7 @@ export default function ProductList() {
     <>
       {/* Your component content */}
       <style jsx>{`
-        .custom-loader { 
+        .custom-loader {
           width: 50px;
           height: 50px;
           border-radius: 50%;
@@ -113,7 +113,11 @@ export default function ProductList() {
       </div>
 
       <div className=" max-w-screen-xl px-4 py-8 mx-auto">
-        <h5 className=" font-bold text-2xl mb-4">○ New In Store </h5>
+
+        <div className="flex justify-center font-bold text-2xl mb-4 items-center">
+          <div><img src={newimg} /></div>
+          <div>New In Store</div>
+        </div>
         <div className="grid grid-cols-4 gap-4 ">
           <img
             className="rounded-md"
@@ -138,55 +142,7 @@ export default function ProductList() {
         </div>
       </div>
 
-      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
-        <h5 className=" font-bold text-2xl mb-4">○ Specials By Price </h5>
-        <div className="grid grid-cols-4 gap-4 ">
-          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">₹199</div>
-            <div className=" h-6 text-2xl text-gray-500">& Under</div>
-            <div className="">
-              <img
-                className="h-10 rounded-full"
-                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
-                alt="coin"
-              />
-            </div>
-          </div>
-          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">₹299</div>
-            <div className=" h-6 text-2xl text-gray-500">& Under</div>
-            <div className="">
-              <img
-                className="h-10"
-                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
-                alt="coin"
-              />
-            </div>
-          </div>
-          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">₹399</div>
-            <div className=" h-6 text-2xl text-gray-500">& Under</div>
-            <div className="">
-              <img
-                className="h-10"
-                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
-                alt="coin"
-              />
-            </div>
-          </div>
-          <div className="flex justify-center items-center space-x-5 rounded-xl border h-20 bg-gradient-to-b from-slate-50 to-amber-100">
-            <div className=" font-extrabold text-4xl">₹499</div>
-            <div className=" h-6 text-2xl text-gray-500">& Under</div>
-            <div className="">
-              <img
-                className="h-10"
-                src="https://img.freepik.com/free-vector/isolated-gold-coin-cartoon-style_1308-87635.jpg"
-                alt="coin"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+
 
 
       <section
@@ -194,7 +150,7 @@ export default function ProductList() {
         class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
       >
         {isLoading ? Array(8).fill(true).map(item => {
-          return <div class="w-80 bg-gray-300 animate-pulse shadow-md rounded-md duration-500 p-3 space-y-3">
+          return <div class="w-80 bg-gray-50 animate-pulse shadow-md rounded-md p-3 space-y-3">
             <div class="bg-gray-200 w-full h-[18rem] rounded-md"></div>
             <div class="bg-gray-200 h-4 w-20"></div>
             <div class="bg-gray-200 h-4 w-32"></div>
