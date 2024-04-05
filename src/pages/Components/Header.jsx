@@ -27,7 +27,7 @@ const menuItems = [
   },
   {
     name: "Orders",
-    href: "/orderlist",
+    href: "/order",
   },
   {
     name: "Contact us",

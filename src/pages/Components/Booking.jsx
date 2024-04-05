@@ -30,7 +30,7 @@ const Booking = () => {
           dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={handleNavigate}
             >
-              Make an appointment
+              Make an appointment 
             </button>
           </div>
         </div>

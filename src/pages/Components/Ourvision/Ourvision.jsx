@@ -1,13 +1,19 @@
 import React from "react";
 
 const Ourvision = () => {
+  <style jsx>{`
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+    /* Your component-specific styles go here */
+  `}</style>;
+
   return (
     <>
       <section id="Werdegang" class="py-5   ">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-9  ">
           <h1
             id="mycareer"
-            className="mb-6 text-center text-[30px] md:text-[44px] font-bold text-[#2A2A2A] "
+            className="mb-6 text-center text-[30px] md:text-[44px] font-bold text-[#4b5563] "
           >
             We are PetHeeds nurturing your pet
           </h1>
