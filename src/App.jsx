@@ -28,13 +28,14 @@ import Billing from "./pages/Components/Payment/Billing";
 import { Order } from "./pages/Components/Product/Order";
 
 
+
 function App() {
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About/>} />
         <Route path="/ourProduct" element={<OurProject />} />
         <Route path="/singleproduct/:productId" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
@@ -53,7 +54,8 @@ function App() {
 
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />
-        <Route path="order" element={<Order />} />
+        <Route path="order" element={<Order/>} />
+       
 
       </Routes>
       <Footer />
