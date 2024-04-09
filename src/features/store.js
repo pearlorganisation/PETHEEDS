@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import cartReducer from "./slices/cartSlice";
 import blogReducer from "./slices/blogSlice";
+import HomeBanner from "./slices/HomeBanner";
 import productReducer from "./slices/productSlice";
 
 import auth from "./slices/auth";
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   blogs: blogReducer,
   products: productReducer,
   auth,
+  HomeBanner,
   appointment,
   subject,
   contactUs,

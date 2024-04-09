@@ -22,7 +22,11 @@ export const cartSlice = createSlice({
       } else {
         const existingData = [
           ...current(state.cartData),
-          { items: 1, totalPrice: action?.payload?.price, ...action.payload },
+          {
+            items: 1,
+            totalSum: action?.payload?.totalPrice,
+            ...action.payload,
+          },
         ];
         console.log(existingData);
         state.cartData = existingData;
@@ -37,7 +41,7 @@ export const cartSlice = createSlice({
           const updatedData = { ...item, items: item.items + 1 };
           return {
             ...updatedData,
-            totalPrice: updatedData?.items * updatedData?.price,
+            totalSum: updatedData?.items * updatedData?.totalPrice,
           };
         }
         return item;
@@ -55,7 +59,7 @@ export const cartSlice = createSlice({
           };
           return {
             ...updatedData,
-            totalPrice: updatedData?.items * updatedData?.price,
+            totalSum: updatedData?.items * updatedData?.totalPrice,
           };
         }
         return item;
