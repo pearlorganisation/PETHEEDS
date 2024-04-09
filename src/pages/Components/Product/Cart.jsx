@@ -25,7 +25,7 @@ export function Cart() {
       }, 0)
     );
     const totalP = cartData?.reduce((acc, item) => {
-      return acc + item.totalPrice;
+      return acc + item.totalSum;
     }, 0);
     setTotalPrice(totalP);
     console.log("totalPrice::", totalP);
@@ -65,15 +65,26 @@ export function Cart() {
                       <div class="relative flex flex-1 flex-col justify-between">
                         <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
                           <div class="pr-8 sm:pr-5">
-                            <p class="text-base font-semibold text-gray-900">
+                            <p class="text-sm font-semibold text-gray-900">
                               {product?.productName}
                             </p>
+                            <p class="shrink-0 w-20 text-base  font-semibold text-gray-900 sm:order-2 ">
+                              ₹{product?.totalPrice}
+                            </p>
+                            <div className="flex gap-2">
+                              <del>
+                                <span class="shrink-0 w-20 text-sm  font-semibold text-gray-900 sm:order-2 ">
+                                  ₹{product?.price}
+                                </span>
+                              </del>
+                              <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500  font-semibold text-white sm:order-2 ">
+                                {product?.discount}% OFF
+                              </span>
+                            </div>
                           </div>
 
                           <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                            <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">
-                              ₹{product?.price}
-                            </p>
+
 
                             <div class="sm:order-1">
                               <div class="mx-auto flex h-8 items-stretch text-gray-600">
@@ -160,7 +171,7 @@ export function Cart() {
                             class="size-16"
                           />
                           <div class="ml-3">
-                            <p class="text-base font-semibold ">
+                            <p class="text-sm line-clamp-1 font-semibold ">
                               {item?.productName}
                             </p>
                             <p class="text-sm font-medium text-[#333333] text-opacity-80">
@@ -173,7 +184,7 @@ export function Cart() {
                         </div>
 
                         <p class="text-sm font-semibold ">
-                          ₹{item?.totalPrice}
+                          ₹{item?.totalSum}
                         </p>
                       </li>
                     );
