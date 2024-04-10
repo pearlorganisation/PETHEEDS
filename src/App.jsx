@@ -33,6 +33,7 @@ function App() {
   return (
     <div>
       <Header />
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About/>} />
