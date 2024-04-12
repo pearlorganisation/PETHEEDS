@@ -63,7 +63,7 @@ const SingleProduct = () => {
         </div>
       ) : (
         <section class="py-12 sm:py-16">
-          <div class="container mx-auto px-4 md:px-32">
+          <div class="container mx-auto px-4 md:px-2">
             <nav class="flex">
               <ol role="list" class="flex items-center">
                 <li class="text-left">
@@ -113,7 +113,7 @@ const SingleProduct = () => {
 
             <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
               <div class="lg:col-span-3 lg:row-end-1">
-                <div class="lg:flex space-y-4 md:space-y-0 lg:items-start">
+                <div class="lg:flex  space-y-4 lg:space-y-0 lg:items-start">
                   <div class="lg:order-2 lg:ml-5 ">
                     <div class="max-w-xl overflow-hidden rounded-lg border shadow-lg">
                       <img
