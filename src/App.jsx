@@ -26,6 +26,7 @@ import Blog from "./pages/Blogs/Blog";
 import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
 import { Order } from "./pages/Components/Product/Order";
+import Invoice from "./pages/Components/Product/Invoice";
 
 
 
@@ -56,6 +57,9 @@ function App() {
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />
         <Route path="order" element={<Order/>} />
+        <Route path="invoice" element={<Invoice/>} />
+        <Route path="newaddress" element={<NewAddress/>} />
+        
        
 
       </Routes>
