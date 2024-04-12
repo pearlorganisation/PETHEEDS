@@ -16,16 +16,16 @@ import Booking from "./Components/Booking";
 import OurService from "./Components/OurService/Ourservice";
 import { useDispatch, useSelector } from "react-redux";
 import { createHomebanner } from "../features/actions/HomebannerAction";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(createHomebanner())
-  }, [])
+    dispatch(createHomebanner());
+  }, []);
 
-  const { isLoading, productsData } = useSelector((state) => state.HomeBanner)
-  console.log(productsData, "datat")
+  const { isLoading, productsData } = useSelector((state) => state.HomeBanner);
+  console.log(productsData, "datat");
 
   return (
     <>
@@ -38,55 +38,57 @@ const HomePage = () => {
         className="mySwiper"
       >
         {productsData?.map((el, id) => {
-          return <><SwiperSlide>
-            <section class="bg-white dark:bg-gray-900 border">
-              <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                <div class="mr-auto place-self-center lg:col-span-7">
-                  <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] dark:text-white">
-                    {el.title}
-                  </h1>
+          return (
+            <>
+              <SwiperSlide>
+                <section class="bg-white dark:bg-gray-900 border">
+                  <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+                    <div class="mr-auto place-self-center lg:col-span-7">
+                      <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] dark:text-white">
+                        {el.title}
+                      </h1>
 
-                  <a
-                    href="/productlist"
-                    class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-                  >
-                    Our Products
-                    <svg
-                      class="w-5 h-5 ml-2 -mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="/aboutus"
-                    class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-                  >
-                    About us
-                  </a>
-                </div>
-                {/* <div class="lg:hidden mt-5">
+                      <a
+                        href="/productlist"
+                        class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                      >
+                        Our Products
+                        <svg
+                          class="w-5 h-5 ml-2 -mr-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414  0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </a>
+                      <a
+                        href="/aboutus"
+                        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                      >
+                        About us
+                      </a>
+                    </div>
+                    {/* <div class="lg:hidden mt-5">
                <img src={dog} alt="mockup" class="w-full h-auto" />
              </div> */}
-                <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                  <img src={el.banner} alt="mockup" class="w-full h-auto rounded" />
-                </div>
-              </div>
-            </section>
-          </SwiperSlide></>
-
-
-
-        },)}
-
-
-
+                    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+                      <img
+                        src={el.banner}
+                        alt="mockup"
+                        class="w-full h-auto rounded"
+                      />
+                    </div>
+                  </div>
+                </section>
+              </SwiperSlide>
+            </>
+          );
+        })}
       </Swiper>
 
       <section className="container mx-auto ">
@@ -124,7 +126,7 @@ const HomePage = () => {
               class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
               data-v0-t="card"
             >
-              <div class="flex flex-col space-y-1.5 p-6 pb-4">
+              <div class="flex flex-col space-y-1.5 p-6 pb-4"> 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -149,10 +151,11 @@ const HomePage = () => {
                   We adhere to the highest standards of quality and safety,
                   ensuring that each product meets stringent regulatory
                   requirements and undergoes rigorous testing for purity and
-                  efficacy.
+                  efficacy . 
                 </p>
               </div>
             </div>
+
             <div
               class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
               data-v0-t="card"
@@ -274,26 +277,37 @@ const HomePage = () => {
       <div className=" max-w-screen-xl px-4 py-8 mx-auto">
         <h5 className=" font-bold text-2xl mb-4"> New In Store</h5>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
-            alt="product"
-          />
+
+          <Link >
+            <img
+              className="rounded-md"
+              src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+              alt="product"
+            />
+          </Link>
+          <Link>
+            <img
+              className="rounded-md"
+              src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
+              alt="product"
+            />
+          </Link>
+
+          <Link>
+            {" "}
+            <img
+              className="rounded-md"
+              src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
+              alt="product"
+            />
+          </Link>
+          <Link>
+            <img
+              className="rounded-md"
+              src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
+              alt="product"
+            />
+          </Link>
         </div>
       </div>
       <Herosection />
