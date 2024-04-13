@@ -16,9 +16,13 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { getProducts } from "../../../features/actions/productActions";
+import QuantityWithPrice from "./QuantityWithPrice";
+
+
 
 export default function ProductList() {
   const { productsData, isLoading } = useSelector((state) => state.products);
+  const [price, setPrice] = useState({})
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handelnavigate = () => {
@@ -28,6 +32,11 @@ export default function ProductList() {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+  useEffect(() => {
+    console.log(price, "price")
+  }, [price]);
+
+
 
   return (
     <>
@@ -163,7 +172,7 @@ export default function ProductList() {
         }) : productsData?.map((el, id) => {
           return (
             <div class="w-80 bg-white  shadow-md rounded-md p-3 space-y-3">
-              <Link to={`/singleproduct/${el._id}`}>
+              <Link to={`/singleproduct/${el?._id}`}>
                 <img
                   src={el?.productImg?.path}
                   alt="Product"
@@ -180,40 +189,9 @@ export default function ProductList() {
                   </p>
 
                   <div class="flex flex-col">
-                    <p class="text-lg font-semibold text-black cursor-auto mt-3 ">
-                      ₹{el?.totalPrice}
-                    </p>
 
-                    {
-                      el?.discount ? <div className="flex items-center">
-                        <del className="text-slate-600 mt-3 mb-3 mr-3">
-                          <p class="text-sm text-slate-500 cursor-auto ml-2 ">
-                            ₹{el.price}
-                          </p>
-                        </del>
-                        <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
-                          {el?.discount}% OFF
-                        </p>
-                      </div> : <div className="flex items-center text-transparent">
-                        <del className=" mt-3 mb-3 mr-3">
-                          <p class="text-sm  cursor-auto ml-2 ">
-                            00
-                          </p>
-                        </del>
-                        <p className=" py-1 px-1 rounded-md  text-xs font-semibold ">
-                          00
-                        </p>
-                      </div>
-                    }
 
-                    <div className="flex mb-3">
-                      <button className="border border-slate-400 rounded-md text-xs p-1 mr-2 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
-                        450ml
-                      </button>
-                      <button className="border border-slate-400 rounded-md text-xs p-1 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
-                        450ml
-                      </button>
-                    </div>
+                    <QuantityWithPrice item={el} price={price} setPrice={setPrice} />
                   </div>
                 </div>
               </Link>
@@ -222,7 +200,7 @@ export default function ProductList() {
                 <button
                   className="w-full rounded-md border bg-blue-700 text-sm hover:bg-blue-800 h-9 flex items-center justify-center gap-3 px-4 my-2" // Added margin here
                   onClick={() => {
-                    dispatch(addToCart(el));
+                    dispatch(addToCart({ ...el, ...price }));
                   }}
                 >
                   <div className="mr-1">
