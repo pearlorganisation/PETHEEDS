@@ -9,6 +9,7 @@ import { IoStar } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { GrGlobe } from "react-icons/gr";
 import { CiCreditCard1 } from "react-icons/ci";
+import QuantityWithPrice from "./QuantityWithPrice";
 
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
@@ -19,6 +20,7 @@ const SingleProduct = () => {
   const [image, setImage] = useState(0)
   const dispatch = useDispatch();
   const { singleProduct, isLoading } = useSelector((state) => state.products);
+  const [price, setPrice] = useState({})
 
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -33,7 +35,7 @@ const SingleProduct = () => {
       console.log(allImages, "allImages")
       setProductImage(allImages)
     }
-  }, [])
+  }, [singleProduct])
 
   return (
     <>
@@ -169,32 +171,28 @@ const SingleProduct = () => {
                   <h1 className="text text-xl font-semibold py-2">
                     Discription
                   </h1>
-                  <p>{singleProduct?.description}</p>
+                  <p className="line-clamp-5">{singleProduct?.description}</p>
                 </div>
 
                 <div class="mt-10 flex  items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                   <div class="flex  flex-col">
                     <div className="flex items-center">
-                      <del className="text-slate-600 mt-3 mb-3 mr-3">
-                        <p class="text-sm text-slate-500 cursor-auto ml-2 ">
-                          ₹{singleProduct.price}
-                        </p>
-                      </del>
-                      <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
+                      <QuantityWithPrice item={singleProduct} price={price} setPrice={setPrice} />
+                      {/* <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
                         {singleProduct?.discount}% OFF
-                      </p>
+                      </p> */}
                     </div>
-                    <h1 class="text-3xl font-bold">
+                    {/* <h1 class="text-3xl font-bold">
                       <span class="">₹ </span>
                       {singleProduct?.totalPrice}
-                    </h1>
+                    </h1> */}
 
                   </div>
 
                   <button
                     type="button"
                     onClick={() => {
-                      dispatch(addToCart(singleProduct));
+                      dispatch(addToCart({ ...singleProduct, ...price }));
                     }}
                     class="inline-flex gap-2 items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]"
                   >
