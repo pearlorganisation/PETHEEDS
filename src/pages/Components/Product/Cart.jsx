@@ -150,7 +150,7 @@ export function Cart() {
             </section>
             {/* Order summary */}
             <div class="relative col-span-full flex flex-col pl-8 pr-4 py-6 lg:col-span-4">
-              <h2 class="sr-only">Order summary</h2>
+              <h2 class="sr-only">Order summary </h2>
               <div>
                 <img
                   src={catimg}

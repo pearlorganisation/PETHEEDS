@@ -110,15 +110,15 @@ const Header = () => {
               <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
             </div>
           </div>
-          {isMenuOpen && (
+          {isMenuOpen && ( 
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
               <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="px-5 pb-6 pt-5">
                   <div className="flex items-center justify-between">
                     <div className="inline-flex items-center space-x-2">
-                      <span className="font-bold">Your Logo</span>
+                      <span className="font-bold">Your Logo </span>
                     </div>
-                    <div className="-mr-2">
+                    <div className="-mr-2">  
                       <button
                         type="button"
                         onClick={toggleMenu}
