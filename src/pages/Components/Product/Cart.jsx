@@ -64,7 +64,7 @@ export function Cart() {
 
                       <div class="relative flex flex-1 flex-col justify-between">
                         <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
-                          <div class="pr-8 sm:pr-5">
+                          <div class="pr-8 sm:pr-5 space-y-1">
                             <p class="text-sm font-semibold text-gray-900">
                               {product?.productName}
                             </p>
@@ -79,6 +79,11 @@ export function Cart() {
                               </del>
                               <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500  font-semibold text-white sm:order-2 ">
                                 {product?.discount}% OFF
+                              </span>
+                            </div>
+                            <div className="font-semibold">
+                              Weight: <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500   text-white sm:order-2 ">
+                                {product?.weight}
                               </span>
                             </div>
                           </div>
@@ -228,7 +233,7 @@ export function Cart() {
         </div>
       ) : (
         <>
-          <div>
+          <div className="h-[80dvh]">
             <img src={cart} className="" />
           </div>
 
