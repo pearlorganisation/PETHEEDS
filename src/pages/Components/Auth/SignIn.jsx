@@ -8,7 +8,7 @@ import { logIn } from "../../../features/actions/auth";
 
 export function SignIn() {
 
-  const { userData, isLoading } = useSelector((state) => state.auth)
+  const { userData, isLoading ,isUserLoggedIn} = useSelector((state) => state.auth)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export function SignIn() {
     dispatch(logIn(data))
   }
   useEffect(() => {
-    if (userData?.status) {
+    if (userData?.status && isUserLoggedIn) {
       navigate('/')
     }
   }, [userData])

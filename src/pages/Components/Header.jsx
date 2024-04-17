@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import ProfileDropdown from "./ProfileDropdown";
 
 const menuItems = [
   {
@@ -45,6 +46,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const { cartData } = useSelector((state) => state.cart);
+  const {isUserLoggedIn} = useSelector(state => state.auth)
 
   const toggleMenu = () => {
     // console.log()
@@ -78,7 +80,10 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="hidden space-x-2 lg:flex justify-center items-center">
+          {
+            isUserLoggedIn ? <div>
+              <ProfileDropdown/>
+            </div> : <div className="hidden space-x-2 lg:flex justify-center items-center">
             <button
               type="button"
               className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -95,6 +100,7 @@ const Header = () => {
               Sign Up
             </button>
           </div>
+          }
 
           <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
@@ -149,7 +155,8 @@ const Header = () => {
                     </nav>
                   </div>
 
-                  <div className="mt-2 space-y-2">
+                  {
+                    isUserLoggedIn ? <div>Profile</div> : <div className="mt-2 space-y-2">
                     <button
                       type="button"
                       className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -165,6 +172,7 @@ const Header = () => {
                       Log In
                     </button>
                   </div>
+                  }
                 </div>
               </div>
             </div>

@@ -38,6 +38,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isOtpVerified = false;
       state.forgetPasswordOtpValid = null;
+      state.userData = [];
     },
     clearLoginUpState: (state) => {
       state.isOtpSentSuccessfully = false;
