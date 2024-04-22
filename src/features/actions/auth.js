@@ -3,23 +3,7 @@ import { instance } from "../../services/axiosInterceptor";
 
 // ------------------------------------Async Actions----------------------------------
 
-// //Signup send OTP and verify Otp Api bith in single Api
-// export const generateSignupOTP = createAsyncThunk(
-//   "auth/sendOtpForSignUp",
-//   async (payload, { rejectWithValue }) => {
-//     try {
-//       const response = await instance.post("mail/generateSignUpOtp", payload, {
-//         withCredentials: true,
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-//       return response;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
+
 
 //Signup Api
 export const signUp = createAsyncThunk(
@@ -53,7 +37,7 @@ export const generateLoginOTP = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      return response?.data;
+      return response;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -71,7 +55,7 @@ export const verifyOTP = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      return response?.data;
+      return response;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -88,7 +72,7 @@ export const resetPassword= createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      return response?.data;
+      return response;
     } catch (error) {
       return rejectWithValue(error);
     }

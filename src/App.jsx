@@ -15,16 +15,17 @@ import ProductList from "./pages/Components/Product/ProductList";
 import { Cart } from "./pages/Components/Product/Cart";
 import { SignUp } from "./pages/Components/Auth/SignUp";
 import { SignIn } from "./pages/Components/Auth/SignIn";
-import { Toaster } from "sonner";
 import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
 import ChangePassword from "./pages/Components/Auth/ChangePassword";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
   return (
     <div>
+      <Toaster />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />

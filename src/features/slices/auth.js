@@ -23,7 +23,7 @@ const initialState = {
   isUserLoggedIn: false,
   loggedInUserData: {},
   isOtpVerified: false,
-
+  emailDataChangePassword:"",
   isPasswordReset: false,
  
   userData:[],
@@ -44,7 +44,12 @@ const authSlice = createSlice({
     clearLoginUpState: (state) => {
       state.isOtpSentSuccessfully = false;
     },
-    clearReduxStoreData: (state) => {},
+    clearOtpVerified:(state)=>{
+      state.isOtpVerified= false;
+    },
+    clearReduxStoreData: (state) => initialState,
+    storeEmailData:(state,action)=>{
+      state.emailDataChangePassword=action.payload}
   },
   extraReducers: (builder) => {
     builder
@@ -72,25 +77,7 @@ const authSlice = createSlice({
       state.errorMessage = action.payload;
       toast.error("Internal server error", { position: "top-center" });
     })
-      // SignOtp Generate
-    //   .addCase(generateSignupOTP.pending, (state, action) => {
-    //     state.isLoading = true;
-    //     state.errorMessage = "";
-    //     state.signOtpGenrated = false;
-    //     state.isMailSent = false;
-    //   })
-    //   .addCase(generateSignupOTP.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.signOtpGenrated = true;
-    //     state.isMailSent = false;
-    //   })
-    //   .addCase(generateSignupOTP.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.errorMessage = action.payload;
-    //     state.signOtpGenrated = false;
-    //     state.isMailSent = false;
-    //     toast.error(action.payload, { position: "top-center" });
-    //   })
+    
       // sendOtpForLogin cases
       .addCase(generateLoginOTP.pending, (state, action) => {
         state.isLoading = true;
@@ -102,7 +89,10 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isOtpSentSuccessfully = true;
-        
+        state.userData= action.payload.data;
+        toast.success("OTP sent to your email", {
+          position: "top-center",
+        })
       })
       .addCase(generateLoginOTP.rejected, (state, action) => {
         state.isLoading = false;
@@ -110,7 +100,7 @@ const authSlice = createSlice({
         state.isOtpSentSuccessfully = false;
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
-          position: "top-right",
+          position: "top-center",
         });
       })
       // verifyOtp
@@ -119,12 +109,15 @@ const authSlice = createSlice({
         state.isSuccess = false;
         state.isOtpVerified = false;
         state.errorMessage = "";
+        state.userData=""
       })
       .addCase(verifyOTP.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isOtpVerified= true;
-        
+        toast.success("OTP Verified Successfully", {
+          position: "top-center",
+        })
       })
       .addCase(verifyOTP.rejected, (state, action) => {
         state.isLoading = false;
@@ -132,7 +125,7 @@ const authSlice = createSlice({
         state.isOtpVerified = false;  
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
-          position: "top-right",
+          position: "top-center",
         });
       })
 
@@ -147,7 +140,9 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isPasswordReset= true;
-        
+        toast.success("Password Changed Successfully", {
+          position: "top-center",
+        })
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
@@ -155,7 +150,7 @@ const authSlice = createSlice({
         state.isPasswordReset = false;  
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
-          position: "top-right",
+          position: "top-center",
         });
       })
 
@@ -232,4 +227,6 @@ export const {
   clearReduxStoreData,
   clearSignUpState,
   clearLoginUpState,
+  clearOtpVerified,
+  storeEmailData
 } = authSlice.actions;

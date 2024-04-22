@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { generateLoginOTP } from "../../../features/actions/auth";
+import { storeEmailData } from "../../../features/slices/auth";
 
 
 const Reset = () => {
@@ -16,13 +17,16 @@ const Reset = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("data",data)
+    const {email}= data
+  dispatch(storeEmailData({email}))
   dispatch(generateLoginOTP(data))
-  if(isOtpSentSuccessfully){
-    navigate("/otp")
-  }else{
-    console.log('Mail not sent')}
-  };
+  }
+
+  useEffect(()=>{
+    if(isOtpSentSuccessfully){
+      navigate("/otp")
+    }
+  })
 
   return (
     <div className="max-w-lg mx-auto my-20 bg-white p-8 rounded-xl shadow shadow-slate-300 py-10 ">

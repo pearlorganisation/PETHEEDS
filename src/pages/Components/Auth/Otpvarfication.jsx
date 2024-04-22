@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyOTP } from "../../../features/actions/auth";
 import { useNavigate } from "react-router-dom";
+import { clearLoginUpState } from "../../../features/slices/auth";
 
 const OtpVarfication = () => {
   const dispatch =useDispatch();
@@ -26,14 +27,19 @@ const {isOtpVerified}= useSelector((state)=>state.auth)
   // Create a new object with the concatenated OTP string
   const otpData = { otp: otpString };
 
-  console.log(otpData); // Log concatenated OTP string
+
 
     dispatch(verifyOTP(otpData)) // You can handle OTP verification here
 
+  };
+
+  useEffect(()=>{
+    dispatch(clearLoginUpState())
+  console.log(isOtpVerified)
     if(isOtpVerified){
       navigate("/changePassword")
     }
-  };
+  },[isOtpVerified])
 
   return (
     <>
@@ -45,7 +51,7 @@ const {isOtpVerified}= useSelector((state)=>state.auth)
                 <p>Otp Verification</p>
               </div>
               <div className="flex flex-row text-sm font-medium text-gray-400">
-                <p>We have sent a code to your email abc@gmaqil.com</p>
+                <p>We have sent a code to your email </p>
               </div>
             </div>
 

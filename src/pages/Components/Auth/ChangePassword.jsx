@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { resetPassword } from '../../../features/actions/auth';
+import { clearOtpVerified } from '../../../features/slices/auth';
 
 
 
 const ChangePassword = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-const {isPasswordReset}= useSelector((state)=>state.auth)
+const {isPasswordReset,emailDataChangePassword}= useSelector((state)=>state.auth)
+
     const {
         register,
         handleSubmit,
@@ -17,12 +19,17 @@ const {isPasswordReset}= useSelector((state)=>state.auth)
       } = useForm();
     
       const onSubmit = (data) => {
-        console.log("data",data)
-     dispatch(resetPassword(data))
-     if(isPasswordReset){
-        navigate("/login")
-     }
+       const newData= {email:emailDataChangePassword.email,...data}
+      
+     dispatch(resetPassword(newData))
+ 
       };
+      useEffect(()=>{
+        dispatch(clearOtpVerified())
+        if(isPasswordReset){
+          navigate("/login")
+       }
+      },[isPasswordReset])
 
     return (
         <div className="max-w-lg mx-auto my-20 bg-white p-8 rounded-xl shadow shadow-slate-300 py-10 ">
@@ -35,7 +42,7 @@ const {isPasswordReset}= useSelector((state)=>state.auth)
           onSubmit={handleSubmit(onSubmit)} 
           className="my-10">
             <div className="flex flex-col space-y-5">
-              <label htmlFor="email">
+              {/* <label htmlFor="email">
                 <p className="font-medium text-slate-700 pb-2">Email address</p>
                 <input
                   id="email"
@@ -46,7 +53,7 @@ const {isPasswordReset}= useSelector((state)=>state.auth)
                   {...register("email", { required: true })}
                 />
                 {errors.email && <span className="text-[red]">This field is required</span>}
-              </label>
+              </label> */}
               <label htmlFor="password">
                 <p className="font-medium text-slate-700 pb-2">New Password</p>
                 <input

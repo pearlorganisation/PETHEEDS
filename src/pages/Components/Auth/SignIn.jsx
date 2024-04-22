@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { useDispatch, } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 import { logIn } from "../../../features/actions/auth";
+import { clearReduxStoreData } from "../../../features/slices/auth";
 
 export function SignIn() {
 
@@ -14,9 +15,12 @@ export function SignIn() {
   const {register,handleSubmit,formState: { errors },} =useForm()
 
   const onSubmit = data=>{
-    console.log("data",data)
+
     dispatch(logIn(data))}
 
+    useEffect(()=>{
+dispatch(clearReduxStoreData())
+    },[])
   return (
     <section>
       
@@ -110,7 +114,7 @@ export function SignIn() {
               </div>
             </div>
           </form>
-          <div className="mt-3 space-y-3">
+          {/* <div className="mt-3 space-y-3">
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -143,7 +147,7 @@ export function SignIn() {
               </span>
               Sign in with Facebook
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
