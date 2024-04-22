@@ -47,11 +47,10 @@ const Header = () => {
   const { cartData } = useSelector(state => state.cart)
 
   const toggleMenu = () => {
-    // console.log()
+ 
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log("Hello");
 
   return (
     <>

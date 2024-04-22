@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { useDispatch, } from "react-redux";
+import { useDispatch, useSelector, } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
@@ -8,6 +8,9 @@ import { logIn } from "../../../features/actions/auth";
 import { clearReduxStoreData } from "../../../features/slices/auth";
 
 export function SignIn() {
+
+
+  const {isLoading}= useSelector((state)=>state.auth)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +24,7 @@ export function SignIn() {
     useEffect(()=>{
 dispatch(clearReduxStoreData())
     },[])
+
   return (
     <section>
       
@@ -108,8 +112,10 @@ dispatch(clearReduxStoreData())
                 <button
                  
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-                >
-                  Get started <ArrowRight className="ml-2" size={16} />
+                >{isLoading ? (
+                  <ClipLoader color="#c4c2c2" />
+                ) : (<> Get started <ArrowRight className="ml-2" size={16} /></>)}
+                 
                 </button>
               </div>
             </div>

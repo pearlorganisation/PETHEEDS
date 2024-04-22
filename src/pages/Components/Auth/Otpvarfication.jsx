@@ -2,14 +2,20 @@ import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { verifyOTP } from "../../../features/actions/auth";
+import { generateLoginOTP, verifyOTP } from "../../../features/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { clearLoginUpState } from "../../../features/slices/auth";
+import { ClipLoader } from "react-spinners";
 
 const OtpVarfication = () => {
   const dispatch =useDispatch();
   const navigate = useNavigate()
-const {isOtpVerified}= useSelector((state)=>state.auth)
+  const {isOtpVerified,emailDataChangePassword,isLoading}= useSelector((state)=>state.auth)
+
+  const handleResendOtp= () =>{
+dispatch(generateLoginOTP(emailDataChangePassword))
+  }
+
   const {
     register,
     handleSubmit,
@@ -35,7 +41,7 @@ const {isOtpVerified}= useSelector((state)=>state.auth)
 
   useEffect(()=>{
     dispatch(clearLoginUpState())
-  console.log(isOtpVerified)
+
     if(isOtpVerified){
       navigate("/changePassword")
     }
@@ -86,20 +92,21 @@ const {isOtpVerified}= useSelector((state)=>state.auth)
                         className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#1D4ED8] border-none text-white text-sm shadow-sm"
                         type="submit"
                       >
-                        Verify Account
+                       {isLoading ? (
+                <ClipLoader color="#c4c2c2" />
+              ) : (<>Verify Account</>)}
                       </button>
                     </div>
 
                     <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
                       <p>Didn't receive code?</p>
-                      <a
+                      <button
                         className="flex flex-row items-center text-blue-600"
-                        href="http://"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={handleResendOtp}
+                        
                       >
                         Resend
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
