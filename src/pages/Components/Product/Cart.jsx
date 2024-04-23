@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
 export function Cart() {
   const [count, setcount] = useState(1);
+
   const [totalPrice, setTotalPrice] = useState(0);
+  
   const { cartData } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,7 +36,7 @@ export function Cart() {
   const handelnavigate = () => {
     navigate("/productlist");
   };
-
+   
   return (
     <div className="mx-auto container px-5 lg:px-32 ">
       {cartData.length > 0 ? (
@@ -221,7 +223,10 @@ export function Cart() {
                 </p>
               </div>
               <div class="relative mt-10 flex">
-                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none dark:focus:ring-blue-800">Buy</button>
+                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none dark:focus:ring-blue-800">
+                Buy
+                
+                </button>
 
 
 

@@ -80,33 +80,41 @@ const Footer = () => {
               South Caroline, US
             </div>
           </div>
-          
+
           <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">Links</div>
             <nav aria-label="Footer Navigation" class="text-gray-500">
               <ul class="space-y-3">
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Pricing
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/privacy"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/productlist"
+                  >
+                    Products
                   </a>
                 </li>
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Demo
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/Booknow"
+                  >
+                    Book Appointment
                   </a>
                 </li>
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Support Hub
-                  </a>
-                </li>
-                <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/contact"
+                  >
                     Contact
                   </a>
                 </li>
