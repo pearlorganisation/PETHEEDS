@@ -119,9 +119,9 @@ const HomePage = () => {
               The top 3 reasons to trust PETHEEDS for your pet's well-being.
             </p>
           </div>
-          <div class="grid md:grid-cols-3 md:gap-6 items-start p-5 pt-5">
+          <div class="columns-1 md:columns-2 lg:columns-3 space-y-4 ">
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -140,7 +140,7 @@ const HomePage = () => {
                   <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
                   <path d="m9 12 2 2 4-4"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Premium Quality
                 </h3>
               </div>
@@ -154,7 +154,7 @@ const HomePage = () => {
               </div>
             </div>
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -176,7 +176,7 @@ const HomePage = () => {
                   <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
                   <path d="M5.52 16h12.96"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Scientifically Formulated
                 </h3>
               </div>
@@ -191,7 +191,7 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -210,7 +210,7 @@ const HomePage = () => {
                   <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold leading-none tracking-tight ml-2">
                   Natural Ingredients
                 </h3>
               </div>
@@ -225,12 +225,12 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <BsCheckCircleFill size={25} className="text-yellow-500" />
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Tailored Solutions:
                 </h3>
               </div>
@@ -246,12 +246,12 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <FaRegHandshake size={30} className="text-green-500" />
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl  font-semibold leading-none tracking-tight ml-2">
                   Commitment to Excellence:
                 </h3>
               </div>

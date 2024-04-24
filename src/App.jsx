@@ -26,6 +26,7 @@ import Blog from "./pages/Blogs/Blog";
 import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
 import { Order } from "./pages/Components/Product/Order";
+import Category from "./pages/Category/Category";
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
+        <Route path="/category/:categoryId" element={<Category />} />
+
         <Route path="/singleproduct/:productId" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
         <Route path="blog" element={<Blog />} />
