@@ -9,6 +9,7 @@ import {
   logout,
   verifyOTP,
   resetPassword,
+  generateSignupOTP,
 } from "../actions/auth";
 // -------------------------------------------------------------------------------------------
 
@@ -78,6 +79,31 @@ const authSlice = createSlice({
       toast.error("Internal server error", { position: "top-center" });
     })
     
+      // sendOtpForSignup cases
+      .addCase(generateSignupOTP.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.isOtpSentSuccessfully = false;
+        state.errorMessage = "";
+      })
+      .addCase(generateSignupOTP.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isOtpSentSuccessfully = true;
+        state.userData= action.payload.data;
+        toast.success("OTP sent to your email", {
+          position: "top-center",
+        })
+      })
+      .addCase(generateSignupOTP.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isOtpSentSuccessfully = false;
+        state.errorMessage = action.payload;
+        toast.error(state?.errorMessage, {
+          position: "top-center",
+        });
+      })
       // sendOtpForLogin cases
       .addCase(generateLoginOTP.pending, (state, action) => {
         state.isLoading = true;

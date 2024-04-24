@@ -26,6 +26,24 @@ export const signUp = createAsyncThunk(
 );
 
 
+//SignUp send OTP Api 
+export const generateSignupOTP = createAsyncThunk(
+  "mail/sendOtpForSignup",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("/mail/signupSendOtp", payload, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 //Login send OTP Api 
 export const generateLoginOTP = createAsyncThunk(
   "auth/sendOtpForLogin",

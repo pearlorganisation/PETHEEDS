@@ -19,7 +19,9 @@ import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
 import ChangePassword from "./pages/Components/Auth/ChangePassword";
+import SignupOtp from "./pages/Components/Auth/SignupOtpVerification"
 import { Toaster } from "react-hot-toast";
+import { FormSignUp } from "./pages/Components/Auth/FormSignup";
 
 
 function App() {
@@ -32,19 +34,21 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
         <Route path="/singleproduct" element={<SingleProduct />} />
-        <Route path="booknow" element={<Booknow />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="stats" element={<Stats />} />
-        <Route path="ourvision" element={<Ourvision />} />
-        <Route path="ourservice" element={<Ourservice />} />
-        <Route path="productlist" element={<ProductList />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<SignIn />} />
-        <Route path="reset" element={<Reset/>}/>
-        <Route path="otp" element={<Otpvarfication/>}/>
+        <Route path="/booknow" element={<Booknow />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/ourvision" element={<Ourvision />} />
+        <Route path="/ourservice" element={<Ourservice />} />
+        <Route path="/productlist" element={<ProductList />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/reset" element={<Reset/>}/>
+        <Route path="/otp" element={<Otpvarfication/>}/>
         <Route path="/changePassword" element={<ChangePassword/>}/>
-        <Route path="contact" element={<Contactus/>}/>
+        <Route path="/contact" element={<Contactus/>}/>
+        <Route path="/signupOtp" element={<SignupOtp/>}/>
+        <Route path="/formSignup" element={<FormSignUp/>}/>
       </Routes>
       <Footer />
       <Toaster position="top-center" richColors />
