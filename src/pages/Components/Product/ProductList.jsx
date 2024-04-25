@@ -18,17 +18,22 @@ import { Pagination } from "swiper/modules";
 import { getProducts } from "../../../features/actions/productActions";
 import QuantityWithPrice from "./QuantityWithPrice";
 import { getCategory } from "../../../features/actions/categoryAction";
+import BrandSlider from "./BrandSlider";
+import CategorySlider from "./CategorySlider";
 
 
 
 export default function ProductList() {
-  const { productsData, isLoading } = useSelector((state) => state.products);
+  const { productsData, isLoading, totalPages } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
   const [limit, setLimit] = useState(2)
   const [page, setPage] = useState(1)
   const [price, setPrice] = useState({})
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
+
 
 
   useEffect(() => {
@@ -159,8 +164,9 @@ export default function ProductList() {
       </div>
 
 
-
-      <section className="container mx-auto text-center space-y-3">
+      <BrandSlider />
+      <CategorySlider data={categoryData} />
+      {/* <section className="container mx-auto text-center space-y-3">
         <p className="font-medium text-xl py-2">Category</p>
         <div className='flex gap-3 justify-center items-start flex-wrap'>
 
@@ -170,7 +176,7 @@ export default function ProductList() {
             })
           }
         </div>
-      </section>
+      </section> */}
       <section
         id="Projects"
         class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
@@ -256,12 +262,12 @@ export default function ProductList() {
             }}
             className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Previous</button>
           <div>
-            Page {page} of {10}
+            Page {page} of {totalPages}
           </div>
           <button
             onClick={() => {
               setPage((prev) => {
-                return prev + 1
+                return prev < totalPages ? prev + 1 : prev
               })
             }}
             className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Next</button>

@@ -15,6 +15,7 @@ const initialState = {
   productsData: [],
   singleProduct: null,
   filteredProduct: [],
+  totalPages: 0,
   errorMessage: "",
 };
 
@@ -36,6 +37,7 @@ export const productsSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.errorMessage = "";
+        state.totalPages = action?.payload?.totalPages;
         state.productsData = action.payload.data;
       })
       .addCase(getProducts.rejected, (state, action) => {

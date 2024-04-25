@@ -31,7 +31,7 @@ import Category from "./pages/Category/Category";
 
 function App() {
   return (
-    <div>
+    <div className="font-poppins">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
