@@ -3,13 +3,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { toast } from "sonner";
-import { getProducts, getSingleProduct } from "../actions/productActions";
+import {
+  getProductByCategory,
+  getProducts,
+  getSingleProduct,
+} from "../actions/productActions";
 
 const initialState = {
   isLoading: false,
   isSuccess: false,
   productsData: [],
   singleProduct: null,
+  filteredProduct: [],
+  totalPages: 0,
   errorMessage: "",
 };
 
@@ -31,6 +37,7 @@ export const productsSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.errorMessage = "";
+        state.totalPages = action?.payload?.totalPages;
         state.productsData = action.payload.data;
       })
       .addCase(getProducts.rejected, (state, action) => {
@@ -52,6 +59,25 @@ export const productsSlice = createSlice({
         state.singleProduct = action.payload.data;
       })
       .addCase(getSingleProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.errorMessage = action.payload;
+        toast.error(action?.payload || "Something went wrong");
+      })
+
+      // getProductByCategory
+      .addCase(getProductByCategory.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.errorMessage = "";
+      })
+      .addCase(getProductByCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.errorMessage = "";
+        state.filteredProduct = action.payload;
+      })
+      .addCase(getProductByCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.errorMessage = action.payload;

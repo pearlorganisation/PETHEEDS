@@ -38,44 +38,44 @@ const HomePage = () => {
         className="mySwiper"
       >
         {productsData?.map((el, id) => {
-          return <><SwiperSlide>
-            <section class="bg-white dark:bg-gray-900 border">
-              <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                <div class="mr-auto place-self-center lg:col-span-7">
-                  <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] dark:text-white">
-                    {el.title}
-                  </h1>
+          return <><SwiperSlide className="w-full !h-[45rem]">
+            <section class="bg-white dark:bg-gray-900  h-full grid place-items-center">
+              <div class="grid gap-28 px-4 py-8 md:grid-cols-2">
+                <div class="flex justify-center items-center  h-full">
+                  <div className="space-y-4">
+                    <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] dark:text-white">
+                      {el.title}
+                    </h1>
 
-                  <a
-                    href="/productlist"
-                    class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-                  >
-                    Our Products
-                    <svg
-                      class="w-5 h-5 ml-2 -mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <a
+                      href="/productlist"
+                      class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="/aboutus"
-                    class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-                  >
-                    About us
-                  </a>
+                      Our Products
+                      <svg
+                        class="w-5 h-5 ml-2 -mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                    <a
+                      href="/aboutus"
+                      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                    >
+                      About us
+                    </a>
+                  </div>
                 </div>
-                {/* <div class="lg:hidden mt-5">
-               <img src={dog} alt="mockup" class="w-full h-auto" />
-             </div> */}
-                <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                  <img src={el.banner} alt="mockup" class="w-full h-auto rounded" />
+
+                <div class="hidden lg:mt-0  lg:grid bg-slate-100 p-3  place-items-center  h-full">
+                  <img src={el.banner} alt="mockup" class="size-[30rem] rounded" />
                 </div>
               </div>
             </section>
@@ -119,9 +119,9 @@ const HomePage = () => {
               The top 3 reasons to trust PETHEEDS for your pet's well-being.
             </p>
           </div>
-          <div class="grid md:grid-cols-3 md:gap-6 items-start p-5 pt-5">
+          <div class="columns-1 md:columns-2 lg:columns-3 space-y-4 ">
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -140,7 +140,7 @@ const HomePage = () => {
                   <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
                   <path d="m9 12 2 2 4-4"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Premium Quality
                 </h3>
               </div>
@@ -154,7 +154,7 @@ const HomePage = () => {
               </div>
             </div>
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -176,7 +176,7 @@ const HomePage = () => {
                   <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
                   <path d="M5.52 16h12.96"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Scientifically Formulated
                 </h3>
               </div>
@@ -191,7 +191,7 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
@@ -210,7 +210,7 @@ const HomePage = () => {
                   <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                 </svg>
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold leading-none tracking-tight ml-2">
                   Natural Ingredients
                 </h3>
               </div>
@@ -225,12 +225,12 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <BsCheckCircleFill size={25} className="text-yellow-500" />
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
                   Tailored Solutions:
                 </h3>
               </div>
@@ -246,12 +246,12 @@ const HomePage = () => {
             </div>
 
             <div
-              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full"
+              class="rounded-lg border bg-card text-card-foreground shadow-sm w-full break-inside-avoid"
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <FaRegHandshake size={30} className="text-green-500" />
-                <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl  font-semibold leading-none tracking-tight ml-2">
                   Commitment to Excellence:
                 </h3>
               </div>
