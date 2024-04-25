@@ -51,10 +51,9 @@ export const Order = () => {
                     </div>
                   </li>
                 ))}
-              </ul>
+              </ul> 
               <hr className="mt-6 border-gray-200" />
               <ul className="mt-6 space-y-3">
-               
                 <li className="flex items-center justify-between">
                   <p className="text-sm font-medium ">Total</p>
                   <p className="text-sm font-bold ">{totalPrice}</p>
@@ -62,7 +61,7 @@ export const Order = () => {
               </ul>
             </div>
           </div>
-          
+
           {/* Contact Info */}
           <div className="px-5 py-6 md:px-8">
             <div className="flow-root">
@@ -95,7 +94,7 @@ export const Order = () => {
                     1 Ronald Regan Court
                   </p>
                   <p className="text-xs font-medium text-gray-700">
-                    102-655-3689
+                    102-655-3689 
                   </p>
                 </div>
                 <div className="py-6">

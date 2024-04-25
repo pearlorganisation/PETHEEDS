@@ -155,7 +155,8 @@ const authSlice = createSlice({
         state.isLogInSuccess = false;
         state.isLogoutSuccess = true;
         state.isUserLoggedIn = false;
-        state.loggedInUserData = null;
+        state.loggedInUserData = nu;
+        ll;
         state.isOtpVerified = false;
         state.isOtpMailSent = false;
         state.isPasswordReset = false;
