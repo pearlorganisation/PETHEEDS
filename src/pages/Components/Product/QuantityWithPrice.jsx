@@ -5,6 +5,7 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
     useEffect(() => {
         setPrice(priceData)
     }, [priceData])
+    console.log(item)
 
 
     return <div className="flex flex-col mb-3">
@@ -35,17 +36,37 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
                 </div>
             }
         </div>
-        <div className="">
+        <div className="space-x-2">
             {
-                item?.price?.map(pr => {
-                    return <button onClick={() => {
-                        setPriceData(pr)
-                        setPrice(pr)
-                    }} className="border border-slate-400 rounded-md text-xs p-1 mr-2 text-slate-600 hover:bg-[#4F46E5] hover:text-white hover:border-none">
-                        {pr?.weight}
-                    </button>
+                item?.price?.map((pr, ind) => {
+                    console.log(pr?.weight, "pr?.weight")
+                    return <>
+                        <label
+                            onClick={() => {
+                                setPriceData(pr)
+                                setPrice(pr)
+                            }}
+
+                            htmlFor={pr?._id}
+                            className='themeSwitcherTwo border shadow-card relative inline-flex cursor-pointer select-none items-center justify-center rounded-md bg-white'>
+                            <input
+                                name={`weight${item?._id}`}
+                                className="peer hidden" type="radio" value={pr?.weight + ind} id={`${pr?._id}`}
+
+                            />
+                            <span
+                                className={`flex peer-checked:text-white peer-checked:ring-4 ring-indigo-600/30 items-center space-x-[6px] rounded py-1 px-2 text-sm font-medium peer-checked:bg-indigo-600
+                                                    }`}
+                            >
+
+                                {pr?.weight}
+                            </span>
+
+                        </label>
+                    </>
                 })
             }
+
         </div>
 
 
@@ -53,3 +74,5 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
 }
 
 export default QuantityWithPrice
+
+
