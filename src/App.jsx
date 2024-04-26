@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HomePage from "./pages/HomePage";
-import { Route, Routes } from "react-router";
+
 import Header from "./pages/Components/Header";
 import Footer from "./pages/Components/Footer";
 import About from "./pages/Components/About/About";
@@ -15,10 +15,12 @@ import ProductList from "./pages/Components/Product/ProductList";
 import { Cart } from "./pages/Components/Product/Cart";
 import { SignUp } from "./pages/Components/Auth/SignUp";
 import { SignIn } from "./pages/Components/Auth/SignIn";
-import { Toaster } from "sonner";
 import Reset from "./pages/Components/Auth/Reset";
 import Otpvarfication from "./pages/Components/Auth/Otpvarfication";
 import Contactus from "./pages/Components/Contact/Contactus";
+import ChangePassword from "./pages/Components/Auth/ChangePassword";
+
+import { FormSignUp } from "./pages/Components/Auth/FormSignup";
 
 
 import BlogDetails from "./pages/Blogs/BlogDetails";
@@ -27,11 +29,15 @@ import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
 import { Order } from "./pages/Components/Product/Order";
 import Category from "./pages/Category/Category";
+import { Toaster } from "sonner";
+import SignupOtpVerification from "./pages/Components/Auth/SignupOtpVerification";
+import { Route, Routes } from "react-router-dom";
 
 
 function App() {
   return (
-    <div className="font-poppins">
+    <div>
+      <Toaster />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -57,6 +63,10 @@ function App() {
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />
         <Route path="order" element={<Order />} />
+
+        <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/signupOtp" element={<SignupOtpVerification />} />
+        <Route path="/formSignup" element={<FormSignUp />} />
 
       </Routes>
       <Footer />

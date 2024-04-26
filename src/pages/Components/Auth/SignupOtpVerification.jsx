@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { generateLoginOTP, verifyOTP } from "../../../features/actions/auth";
+import { generateSignupOTP, verifyOTP } from "../../../features/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { clearLoginUpState } from "../../../features/slices/auth";
 import { ClipLoader } from "react-spinners";
 
-const OtpVarfication = () => {
+const SignupOtpVerification = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const { isOtpVerified, emailDataChangePassword, isLoading } = useSelector((state) => state.auth)
 
   const handleResendOtp = () => {
-    dispatch(generateLoginOTP(emailDataChangePassword))
+    dispatch(generateSignupOTP(emailDataChangePassword))
   }
 
   const {
@@ -43,7 +43,7 @@ const OtpVarfication = () => {
     dispatch(clearLoginUpState())
 
     if (isOtpVerified) {
-      navigate("/changePassword")
+      navigate("/formSignup")
     }
   }, [isOtpVerified])
 
@@ -88,12 +88,12 @@ const OtpVarfication = () => {
                   <div className="flex flex-col space-y-5">
                     <div>
                       <button
-                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#4F46E5] border-none text-white text-sm shadow-sm"
+                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#1D4ED8] border-none text-white text-sm shadow-sm"
                         type="submit"
                       >
                         {isLoading ? (
                           <ClipLoader color="#c4c2c2" />
-                        ) : (<>Verify Account</>)}
+                        ) : (<>Verify Email</>)}
                       </button>
                     </div>
 
@@ -102,7 +102,7 @@ const OtpVarfication = () => {
                       <button
                         className="flex flex-row items-center text-blue-600"
                         onClick={handleResendOtp}
-
+                        type="button"
                       >
                         Resend
                       </button>
@@ -118,4 +118,4 @@ const OtpVarfication = () => {
   );
 };
 
-export default OtpVarfication;
+export default SignupOtpVerification;

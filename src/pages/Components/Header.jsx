@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const menuItems = [
   {
@@ -34,6 +34,65 @@ const menuItems = [
     href: "/contact",
   },
 ];
+
+const ProfileDropDown = (props) => {
+  const dispatch = useDispatch()
+  const [state, setState] = useState(false)
+  const profileRef = useRef()
+
+  const navigation = [
+    { title: "Dashboard", path: "javascript:void(0)" },
+    { title: "Profile", path: "javascript:void(0)" },
+
+  ]
+
+
+  useEffect(() => {
+    const handleDropDown = (e) => {
+      if (!profileRef.current.contains(e.target)) setState(false)
+    }
+    document.addEventListener('click', handleDropDown)
+  }, [])
+
+  return (
+    <div className={`relative ${props.class} z-50`}>
+      <div className="flex items-center space-x-4">
+        <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
+          onClick={() => setState(!state)}
+        >
+          <img
+            src="https://randomuser.me/api/portraits/men/46.jpg"
+            className="w-full h-full rounded-full"
+          />
+        </button>
+        <div className="lg:hidden">
+          <span className="block">Micheal John</span>
+          <span className="block text-sm text-gray-500">john@gmail.com</span>
+        </div>
+      </div>
+      <ul className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
+        {
+          navigation.map((item, idx) => (
+            <li>
+              <Link key={idx} className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5" to={item.path}>
+                {item.title}
+              </Link>
+            </li>
+          ))
+        }
+        <li>
+          <button
+            onClick={() => {
+              dispatch(userLogout())
+            }}
+            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5">
+            Log out
+          </button>
+        </li>
+      </ul>
+    </div>
+  )
+}
 const Header = () => {
   const navigate = useNavigate();
   const handelnavigatelogin = () => {
@@ -45,13 +104,13 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const { cartData } = useSelector((state) => state.cart);
+  const { isUserLoggedIn } = useSelector((state) => state.auth);
 
   const toggleMenu = () => {
-    // console.log()
+
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log("Hello");
 
   return (
     <>
@@ -78,23 +137,28 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="hidden space-x-2 lg:flex justify-center items-center">
-            <button
-              type="button"
-              className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              onClick={handelnavigatelogin}
-            >
-              Log In
-            </button>
+          {
+            isUserLoggedIn ? <ProfileDropDown
+              class="hidden lg:block"
+            /> : <div className="hidden space-x-2 lg:flex justify-center items-center">
+              <button
+                type="button"
+                className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                onClick={handelnavigatelogin}
+              >
+                Log In
+              </button>
 
-            <button
-              type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              onClick={handelnavigatesignup}
-            >
-              Sign Up
-            </button>
-          </div>
+              <button
+                type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                onClick={handelnavigatesignup}
+              >
+                Sign Up
+              </button>
+            </div>
+          }
+
 
           <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
@@ -155,14 +219,14 @@ const Header = () => {
                       className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                       onClick={handelnavigatelogin}
                     >
-                      Sign In
+                      Log In
                     </button>
                     <button
                       type="button"
                       className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                       onClick={handelnavigatesignup}
                     >
-                      Log In
+                      Sign Up
                     </button>
                   </div>
                 </div>
