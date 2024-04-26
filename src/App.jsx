@@ -27,6 +27,8 @@ import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
 import { Order } from "./pages/Components/Product/Order";
 import Category from "./pages/Category/Category";
+import Invoice from "./pages/Components/Product/Invoice";
+import PrivacyPolicy from "./pages/Components/Order/PrivacyPolicy";
 
 
 function App() {

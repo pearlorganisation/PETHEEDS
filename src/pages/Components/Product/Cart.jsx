@@ -238,7 +238,7 @@ export function Cart() {
         </div>
       ) : (
         <>
-          <div className="h-[80dvh]">
+          <div className="h-[30dvh] md:h-[80dvh]">
             <img src={cart} className="" />
           </div>
 

@@ -8,7 +8,7 @@ import ceo3 from "../../../images/ceo3.jpg"
 const About= () => {
   return (
     <>
-      <div className="w-full py-12 md:py-24 lg:py-32">
+      <div className="w-full container mx-auto py-12 md:py-24 lg:py-32">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:gap-10 md:px-6 lg:gap-16 p-5">
           <div className="space-y-4 lg:space-y-6">
             <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">

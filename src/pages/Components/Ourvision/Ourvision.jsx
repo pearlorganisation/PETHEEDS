@@ -13,7 +13,7 @@ const Ourvision = () => {
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-9  ">
           <h1
             id="mycareer"
-            className="mb-6 text-center text-[30px] md:text-[44px] font-bold text-[#4b5563] "
+            className="mb-6 text-center text-lg md:text-3xl font-bold text-[#4b5563] "
           >
             We are PetHeeds nurturing your pet
           </h1>

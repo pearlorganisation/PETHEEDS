@@ -1,13 +1,17 @@
 import React from "react";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Order = () => {
   const { cartData } = useSelector((state) => state.cart);
 
   console.log(cartData);
   const totalPrice = cartData.reduce((acc, product) => acc + product.price, 0);
-
+   const navigate = useNavigate();
+   const sendto= ()=>{
+    navigate("/invoice")
+   }
   return (
     <div className="mx-auto my-4 max-w-4xl md:my-6">
       <div className="overflow-hidden rounded-xl border border-gray-100 shadow">
@@ -78,6 +82,7 @@ export const Order = () => {
                   </p>
                   <button
                     type="button"
+                    onClick={sendto}
                     className="mt-4 rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     View Invoice
