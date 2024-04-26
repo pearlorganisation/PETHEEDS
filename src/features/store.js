@@ -7,6 +7,7 @@ import cartReducer from "./slices/cartSlice";
 import blogReducer from "./slices/blogSlice";
 import HomeBanner from "./slices/HomeBanner";
 import productReducer from "./slices/productSlice";
+import categoryReducer from "./slices/categorySlice";
 
 import auth from "./slices/auth";
 import appointment from "./slices/bookNow";
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   appointment,
   subject,
   contactUs,
+  category: categoryReducer,
 });
 
 // Custom root reducer handling a clear action
