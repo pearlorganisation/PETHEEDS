@@ -31,7 +31,7 @@ dispatch(generateLoginOTP(emailDataChangePassword))
 
   
   // Create a new object with the concatenated OTP string
-  const otpData = { otp: otpString };
+  const otpData = { otp: otpString,email:emailDataChangePassword.email };
 
 
 
