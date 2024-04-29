@@ -49,4 +49,19 @@ export const getProductByCategory = createAsyncThunk(
   }
 );
 
+export const getBrands = createAsyncThunk(
+  "products/getBrands",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`brand`, {
+        withCredentials: true,
+      });
+      console.log(data, "action data");
+      return data?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // ================================================== THE END ==================================================

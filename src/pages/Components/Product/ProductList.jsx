@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
-import { getProducts } from "../../../features/actions/productActions";
+import { getBrands, getProducts } from "../../../features/actions/productActions";
 import QuantityWithPrice from "./QuantityWithPrice";
 import { getCategory } from "../../../features/actions/categoryAction";
 import BrandSlider from "./BrandSlider";
@@ -25,7 +25,7 @@ import ProductCard from "./ProductCard";
 
 
 export default function ProductList() {
-  const { productsData, isLoading, totalPages } = useSelector((state) => state.products);
+  const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
   const [limit, setLimit] = useState(2)
   const [page, setPage] = useState(1)
@@ -46,7 +46,12 @@ export default function ProductList() {
 
   useEffect(() => {
     dispatch(getCategory())
+    dispatch(getBrands())
   }, []);
+
+  useEffect(() => {
+    console.log(brands, "brands")
+  }, [brands]);
 
 
 

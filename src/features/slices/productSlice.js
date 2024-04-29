@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { toast } from "sonner";
 import {
+  getBrands,
   getProductByCategory,
   getProducts,
   getSingleProduct,
@@ -15,6 +16,7 @@ const initialState = {
   productsData: [],
   singleProduct: null,
   filteredProduct: [],
+  brands: [],
   totalPages: 0,
   errorMessage: "",
 };
@@ -78,6 +80,25 @@ export const productsSlice = createSlice({
         state.filteredProduct = action.payload;
       })
       .addCase(getProductByCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.errorMessage = action.payload;
+        toast.error(action?.payload || "Something went wrong");
+      })
+
+      // getBrands
+      .addCase(getBrands.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.errorMessage = "";
+      })
+      .addCase(getBrands.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.errorMessage = "";
+        state.brands = action.payload;
+      })
+      .addCase(getBrands.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.errorMessage = action.payload;
