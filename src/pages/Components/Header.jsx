@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/actions/auth";
 
 const menuItems = [
   {
@@ -89,7 +90,7 @@ const ProfileDropDown = (props) => {
         <li>
           <button
             onClick={() => {
-              dispatch(userLogout());
+              dispatch(logout());
             }}
             className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5"
           >
@@ -117,6 +118,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+   
   return (
     <>
       <div className="relative w-full bg-white py-5 border">
@@ -134,7 +136,7 @@ const Header = () => {
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                    className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
                   </Link>
