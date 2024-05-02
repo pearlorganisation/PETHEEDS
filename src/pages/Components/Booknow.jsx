@@ -64,19 +64,19 @@ const Booknow = () => {
     <>
       <div class="py-6 min-h-[90dvh] w-[80%] container mx-auto  grid place-items-center">
         <div class="grid grid-cols-2 h-full w-full ">
-          
+
           <div className="relative h-full ">
             <img className="h-full w-full absolute" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
           </div>
-          <div class="w-full h-full  rounded-lg bg-white p-5  lg:rounded-l-none dark:bg-gray-700">
-            <h3 class="py-4 text-center text-2xl text-gray-800 dark:text-white">
+          <div class="w-full h-full  rounded-lg bg-white p-5  lg:rounded-l-none ">
+            <h3 class="py-4 text-center text-2xl text-gray-800 ">
               Book Your Pet's Appointment
-            </h3> 
-            <form class="rounded bg-white  dark:bg-gray-800" onSubmit={handleSubmit(onSubmit)}>
+            </h3>
+            <form class="rounded bg-white  " onSubmit={handleSubmit(onSubmit)}>
               <div class="mb-4">
                 <div class="mb-4 md:mb-0 ">
                   <label
-                    class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
+                    class="mb-2 block text-sm font-bold text-gray-700 "
                     for="firstName"
                   >
                     {" "}
@@ -84,7 +84,8 @@ const Booknow = () => {
                   </label>
                   <input
                     {...register("name", { required: "name is required" })}
-                    class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none dark:text-white"
+                    class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
+                    "
                     id="firstName"
                     type="text"
                     placeholder=" Name"
@@ -99,7 +100,8 @@ const Booknow = () => {
 
               <div class="mb-4">
                 <label
-                  class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
+                  class="mb-2 block text-sm font-bold text-gray-700 
+                  "
                   for="email"
                 >
                   {" "}
@@ -107,7 +109,8 @@ const Booknow = () => {
                 </label>
                 <input
                   {...register("email", { required: "email is required" })}
-                  class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none dark:text-white"
+                  class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
+                  "
                   id="email"
                   type="email"
                   placeholder="Email"
@@ -120,7 +123,8 @@ const Booknow = () => {
               </div>
               <div class="mb-4">
                 <label
-                  class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
+                  class="mb-2 block text-sm font-bold text-gray-700 
+                  "
                   for="email"
                 >
                   {" "}
@@ -132,7 +136,8 @@ const Booknow = () => {
                     minLength: { value: 10, message: "Phone number must be exactly 10 digits" },
                     maxLength: { value: 10, message: "Phone number must be exactly 10 digits" },
                   })}
-                  class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none dark:text-white"
+                  class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
+                  "
                   id="number"
                   type="Number"
                   placeholder="Enter Your Number"
@@ -145,7 +150,8 @@ const Booknow = () => {
               </div>
               <div class="mb-4">
                 <label
-                  class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
+                  class="mb-2 block text-sm font-bold text-gray-700 
+                  "
                   for="email"
                 >
                   {" "}
@@ -187,7 +193,8 @@ const Booknow = () => {
               </div>
               <div class="mb-4">
                 <label
-                  class="mb-2 block text-sm font-bold text-gray-700 dark:text-white"
+                  class="mb-2 block text-sm font-bold text-gray-700 
+                  "
                   for="email"
                 >
                   {" "}
@@ -208,7 +215,8 @@ const Booknow = () => {
                       placeholderText="Choose Date"
                       autoComplete="off"
                       calendarClassName="text-red-500"
-                      className="focus:shadow-outline me-[200px] sm:me-[350px]  mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none dark:text-white"
+                      className="focus:shadow-outline me-[200px] sm:me-[350px]  mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
+                      "
 
                     />
 
@@ -224,7 +232,8 @@ const Booknow = () => {
               </div>
 
               <div class="mb-4">
-                <label class="mb-2 block text-sm font-bold text-gray-700 dark:text-white">
+                <label class="mb-2 block text-sm font-bold text-gray-700 
+                ">
                   {" "}
                   Your Message{" "}
                 </label>
@@ -232,7 +241,8 @@ const Booknow = () => {
                   {...register("message", { required: "message is required" })}
                   id="message"
                   rows="4"
-                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 
+                  "
                   placeholder="Write your thoughts here..."
                 ></textarea>
                 {errors.message && (
@@ -244,7 +254,7 @@ const Booknow = () => {
 
               <div class="mb-6 text-center">
                 <button
-                  class="focus:shadow-outline w-full rounded-full bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900"
+                  class="focus:shadow-outline w-full rounded-full bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
 
                 >
                   {isLoading ? (
