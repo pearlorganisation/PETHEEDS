@@ -18,17 +18,7 @@ import { Link } from 'react-router-dom';
 const BrandSlider = () => {
 
     const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
-    function getRandomColorHex() {
-        // Generate random values for red, green, and blue components
-        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
 
-        // Convert the RGB values to a hex string
-        const hex = "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-
-        return hex;
-    }
 
     const swiperRef = useRef(null);
     const goNext = () => {
@@ -82,12 +72,11 @@ const BrandSlider = () => {
 
                         {
                             brands?.map((item, ind) => {
-                                const randomColorHex = getRandomColorHex()
-                                // Get the color from the colors array using the random index
 
-                                return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className={`font-medium flex text-center border h-full rounded-lg bg-[${randomColorHex}]/30 cursor-pointer`}>
+
+                                return <SwiperSlide className=''> <Link to={`/product?brand=${item?._id}`} className={`font-medium flex text-center border h-full rounded-lg  cursor-pointer`}>
                                     <img
-                                        className="rounded-md h-full "
+                                        className="rounded-md h-full  mx-auto "
                                         src={item?.brandBanner?.path}
                                         // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
                                         alt="product"
