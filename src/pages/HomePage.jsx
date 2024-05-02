@@ -39,17 +39,17 @@ const HomePage = () => {
       >
         {productsData?.map((el, id) => {
           return <><SwiperSlide className="w-full !h-[45rem]">
-            <section class="bg-white dark:bg-gray-900  h-full grid place-items-center">
+            <section class="bg-white  h-full grid place-items-center">
               <div class="grid gap-28 px-4 py-8 md:grid-cols-2">
                 <div class="flex justify-center items-center  h-full">
                   <div className="space-y-4">
-                    <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] dark:text-white">
+                    <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
                       {el.title}
                     </h1>
 
                     <a
                       href="/productlist"
-                      class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                      class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
                     >
                       Our Products
                       <svg
@@ -67,7 +67,7 @@ const HomePage = () => {
                     </a>
                     <a
                       href="/aboutus"
-                      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
                     >
                       About us
                     </a>
@@ -115,7 +115,7 @@ const HomePage = () => {
             <div class="text-center text-3xl font-medium">
               Why Choose PETHEEDS?
             </div>
-            <p class="text-center text-base text-gray-500 dark:text-gray-400">
+            <p class="text-center text-base text-gray-500 ">
               The top 3 reasons to trust PETHEEDS for your pet's well-being.
             </p>
           </div>
