@@ -174,27 +174,24 @@ const SingleProduct = () => {
                   <p className="line-clamp-5">{singleProduct?.description}</p>
                 </div>
 
-                <div class="mt-10 flex  items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
-                  <div class="flex  flex-col">
-                    <div className="flex items-center">
-                      <QuantityWithPrice item={singleProduct} price={price} setPrice={setPrice} />
-                      {/* <p className="border py-1 px-1 rounded-md  text-xs font-semibold text-white bg-indigo-600">
-                        {singleProduct?.discount}% OFF
-                      </p> */}
-                    </div>
-                    {/* <h1 class="text-3xl font-bold">
-                      <span class="">₹ </span>
-                      {singleProduct?.totalPrice}
-                    </h1> */}
+                <div class="flex  flex-col">
+                  <div className="flex items-center">
+                    <QuantityWithPrice item={singleProduct} price={price} setPrice={setPrice} />
 
                   </div>
+
+
+                </div>
+
+                <div class="mt-10 flex  items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+
 
                   <button
                     type="button"
                     onClick={() => {
                       dispatch(addToCart({ ...singleProduct, ...price }));
                     }}
-                    class="inline-flex gap-2 items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]"
+                    class="inline-flex gap-2 w-full sm:w-auto items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]"
                   >
                     <FaShoppingCart />
                     Add to cart

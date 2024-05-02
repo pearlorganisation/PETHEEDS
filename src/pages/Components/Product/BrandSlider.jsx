@@ -16,19 +16,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const BrandSlider = () => {
-
     const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
-    function getRandomColorHex() {
-        // Generate random values for red, green, and blue components
-        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
-
-        // Convert the RGB values to a hex string
-        const hex = "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-
-        return hex;
-    }
 
     const swiperRef = useRef(null);
     const goNext = () => {
@@ -44,16 +32,14 @@ const BrandSlider = () => {
     };
     return (
         <>
-            < section className=" text-center space-y-3 py-4" >
+            < section className=" text-center space-y-3 container mx-auto py-4" >
                 <p className="flex justify-center font-bold text-2xl mb-4 items-center">Brands</p>
 
-                <div className='flex gap-3 justify-center items-start flex-wrap relative w-fit mx-auto overflow-hidden'>
+                <div className='flex justify-center items-center relative'>
                     <div onClick={() => {
                         goPrev()
-                    }} className='absolute z-40 left-[2rem] rounded-lg h-full cursor-pointer w-20 flex justify-start items-center px-2'> <LiaAngleLeftSolid /> </div>
-                    <div onClick={() => {
-                        goNext()
-                    }} className='absolute z-40 right-[2rem] rounded-lg h-full cursor-pointer  w-20 flex justify-end items-center px-2'><LiaAngleRightSolid /></div>
+                    }} className='z-40 rounded-lg h-full  cursor-pointer w-8 flex justify-start items-center px-2'> <LiaAngleLeftSolid size={40} /> </div>
+
 
                     <Swiper
                         ref={swiperRef}
@@ -77,29 +63,25 @@ const BrandSlider = () => {
                             },
                         }}
                         modules={[]}
-                        className=" container mx-auto grid grid-cols-4 gap-4 "
+                        className="flex"
                     >
 
                         {
-                            brands?.map((item, ind) => {
-                                const randomColorHex = getRandomColorHex()
-                                // Get the color from the colors array using the random index
-
-                                return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className={`font-medium flex text-center border h-full rounded-lg bg-[${randomColorHex}]/30 cursor-pointer`}>
-                                    <img
-                                        className="rounded-md h-full "
-                                        src={item?.brandBanner?.path}
-                                        // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
-                                        alt="product"
-                                    />
-                                </Link></SwiperSlide>
-
+                            brands?.map(item => {
+                                return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center'
+                                    src={item?.brandBanner?.path}
+                                    // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+                                    alt="product" /> <div>{item?.title}</div> </Link> </SwiperSlide>
                             })
                         }
 
 
 
                     </Swiper>
+
+                    <div onClick={() => {
+                        goNext()
+                    }} className='z-40  rounded-lg h-full  cursor-pointer  w-8 flex justify-end items-center px-2'><LiaAngleRightSolid size={40} /></div>
                 </div>
             </section >
         </>
@@ -107,4 +89,7 @@ const BrandSlider = () => {
 }
 
 export default BrandSlider
+
+
+
 

@@ -28,7 +28,7 @@ import NewInStore from "./NewInStore";
 export default function ProductList() {
   const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
   const { categoryData } = useSelector((state) => state.category);
-  const [limit, setLimit] = useState(2)
+  const [limit, setLimit] = useState(4)
   const [page, setPage] = useState(1)
   const [price, setPrice] = useState({})
   const dispatch = useDispatch();
@@ -54,6 +54,9 @@ export default function ProductList() {
   useEffect(() => {
     console.log(brands, "brands")
   }, [brands]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
 
 
@@ -90,25 +93,15 @@ export default function ProductList() {
 
       <BrandSlider />
       <CategorySlider data={categoryData} />
-      {/* <section className="container mx-auto text-center space-y-3">
-        <p className="font-medium text-xl py-2">Category</p>
-        <div className='flex gap-3 justify-center items-start flex-wrap'>
 
-          {
-            categoryData?.map(item => {
-              return <Link to={`/category/${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-24 border-4 border-yellow-200  object-center' src={item?.categoryImg} alt="" /> <div>{item?.title}</div> </Link>
-            })
-          }
-        </div>
-      </section> */}
-      <div className="container mx-auto py-6">
+      <div className="container mx-auto py-6 px-3">
         <div class="mb-6 flex items-center justify-between">
           <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 dark:text-gray-400" data-id="5">Browse our collection of high-quality products.</p></div>
 
         </div>
         <section
           id="Projects"
-          class=" container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class=" container mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
 
           {isLoading ? Array(8).fill(true).map(item => {

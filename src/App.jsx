@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 
 import Header from "./pages/Components/Header";
@@ -36,6 +36,7 @@ import ProductByCollection from "./pages/ProductByCollection/ProductByCollection
 
 
 function App() {
+
   return (
     <div>
       <Toaster />

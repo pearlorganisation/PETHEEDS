@@ -9,7 +9,7 @@ const ProductCard = ({ el }) => {
     const dispatch = useDispatch();
 
     return (
-        <div class="w-full bg-white shadow-md rounded-md p-3 space-y-3">
+        <div class="w-full bg-white shadow-md rounded-md p-1 md:p-3 space-y-3">
             <Link to={`/singleproduct/${el?._id}`}>
                 <img
                     src={el?.productImg?.path}
@@ -19,11 +19,11 @@ const ProductCard = ({ el }) => {
             </Link>
 
             <div class="px-4 py-3">
-                <span class="text-gray-400 mr-3 uppercase text-xs">
+                <span class="text-gray-400 mr-3 uppercase text-[10px] sm:text-xs">
                     Brand
                 </span>
 
-                <p class="text-lg font-bold text-black truncate block capitalize">
+                <p class="text-xs sm:text-lg font-bold text-black truncate block capitalize">
                     {el?.productName}
                 </p>
 
