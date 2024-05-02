@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 
 import Header from "./pages/Components/Header";
@@ -38,6 +38,7 @@ import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
 
 
 function App() {
+
   return (
     <div>
       <Toaster />
