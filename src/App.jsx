@@ -33,6 +33,8 @@ import { Toaster } from "sonner";
 import SignupOtpVerification from "./pages/Components/Auth/SignupOtpVerification";
 import { Route, Routes } from "react-router-dom";
 import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
+import Invoice from "./pages/Components/Product/Invoice";
+import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
 
 
 function App() {
@@ -60,14 +62,17 @@ function App() {
         <Route path="reset" element={<Reset />} />
         <Route path="otp" element={<Otpvarfication />} />
         <Route path="contact" element={<Contactus />} />
-
+  
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />
-        <Route path="order" element={<Order />} />
-
+        <Route path="order" element={<Order/>} />
+         
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/signupOtp" element={<SignupOtpVerification />} />
         <Route path="/formSignup" element={<FormSignUp />} />
+        <Route path="/invoice" element={<Invoice/>} />
+        <Route path="/privacy" element={<PrivacyPolicy/>} />
+
 
       </Routes>
       <Footer />

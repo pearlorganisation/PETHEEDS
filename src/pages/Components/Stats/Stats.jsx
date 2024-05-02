@@ -12,15 +12,11 @@ const Stats = () => {
             title: "Appointment"
         },
         {
-            data: "40+",
-            title: "Countries"
-        },
-        {
-            data: "30M+",
-            title: "Total revenue"
-        },
+            data: "20+",
+            title: "States"
+        }
+    
     ]
-
   return (
     <>
        

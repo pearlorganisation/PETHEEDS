@@ -10,7 +10,7 @@ const Booking = () => {
   };
   return (
     <>
-      <div className="container border mx-auto grid md:grid-cols-3 place-items-center py-5 my-5 rounded">
+      <div className="container mx-auto grid md:grid-cols-3 place-items-center py-5 my-5 rounded">
         {/* Dog Image */}
         <div className="flex justify-center md:justify-start ">
           <img src={dog} alt="Dog" className=" w-[250px]" />
