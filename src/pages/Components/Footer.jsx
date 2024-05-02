@@ -63,50 +63,68 @@ const Footer = () => {
         <div class="mx-auto grid max-w-screen-xl gap-y-8 gap-x-12 px-4 py-10 md:grid-cols-2 xl:grid-cols-4 xl:px-10">
           <div class="max-w-sm">
             <div class="mb-6 flex h-12 items-center space-x-2">
-              <span class="text-2xl font-bold">
+              {/* <span class="text-2xl font-bold">
                 PETHEEDS<span class="text-blue-600"> LLP</span>.
-              </span>
+              </span> */}
+              <a href="/">
+
+              <img
+              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+              className="w-[120px]"
+
+            />
+              </a>
+       
             </div>
             <div class="text-gray-500">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad
-              a officia ea expedita!
+            Petheads LLP is an animal healthcare company that specializes in the development, manufacturing, and marketing of quality finished veterinary formulations.
             </div>
           </div>
           <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">Address</div>
             <div class="text-gray-500">
-              35 Remida Heights, <br />
-              45 Street, <br />
-              South Caroline, US
+            
+            B4, North EX Mall, Sector-9 Rohini,<br />  
+            New Delhi – 110085<br />
+           
             </div>
           </div>
-          
+
           <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">Links</div>
+
             <nav aria-label="Footer Navigation" class="text-gray-500">
               <ul class="space-y-3">
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Pricing
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/privacy"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/productlist"
+                  >
+                    Products
                   </a>
                 </li>
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Demo
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/Booknow"
+                  >
+                    Book Appointment
                   </a>
                 </li>
                 <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Press
-                  </a>
-                </li>
-                <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
-                    Support Hub
-                  </a>
-                </li>
-                <li>
-                  <a class="hover:text-blue-600 hover:underline" href="#">
+                  <a
+                    class="hover:text-blue-600 hover:underline"
+                    href="/contact"
+                  >
                     Contact
                   </a>
                 </li>
@@ -132,14 +150,15 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div class="bg-gray-100">
           <div class="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
-            <div class="">© 2024 Pearl Organisation | All Rights Reserved</div>
+            <div class=""><a href="https://www.pearlorganisation.com/">© 2024 Pearl Organisation  | All Rights Reserved</a></div>
             <div class="">
-              <a class="" href="#">
+              <a class="" href="">
                 Privacy Policy
               </a>
-              <span>|</span>
+              <span> | </span>
               <a class="" href="#">
                 Terms of Service
               </a>

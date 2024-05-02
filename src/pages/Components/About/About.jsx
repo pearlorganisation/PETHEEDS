@@ -1,265 +1,135 @@
-import dog from "../../../images/singledog.png";
-import cat from "../../../images/cat.png";
-import { MdOutlineArrowForwardIos } from "react-icons/md";
-import dogcat from "../../../images/dogandcat.png";
-import doc from "../../../images/doc.jpg";
-import React, { useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import { useNavigate } from "react-router-dom/dist";
-const About = () => {
-  const Navigate = useNavigate()
-  const handleNavigate=()=>{
-     Navigate('/booknow')
-  }
+import React from "react";
+import cat from "../../../images/cutedog.jpg";
+import cat1 from "../../../images/cat11.jpg";
+import cat2 from "../../../images/cutecat.jpg";
+
+const About= () => {
   return (
     <>
-      <section className="min-h-[80vh] grid place-items-center">
-        <div className="mx-auto grid md:grid-cols-3 ">
-          <div className="flex justify-center items-center md:block ">
-            <div className="flex justify-end">
-              <img src={dog} className="  w-[250px]" />
-            </div>
+      <div className="w-full container mx-auto py-12 md:py-24 lg:py-32">
+        <div className="container grid items-center justify-center gap-4 px-4 text-center md:gap-10 md:px-6 lg:gap-16 p-5">
+          <div className="space-y-4 lg:space-y-6">
+            <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">
+              About PETHEEDS
+            </h1>
+            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              Welcome to PETHEEDS, where passion for pets meets a commitment to
+              excellence in veterinary healthcare. Established in 2020, PETHEEDS
+              was founded with a clear purpose: to redefine the standard of pet
+              wellness through innovative nutraceutical products and unwavering
+              dedication to our furry companions..
+            </p>
           </div>
-          <div className="">
-            <div>
-              <h1 className="text-xl md:text-5xl font-bold text-center py-5 text-[#171A1F]">
-                Who we are
-              </h1>
+          <div className="grid container mx-auto  w-full grid-cols-1 items-center justify-center md:grid-cols-3 md:gap-4 lg:gap-8">
+            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+              <img
+                src={cat}
+                width="400"
+                height="400"
+                alt="Image"
+                className="aspect-video overflow-hidden rounded-lg object-cover object-center"
+              />
             </div>
-            <div>
-              <p className="text-center text-[#171A1F]">
-                Our love for pets and their owners drives
-              </p>
+            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+              <img
+                src={cat1}
+                width="400"
+                height="400"
+                alt="Image"
+                className="aspect-video overflow-hidden rounded-lg object-cover object-center"
+              />
             </div>
-            <div>
-              <p className="text-center">everything we do.</p>
-            </div>
-
-            <div className="flex justify-around py-5">
-              <div className="flex flex-col items-center">
-                <div>
-                  <h1 className="text-xl md:text-3xl font-medium text-[#FF8D6B]">
-                    46K+
-                  </h1>
-                </div>
-                <div>
-                  <p className="text-[#9095A0]">Clients</p>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex flex-col items-center">
-                  <div>
-                    <h1 className="text-xl md:text-3xl font-medium text-[#FF8D6B]">
-                      20+
-                    </h1>
-                  </div>
-                  <div>
-                    <p className="text-[#9095A0]">Employee</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex flex-col items-center">
-                  <div>
-                    <h1 className="text-xl md:text-3xl font-medium text-[#ca745a]">
-                      4+
-                    </h1>
-                  </div>
-                  <div>
-                    <p className="text-[#9095A0]">Employee</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-center py-4">
-                <button
-                  type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={handleNavigate}
-               >
-                  Make an appointment
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center md:block">
-            <div className="flex justify-start ">
-              <img src={cat} className="  w-[250px]" />
+            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+              <img
+                src={cat2}
+                width="400"
+                height="400"
+                alt="Image"
+                className="aspect-video overflow-hidden rounded-lg object-cover object-center"
+              />
             </div>
           </div>
         </div>
-      </section>
-
-      <section>
-        <div className=" container mx-auto grid md:grid-cols-2 ">
-          <div className=" md:p-16 p-5">
-            <div className="py-5">
-              <h1 className=" text-[#1A4E8DFF] text-3xl font-bold ">
-                Our Story
-              </h1>
-            </div>
-
-            <div>
-              <p className="text-[#6B6D70]">
-                Since 2019, we've revolutionized pet care by setting new
-                industry standards. With a nationwide presence, we provide care
-                for your beloved pets in various tailored environments.
-              </p>
-            </div>
-
-            <div>
-              <div>
-                <h1 className="text-[#1A4E8DFF] text-xl font-medium">
-                  Our Values
-                </h1>
-                <div className="flex items-center pt-2">
-                  <div className="text-[#1A4E8D]">
-                    <MdOutlineArrowForwardIos />
-                  </div>
-                  <div>
-                    <p className="text-[#6B6D70]">Always be transparent</p>
-                  </div>
-                </div>
-                <div className="flex items-center pt-2">
-                  <div className="text-[#1A4E8D]">
-                    <MdOutlineArrowForwardIos />
-                  </div>
-                  <div>
-                    <p className="text-[#6B6D70]">Work compassionately</p>
-                  </div>
-                </div>
-                <div className="flex items-center pt-2">
-                  <div className="text-[#1A4E8D]">
-                    <MdOutlineArrowForwardIos />
-                  </div>
-                  <div>
-                    <p className="text-[#6B6D70]">
-                      Take pride in our community
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center pt-2">
-                  <div className="text-[#1A4E8D]">
-                    <MdOutlineArrowForwardIos />
-                  </div>
-                  <div>
-                    <p className="text-[#6B6D70]">Be curious</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="container py-12 space-y-12 md:py-16 lg:space-y-16">
+          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
+              Our Story
+            </h2>
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+              The journey of PETHEEDS began with a shared love for animals and a
+              deep-rooted desire to make a difference in their lives. As pet
+              owners ourselves, we understand the joy, companionship, and
+              unconditional love that pets bring into our homes. Yet, we also
+              recognize the challenges and concerns that come with ensuring
+              their health and well-being. Driven by a passion for animal
+              welfare and a commitment to excellence, we embarked on a mission
+              to create a company that would revolutionize the way pets are
+              cared for. Drawing upon our collective expertise in veterinary
+              medicine, nutrition, and product development, we set out to
+              formulate a line of nutraceutical products that would offer a
+              natural, holistic approach to pet wellness.
+            </p>
           </div>
-          <div className="">
-            <img src={dogcat} />
+          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
+              Our Philosophy
+            </h2>
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+              At PETHEEDS, we believe that every pet deserves to live a healthy,
+              vibrant life. That&#39;s why we are dedicated to providing
+              premium-quality nutraceutical solutions that address the unique
+              health needs of pets, from puppies and kittens to senior
+              companions. Our products are carefully crafted from the finest
+              natural ingredients, backed by scientific research, and formulated
+              to deliver optimal results.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="container mx-auto py-5 ">
-        <div className="text-center py-5">
-          <h1 className="text-[#1A4E8DFF] text-3xl font-bold">Meet our team</h1>
-        </div>
-
-        <div>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-            breakpoints={{
-              // when window width is >= 640px
-              640: {
-                slidesPerView: 1,
-              },
-              // when window width is >= 768px
-              768: {
-                slidesPerView: 2,
-              },
-              // when window width is >= 1024px
-              1024: {
-                slidesPerView: 3,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <div className="flex  justify-center items-center ">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                  <img class="w-full" src={doc} alt="Sunset in the mountains" />
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2"> Sr Dr shakuntla</div>
-                    <p class="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                      exercitationem praesentium nihil.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="flex  justify-center items-center ">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                  <img class="w-full" src={doc} alt="Sunset in the mountains" />
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Jr Dr katrena</div>
-                    <p class="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                      exercitationem praesentium nihil.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+          <div className=" mx-auto max-w-3xl">
+            <h2 className="text-3xl font-bold mb-8 p-5">Our Team</h2>
+            <p className="text-lg text-gray-700 mb-12 p-5">
+              Behind every great company is a team of dedicated individuals who
+              share a common vision and commitment to excellence. At PETHEEDS,
+              our team is comprised of passionate professionals with diverse
+              backgrounds in veterinary medicine, nutrition, research, and
+              customer service. Together, we work tirelessly to ensure that our
+              products meet the highest standards of quality, safety, and
+              efficacy, while providing unparalleled support to our valued
+              customers.
+            </p>
             
-            <SwiperSlide>
-              <div className="flex  justify-center items-center ">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                  <img class="w-full" src={doc} alt="Sunset in the mountains" />
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">mike jorden</div>
-                    <p class="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                      exercitationem praesentium nihil.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+            
 
-            <SwiperSlide>
-              <div className="flex  justify-center items-center ">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ">
-                  <img class="w-full" src={doc} alt="Sunset in the mountains" />
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">alisa beth</div>
-                    <p class="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                      exercitationem praesentium nihil.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
+          </div>
+
+          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
+              Our Promise
+            </h2>
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+              When you choose PETHEEDS, you can trust that you&#39;re choosing
+              more than just a product – you&#39;re choosing a partner in your
+              pet&#39;s healthcare journey. We are committed to transparency,
+              integrity, and the well-being of every pet we serve. Whether
+              you&#39;re seeking relief for a specific health concern or simply
+              looking to enhance your pet&#39;s overall vitality, we are here to
+              help you every step of the way.
+            </p>
+          </div>
+          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
+              Join Us
+            </h2>
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+              We invite you to join us on our mission to promote the health and
+              happiness of pets everywhere. Explore our website to learn more
+              about our products, mission, and commitment to excellence.
+              Together, let&#39;s make a difference in the lives of our beloved
+              companions.
+            </p>
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
