@@ -140,7 +140,7 @@ const HomePage = () => {
                   <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
                   <path d="m9 12 2 2 4-4"></path>
                 </svg>
-                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ">
                   Premium Quality
                 </h3>
               </div>
@@ -176,7 +176,7 @@ const HomePage = () => {
                   <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
                   <path d="M5.52 16h12.96"></path>
                 </svg>
-                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight">
                   Scientifically Formulated
                 </h3>
               </div>
@@ -210,7 +210,7 @@ const HomePage = () => {
                   <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
                 </svg>
-                <h3 class="text-lg md:text-xl font-semibold leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold leading-none tracking-tight ">
                   Natural Ingredients
                 </h3>
               </div>
@@ -230,7 +230,7 @@ const HomePage = () => {
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <BsCheckCircleFill size={25} className="text-yellow-500" />
-                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ">
                   Tailored Solutions:
                 </h3>
               </div>
@@ -251,7 +251,7 @@ const HomePage = () => {
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <FaRegHandshake size={30} className="text-green-500" />
-                <h3 class="text-lg md:text-xl  font-semibold leading-none tracking-tight ml-2">
+                <h3 class="text-lg md:text-xl  font-semibold leading-none tracking-tight">
                   Commitment to Excellence:
                 </h3>
               </div>

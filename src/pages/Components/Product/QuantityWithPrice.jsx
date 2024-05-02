@@ -38,9 +38,9 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
             }
         </div>
         <div className="space-y-1">
-            <span className="md:font-semibold">Select Size:</span>
+            <span className="font-medium md:font-semibold text-sm md:text-base">Select Size:</span>
 
-            <div className='space-x-2'>
+            <div className='flex gap-1 justify-start items-start flex-wrap'>
                 {
                     item?.price?.map((pr, ind) => {
                         console.log(pr?.weight, "pr?.weight")
