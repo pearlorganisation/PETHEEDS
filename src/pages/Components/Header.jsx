@@ -36,28 +36,28 @@ const menuItems = [
 ];
 
 const ProfileDropDown = (props) => {
-  const dispatch = useDispatch()
-  const [state, setState] = useState(false)
-  const profileRef = useRef()
+  const dispatch = useDispatch();
+  const [state, setState] = useState(false);
+  const profileRef = useRef();
 
   const navigation = [
     { title: "Dashboard", path: "javascript:void(0)" },
     { title: "Profile", path: "javascript:void(0)" },
-
-  ]
-
+  ];
 
   useEffect(() => {
     const handleDropDown = (e) => {
-      if (!profileRef.current.contains(e.target)) setState(false)
-    }
-    document.addEventListener('click', handleDropDown)
-  }, [])
+      if (!profileRef.current.contains(e.target)) setState(false);
+    };
+    document.addEventListener("click", handleDropDown);
+  }, []);
 
   return (
     <div className={`relative ${props.class} z-50`}>
       <div className="flex items-center space-x-4">
-        <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
+        <button
+          ref={profileRef}
+          className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
           onClick={() => setState(!state)}
         >
           <img
@@ -70,29 +70,36 @@ const ProfileDropDown = (props) => {
           <span className="block text-sm text-gray-500">john@gmail.com</span>
         </div>
       </div>
-      <ul className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
-        {
-          navigation.map((item, idx) => (
-            <li>
-              <Link key={idx} className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5" to={item.path}>
-                {item.title}
-              </Link>
-            </li>
-          ))
-        }
+      <ul
+        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
+          state ? "" : "lg:hidden"
+        }`}
+      >
+        {navigation.map((item, idx) => (
+          <li>
+            <Link
+              key={idx}
+              className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+              to={item.path}
+            >
+              {item.title}
+            </Link>
+          </li>
+        ))}
         <li>
           <button
             onClick={() => {
-              dispatch(userLogout())
+              dispatch(userLogout());
             }}
-            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5">
+            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5"
+          >
             Log out
           </button>
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 const Header = () => {
   const navigate = useNavigate();
   const handelnavigatelogin = () => {
@@ -107,10 +114,8 @@ const Header = () => {
   const { isUserLoggedIn } = useSelector((state) => state.auth);
 
   const toggleMenu = () => {
-
     setIsMenuOpen(!isMenuOpen);
   };
-
 
   return (
     <>
@@ -137,14 +142,16 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          {
-            isUserLoggedIn ? <ProfileDropDown
-              class="hidden lg:block"
-            /> : <div className="hidden space-x-2 lg:flex justify-center items-center">
+          {isUserLoggedIn ? (
+            <ProfileDropDown class="hidden lg:block" />
+          ) : (
+            <div className="hidden space-x-2 lg:flex justify-center items-center">
               <button
                 type="button"
                 className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+               
                 onClick={handelnavigatelogin}
+                 
               >
                 Log In
               </button>
@@ -157,8 +164,7 @@ const Header = () => {
                 Sign Up
               </button>
             </div>
-          }
-
+          )}
 
           <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
@@ -221,6 +227,7 @@ const Header = () => {
                     >
                       Log In
                     </button>
+                    
                     <button
                       type="button"
                       className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
