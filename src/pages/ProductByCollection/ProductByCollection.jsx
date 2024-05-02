@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductByCategory } from '../../features/actions/productActions'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import QuantityWithPrice from '../Components/Product/QuantityWithPrice'
 import { addToCart } from '../../features/slices/cartSlice'
 
-const Category = () => {
+const ProductByCollection = () => {
     const dispatch = useDispatch()
+
     const { filteredProduct, isLoading } = useSelector((state) => state.products);
     const [price, setPrice] = useState({})
-    const { categoryId } = useParams()
+    let { search } = useLocation();
+
     useEffect(() => {
-        dispatch(getProductByCategory({ categoryId }))
+        dispatch(getProductByCategory({ query: search }))
     }, [])
+
+
+
 
     return (
         <div className='min-h-screen container mx-auto'>
@@ -112,4 +117,4 @@ const Category = () => {
     )
 }
 
-export default Category
+export default ProductByCollection

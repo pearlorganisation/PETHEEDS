@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
 import { FaShoppingCart } from "react-icons/fa";
@@ -21,6 +21,7 @@ import { getCategory } from "../../../features/actions/categoryAction";
 import BrandSlider from "./BrandSlider";
 import CategorySlider from "./CategorySlider";
 import ProductCard from "./ProductCard";
+import NewInStore from "./NewInStore";
 
 
 
@@ -32,7 +33,8 @@ export default function ProductList() {
   const [price, setPrice] = useState({})
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { search } = useLocation()
+  console.log(search, "search")
 
 
 
@@ -80,94 +82,10 @@ export default function ProductList() {
         }
       `}</style>
 
-      <div className="container mx-auto my-5 ">
-        <Swiper
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="flex justify-center items-center ">
-              <img
-                className="rounded-lg"
-                src="https://headsupfortails.com/cdn/shop/files/dd-web-65d736c0b38bc_1500x.webp?v=1708611678"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex justify-center items-center ">
-              <img
-                className="rounded-lg"
-                src="https://headsupfortails.com/cdn/shop/files/treats-web-65d736dde8a86_1500x.webp?v=1708611625"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex justify-center items-center">
-              <img
-                className="rounded-lg"
-                src="https://headsupfortails.com/cdn/shop/files/grooming-web-65d736d81ec69_1500x.webp?v=1708611646"
-              />
-            </div>
-          </SwiperSlide>
-          <div className="flex justify-center items-center ">
-            <SwiperSlide>
-              <img
-                className="rounded-lg"
-                src="https://headsupfortails.com/cdn/shop/files/saras-web-65d736da0ed77_1500x.webp?v=1708611605"
-              />
-            </SwiperSlide>
-          </div>
-        </Swiper>
-      </div>
+      <NewInStore />
 
-      <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500">
-        <div>
-          <img src="https://headsupfortails.com/cdn/shop/files/grain-free-web-01-65e08bd2dca7d.webp?v=1709214839" />
-        </div>
-        <div>
-          <img src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942" />
-        </div>
-        <div>
-          <img src="https://headsupfortails.com/cdn/shop/files/flavours-of-india-web-03-65e08bd4cf3d9.webp?v=1709214910" />
-        </div>
-        <div>
-          <img src="https://headsupfortails.com/cdn/shop/files/classic-web-04-65e08bd51a648.webp?v=1709214921" />
-        </div>
-      </div>
 
-      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
 
-        <div className="flex justify-center font-bold text-2xl mb-4 items-center">
-          <div><img src={newimg} /></div>
-          <div>New In Store</div>
-        </div>
-        <div className="grid grid-cols-4 gap-4 ">
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
-            alt="product"
-          />
-        </div>
-      </div>
 
 
       <BrandSlider />
@@ -183,27 +101,34 @@ export default function ProductList() {
           }
         </div>
       </section> */}
-      <section
-        id="Projects"
-        class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
-      >
-        {isLoading ? Array(8).fill(true).map(item => {
-          return <div class="w-80 bg-gray-50 animate-pulse shadow-md rounded-md p-3 space-y-3">
-            <div class="bg-gray-200 w-full h-[18rem] rounded-md"></div>
-            <div class="bg-gray-200 h-4 w-20"></div>
-            <div class="bg-gray-200 h-4 w-32"></div>
-            <div class="bg-gray-200 h-4 w-14"></div>
-            <div class="bg-gray-200 h-4 w-32"></div>
-            <div class="bg-gray-200 w-full h-9 rounded-md"></div>
+      <div className="container mx-auto py-6">
+        <div class="mb-6 flex items-center justify-between">
+          <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 dark:text-gray-400" data-id="5">Browse our collection of high-quality products.</p></div>
+
+        </div>
+        <section
+          id="Projects"
+          class=" container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+
+          {isLoading ? Array(8).fill(true).map(item => {
+            return <div class="w-80 bg-gray-50 animate-pulse shadow-md rounded-md p-3 space-y-3">
+              <div class="bg-gray-200 w-full h-[18rem] rounded-md"></div>
+              <div class="bg-gray-200 h-4 w-20"></div>
+              <div class="bg-gray-200 h-4 w-32"></div>
+              <div class="bg-gray-200 h-4 w-14"></div>
+              <div class="bg-gray-200 h-4 w-32"></div>
+              <div class="bg-gray-200 w-full h-9 rounded-md"></div>
 
 
-          </div>
-        }) : productsData?.map((el, id) => {
-          return (
-            <ProductCard el={el} />
-          );
-        })}
-      </section>
+            </div>
+          }) : productsData?.map((el, id) => {
+            return (
+              <ProductCard el={el} />
+            );
+          })}
+        </section>
+      </div>
 
 
       <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8 py-6">
