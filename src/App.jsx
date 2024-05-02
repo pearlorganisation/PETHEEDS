@@ -32,6 +32,7 @@ import Category from "./pages/Category/Category";
 import { Toaster } from "sonner";
 import SignupOtpVerification from "./pages/Components/Auth/SignupOtpVerification";
 import { Route, Routes } from "react-router-dom";
+import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
-        <Route path="/category/:categoryId" element={<Category />} />
+        <Route path="/product" element={<ProductByCollection />} />
 
         <Route path="/singleproduct/:productId" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />

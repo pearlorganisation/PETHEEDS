@@ -9,7 +9,7 @@ const ProductCard = ({ el }) => {
     const dispatch = useDispatch();
 
     return (
-        <div class="w-80 bg-white  shadow-md rounded-md p-3 space-y-3">
+        <div class="w-full bg-white shadow-md rounded-md p-3 space-y-3">
             <Link to={`/singleproduct/${el?._id}`}>
                 <img
                     src={el?.productImg?.path}

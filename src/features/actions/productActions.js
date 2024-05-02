@@ -36,9 +36,39 @@ export const getSingleProduct = createAsyncThunk(
 
 export const getProductByCategory = createAsyncThunk(
   "products/getProductByCategory",
-  async ({ categoryId }, { rejectWithValue }) => {
+  async ({ query }, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get(`product/?category=${categoryId}`, {
+      const { data } = await instance.get(`product${query}`, {
+        withCredentials: true,
+      });
+      console.log(data, "action data");
+      return data?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getBrands = createAsyncThunk(
+  "products/getBrands",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`brand`, {
+        withCredentials: true,
+      });
+      console.log(data, "action data");
+      return data?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getNewInStore = createAsyncThunk(
+  "products/getNewInStore",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`newInStore`, {
         withCredentials: true,
       });
       console.log(data, "action data");

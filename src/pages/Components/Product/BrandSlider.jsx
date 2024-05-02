@@ -12,8 +12,12 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { LiaAngleLeftSolid } from "react-icons/lia";
 import { LiaAngleRightSolid } from "react-icons/lia";
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const BrandSlider = () => {
+
+    const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
     function getRandomColorHex() {
         // Generate random values for red, green, and blue components
         const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
@@ -40,16 +44,16 @@ const BrandSlider = () => {
     };
     return (
         <>
-            < section className=" text-center space-y-3" >
-                <p className="font-medium text-xl py-2 ">Brands</p>
+            < section className=" text-center space-y-3 py-4" >
+                <p className="flex justify-center font-bold text-2xl mb-4 items-center">Brands</p>
 
                 <div className='flex gap-3 justify-center items-start flex-wrap relative w-fit mx-auto overflow-hidden'>
                     <div onClick={() => {
                         goPrev()
-                    }} className='absolute z-40 left-0 rounded-lg h-full bg-gradient-to-r from-black/20 to-white/0 cursor-pointer w-20 flex justify-start items-center px-2'> <LiaAngleLeftSolid /> </div>
+                    }} className='absolute z-40 left-[2rem] rounded-lg h-full cursor-pointer w-20 flex justify-start items-center px-2'> <LiaAngleLeftSolid /> </div>
                     <div onClick={() => {
                         goNext()
-                    }} className='absolute z-40 right-0 rounded-lg h-full bg-gradient-to-l from-black/20 to-white/0 cursor-pointer  w-20 flex justify-end items-center px-2'><LiaAngleRightSolid /></div>
+                    }} className='absolute z-40 right-[2rem] rounded-lg h-full cursor-pointer  w-20 flex justify-end items-center px-2'><LiaAngleRightSolid /></div>
 
                     <Swiper
                         ref={swiperRef}
@@ -73,15 +77,22 @@ const BrandSlider = () => {
                             },
                         }}
                         modules={[]}
-                        className=" container mx-auto "
+                        className=" container mx-auto grid grid-cols-4 gap-4 "
                     >
 
                         {
-                            Array(10).fill(true)?.map((item, ind) => {
+                            brands?.map((item, ind) => {
                                 const randomColorHex = getRandomColorHex()
                                 // Get the color from the colors array using the random index
 
-                                return <SwiperSlide> <div className={`px-20 font-medium py-5 flex text-center border rounded-lg bg-[${randomColorHex}]/30 cursor-pointer`}>Brand</div></SwiperSlide>
+                                return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className={`font-medium flex text-center border h-full rounded-lg bg-[${randomColorHex}]/30 cursor-pointer`}>
+                                    <img
+                                        className="rounded-md h-full "
+                                        src={item?.brandBanner?.path}
+                                        // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+                                        alt="product"
+                                    />
+                                </Link></SwiperSlide>
 
                             })
                         }
