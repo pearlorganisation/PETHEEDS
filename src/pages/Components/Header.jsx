@@ -124,10 +124,13 @@ const Header = () => {
       <div className="relative w-full bg-white py-5 border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="inline-flex items-center space-x-2">
+            <a href="/">
             <img
               src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
               className="w-[120px]"
             />
+            </a>
+          
             <span className="font-bold"></span>
           </div>
           <div className="hidden grow items-start lg:flex">
@@ -188,7 +191,12 @@ const Header = () => {
                 <div className="px-5 pb-6 pt-5">
                   <div className="flex items-center justify-between">
                     <div className="inline-flex items-center space-x-2">
-                      <span className="font-bold">Your Logo</span>
+                    <a href="/">
+            <img
+              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+              className="w-[120px]"
+            />
+            </a>
                     </div>
                     <div className="-mr-2">
                       <button
