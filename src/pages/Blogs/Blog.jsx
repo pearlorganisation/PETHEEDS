@@ -12,6 +12,9 @@ const Blog = () => {
   useEffect(() => {
     dispatch(getBlog());
   }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
   return (
     <>
@@ -67,11 +70,11 @@ const Blog = () => {
             <Link
               to="/blogDetails"
               state={item}
-              class="max-w-sm grid  bg-white border border-gray-200 rounded-lg shadow "
+              class="max-w-sm grid w-full  bg-white border border-gray-200 rounded-lg shadow "
             >
-              <a className="" href="#">
+              <a className=" " href="#">
                 <img
-                  class="rounded-t-lg h-[15rem] border w-full object-cover"
+                  class="rounded-t-lg h-[15rem]  w-full object-cover"
                   src={item?.banner}
                   alt=""
                 />

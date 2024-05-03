@@ -14,6 +14,9 @@ import { clearAppointment } from "../../features/slices/bookNow";
 
 
 const Booknow = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

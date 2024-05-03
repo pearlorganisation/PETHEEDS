@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/actions/auth";
 
 const menuItems = [
   {
@@ -88,7 +89,7 @@ const ProfileDropDown = (props) => {
         <li>
           <button
             onClick={() => {
-              dispatch(userLogout());
+              dispatch(logout());
             }}
             className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5"
           >
@@ -121,10 +122,13 @@ const Header = () => {
       <div className="fixed top-0 z-50 w-full bg-white py-5 border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="inline-flex items-center space-x-2">
-            <img
-              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-              className="w-[120px]"
-            />
+            <Link to="/">
+              <img
+                src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+                className="w-[120px]"
+              />
+            </Link>
+
             <span className="font-bold"></span>
           </div>
           <div className="hidden grow items-start lg:flex">
@@ -133,7 +137,7 @@ const Header = () => {
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                    className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
                   </Link>
@@ -181,11 +185,17 @@ const Header = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
+
               <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="px-5 pb-6 pt-5">
                   <div className="flex items-center justify-between">
                     <div className="inline-flex items-center space-x-2">
-                      <span className="font-bold">Your Logo</span>
+                      <a href="/">
+                        <img
+                          src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+                          className="w-[120px]"
+                        />
+                      </a>
                     </div>
                     <div className="-mr-2">
                       <button
@@ -207,12 +217,15 @@ const Header = () => {
                           href={item.href}
                           className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
                         >
+
                           <span className="ml-3 text-base font-medium text-gray-900">
                             {item.name}
                           </span>
+
                           <span>
                             <ChevronRight className="ml-3 h-4 w-4" />
                           </span>
+
                         </a>
                       ))}
                     </nav>

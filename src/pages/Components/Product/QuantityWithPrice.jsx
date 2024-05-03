@@ -5,6 +5,7 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
     useEffect(() => {
         setPrice(priceData)
     }, [priceData])
+    
     console.log(item)
 
 
