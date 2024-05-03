@@ -3,7 +3,7 @@ import cat from "../../../images/cutedog.jpg";
 import cat1 from "../../../images/cat11.jpg";
 import cat2 from "../../../images/cutecat.jpg";
 
-const About= () => {
+const About = () => {
   return (
     <>
       <div className="w-full container mx-auto py-12 md:py-24 lg:py-32">
@@ -12,7 +12,7 @@ const About= () => {
             <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">
               About PETHEEDS
             </h1>
-            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Welcome to PETHEEDS, where passion for pets meets a commitment to
               excellence in veterinary healthcare. Established in 2020, PETHEEDS
               was founded with a clear purpose: to redefine the standard of pet
@@ -55,7 +55,7 @@ const About= () => {
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Story
             </h2>
-            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               The journey of PETHEEDS began with a shared love for animals and a
               deep-rooted desire to make a difference in their lives. As pet
               owners ourselves, we understand the joy, companionship, and
@@ -74,7 +74,7 @@ const About= () => {
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Philosophy
             </h2>
-            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               At PETHEEDS, we believe that every pet deserves to live a healthy,
               vibrant life. That&#39;s why we are dedicated to providing
               premium-quality nutraceutical solutions that address the unique
@@ -97,8 +97,8 @@ const About= () => {
               efficacy, while providing unparalleled support to our valued
               customers.
             </p>
-            
-            
+
+
 
           </div>
 
@@ -106,7 +106,7 @@ const About= () => {
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Promise
             </h2>
-            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               When you choose PETHEEDS, you can trust that you&#39;re choosing
               more than just a product – you&#39;re choosing a partner in your
               pet&#39;s healthcare journey. We are committed to transparency,
@@ -120,7 +120,7 @@ const About= () => {
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Join Us
             </h2>
-            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed dark:text-gray-400 p-5">
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               We invite you to join us on our mission to promote the health and
               happiness of pets everywhere. Explore our website to learn more
               about our products, mission, and commitment to excellence.
