@@ -64,6 +64,7 @@ const Blog = () => {
         })
       ) : blogData?.map((item) => {
             return (
+              
               <Link
                 to="/blogDetails"
                 state={item}

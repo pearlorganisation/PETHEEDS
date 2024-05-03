@@ -14,6 +14,10 @@ import { createContactUs } from "../../../features/actions/contactUs";
 
 const Contactus = () => {
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

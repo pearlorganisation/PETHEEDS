@@ -48,7 +48,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
         <Route path="/product" element={<ProductByCollection />} />
-
         <Route path="/singleproduct/:productId" element={<SingleProduct />} />
         <Route path="booknow" element={<Booknow />} />
         <Route path="blog" element={<Blog />} />
