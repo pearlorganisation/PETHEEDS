@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import parse from "html-react-parser";
 
 const BlogDetails = () => {
   const { state } = useLocation();
   console.log("state::", state);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
   return (
-    <article className=" mt-4 min-h-[20rem] rounded-md duration-300 hover:shadow-sm container mx-auto py-12">
+    <article className=" mt-4 min-h-[90vh] rounded-md duration-300 hover:shadow-sm container mx-auto py-12">
       <div className="grid  gap-3 w-[70%] mx-auto">
         <img
           src={`${state?.banner}`}
           loading="lazy"
-          className="w-full rounded-t-md"
+          className="w-full max-h-[40rem] rounded-t-md"
         />
         <div className="space-y-2 py-3 flex flex-col justify-center gap-1 items-start p-1">
           <div className=" rounded-2xl text-slate-950 bg-white w-fit font-medium flex gap-3">
@@ -43,7 +46,7 @@ const BlogDetails = () => {
             <p>{state?.topicDescription}</p>
           </div>
         </div>
-        <div>{parse(state?.description)}</div>
+        <div>{parse(state?.description || '')}</div>
       </div>
     </article>
   );

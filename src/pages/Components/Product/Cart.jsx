@@ -221,7 +221,7 @@ export function Cart() {
                 </p>
               </div>
               <div class="relative mt-10 flex">
-                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none dark:focus:ring-blue-800">Buy</button>
+                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</button>
 
 
 
@@ -244,7 +244,7 @@ export function Cart() {
               <button
                 onClick={handelnavigate}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 md:px-6 lg:px-8 md:py-3 lg:py-4 text-center md:mb-2 lg:me-2 lg:mb-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-full md:w-auto h-10 md:h-auto"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 md:px-6 lg:px-8 md:py-3 lg:py-4 text-center md:mb-2 lg:me-2 lg:mb-0    w-full md:w-auto h-10 md:h-auto"
               >
                 Start Shopping
               </button>

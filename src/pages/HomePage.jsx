@@ -16,6 +16,7 @@ import Booking from "./Components/Booking";
 import OurService from "./Components/OurService/Ourservice";
 import { useDispatch, useSelector } from "react-redux";
 import { createHomebanner } from "../features/actions/HomebannerAction";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
 
@@ -39,17 +40,20 @@ const HomePage = () => {
       >
         {productsData?.map((el, id) => {
           return <><SwiperSlide className="w-full !h-[45rem]">
-            <section class="bg-white  h-full grid place-items-center">
-              <div class="grid gap-28 px-4 py-8 md:grid-cols-2">
+            <section class="bg-white  h-full flex justify-center items-start md:items-center">
+              <div class="grid gap-3 md:gap-28 px-4 py-8 md:grid-cols-2">
+                <div class="lg:mt-0  lg:grid bg-slate-100 p-3 grid place-items-center  h-full">
+                  <img src={el.banner} alt="mockup" class="md:size-[30rem]  size-[20rem] rounded" />
+                </div>
                 <div class="flex justify-center items-center  h-full">
-                  <div className="space-y-4">
-                    <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
+                  <div className="space-y-4 text-center md:text-left">
+                    <h1 class="max-w-2xl mb-4 text-3xl font-semibold uppercase tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
                       {el.title}
                     </h1>
 
-                    <a
-                      href="/productlist"
-                      class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
+                    <Link
+                      to="/productlist"
+                      class="inline-flex items-center justify-center py-2 px-3 md:px-5 md:py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
                     >
                       Our Products
                       <svg
@@ -64,19 +68,17 @@ const HomePage = () => {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                    </a>
-                    <a
-                      href="/aboutus"
-                      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
+                    </Link>
+                    <Link
+                      to="/about"
+                      class="inline-flex items-center justify-center py-2 px-3 md:px-5 md:py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
                     >
                       About us
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
-                <div class="hidden lg:mt-0  lg:grid bg-slate-100 p-3  place-items-center  h-full">
-                  <img src={el.banner} alt="mockup" class="size-[30rem] rounded" />
-                </div>
+
               </div>
             </section>
           </SwiperSlide></>
@@ -89,7 +91,7 @@ const HomePage = () => {
 
       </Swiper>
 
-      <section className="container mx-auto ">
+      <section className="container mx-auto p-2 ">
         <div className="text-center text-xl md:text-6xl font-semibold md:p-10">
           <h1 className="font-family:Raleway text-[#4b5563]">
             Welcome to PETHEEDS LLP

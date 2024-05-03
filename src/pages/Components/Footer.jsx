@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 const Footer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <footer className="w-full">
@@ -67,26 +72,25 @@ const Footer = () => {
                 PETHEEDS<span class="text-blue-600"> LLP</span>.
               </span> */}
               <a href="/">
-
-              <img
-              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-              className="w-[120px]"
-
-            />
+                <img
+                  src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+                  className="w-[120px]"
+                />
               </a>
-       
             </div>
             <div class="text-gray-500">
-            Petheads LLP is an animal healthcare company that specializes in the development, manufacturing, and marketing of quality finished veterinary formulations.
+              Petheads LLP is an animal healthcare company that specializes in
+              the development, manufacturing, and marketing of quality finished
+              veterinary formulations.
             </div>
           </div>
           <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">Address</div>
             <div class="text-gray-500">
-            
-            B4, North EX Mall, Sector-9 Rohini,<br />  
-            New Delhi – 110085<br />
-           
+              B4, North EX Mall, Sector-9 Rohini,
+              <br />
+              New Delhi – 110085
+              <br />
             </div>
           </div>
 
@@ -96,37 +100,37 @@ const Footer = () => {
             <nav aria-label="Footer Navigation" class="text-gray-500">
               <ul class="space-y-3">
                 <li>
-                  <a
+                  <Link
                     class="hover:text-blue-600 hover:underline"
-                    href="/privacy"
+                    to="/privacy"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a
+                  <Link
                     class="hover:text-blue-600 hover:underline"
-                    href="/productlist"
+                    to="/productlist"
                   >
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     class="hover:text-blue-600 hover:underline"
-                    href="/Booknow"
+                    to="/Booknow"
                   >
                     Book Appointment
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     class="hover:text-blue-600 hover:underline"
-                    href="/contact"
+                    to="/contact"
                   >
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -153,15 +157,22 @@ const Footer = () => {
 
         <div class="bg-gray-100">
           <div class="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
-            <div class=""><a href="https://www.pearlorganisation.com/">© 2024 Pearl Organisation  | All Rights Reserved</a></div>
             <div class="">
-              <a class="" href="">
+
+              <Link to="https://www.pearlorganisation.com/">
+                © 2024 Pearl Organisation | All Rights Reserved
+              </Link>
+            </div>
+
+            <div class="">
+              <Link class="" to="/privacy">
                 Privacy Policy
-              </a>
+              </Link>
               <span> | </span>
-              <a class="" href="#">
+
+              <Link class="" href="/privacy">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

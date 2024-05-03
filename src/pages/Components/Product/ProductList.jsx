@@ -96,7 +96,7 @@ export default function ProductList() {
 
       <div className="container mx-auto py-6 px-3">
         <div class="mb-6 flex items-center justify-between">
-          <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 dark:text-gray-400" data-id="5">Browse our collection of high-quality products.</p></div>
+          <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 " data-id="5">Browse our collection of high-quality products.</p></div>
 
         </div>
         <section

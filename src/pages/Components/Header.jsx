@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/actions/auth";
 
 const menuItems = [
   {
@@ -71,9 +72,8 @@ const ProfileDropDown = (props) => {
         </div>
       </div>
       <ul
-        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
-          state ? "" : "lg:hidden"
-        }`}
+        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? "" : "lg:hidden"
+          }`}
       >
         {navigation.map((item, idx) => (
           <li>
@@ -89,7 +89,7 @@ const ProfileDropDown = (props) => {
         <li>
           <button
             onClick={() => {
-              dispatch(userLogout());
+              dispatch(logout());
             }}
             className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5"
           >
@@ -119,13 +119,16 @@ const Header = () => {
 
   return (
     <>
-      <div className="relative w-full bg-white py-5 border">
+      <div className="fixed top-0 z-50 w-full bg-white py-5 border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="inline-flex items-center space-x-2">
-            <img
-              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-              className="w-[120px]"
-            />
+            <Link to="/">
+              <img
+                src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+                className="w-[120px]"
+              />
+            </Link>
+
             <span className="font-bold"></span>
           </div>
           <div className="hidden grow items-start lg:flex">
@@ -134,7 +137,7 @@ const Header = () => {
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                    className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
                   </Link>
@@ -149,16 +152,16 @@ const Header = () => {
               <button
                 type="button"
                 className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-               
+
                 onClick={handelnavigatelogin}
-                 
+
               >
                 Log In
               </button>
 
               <button
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none "
                 onClick={handelnavigatesignup}
               >
                 Sign Up
@@ -169,7 +172,7 @@ const Header = () => {
           <div className="flex gap-6 justify-center items-center md:pl-4">
             <Link
               to="/cart"
-              class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
             >
               <FaCartShopping />{" "}
               <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
@@ -182,11 +185,17 @@ const Header = () => {
           </div>
           {isMenuOpen && (
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
+
               <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="px-5 pb-6 pt-5">
                   <div className="flex items-center justify-between">
                     <div className="inline-flex items-center space-x-2">
-                      <span className="font-bold">Your Logo</span>
+                      <a href="/">
+                        <img
+                          src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
+                          className="w-[120px]"
+                        />
+                      </a>
                     </div>
                     <div className="-mr-2">
                       <button
@@ -208,12 +217,15 @@ const Header = () => {
                           href={item.href}
                           className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
                         >
+
                           <span className="ml-3 text-base font-medium text-gray-900">
                             {item.name}
                           </span>
+
                           <span>
                             <ChevronRight className="ml-3 h-4 w-4" />
                           </span>
+
                         </a>
                       ))}
                     </nav>
@@ -227,7 +239,7 @@ const Header = () => {
                     >
                       Log In
                     </button>
-                    
+
                     <button
                       type="button"
                       className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
