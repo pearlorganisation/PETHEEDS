@@ -39,7 +39,7 @@ const Blog = () => {
         }
       `}</style>
 
-      <div className="container mx-auto ">
+      <div className="container mx-auto pt-16">
         <div className="text-center p-5">
           <span className="text-xs font-semibold text-gray-500 uppercase">
             Our Blog

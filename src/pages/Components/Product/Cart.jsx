@@ -201,10 +201,7 @@ export function Cart() {
                     <span>Total price:</span>
                     <span>₹{totalPrice}</span>
                   </p>
-                  {/* <p class="flex justify-between text-sm font-medium text-white">
-                    <span>GST+: 18%</span>
-                    <span>₹55.00</span>
-                  </p> */}
+
                 </div>
               </div>
               <div class="relative mt-10 text-[#333333]">
@@ -233,7 +230,7 @@ export function Cart() {
         </div>
       ) : (
         <>
-          <div className="h-[80dvh]">
+          <div className="h-[80dvh] grid place-items-center">
             <img src={cart} className="" />
           </div>
 

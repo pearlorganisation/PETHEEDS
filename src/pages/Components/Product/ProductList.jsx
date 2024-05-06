@@ -62,7 +62,7 @@ export default function ProductList() {
 
 
   return (
-    <>
+    <div className="pt-14">
       {/* Your component content */}
       <style jsx>{`
         .custom-loader {
@@ -146,6 +146,6 @@ export default function ProductList() {
         </div>
       </div>
 
-    </>
+    </div>
   );
 }

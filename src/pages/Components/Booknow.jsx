@@ -43,7 +43,9 @@ const Booknow = () => {
       dispatch(clearAppointment())
     }
   }, [])
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
 
   const onSubmit = data => {
@@ -65,19 +67,19 @@ const Booknow = () => {
 
   return (
     <>
-      <div class="py-6 min-h-[90dvh] w-[80%] container mx-auto  grid place-items-center">
-        <div class="grid md:grid-cols-2 gap-3 h-full w-full ">
+      <div class="pt-10  min-h-[90dvh] w-[80%] container mx-auto  grid place-items-center">
+        <div class="grid md:grid-cols-2 gap-3  w-full ">
 
-          <div className="relative max-h-[85dvh] hidden md:block ">
-            <img className="h-full w-full" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
+          <div className="relative   hidden md:block ">
+            <img className="max-h-[85dvh] object-cover w-full" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
           </div>
-          <div class="w-full h-full grid place-items-center  rounded-lg bg-white p-5  lg:rounded-l-none ">
+          <div class="w-full min-h-[80dvh] grid place-items-center  rounded-lg bg-white p-5  lg:rounded-l-none ">
             <div className="w-full">
-              <h3 class="py-4 text-center text-2xl text-gray-800 ">
+              <h3 class=" text-center text-2xl text-gray-800 ">
                 Book Your Pet's Appointment
               </h3>
-              <form class="rounded bg-white  " onSubmit={handleSubmit(onSubmit)}>
-                <div class="mb-4">
+              <form class="rounded bg-white space-y-2  " onSubmit={handleSubmit(onSubmit)}>
+                <div class="">
                   <div class="mb-4 md:mb-0 ">
                     <label
                       class="mb-2 block text-sm font-bold text-gray-700 "
@@ -102,7 +104,7 @@ const Booknow = () => {
                   </div>
                 </div>
 
-                <div class="mb-4">
+                <div class="">
                   <label
                     class="mb-2 block text-sm font-bold text-gray-700 
                   "
@@ -125,7 +127,7 @@ const Booknow = () => {
                     </span>
                   )}
                 </div>
-                <div class="mb-4">
+                <div class="">
                   <label
                     class="mb-2 block text-sm font-bold text-gray-700 
                   "
@@ -152,7 +154,7 @@ const Booknow = () => {
                     </span>
                   )}
                 </div>
-                <div class="mb-4">
+                <div class="">
                   <label
                     class="mb-2 block text-sm font-bold text-gray-700 
                   "
@@ -195,7 +197,7 @@ const Booknow = () => {
                     </span>
                   )}
                 </div>
-                <div class="mb-4">
+                <div class="">
                   <label
                     class="mb-2 block text-sm font-bold text-gray-700 
                   "
@@ -218,47 +220,9 @@ const Booknow = () => {
                     </span>
                   )}
                 </div>
-                {/* <div class="mb-4">
-                <label
-                  class="mb-2 block text-sm font-bold text-gray-700 
-                  "
-                  for="email"
-                >
-                  {" "}
-                  Date{" "}
-                </label>
-                <Controller
-                  control={control}
-                  name="date"
-                  render={({ field }) => (
-                    <DatePicker
-                      {...field}
-                      selected={field.value}
-                      onChange={(date) => {
-                        field.onChange(date);
 
-                      }}
-                      dateFormat="dd/MM/yyyy"
-                      placeholderText="Choose Date"
-                      autoComplete="off"
-                      calendarClassName="text-red-500"
-                      className="focus:shadow-outline me-[200px] sm:me-[350px]  mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
-                      "
 
-                    />
-
-                  )}
-                  rules={{ required: true }}
-
-                />
-                {errors?.date && (
-                  <span className="text-red-500">
-                    Date is required
-                  </span>
-                )}
-              </div> */}
-
-                <div class="mb-4">
+                <div class="">
                   <label class="mb-2 block text-sm font-bold text-gray-700 
                 ">
                     {" "}

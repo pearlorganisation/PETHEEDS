@@ -29,7 +29,7 @@ const HomePage = () => {
   console.log(productsData, "datat")
 
   return (
-    <>
+    <div className="md:px-12 pt-6 md:pt-0 ">
       <Swiper
         spaceBetween={30}
         pagination={{
@@ -273,7 +273,8 @@ const HomePage = () => {
       <OurService />
       <Stats />
 
-      <div className=" max-w-screen-xl px-4 py-8 mx-auto">
+      {/* New In Store */}
+      {/* <div className=" max-w-screen-xl px-4 py-8 mx-auto">
         <h5 className=" font-bold text-2xl mb-4"> New In Store</h5>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
           <img
@@ -297,10 +298,10 @@ const HomePage = () => {
             alt="product"
           />
         </div>
-      </div>
+      </div> */}
       <Herosection />
       <Booking />
-    </>
+    </div>
   );
 };
 

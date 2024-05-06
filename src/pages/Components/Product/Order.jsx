@@ -11,7 +11,7 @@ const products = [
     discount: '5% Off',
     color: 'Orange',
     size: '8 UK',
-    imageSrc:'https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_8_f8bdf03e-8eb3-4487-a04a-3412bd61fe6f.jpg?v=1710935989'
+    imageSrc: 'https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_8_f8bdf03e-8eb3-4487-a04a-3412bd61fe6f.jpg?v=1710935989'
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const products = [
     color: 'White',
     leadTime: '3-4 weeks',
     size: '8 UK',
-    imageSrc:"https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_2_521cc2a4-d6db-4aaf-a0f2-7fe4a40e52a9.jpg?v=1710934438",
+    imageSrc: "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_2_521cc2a4-d6db-4aaf-a0f2-7fe4a40e52a9.jpg?v=1710934438",
   },
   {
     id: 3,
@@ -33,13 +33,13 @@ const products = [
     originalPrice: '₹999',
     discount: '78% off',
     color: 'Black',
-    imageSrc:"https://cdn.shopify.com/s/files/1/0565/8021/0861/files/image1482_878e65b0-42f6-4b73-97cf-e89d36df8ecb.png?v=1710395772",
+    imageSrc: "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/image1482_878e65b0-42f6-4b73-97cf-e89d36df8ecb.png?v=1710395772",
   },
 ]
 
 export const Order = () => {
   return (
-    <div className="mx-auto my-4 max-w-4xl md:my-6">
+    <div className="mx-auto my-4 max-w-4xl md:my-6 pt-16">
       <div className="overflow-hidden rounded-xl border border-gray-100 shadow">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Product List */}
