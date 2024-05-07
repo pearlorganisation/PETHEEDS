@@ -27,7 +27,7 @@ import NewInStore from "./NewInStore";
 
 export default function ProductList() {
   const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
-  const { categoryData } = useSelector((state) => state.category);
+
   const [limit, setLimit] = useState(4)
   const [page, setPage] = useState(1)
   const [price, setPrice] = useState({})
@@ -92,7 +92,7 @@ export default function ProductList() {
 
 
       <BrandSlider />
-      <CategorySlider data={categoryData} />
+      <CategorySlider />
 
       <div className="container mx-auto py-6 px-3">
         <div class="mb-6 flex items-center justify-between">

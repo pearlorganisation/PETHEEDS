@@ -13,19 +13,11 @@ import { Pagination } from 'swiper/modules';
 import { LiaAngleLeftSolid } from "react-icons/lia";
 import { LiaAngleRightSolid } from "react-icons/lia";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CategorySlider = ({ data }) => {
-    function getRandomColorHex() {
-        // Generate random values for red, green, and blue components
-        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
+    const { categoryData, isLoading } = useSelector((state) => state.category);
 
-        // Convert the RGB values to a hex string
-        const hex = "#" + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-
-        return hex;
-    }
 
     const swiperRef = useRef(null);
     const goNext = () => {
@@ -76,7 +68,14 @@ const CategorySlider = ({ data }) => {
                     >
 
                         {
-                            data?.map(item => {
+                            isLoading ? Array(6).fill(true).map(item => {
+                                return <div class="animate-pulse mx-12 shadow-md">
+                                    <div class="flex flex-col justify-center items-center cursor-pointer">
+                                        <div class="h-36 w-36 bg-gray-200 rounded"></div>
+                                        <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
+                                    </div>
+                                </div>
+                            }) : categoryData?.map(item => {
                                 return <SwiperSlide> <Link to={`/product?category=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center' src={item?.categoryImg} alt="" /> <div>{item?.title}</div> </Link> </SwiperSlide>
                             })
                         }

@@ -67,7 +67,14 @@ const BrandSlider = () => {
                     >
 
                         {
-                            brands?.map(item => {
+                            isLoading ? Array(6).fill(true).map(item => {
+                                return <div class="animate-pulse mx-12 shadow-md">
+                                    <div class="flex flex-col justify-center items-center cursor-pointer">
+                                        <div class="h-36 w-36 bg-gray-200 rounded"></div>
+                                        <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
+                                    </div>
+                                </div>
+                            }) : brands?.map(item => {
                                 return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center'
                                     src={item?.brandBanner?.path}
                                     // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
