@@ -38,7 +38,28 @@ const HomePage = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {productsData?.map((el, id) => {
+        {isLoading ? <div class="w-full h-[45rem] animate-pulse">
+          <section class="bg-white h-full flex justify-center items-start md:items-center">
+            <div class="grid gap-3 md:gap-28 px-4 py-8 md:grid-cols-2">
+              <div class="lg:mt-0 lg:grid bg-slate-100 p-3 grid place-items-center h-full">
+                <div class="md:size-[30rem] size-[20rem] rounded bg-gray-200"></div>
+              </div>
+              <div class="flex justify-center items-center h-full">
+                <div class="space-y-4 text-center md:text-left w-full">
+                  <div class="inline-flex w-full items-center justify-center py-2 px-3 md:px-5 md:py-3 mr-3 h-10 bg-gray-200 rounded-lg"></div>
+                  <div class="inline-flex w-[70%] items-center justify-center py-2 px-3 md:px-5 md:py-3 mr-3 h-10 bg-gray-200 rounded-lg"></div>
+
+                  <div class="inline-flex w-[90%] items-center justify-center py-2 px-3 md:px-5 md:py-3 mr-3 h-10 bg-gray-200 rounded-lg"></div>
+
+                  <div className="flex gap-4">
+                    <div class="inline-flex w-full items-center justify-center py-2 px-3 md:px-5 md:py-3 h-14 bg-gray-200 rounded-lg"></div>
+                    <div class="inline-flex w-[60%] items-center justify-center py-2 px-3 md:px-5 md:py-3 h-14 bg-gray-200 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div> : productsData?.map((el, id) => {
           return <><SwiperSlide className="w-full !h-[45rem]">
             <section class="bg-white  h-full flex justify-center items-start md:items-center">
               <div class="grid gap-3 md:gap-28 px-4 py-8 md:grid-cols-2">
