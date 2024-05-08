@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {generateSignupOTP } from "../../../features/actions/auth";
-import { storeEmailData } from "../../../features/slices/auth";
+import { clearReduxStoreData, storeEmailData } from "../../../features/slices/auth";
 import { ClipLoader } from "react-spinners";
 
 
@@ -11,7 +11,7 @@ export function  SignUp () {
   const {isLoading}= useSelector((state)=>state.auth)
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const {isOtpSentSuccessfully} = useSelector((state)=>state.auth)
+  const {isOtpSentSuccessfullySignup} = useSelector((state)=>state.auth)
   const {
     register,
     handleSubmit,
@@ -25,10 +25,15 @@ export function  SignUp () {
   }
 
   useEffect(()=>{
-    if(isOtpSentSuccessfully){
+    dispatch(clearReduxStoreData())  
+  },[])
+
+  useEffect(()=>{
+    if(isOtpSentSuccessfullySignup){
       navigate("/signupOtp")
     }
-  })
+    
+  },[isOtpSentSuccessfullySignup])
 
   return (
     <div className="max-w-lg mx-auto my-20 bg-white p-8 rounded-xl shadow shadow-slate-300 py-10 ">

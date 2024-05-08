@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { resetPassword } from '../../../features/actions/auth';
-import { clearOtpVerified } from '../../../features/slices/auth';
+
 import { ClipLoader } from 'react-spinners';
 
 
@@ -26,7 +26,6 @@ const {isPasswordReset,emailDataChangePassword,isLoading}= useSelector((state)=>
  
       };
       useEffect(()=>{
-        dispatch(clearOtpVerified())
         if(isPasswordReset){
           navigate("/login")
        }
@@ -105,8 +104,9 @@ const {isPasswordReset,emailDataChangePassword,isLoading}= useSelector((state)=>
               </button>
               <p className="text-center">
                 {" "}
+                
                 <a
-                  href="/signup"
+                  href="/login"
                   className="text-[#1D4ED8] font-medium inline-flex space-x-1 items-center"
                 >
                   <span>Back to Login </span>

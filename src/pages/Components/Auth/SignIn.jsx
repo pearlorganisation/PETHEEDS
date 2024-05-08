@@ -23,7 +23,7 @@ export function SignIn() {
 
     useEffect(()=>{
 dispatch(clearReduxStoreData())
-    },[dispatch])
+    },[])
 
   return (
     <section>

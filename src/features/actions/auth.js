@@ -79,6 +79,23 @@ export const verifyOTP = createAsyncThunk(
     }
   }
 );
+//verify Sign up OTP Api 
+export const signupVerifyOTP = createAsyncThunk(
+  "auth/signupVerifyOtp",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await instance.post("/mail/verifyOtp", payload, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 //reset Password
 export const resetPassword= createAsyncThunk(
   "auth/resetPassword",

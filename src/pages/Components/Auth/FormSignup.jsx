@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signUp } from "../../../features/actions/auth";
 import { ClipLoader } from "react-spinners";
-import { clearOtpVerified } from "../../../features/slices/auth";
+
 
 export function FormSignUp() {
 
@@ -26,9 +26,7 @@ export function FormSignUp() {
    
   }
   
-useEffect(()=>{
-    dispatch(clearOtpVerified())
-    if(userData?.status){
+useEffect(()=>{  if(userData?.status){
         navigate('/login')
       }
 },[navigate,userData])

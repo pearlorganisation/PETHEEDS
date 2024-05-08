@@ -10,6 +10,7 @@ import {
   verifyOTP,
   resetPassword,
   generateSignupOTP,
+  signupVerifyOTP,
 } from "../actions/auth";
 // -------------------------------------------------------------------------------------------
 
@@ -19,13 +20,16 @@ const initialState = {
   isSuccess: false,
   errorMessage: "",
   isOtpSentSuccessfully: false,
+  isOtpSentSuccessfullySignup: false,
   isLogInSuccess: false,
   isLogoutSuccess: false,
   isUserLoggedIn: false,
   loggedInUserData: {},
   isOtpVerified: false,
+  isOtpVerifiedSignup:false,
   emailDataChangePassword:"",
   isPasswordReset: false,
+  
  
   userData:[],
 };
@@ -83,13 +87,12 @@ const authSlice = createSlice({
       .addCase(generateSignupOTP.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
-        state.isOtpSentSuccessfully = false;
         state.errorMessage = "";
       })
       .addCase(generateSignupOTP.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.isOtpSentSuccessfully = true;
+        state.isOtpSentSuccessfullySignup = true;
         state.userData= action.payload.data;
         toast.success("OTP sent to your email", {
           position: "top-center",
@@ -98,7 +101,7 @@ const authSlice = createSlice({
       .addCase(generateSignupOTP.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
-        state.isOtpSentSuccessfully = false;
+        state.isOtpSentSuccessfullySignup = false;
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
           position: "top-center",
@@ -108,7 +111,6 @@ const authSlice = createSlice({
       .addCase(generateLoginOTP.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
-        state.isOtpSentSuccessfully = false;
         state.errorMessage = "";
       })
       .addCase(generateLoginOTP.fulfilled, (state, action) => {
@@ -129,11 +131,34 @@ const authSlice = createSlice({
           position: "top-center",
         });
       })
+      // signup verifyOtp
+      .addCase(signupVerifyOTP.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.errorMessage = "";
+        state.userData=""
+      })
+      .addCase(signupVerifyOTP.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isOtpVerifiedSignup= true;
+        toast.success("OTP Verified Successfully", {
+          position: "top-center",
+        })
+      })
+      .addCase(signupVerifyOTP.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isOtpVerifiedSignup=true;
+        state.errorMessage = action.payload;
+        toast.error(state?.errorMessage, {
+          position: "top-center",
+        });
+      })
       // verifyOtp
       .addCase(verifyOTP.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
-        state.isOtpVerified = false;
         state.errorMessage = "";
         state.userData=""
       })
@@ -196,6 +221,9 @@ const authSlice = createSlice({
         state.isUserLoggedIn = true;
         state.isLogInSuccess = true;
         state.userData= action.payload.data
+        toast.success("Login Successfully", {
+          position: "top-center",
+        });
       })
       .addCase(logIn.rejected, (state, action) => {
         state.isLoading = false;

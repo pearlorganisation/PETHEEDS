@@ -22,9 +22,12 @@ import ChangePassword from "./pages/Components/Auth/ChangePassword";
 import SignupOtp from "./pages/Components/Auth/SignupOtpVerification"
 import { Toaster } from "react-hot-toast";
 import { FormSignUp } from "./pages/Components/Auth/FormSignup";
+import { useSelector } from "react-redux";
 
 
 function App() {
+
+  const {isUserLoggedIn ,isOtpSentSuccessfully, isOtpVerified,isOtpVerifiedSignup,isOtpSentSuccessfullySignup} = useSelector((state)=>state.auth)
   return (
     <div>
       <Toaster />
@@ -44,11 +47,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/reset" element={<Reset/>}/>
-        <Route path="/otp" element={<Otpvarfication/>}/>
-        <Route path="/changePassword" element={<ChangePassword/>}/>
+        <Route path="/otp" element={!isUserLoggedIn && isOtpSentSuccessfully ? <Otpvarfication/>: <SignIn/>}/>
+        <Route path="/changePassword" element={!isUserLoggedIn && isOtpVerified ? <ChangePassword/> : <SignIn/>}/>
         <Route path="/contact" element={<Contactus/>}/>
-        <Route path="/signupOtp" element={<SignupOtp/>}/>
-        <Route path="/formSignup" element={<FormSignUp/>}/>
+        <Route path="/signupOtp" element={!isUserLoggedIn && isOtpSentSuccessfullySignup ? <SignupOtp/>: <SignUp/>}/>
+        <Route path="/formSignup" element={!isUserLoggedIn && isOtpVerifiedSignup ?<FormSignUp/>: <SignUp/>}/>
       </Routes>
       <Footer />
       <Toaster position="top-center" richColors />
