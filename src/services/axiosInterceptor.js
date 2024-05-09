@@ -9,8 +9,11 @@ export const injectStore = (_store) => {
 // Creating new axios instance
 export const instance = axios.create({
   withCredentials: true,
-  headers: { 'Content-Type': 'application/json' },
-  baseURL: "http://localhost:8000/api/v1/",
+  baseURL: `${
+    import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT
+      : import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION
+  }`,
 });
 
 instance.interceptors.request.use(

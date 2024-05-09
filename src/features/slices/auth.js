@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import toast from 'react-hot-toast';
 
 import {
   signUp,
   generateLoginOTP,
-
   logIn,
   logout,
   verifyOTP,
@@ -12,6 +10,7 @@ import {
   generateSignupOTP,
   signupVerifyOTP,
 } from "../actions/auth";
+import { toast } from "sonner";
 // -------------------------------------------------------------------------------------------
 
 // initialState -- initial state of authentication
@@ -19,6 +18,7 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   errorMessage: "",
+  isUserLoggedIn: false,
   isOtpSentSuccessfully: false,
   isOtpSentSuccessfullySignup: false,
   isLogInSuccess: false,
@@ -49,40 +49,42 @@ const authSlice = createSlice({
     clearLoginUpState: (state) => {
       state.isOtpSentSuccessfully = false;
     },
-    clearOtpVerified:(state)=>{
-      state.isOtpVerified= false;
+    clearOtpVerified: (state) => {
+      state.isOtpVerified = false;
     },
-    clearReduxStoreData: (state) => initialState,
-    storeEmailData:(state,action)=>{
-      state.emailDataChangePassword=action.payload}
+    clearReduxStoreData: (state) => {
+      return { isUserLoggedIn: state.isUserLoggedIn, ...initialState };
+    },
+    storeEmailData: (state, action) => {
+      state.emailDataChangePassword = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-    
-    // signUp lifecycle methods
-    .addCase(signUp.pending, (state, action) => {
-      state.isLoading = true;
-      state.errorMessage = "";
-      state.userSignedSuccess = false;
-      
-    })
-    .addCase(signUp.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.userSignedSuccess = true;
-     
-      state.userData = action.payload.data;
-      toast.success(`Sign Up Successfull.`, {
-        position: "top-center",
-      });
-    })
-    .addCase(signUp.rejected, (state, action) => {
-      state.isLoading = false;
-      state.userSignedSuccess = false;
-    
-      state.errorMessage = action.payload;
-      toast.error("Internal server error", { position: "top-center" });
-    })
-    
+
+      // signUp lifecycle methods
+      .addCase(signUp.pending, (state, action) => {
+        state.isLoading = true;
+        state.errorMessage = "";
+        state.userSignedSuccess = false;
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userSignedSuccess = true;
+
+        state.userData = action.payload.data;
+        toast.success(`Sign Up Successfull.`, {
+          position: "top-center",
+        });
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.isLoading = false;
+        state.userSignedSuccess = false;
+
+        state.errorMessage = action.payload;
+        toast.error("Internal server error", { position: "top-center" });
+      })
+
       // sendOtpForSignup cases
       .addCase(generateSignupOTP.pending, (state, action) => {
         state.isLoading = true;
@@ -96,7 +98,7 @@ const authSlice = createSlice({
         state.userData= action.payload.data;
         toast.success("OTP sent to your email", {
           position: "top-center",
-        })
+        });
       })
       .addCase(generateSignupOTP.rejected, (state, action) => {
         state.isLoading = false;
@@ -117,10 +119,10 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isOtpSentSuccessfully = true;
-        state.userData= action.payload.data;
+        state.userData = action.payload.data;
         toast.success("OTP sent to your email", {
           position: "top-center",
-        })
+        });
       })
       .addCase(generateLoginOTP.rejected, (state, action) => {
         state.isLoading = false;
@@ -160,20 +162,20 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.isSuccess = false;
         state.errorMessage = "";
-        state.userData=""
+        state.userData = "";
       })
       .addCase(verifyOTP.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.isOtpVerified= true;
+        state.isOtpVerified = true;
         toast.success("OTP Verified Successfully", {
           position: "top-center",
-        })
+        });
       })
       .addCase(verifyOTP.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
-        state.isOtpVerified = false;  
+        state.isOtpVerified = false;
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
           position: "top-center",
@@ -190,34 +192,33 @@ const authSlice = createSlice({
       .addCase(resetPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.isPasswordReset= true;
+        state.isPasswordReset = true;
         toast.success("Password Changed Successfully", {
           position: "top-center",
-        })
+        });
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
-        state.isPasswordReset = false;  
+        state.isPasswordReset = false;
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
           position: "top-center",
         });
       })
 
-// Login cases
+      // Login cases
       .addCase(logIn.pending, (state, action) => {
         state.isLoading = true;
         state.isSuccess = false;
-        state.isLogInSuccess = false; 
+        state.isLogInSuccess = false;
         state.isUserLoggedIn = false;
         state.errorMessage = "";
-    
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.loggedInUserData = action.payload;
+
         state.isUserLoggedIn = true;
         state.isLogInSuccess = true;
         state.userData= action.payload.data
@@ -253,7 +254,7 @@ const authSlice = createSlice({
         state.isUserLoggedIn = false;
         state.loggedInUserData = null;
         state.isOtpVerified = false;
-       
+
         state.isPasswordReset = false;
         localStorage.clear();
         sessionStorage.clear();
@@ -282,5 +283,5 @@ export const {
   clearSignUpState,
   clearLoginUpState,
   clearOtpVerified,
-  storeEmailData
+  storeEmailData,
 } = authSlice.actions;

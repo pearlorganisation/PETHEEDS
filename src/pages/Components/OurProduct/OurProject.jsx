@@ -38,6 +38,7 @@ const OurProject = () => {
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
 
+
             <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
               <h2 className="text-sm font-semibold tracking-widest text-gray-500">
                 Nike
@@ -77,7 +78,7 @@ const OurProject = () => {
                       <ChevronDown size={16} />
                     </span>
                   </div>
-                </div> 
+                </div>
               </div>
               <div className="flex items-center justify-between">
                 <span className="title-font text-xl font-bold text-gray-900">

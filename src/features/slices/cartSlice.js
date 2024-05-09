@@ -13,14 +13,21 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const isExist = state.cartData?.some(
-        (item) => item?.id === action.payload?.id
+        (item) => item?._id === action.payload?._id
       );
       if (isExist) {
         toast.error("Item Already Exist", {
           position: "top-center",
         });
       } else {
-        const existingData = [...current(state.cartData), action.payload];
+        const existingData = [
+          ...current(state.cartData),
+          {
+            items: 1,
+            totalSum: action?.payload?.totalPrice,
+            ...action.payload,
+          },
+        ];
         console.log(existingData);
         state.cartData = existingData;
         toast.success("Item Added", {
@@ -30,8 +37,12 @@ export const cartSlice = createSlice({
     },
     increaseItem: (state, action) => {
       const temp = current(state.cartData)?.map((item) => {
-        if (item?.id === action.payload?.id) {
-          return { ...item, items: item.items + 1 };
+        if (item?._id === action.payload?.id) {
+          const updatedData = { ...item, items: item.items + 1 };
+          return {
+            ...updatedData,
+            totalSum: updatedData?.items * updatedData?.totalPrice,
+          };
         }
         return item;
       });
@@ -41,10 +52,14 @@ export const cartSlice = createSlice({
     },
     decreaseItem: (state, action) => {
       const temp = current(state.cartData)?.map((item) => {
-        if (item?.id === action.payload?.id) {
-          return {
+        if (item?._id === action.payload?.id) {
+          const updatedData = {
             ...item,
             items: item.items > 1 ? item.items - 1 : item.items,
+          };
+          return {
+            ...updatedData,
+            totalSum: updatedData?.items * updatedData?.totalPrice,
           };
         }
         return item;
@@ -54,7 +69,7 @@ export const cartSlice = createSlice({
 
     removeItem: (state, action) => {
       const newitems = state.cartData.filter(
-        (item) => item.id != action.payload.id
+        (item) => item._id != action.payload.id
       );
       state.cartData = newitems;
     },

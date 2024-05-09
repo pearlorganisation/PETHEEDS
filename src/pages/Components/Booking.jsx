@@ -10,7 +10,7 @@ const Booking = () => {
   };
   return (
     <>
-      <div className="container border mx-auto grid md:grid-cols-3 place-items-center py-5 my-5 rounded">
+      <div className="container mx-auto grid md:grid-cols-3 place-items-center py-5 my-5 rounded">
         {/* Dog Image */}
         <div className="flex justify-center md:justify-start ">
           <img src={dog} alt="Dog" className=" w-[250px]" />
@@ -26,8 +26,7 @@ const Booking = () => {
             <button
               type="button"
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium 
-         rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600
-          dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         rounded-lg text-sm px-5 py-2.5 me-2 mb-2 "
               onClick={handleNavigate}
             >
               Make an appointment

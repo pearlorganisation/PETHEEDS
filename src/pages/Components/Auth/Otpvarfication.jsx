@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 const OtpVarfication = () => {
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate()
-  const {isOtpVerified,emailDataChangePassword,isLoading}= useSelector((state)=>state.auth)
+  const { isOtpVerified, emailDataChangePassword, isLoading } = useSelector((state) => state.auth)
 
-  const handleResendOtp= () =>{
-dispatch(generateLoginOTP(emailDataChangePassword))
+  const handleResendOtp = () => {
+    dispatch(generateLoginOTP(emailDataChangePassword))
   }
 
   const {
@@ -23,15 +23,15 @@ dispatch(generateLoginOTP(emailDataChangePassword))
   } = useForm();
 
   const onSubmit = (data) => {
-     // Extract OTP values from the data object
-  const otpValues = Object.values(data);
+    // Extract OTP values from the data object
+    const otpValues = Object.values(data);
 
-  // Concatenate OTP values into a single string
-  const otpString = otpValues.join('');
+    // Concatenate OTP values into a single string
+    const otpString = otpValues.join('');
 
-  
-  // Create a new object with the concatenated OTP string
-  const otpData = { otp: otpString,email:emailDataChangePassword.email };
+
+    // Create a new object with the concatenated OTP string
+    const otpData = { otp: otpString, email: emailDataChangePassword.email };
 
 
 
@@ -43,7 +43,7 @@ dispatch(generateLoginOTP(emailDataChangePassword))
  if(isOtpVerified){
       navigate("/changePassword")
     }
-  },[isOtpVerified])
+  }, [isOtpVerified])
 
   const fieldsRef = useRef()
 
@@ -106,12 +106,12 @@ dispatch(generateLoginOTP(emailDataChangePassword))
                   <div className="flex flex-col space-y-5">
                     <div>
                       <button
-                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#1D4ED8] border-none text-white text-sm shadow-sm"
+                        className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#4F46E5] border-none text-white text-sm shadow-sm"
                         type="submit"
                       >
-                       {isLoading ? (
-                <ClipLoader color="#c4c2c2" />
-              ) : (<>Verify Account</>)}
+                        {isLoading ? (
+                          <ClipLoader color="#c4c2c2" />
+                        ) : (<>Verify Account</>)}
                       </button>
                     </div>
 
@@ -124,7 +124,7 @@ dispatch(generateLoginOTP(emailDataChangePassword))
                       <button
                         className="flex flex-row items-center text-blue-600"
                         onClick={handleResendOtp}
-                        
+
                       >
                         Resend
                       </button>

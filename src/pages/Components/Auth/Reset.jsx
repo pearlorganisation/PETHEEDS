@@ -8,10 +8,10 @@ import { ClipLoader } from "react-spinners";
 
 
 const Reset = () => {
-  const {isLoading}= useSelector((state)=>state.auth)
+  const { isLoading } = useSelector((state) => state.auth)
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const {isOtpSentSuccessfully} = useSelector((state)=>state.auth)
+  const { isOtpSentSuccessfully } = useSelector((state) => state.auth)
   const {
     register,
     handleSubmit,
@@ -19,13 +19,13 @@ const Reset = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const {email}= data
-  dispatch(storeEmailData({email}))
-  dispatch(generateLoginOTP(data))
+    const { email } = data
+    dispatch(storeEmailData({ email }))
+    dispatch(generateLoginOTP(data))
   }
 
-  useEffect(()=>{
-    if(isOtpSentSuccessfully){
+  useEffect(() => {
+    if (isOtpSentSuccessfully) {
       navigate("/otp")
     }
   })
@@ -44,7 +44,7 @@ const Reset = () => {
             <input
               id="email"
               name="email"
-          
+
               className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
               placeholder="Enter email address"
               {...register("email", { required: true })}
@@ -54,7 +54,7 @@ const Reset = () => {
 
           <button
             className="w-full py-3 font-medium rounded-lg text-white bg-[#1D4ED8] hover:shadow inline-flex space-x-2 items-center justify-center"
-          
+
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -71,15 +71,15 @@ const Reset = () => {
               />
             </svg>
             {isLoading ? (
-                <ClipLoader color="#c4c2c2" />
-              ) : (  <span>Reset password</span>)}
-          
+              <ClipLoader color="#c4c2c2" />
+            ) : (<span>Reset password</span>)}
+
           </button>
           <p className="text-center">
             Not registered yet?{" "}
             <a
               href="/signup"
-              className="text-[#1D4ED8] font-medium inline-flex space-x-1 items-center"
+              className="text-[#4F46E5] font-medium inline-flex space-x-1 items-center"
             >
               <span>Register now </span>
               <span>

@@ -1,24 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-import {
-  createAppointment,
-} from '../actions/bookNow';
-import toast from 'react-hot-toast';
-
+import { createAppointment } from "../actions/bookNow";
+import { toast } from "sonner";
 
 const initialState = {
   isLoading: false,
-  errorMessage: '',
+  errorMessage: "",
   appointmentData: [],
 };
 
 const appointmentSlice = createSlice({
-  name: 'appointment',
+  name: "appointment",
   initialState,
   reducers: {
-    clearAppointment : (state,action)=>{
-      state.appointmentData = []
-    }
+    clearAppointment: (state, action) => {
+      state.appointmentData = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -31,7 +28,7 @@ const appointmentSlice = createSlice({
         state.appointmentData = action.payload.data;
         toast.success("Appointment Booked successfully", {
           position: "top-center",
-         }); 
+        });
       })
 
       .addCase(createAppointment.rejected, (state, action) => {
@@ -39,10 +36,10 @@ const appointmentSlice = createSlice({
 
         state.errorMessage = action.payload
           ? action.payload
-          : 'An error occurred while creating the Appointment.';
+          : "An error occurred while creating the Appointment.";
       });
   },
 });
 
 export default appointmentSlice.reducer;
-export const {clearAppointment} = appointmentSlice.actions;
+export const { clearAppointment } = appointmentSlice.actions;

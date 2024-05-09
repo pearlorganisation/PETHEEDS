@@ -1,167 +1,222 @@
 // import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleProduct } from "../../../features/actions/productActions";
+import { useEffect, useState } from "react";
+import { addToCart } from "../../../features/slices/cartSlice";
+import { IoStar } from "react-icons/io5";
+import { FaShoppingCart } from "react-icons/fa";
+import { GrGlobe } from "react-icons/gr";
+import { CiCreditCard1 } from "react-icons/ci";
+import QuantityWithPrice from "./QuantityWithPrice";
+
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
-// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
+// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png"; 
 
 const SingleProduct = () => {
-  const navigate = useNavigate();
+  const [productImage, setProductImage] = useState([])
+  const [image, setImage] = useState(0)
+  const dispatch = useDispatch();
+  const { singleProduct, isLoading } = useSelector((state) => state.products);
+  const [price, setPrice] = useState({})
 
-  const handelNavigate = () => {
-    navigate("/cart");
-  };
+  const navigate = useNavigate();
+  const { productId } = useParams();
+  console.log(productId, "product id hai");
+  useEffect(() => {
+    dispatch(getSingleProduct({ productId }));
+  }, []);
+  useEffect(() => {
+    if (singleProduct) {
+      const temp = singleProduct?.gallery?.map(item => item?.path)
+      const allImages = [singleProduct?.productImg?.path, ...temp]
+      console.log(allImages, "allImages")
+      setProductImage(allImages)
+    }
+  }, [singleProduct])
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 md:px-8 2xl:px-16">
-        <div className="pt-8">
-          <div className="flex items-center">
-            <ol className="flex w-full items-center overflow-hidden">
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a href="#">Home</a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  products
-                </a>
-              </li>
-              <li className="text-body mt-0.5 text-base">/</li>
-              <li className="text-body hover:text-heading px-2.5 text-sm transition duration-200 ease-in first:pl-0 last:pr-0">
-                <a className="capitalize" href="#">
-                  Aloevera Shampoo 250 ML
-                </a>
-              </li>
-            </ol>
-          </div>
+      <style jsx>{`
+        .custom-loader {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: conic-gradient(#0000 10%, #766df4);
+          -webkit-mask: radial-gradient(
+            farthest-side,
+            #0000 calc(100% - 8px),
+            #000 0
+          );
+          animation: s3 1s infinite linear;
+        }
+
+        @keyframes s3 {
+          to {
+            transform: rotate(1turn);
+          }
+        }
+      `}</style>
+      {isLoading ? (
+        <div className="grid place-content-center h-[50vh] w-full">
+          <div class="custom-loader"></div>
         </div>
-        <div className="block grid-cols-9 items-start gap-x-10 pb-10 pt-7 lg:grid lg:pb-14 xl:gap-x-14 2xl:pb-20">
-          <div className="col-span-5 grid grid-cols-2 gap-2.5">
-            {Array.from({ length: 4 }, (_, i) => (
-              <div
-                key={i}
-                className="col-span-1 transition duration-150 ease-in hover:opacity-90"
-              >
-                <img
-                  src={img1}
-                  alt="Nike Air Max 95 By You--0"
-                  className="w-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="col-span-4 pt-8 lg:pt-0">
-            <div className="mb-7 border-b border-gray-300 pb-7">
-              <h2 className="text-heading mb-3.5 text-lg font-bold md:text-xl lg:text-2xl 2xl:text-3xl">
-                Aloevera Shampoo 250 ML
-              </h2>
-              <p className="text-body text-sm leading-6  lg:text-base lg:leading-8">
-                Dry to Normal Hair | Coconut Oil, Extracts of Shikakai, Aloevera
-                & Areetha
-              </p>
-              <div className="mt-5 flex items-center ">
-                <div className="text-heading pr-2 text-base font-bold md:pr-0 md:text-xl lg:pr-2 lg:text-2xl 2xl:pr-0 2xl:text-4xl">
-                  ₹300
-                </div>
-                <span className="font-segoe pl-2 text-sm text-gray-400 line-through md:text-base lg:text-lg xl:text-xl">
-                  ₹400
-                </span>
-              </div>
-            </div>
-            <div className="border-b border-gray-300 pb-3  ">
-              <div className="mb-4">
-                <h3 className="text-heading mb-2.5 text-base font-semibold capitalize md:text-lg">
-                  size
-                </h3>
-                <ul className="colors -mr-3 flex flex-wrap">
-                  {["250ml"].map((size) => (
-                    <li
-                      key={size}
-                      className="text-heading mb-2 mr-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-11 md:text-sm "
+      ) : (
+        <section class="py-12 sm:py-16">
+          <div class="container mx-auto px-4 md:px-2">
+            <nav class="flex">
+              <ol role="list" class="flex items-center">
+                <li class="text-left">
+                  <div class="-m-1">
+                    <a
+                      href="#"
+                      class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                     >
-                      {size}
-                    </li>
-                  ))}
+                      {" "}
+                      Home{" "}
+                    </a>
+                  </div>
+                </li>
+
+                <li class="text-left">
+                  <div class="flex items-center">
+                    <span class="mx-2 text-gray-400">/</span>
+                    <div class="-m-1">
+                      <a
+                        href="#"
+                        class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
+                      >
+                        {" "}
+                        Products{" "}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="text-left">
+                  <div class="flex items-center">
+                    <span class="mx-2 text-gray-400">/</span>
+                    <div class="-m-1">
+                      <a
+                        href="#"
+                        class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
+                        aria-current="page"
+                      >
+                        {" "}
+                        Coffee{" "}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </nav>
+
+            <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
+              <div class="lg:col-span-3 lg:row-end-1">
+                <div class="lg:flex  space-y-4 lg:space-y-0 lg:items-start">
+                  <div class="lg:order-2 lg:ml-5 ">
+                    <div class="max-w-xl overflow-hidden rounded-lg border shadow-lg">
+                      <img
+                        class="h-[25rem] w-full max-w-full object-cover"
+                        src={productImage[image]}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
+                    <div class="flex flex-row gap-3 items-start lg:flex-col">
+                      {productImage?.map((el, ind) => {
+                        return (
+                          <button
+                            type="button"
+                            onClick={() => { setImage(ind) }}
+                            class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg ring  ring-blue-100 text-center"
+                          >
+                            <img
+                              class="h-full w-full object-cover"
+                              src={el}
+                              alt=""
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
+                <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
+                  {singleProduct?.productName}
+                </h1>
+
+                <div class="mt-5 flex items-center">
+                  <div class="flex items-center gap-1">
+                    <IoStar className="text-yellow-400" />
+                    <IoStar className="text-yellow-400" />
+                    <IoStar className="text-yellow-400" />
+                    <IoStar className="text-yellow-400" />
+                    <IoStar className="text-yellow-400" />
+
+                  </div>
+                  <p class="ml-2 text-sm font-medium text-gray-500">
+                    1,209 Reviews
+                  </p>
+                </div>
+
+                <div class="lg:col-span-3">
+                  <h1 className="text text-xl font-semibold py-2">
+                    Discription
+                  </h1>
+                  <p className="line-clamp-5">{singleProduct?.description}</p>
+                </div>
+
+                <div class="flex  flex-col">
+                  <div className="flex items-center">
+                    <QuantityWithPrice item={singleProduct} price={price} setPrice={setPrice} />
+
+                  </div>
+
+
+                </div>
+
+                <div class="mt-10 flex  items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispatch(addToCart({ ...singleProduct, ...price }));
+                    }}
+                    class="inline-flex gap-2 w-full sm:w-auto items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]"
+                  >
+                    <FaShoppingCart />
+                    Add to cart
+                  </button>
+                </div>
+
+                <ul class="mt-8 space-y-2">
+                  <li class="flex gap-1 items-center text-left text-sm font-medium text-gray-600">
+                    <GrGlobe />
+                    Free shipping worldwide
+                  </li>
+
+                  <li class="flex gap-1 items-center text-left text-sm font-medium text-gray-600">
+                    <CiCreditCard1 />
+                    Cancel Anytime
+                  </li>
                 </ul>
               </div>
             </div>
-            <div className="space-s-4 3xl:pr-48 flex items-center gap-2 border-b border-gray-300 py-8  md:pr-32 lg:pr-12 2xl:pr-32">
-              <button
-                type="button"
-                className="h-11 w-full rounded-md bg-[#1D4ED8] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                onClick={handelNavigate}
-              >
-                Add to Cart
-              </button>
-            </div>
-            <div className="py-6 ">
-              <ul className="space-y-5 pb-1 text-sm">
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    SKU:
-                  </span>
-                  N/A
-                </li>
-                <li>
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Category:
-                  </span>
-                  <a
-                    className="hover:text-heading transition hover:underline"
-                    href="#"
-                  >
-                    kids
-                  </a>
-                </li>
-                <li className="productTags">
-                  <span className="text-heading inline-block pr-2 font-semibold">
-                    Tags:
-                  </span>
-                  <a
-                    className="hover:text-heading inline-block pr-1.5 transition last:pr-0 hover:underline"
-                    href="#"
-                  >
-                    Sneakers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="shadow-sm ">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Product Details
-                </h2>
-                <div className="relative flex h-4 w-4 flex-shrink-0 items-center justify-center">
-                  <div className="bg-heading h-0.5 w-full rounded-sm" />
-                  <div className="bg-heading absolute bottom-0 h-full w-0.5 origin-bottom scale-0 transform rounded-sm transition-transform duration-500 ease-in-out" />
-                </div>
-              </header>
-              <div>
-                <div className="pb-6 text-sm leading-7 text-gray-600 md:pb-7">
-                  Our Customer Experience Team is available 7 days a week and we
-                  offer 2 ways to get in contact.Email and Chat . We try to
-                  reply quickly, so you need not to wait too long for a
-                  response!.
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Additional Information
-                </h2>
-              </header>
-            </div>
-            <div className="">
-              <header className="flex cursor-pointer items-center justify-between border-t border-gray-300 py-5 transition-colors md:py-6">
-                <h2 className="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg">
-                  Customer Reviews
-                </h2>
-              </header>
-            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      )}
     </>
   );
 };

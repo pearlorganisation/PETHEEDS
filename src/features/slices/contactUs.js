@@ -1,23 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-
-import toast from 'react-hot-toast';
-import { createContactUs } from '../actions/contactUs';
-
+import { createContactUs } from "../actions/contactUs";
+import { toast } from "sonner";
 
 const initialState = {
   isLoading: false,
-  errorMessage: '',
+  errorMessage: "",
   contactUsData: [],
 };
 
 const contactUsSlice = createSlice({
-  name: 'contactUs',
+  name: "contactUs",
   initialState,
   reducers: {
-    clearcontactUs : (state,action)=>{
-      state.contactUsData = []
-    }
+    clearcontactUs: (state, action) => {
+      state.contactUsData = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -30,7 +28,7 @@ const contactUsSlice = createSlice({
         state.contactUsData = action.payload.data;
         toast.success("contactUs Booked successfully", {
           position: "top-center",
-         }); 
+        });
       })
 
       .addCase(createContactUs.rejected, (state, action) => {
@@ -38,10 +36,10 @@ const contactUsSlice = createSlice({
 
         state.errorMessage = action.payload
           ? action.payload
-          : 'An error occurred while creating the contactUs.';
+          : "An error occurred while creating the contactUs.";
       });
   },
 });
 
 export default contactUsSlice.reducer;
-export const {clearcontactUs} = contactUsSlice.actions;
+export const { clearcontactUs } = contactUsSlice.actions;

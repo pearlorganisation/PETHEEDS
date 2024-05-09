@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { clearLoginUpState } from "../../../features/slices/auth";
 import { ClipLoader } from "react-spinners";
 
-const SignupOtp = () => {
-  const dispatch =useDispatch();
+const SignupOtpVerification = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const {isOtpVerifiedSignup,emailDataChangePassword,isLoading}= useSelector((state)=>state.auth)
 
-  const handleResendOtp= () =>{
-dispatch(generateSignupOTP(emailDataChangePassword))
+  const handleResendOtp = () => {
+    dispatch(generateSignupOTP(emailDataChangePassword))
   }
 
   const {
@@ -23,11 +23,11 @@ dispatch(generateSignupOTP(emailDataChangePassword))
   } = useForm();
 
   const onSubmit = (data) => {
-     // Extract OTP values from the data object
-  const otpValues = Object.values(data);
+    // Extract OTP values from the data object
+    const otpValues = Object.values(data);
 
-  // Concatenate OTP values into a single string
-  const otpString = otpValues.join('');
+    // Concatenate OTP values into a single string
+    const otpString = otpValues.join('');
 
   
   // Create a new object with the concatenated OTP string
@@ -111,9 +111,9 @@ const handleBack = () => {
                         className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-[#1D4ED8] border-none text-white text-sm shadow-sm"
                         type="submit"
                       >
-                       {isLoading ? (
-                <ClipLoader color="#c4c2c2" />
-              ) : (<>Verify Email</>)}
+                        {isLoading ? (
+                          <ClipLoader color="#c4c2c2" />
+                        ) : (<>Verify Email</>)}
                       </button>
                     </div>
 
@@ -164,4 +164,4 @@ const handleBack = () => {
   );
 };
 
-export default SignupOtp;
+export default SignupOtpVerification;
