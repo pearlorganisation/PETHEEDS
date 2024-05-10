@@ -18,14 +18,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { createHomebanner } from "../features/actions/HomebannerAction";
 
 const HomePage = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(createHomebanner())
-  }, [])
+    dispatch(createHomebanner());
+  }, []);
 
-  const { isLoading, productsData } = useSelector((state) => state.HomeBanner)
-  console.log(productsData, "datat")
+  const { isLoading, productsData } = useSelector((state) => state.HomeBanner);
+  console.log(productsData, "datat");
 
   return (
     <>
@@ -38,55 +37,57 @@ const HomePage = () => {
         className="mySwiper"
       >
         {productsData?.map((el, id) => {
-          return <><SwiperSlide className="w-full !h-[45rem]">
-            <section class="bg-white  h-full grid place-items-center">
-              <div class="grid gap-28 px-4 py-8 md:grid-cols-2">
-                <div class="flex justify-center items-center  h-full">
-                  <div className="space-y-4">
-                    <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
-                      {el.title}
-                    </h1>
+          return (
+            <>
+              <SwiperSlide className="w-full !h-[45rem]">
+                <section class="bg-white  h-full grid place-items-center">
+                  <div class="grid gap-28 px-4 py-8 md:grid-cols-2">
+                    <div class="flex justify-center items-center  h-full">
+                      <div className="space-y-4">
+                        <h1 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
+                          {el?.title}
+                        </h1>
 
-                    <a
-                      href="/productlist"
-                      class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
-                    >
-                      Our Products
-                      <svg
-                        class="w-5 h-5 ml-2 -mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                    </a>
-                    <a
-                      href="/about"
-                      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
-                    >
-                      About us
-                    </a>
+                        <a
+                          href="/productlist"
+                          class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
+                        >
+                          Our Products
+                          <svg
+                            class="w-5 h-5 ml-2 -mr-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </a>
+                        <a
+                          href="/about"
+                          class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
+                        >
+                          About us
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="hidden lg:mt-0  lg:grid bg-slate-100 p-3  place-items-center  h-full">
+                      <img
+                        src={el?.banner}
+                        alt="mockup"
+                        class="size-[30rem] rounded"
+                      />
+                    </div>
                   </div>
-                </div>
-
-                <div class="hidden lg:mt-0  lg:grid bg-slate-100 p-3  place-items-center  h-full">
-                  <img src={el.banner} alt="mockup" class="size-[30rem] rounded" />
-                </div>
-              </div>
-            </section>
-          </SwiperSlide></>
-
-
-
-        },)}
-
-
-
+                </section>
+              </SwiperSlide>
+            </>
+          );
+        })}
       </Swiper>
 
       <section className="container mx-auto ">
@@ -95,7 +96,7 @@ const HomePage = () => {
             Welcome to PETHEEDS LLP
           </h1>
         </div>
-        <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563]">
+        <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563] ">
           <p>
             Established in 2021, PETHEEDS is dedicated to enhancing the health
             and well-being of pets through advanced nutraceutical solutions. As

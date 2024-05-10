@@ -13,14 +13,14 @@ import QuantityWithPrice from "./QuantityWithPrice";
 
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
-// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png"; 
+// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
 
 const SingleProduct = () => {
-  const [productImage, setProductImage] = useState([])
-  const [image, setImage] = useState(0)
+  const [productImage, setProductImage] = useState([]);
+  const [image, setImage] = useState(0);
   const dispatch = useDispatch();
   const { singleProduct, isLoading } = useSelector((state) => state.products);
-  const [price, setPrice] = useState({})
+  const [price, setPrice] = useState({});
 
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -30,15 +30,15 @@ const SingleProduct = () => {
   }, []);
   useEffect(() => {
     if (singleProduct) {
-      const temp = singleProduct?.gallery?.map(item => item?.path)
-      const allImages = [singleProduct?.productImg?.path, ...temp]
-      console.log(allImages, "allImages")
-      setProductImage(allImages)
+      const temp = singleProduct?.gallery?.map((item) => item?.path);
+      const allImages = [singleProduct?.productImg?.path, ...temp];
+      console.log(allImages, "allImages");
+      setProductImage(allImages);
     }
-  }, [singleProduct])
+  }, [singleProduct]);
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }, [])
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>
@@ -135,7 +135,9 @@ const SingleProduct = () => {
                         return (
                           <button
                             type="button"
-                            onClick={() => { setImage(ind) }}
+                            onClick={() => {
+                              setImage(ind);
+                            }}
                             class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg ring  ring-blue-100 text-center"
                           >
                             <img
@@ -163,7 +165,6 @@ const SingleProduct = () => {
                     <IoStar className="text-yellow-400" />
                     <IoStar className="text-yellow-400" />
                     <IoStar className="text-yellow-400" />
-
                   </div>
                   <p class="ml-2 text-sm font-medium text-gray-500">
                     1,209 Reviews
@@ -179,16 +180,15 @@ const SingleProduct = () => {
 
                 <div class="flex  flex-col">
                   <div className="flex items-center">
-                    <QuantityWithPrice item={singleProduct} price={price} setPrice={setPrice} />
-
+                    <QuantityWithPrice
+                      item={singleProduct}
+                      price={price}
+                      setPrice={setPrice}
+                    />
                   </div>
-
-
                 </div>
 
                 <div class="mt-10 flex  items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
-
-
                   <button
                     type="button"
                     onClick={() => {

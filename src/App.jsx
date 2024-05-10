@@ -35,6 +35,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
 import Invoice from "./pages/Components/Product/Invoice";
 import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
+import ProfilePage from "./pages/Components/ProfilePage";
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
         <Route path="/formSignup" element={<FormSignUp />} />
         <Route path="/invoice" element={<Invoice/>} />
         <Route path="/privacy" element={<PrivacyPolicy/>} />
+        <Route path="/profile" element={<ProfilePage/>} />
 
 
       </Routes>
