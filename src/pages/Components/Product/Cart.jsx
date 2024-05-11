@@ -36,7 +36,7 @@ export function Cart() {
   };
 
   return (
-    <div className="mx-auto container px-5 lg:px-32 ">
+    <div className="mx-auto container pt-12 px-5 lg:px-32 ">
       {cartData.length > 0 ? (
         <div className="mx-auto  py-8 ">
           <h1 className="text-3xl border-b-2 pb-3 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -57,7 +57,7 @@ export function Cart() {
                       <div class="shrink-0">
                         <img
                           class="h-24 w-24 max-w-full rounded-lg object-cover"
-                          src={product?.productImg?.path}
+                          src={product?.productImg}
                           alt=""
                         />
                       </div>
@@ -171,7 +171,7 @@ export function Cart() {
                       <li class="flex justify-between">
                         <div class="inline-flex">
                           <img
-                            src={item?.productImg?.path}
+                            src={item?.productImg}
                             alt=""
                             class="size-16"
                           />

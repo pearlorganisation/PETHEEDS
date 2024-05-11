@@ -67,7 +67,7 @@ const SingleProduct = () => {
           <div class="custom-loader"></div>
         </div>
       ) : (
-        <section class="py-12 sm:py-16">
+        <section class="py-12 sm:py-[6rem]">
           <div class="container mx-auto px-4 md:px-2">
             <nav class="flex">
               <ol role="list" class="flex items-center">

@@ -9,7 +9,7 @@ const BlogDetails = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
   return (
-    <article className=" mt-4 min-h-[90vh] rounded-md duration-300 hover:shadow-sm container mx-auto py-12">
+    <article className=" mt-10 min-h-[90vh] rounded-md duration-300 hover:shadow-sm container mx-auto py-12">
       <div className="grid  gap-3 w-[70%] mx-auto">
         <img
           src={`${state?.banner}`}
