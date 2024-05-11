@@ -36,11 +36,12 @@ import { Route, Routes } from "react-router-dom";
 import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
 import Invoice from "./pages/Components/Product/Invoice";
 import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
+import ProfilePage from "./pages/Components/ProfilePage";
 
 
 function App() {
 
-  const {isUserLoggedIn ,isOtpSentSuccessfully, isOtpVerified,isOtpVerifiedSignup,isOtpSentSuccessfullySignup} = useSelector((state)=>state.auth)
+  const { isUserLoggedIn, isOtpSentSuccessfully, isOtpVerified, isOtpVerifiedSignup, isOtpSentSuccessfullySignup } = useSelector((state) => state.auth)
   return (
     <div className="pt-16">
       <Toaster />
@@ -62,12 +63,12 @@ function App() {
         <Route path="contact" element={<Contactus />} />
 
         <Route path="/signup" element={<SignUp />} />
-<Route path="/login" element={<SignIn />} />
-<Route path="/reset" element={<Reset/>}/>
-<Route path="/otp" element={!isUserLoggedIn && isOtpSentSuccessfully ? <Otpvarfication/>: <SignIn/>}/>
-<Route path="/changePassword" element={!isUserLoggedIn && isOtpVerified ? <ChangePassword/> : <SignIn/>}/>
-<Route path="/signupOtp" element={!isUserLoggedIn && isOtpSentSuccessfullySignup ? <SignupOtp/>: <SignUp/>}/>
-<Route path="/formSignup" element={!isUserLoggedIn && isOtpVerifiedSignup ?<FormSignUp/>: <SignUp/>}/>
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/reset" element={<Reset />} />
+        <Route path="/otp" element={!isUserLoggedIn && isOtpSentSuccessfully ? <Otpvarfication /> : <SignIn />} />
+        <Route path="/changePassword" element={!isUserLoggedIn && isOtpVerified ? <ChangePassword /> : <SignIn />} />
+        <Route path="/signupOtp" element={!isUserLoggedIn && isOtpSentSuccessfullySignup ? <SignupOtp /> : <SignUp />} />
+        <Route path="/formSignup" element={!isUserLoggedIn && isOtpVerifiedSignup ? <FormSignUp /> : <SignUp />} />
 
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />

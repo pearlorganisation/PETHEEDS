@@ -19,14 +19,13 @@ import { createHomebanner } from "../features/actions/HomebannerAction";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(createHomebanner())
-  }, [])
+    dispatch(createHomebanner());
+  }, []);
 
-  const { isLoading, productsData } = useSelector((state) => state.HomeBanner)
-  console.log(productsData, "datat")
+  const { isLoading, productsData } = useSelector((state) => state.HomeBanner);
+  console.log(productsData, "datat");
 
   return (
     <div className="md:px-12 pt-6 md:pt-0 ">
@@ -118,7 +117,7 @@ const HomePage = () => {
             Welcome to PETHEEDS LLP
           </h1>
         </div>
-        <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563]">
+        <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563] ">
           <p>
             Established in 2021, PETHEEDS is dedicated to enhancing the health
             and well-being of pets through advanced nutraceutical solutions. As

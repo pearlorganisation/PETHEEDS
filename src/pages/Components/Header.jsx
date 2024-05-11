@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/actions/auth";
+import logo from "../../images/petheedslogo.jpg";
 
 const menuItems = [
   {
@@ -43,7 +44,7 @@ const ProfileDropDown = (props) => {
 
   const navigation = [
     { title: "Dashboard", path: "javascript:void(0)" },
-    { title: "Profile", path: "javascript:void(0)" },
+    { title: "Profile", path: "/profile" },
   ];
 
   useEffect(() => {
@@ -124,8 +125,8 @@ const Header = () => {
           <div className="inline-flex items-center space-x-2">
             <Link to="/">
               <img
-                src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-                className="w-[120px]"
+                src={logo}
+                className="w-[70px]"
               />
             </Link>
 

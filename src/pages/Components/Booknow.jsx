@@ -4,41 +4,43 @@ import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 import { createAppointment } from "../../features/actions/bookNow";
-import Select from 'react-select'
+import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getAllSubjects } from "../../features/actions/subject";
 import { clearAppointment } from "../../features/slices/bookNow";
 
-
-
-
 const Booknow = () => {
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }, [])
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { appointmentData, isLoading } = useSelector((state) => state.appointment)
-  const { subjectData } = useSelector((state) => state.subject)
+  const { appointmentData, isLoading } = useSelector(
+    (state) => state.appointment
+  );
+  const { subjectData } = useSelector((state) => state.subject);
 
-  const { register, handleSubmit, formState: { errors }, control, } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm();
 
   useEffect(() => {
-    dispatch(getAllSubjects())
-
-  }, [getAllSubjects])
+    dispatch(getAllSubjects());
+  }, [getAllSubjects]);
 
   useEffect(() => {
     if (appointmentData?.status) {
-      navigate("/")
+      navigate("/");
     }
   }, [appointmentData]);
 
   useEffect(() => {
-
     return () => {
       dispatch(clearAppointment())
     }
@@ -51,19 +53,17 @@ const Booknow = () => {
   const onSubmit = data => {
     console.log("data", data)
     const { name, email, date, subject, message, phoneNumber } = data;
-    const subjectValue = subject ? subject.value : '';
+    const subjectValue = subject ? subject.value : "";
     const postData = {
       name,
       email,
       phoneNumber,
       date,
       subject: subjectValue,
-      message
-
+      message,
     };
-    dispatch(createAppointment(postData))
-  }
-
+    dispatch(createAppointment(postData));
+  };
 
   return (
     <>
