@@ -76,7 +76,7 @@ const BrandSlider = () => {
                                 </div>
                             }) : brands?.map(item => {
                                 return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center'
-                                    src={item?.brandBanner?.path}
+                                    src={item?.brandBanner}
                                     // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
                                     alt="product" /> <div>{item?.title}</div> </Link> </SwiperSlide>
                             })

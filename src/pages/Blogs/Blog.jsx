@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBlog } from "../../features/actions/blogAction";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
+
 const Blog = () => {
   const { blogData, isLoading } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Blog = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
-
+  //  Hello
   return (
     <>
       <style jsx>{`
