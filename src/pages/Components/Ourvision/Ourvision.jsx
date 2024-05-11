@@ -1,5 +1,7 @@
 import React from "react";
-
+import { RxEyeOpen } from "react-icons/rx";
+import { GoGoal } from "react-icons/go";
+import { FaHandHoldingHeart } from "react-icons/fa";
 const Ourvision = () => {
   <style jsx>{`
     @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
@@ -31,7 +33,8 @@ const Ourvision = () => {
               ></div>
 
               <div className="relative flex items-center justify-center flex-shrink-0 w-16 h-16 bg-white rounded-full shadow text-[#e54e1b] font-medium">
-                <img src="https://petheeds.in/wp-content/uploads/2019/06/mission-1.png" />
+                {/* <img src="https://petheeds.in/wp-content/uploads/2019/06/mission-1.png" /> */}
+                <RxEyeOpen />
               </div>
               <div class="ml-6">
                 <h1 className="text-2xl md;text-4xl font-medium">Our vision</h1>
@@ -53,7 +56,8 @@ const Ourvision = () => {
               ></div>
 
               <div class="relative flex items-center justify-center flex-shrink-0 w-16 h-16 bg-white rounded-full shadow text-[#e54e1b] font-medium">
-                <img src="https://petheeds.in/wp-content/uploads/2019/06/mission1-1.png" />
+                {/* <img src="https://petheeds.in/wp-content/uploads/2019/06/mission1-1.png" /> */}
+                <GoGoal />
               </div>
               <div class="ml-6">
                 <h1 className="text-2xl md;text-4xl font-medium">
@@ -76,7 +80,8 @@ const Ourvision = () => {
               ></div>
 
               <div class="relative flex items-center justify-center flex-shrink-0 w-16 h-16 bg-white rounded-full shadow text-[#e54e1b] font-medium">
-                <img src="https://petheeds.in/wp-content/uploads/2019/06/values-1.png" />
+                {/* <img src="https://petheeds.in/wp-content/uploads/2019/06/values-1.png" /> */}
+                <FaHandHoldingHeart />
               </div>
               <div class="ml-6">
                 <h1 className="text-2xl md;text-4xl font-medium">Our Values</h1>
