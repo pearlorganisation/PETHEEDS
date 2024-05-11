@@ -30,8 +30,8 @@ const SingleProduct = () => {
   }, []);
   useEffect(() => {
     if (singleProduct) {
-      const temp = singleProduct?.gallery?.map(item => item?.path)
-      const allImages = [singleProduct?.productImg?.path, ...temp]
+      const temp = singleProduct?.gallery?.map(item => item)
+      const allImages = [singleProduct?.productImg, ...temp]
       console.log(allImages, "allImages")
       setProductImage(allImages)
     }

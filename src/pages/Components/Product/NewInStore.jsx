@@ -57,7 +57,8 @@ const NewInStore = () => {
                             <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500">
                                 {
                                     item?.map(d => {
-                                        return <Link to={`/singleproduct/${d?._id}`}>
+                                        return <Link
+                                            className="w-[742px] h-[197px]" to={`/singleproduct/${d?._id}`}>
 
                                             <img
                                                 // src={d?.productBanner?.path}
