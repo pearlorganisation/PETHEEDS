@@ -35,7 +35,7 @@ instance.interceptors.response.use(
     // Do something with response error
     let loggedInUserEmail = store.getState()?.auth?.loggedInUserData?.email;
     let originalRequest = error.config;
-
+console.log(error)
     if (
       error.response.status === 401 ||
       (error.response.status === 403 && !originalRequest._retry)
@@ -52,7 +52,7 @@ instance.interceptors.response.use(
           );
           return instance(originalRequest);
         } else {
-          errorMessage = 'Unauthorized Access';
+          errorMessage = error?.response?.data?.message
           return Promise.reject(errorMessage);
         }
       } catch (error) {

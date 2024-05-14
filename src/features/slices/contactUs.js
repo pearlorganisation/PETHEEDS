@@ -33,10 +33,10 @@ const contactUsSlice = createSlice({
 
       .addCase(createContactUs.rejected, (state, action) => {
         state.isLoading = false;
-
         state.errorMessage = action.payload
-          ? action.payload
-          : "An error occurred while creating the contactUs.";
+        ? action.payload
+        : "An error occurred while creating the contactUs.";
+        toast.error(action?.payload || "Something went wrong");
       });
   },
 });
