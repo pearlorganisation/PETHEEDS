@@ -71,11 +71,11 @@ const Booknow = () => {
         <div class="grid md:grid-cols-2 gap-3  w-full ">
 
           <div className="relative   hidden md:block ">
-            <img className="max-h-[85dvh] object-cover w-full" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
+            <img className=" object-cover h-[95%] w-[80%]" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
           </div>
-          <div class="w-full min-h-[80dvh] grid place-items-center  rounded-lg bg-white p-5  lg:rounded-l-none ">
+          <div class="w-full  grid place-items-center  rounded-lg bg-white pt-4 md:p-5  lg:rounded-l-none ">
             <div className="w-full">
-              <h3 class=" text-center text-2xl text-gray-800 ">
+              <h3 class=" text-center text-2xl text-gray-800 mb-5">
                 Book Your Pet's Appointment
               </h3>
               <form class="rounded bg-white space-y-2  " onSubmit={handleSubmit(onSubmit)}>
@@ -104,7 +104,7 @@ const Booknow = () => {
                   </div>
                 </div>
 
-                <div class="">
+                <div class=" ">
                   <label
                     class="mb-2 block text-sm font-bold text-gray-700 
                   "
@@ -212,7 +212,7 @@ const Booknow = () => {
                   "
                     id="date"
                     type="date"
-                    placeholder="Date"
+                    
                   />
                   {errors.date && (
                     <span className="text-red-500">
