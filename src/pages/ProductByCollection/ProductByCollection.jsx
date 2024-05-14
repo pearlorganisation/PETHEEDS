@@ -59,7 +59,7 @@ const ProductByCollection = () => {
                             <div class="w-80 bg-white  shadow-md rounded-md p-3 space-y-3">
                                 <Link to={`/singleproduct/${el?._id}`}>
                                     <img
-                                        src={el?.productImg?.path}
+                                        src={el?.productImg}
                                         alt="Product"
                                         class="h-80 w-full object-cover rounded-t-xl"
                                     />
