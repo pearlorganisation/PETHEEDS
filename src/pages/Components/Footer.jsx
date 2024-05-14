@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../../images/petheedslogo.jpg";
 const Footer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -73,8 +74,8 @@ const Footer = () => {
               </span> */}
               <a href="/">
                 <img
-                  src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-                  className="w-[120px]"
+                  src={logo}
+                  className="w-[60px]"
                 />
               </a>
             </div>

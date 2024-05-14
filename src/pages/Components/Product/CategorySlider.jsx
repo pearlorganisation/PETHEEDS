@@ -76,7 +76,7 @@ const CategorySlider = ({ data }) => {
                                     </div>
                                 </div>
                             }) : categoryData?.map(item => {
-                                return <SwiperSlide> <Link to={`/product?category=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center' src={item?.categoryImg} alt="" /> <div>{item?.title}</div> </Link> </SwiperSlide>
+                                return <SwiperSlide> <Link to={`/product?category=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className=' h-[220px]  object-center' src={item?.categoryImg} alt="" /> <div>{item?.title}</div> </Link> </SwiperSlide>
                             })
                         }
 
