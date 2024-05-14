@@ -151,7 +151,7 @@ const authSlice = createSlice({
       .addCase(signupVerifyOTP.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
-        state.isOtpVerifiedSignup=true;
+        state.isOtpVerifiedSignup=false;
         state.errorMessage = action.payload;
         toast.error(state?.errorMessage, {
           position: "top-center",
