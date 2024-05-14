@@ -58,11 +58,11 @@ const NewInStore = () => {
                                 {
                                     item?.map(d => {
                                         return <Link
-                                            className="w-[742px] h-[197px]" to={`/singleproduct/${d?._id}`}>
+                                            className="" to={`/singleproduct/${d?._id}`}>
 
                                             <img
-                                                // src={d?.productBanner?.path}
-                                                src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942"
+                                                src={d?.productBanner}
+                                            // src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942"
                                             />
                                         </Link>
                                     })
