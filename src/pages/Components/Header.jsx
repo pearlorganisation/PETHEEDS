@@ -126,7 +126,7 @@ const Header = () => {
             <Link to="/">
               <img
                 src={logo}
-                className="w-[70px]"
+                className="w-[50px]"
               />
             </Link>
 

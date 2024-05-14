@@ -54,7 +54,7 @@ const BrandSlider = () => {
                                 spaceBetween: 20,
                             },
                             768: {
-                                slidesPerView: 4,
+                                slidesPerView: 3,
                                 spaceBetween: 40,
                             },
                             1024: {
@@ -63,7 +63,7 @@ const BrandSlider = () => {
                             },
                         }}
                         modules={[]}
-                        className="flex"
+                        className="flex "
                     >
 
                         {
@@ -75,7 +75,7 @@ const BrandSlider = () => {
                                     </div>
                                 </div>
                             }) : brands?.map(item => {
-                                return <SwiperSlide> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className='size-36  object-center'
+                                return <SwiperSlide className=''> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer w-full'><img className=' h-[220px]  object-center'
                                     src={item?.brandBanner}
                                     // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
                                     alt="product" /> <div>{item?.title}</div> </Link> </SwiperSlide>

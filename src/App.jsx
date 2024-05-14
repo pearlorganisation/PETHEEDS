@@ -67,7 +67,8 @@ function App() {
         <Route path="/reset" element={<Reset />} />
         <Route path="/otp" element={!isUserLoggedIn && isOtpSentSuccessfully ? <Otpvarfication /> : <SignIn />} />
         <Route path="/changePassword" element={!isUserLoggedIn && isOtpVerified ? <ChangePassword /> : <SignIn />} />
-        <Route path="/signupOtp" element={!isUserLoggedIn && isOtpSentSuccessfullySignup ? <SignupOtp /> : <SignUp />} />
+        <Route path="/signupOtp" element={!isUserLoggedIn && isOtpSentSuccessfullySignup ? <SignupOtpVerification /> : <SignUp />} />
+
         <Route path="/formSignup" element={!isUserLoggedIn && isOtpVerifiedSignup ? <FormSignUp /> : <SignUp />} />
 
         <Route path="addnewaddress" element={<NewAddress />} />
