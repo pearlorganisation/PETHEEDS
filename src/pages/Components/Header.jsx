@@ -5,6 +5,8 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/actions/auth";
 import logo from "../../images/petheedslogo.jpg";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
 
 const menuItems = [
   {
@@ -68,19 +70,19 @@ const ProfileDropDown = (props) => {
           />
         </button>
         <div className="lg:hidden">
-          <span className="block">Micheal John</span>
-          <span className="block text-sm text-gray-500">john@gmail.com</span>
+          <span className="hidden md:block">Micheal John</span>
+          <span className="hidden md:block text-sm text-gray-500">john@gmail.com</span>
         </div>
       </div>
       <ul
-        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? "" : "lg:hidden"
+        className={`bg-white top-12 right-0 mt-5 space-y-5 absolute border rounded-md text-sm w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? "" : "hidden"
           }`}
       >
         {navigation.map((item, idx) => (
           <li>
             <Link
               key={idx}
-              className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+              className="block text-gray-600 lg:hover:bg-gray-50 p-2.5"
               to={item.path}
             >
               {item.title}
@@ -92,7 +94,7 @@ const ProfileDropDown = (props) => {
             onClick={() => {
               dispatch(logout());
             }}
-            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 lg:p-2.5"
+            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 p-2.5"
           >
             Log out
           </button>
@@ -132,12 +134,13 @@ const Header = () => {
 
             <span className="font-bold"></span>
           </div>
-          <div className="hidden grow items-start lg:flex">
-            <ul className="ml-12 inline-flex space-x-8">
+          <div className={` grow items-start lg:flex absolute left-0  top-[6.8rem] md:static z-50  w-full`}>
+            <ul className={` md:flex px-4 bg-blue-200/50 md:bg-transparent backdrop-blur  ${isMenuOpen ? ' min-h-[86vh] py-2' : 'min-h-[0vh] py-0'} md:h-auto md:min-h-[0] overflow-hidden transition-all  md:flex-row flex flex-col justify-around md:space-x-8   `}>
               {menuItems.map((item) => (
-                <li key={item.name}>
+                <li key={item.name} className="h-0 md:h-auto">
                   <Link
                     to={item.href}
+                    onClick={toggleMenu}
                     className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
                   >
                     {item.name}
@@ -146,45 +149,47 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          {isUserLoggedIn ? (
-            <ProfileDropDown class="hidden lg:block" />
-          ) : (
-            <div className="hidden space-x-2 lg:flex justify-center items-center">
-              <button
-                type="button"
-                className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          <div className="flex gap-2">
+            {isUserLoggedIn ? (
+              <ProfileDropDown class="" />
+            ) : (
+              <div className="hidden space-x-2 lg:flex justify-center items-center">
+                <button
+                  type="button"
+                  className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 
-                onClick={handelnavigatelogin}
+                  onClick={handelnavigatelogin}
 
+                >
+                  Log In
+                </button>
+
+                <button
+                  type="button"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none "
+                  onClick={handelnavigatesignup}
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
+
+            <div className="flex gap-6 justify-center items-center md:pl-4">
+              <Link
+                to="/cart"
+                class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
               >
-                Log In
-              </button>
-
-              <button
-                type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none "
-                onClick={handelnavigatesignup}
-              >
-                Sign Up
-              </button>
-            </div>
-          )}
-
-          <div className="flex gap-6 justify-center items-center md:pl-4">
-            <Link
-              to="/cart"
-              class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
-            >
-              <FaCartShopping />{" "}
-              <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
-                {cartData?.length || 0}
-              </span>
-            </Link>
-            <div className="lg:hidden">
-              <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+                <FaCartShopping />{" "}
+                <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
+                  {cartData?.length || 0}
+                </span>
+              </Link>
+              <div className="lg:hidden">
+                <button type="button" onClick={toggleMenu}> {isMenuOpen ? <RxCross2 size={30} /> : <RxHamburgerMenu size={30} />}  </button>
+              </div>
             </div>
           </div>
-          {isMenuOpen && (
+          {/* {isMenuOpen && (
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
 
               <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
@@ -252,7 +257,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </>
