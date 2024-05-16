@@ -119,7 +119,7 @@ const HomePage = () => {
         </div>
         <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563] ">
           <p>
-            Established in 2021, PETHEEDS is dedicated to enhancing the health
+            Established in 2024, PETHEEDS is dedicated to enhancing the health
             and well-being of pets through advanced nutraceutical solutions. As
             passionate advocates for animal health, we understand the profound
             bond between pets and their owners. That&#39;s why we&#39;re
@@ -293,32 +293,7 @@ const HomePage = () => {
       <OurService />
       <Stats />
 
-      {/* New In Store */}
-      {/* <div className=" max-w-screen-xl px-4 py-8 mx-auto">
-        <h5 className=" font-bold text-2xl mb-4"> New In Store</h5>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/trooper-mob.webp?v=1709213470"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/perfumes-web-65d736c804b8e.webp?v=1708612074"
-            alt="product"
-          />
-          <img
-            className="rounded-md"
-            src="https://headsupfortails.com/cdn/shop/files/calcium-web-65d736c93dd5d.webp?v=1708611971"
-            alt="product"
-          />
-        </div>
-      </div> */}
+
       <Herosection />
       <Booking />
     </div>

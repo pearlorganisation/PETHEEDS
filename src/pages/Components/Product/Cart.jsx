@@ -211,7 +211,7 @@ export function Cart() {
                   <span class="font-light">(International)</span>
                 </p>
                 <p class="mt-1 text-sm font-semibold text-[#333333]">
-                  support@nanohair.com <span class="font-light">(Email)</span>
+                  petheedsllp@gmail.com <span class="font-light">(Email)</span>
                 </p>
                 <p class="mt-2 text-xs font-medium text-[#333333]">
                   Call us now for payment related issues

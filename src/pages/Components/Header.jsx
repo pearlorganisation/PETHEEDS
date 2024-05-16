@@ -122,13 +122,13 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-0 z-50 w-full bg-white py-5 border">
+      <div className="fixed top-0 z-50 w-full bg-white py-2 border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="inline-flex items-center space-x-2">
             <Link to="/">
               <img
-                src={logo}
-                className="w-[50px]"
+                src='./android-chrome-192x192.png'
+                className="h-16 w-[5rem]"
               />
             </Link>
 
