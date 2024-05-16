@@ -206,12 +206,12 @@ export function Cart() {
               </div>
               <div class="relative mt-10 text-[#333333]">
                 <h3 class="mb-5 text-lg font-bold text-[#333333]">Support</h3>
-                <p class="text-sm font-semibold">
-                  +01 653 235 211{" "}
+                <a href="tel:9650185800" class="text-sm font-semibold">
+                  +91 96501 85800{" "}
                   <span class="font-light">(International)</span>
-                </p>
+                </a>
                 <p class="mt-1 text-sm font-semibold text-[#333333]">
-                  petheedsllp@gmail.com <span class="font-light">(Email)</span>
+                  info@petheeds.in <span class="font-light">(Email)</span>
                 </p>
                 <p class="mt-2 text-xs font-medium text-[#333333]">
                   Call us now for payment related issues

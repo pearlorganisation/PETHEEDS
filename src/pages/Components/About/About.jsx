@@ -14,7 +14,7 @@ const About = () => {
             </h1>
             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Welcome to PETHEEDS, where passion for pets meets a commitment to
-              excellence in veterinary healthcare. Established in 2020, PETHEEDS
+              excellence in veterinary healthcare. Established in 2024, PETHEEDS
               was founded with a clear purpose: to redefine the standard of pet
               wellness through innovative nutraceutical products and unwavering
               dedication to our furry companions..
