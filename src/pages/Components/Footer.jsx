@@ -9,78 +9,20 @@ const Footer = () => {
 
   return (
     <>
-      {/* <footer className="w-full">
-        <div className="mx-auto flex max-w-6xl flex-col items-start space-x-8 md:flex-row">
-          <div className="w-full px-4 md:w-1/2 lg:px-0">
-            <h1 className="max-w-sm text-3xl font-bold">
-              Subscribe to our Newsletter
-            </h1>
-            <form
-              action=""
-              className="mt-4 inline-flex w-full items-center md:w-3/4"
-            >
-              <input
-                className="flex h-10 w-full rounded-md border border-black/20 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                type="email"
-                placeholder="Email"
-              ></input>
-              <button
-                type="button"
-                className="ml-4 rounded-full bg-black px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </form>
-          </div>
-          <div className="mt-8 grid grid-cols-2 gap-6 md:mt-0 lg:w-2/4 lg:grid-cols-3">
-            {Array.from({ length: 2 }).map((_, i) => (
-              <div key={i} className="mb-8 lg:mb-0">
-                <p className="mb-6 text-lg font-semibold text-gray-700 ">
-                  Company
-                </p>
-                <ul className="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
-                  <li>About us</li>
-                  <li>Company History</li>
-                  <li>Our Team</li>
-                  <li>Our Vision</li>
-                  <li>Press Release</li>
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-        <hr className="my-4" />
-        <div className="mx-auto max-w-6xl items-center justify-between px-4 md:flex lg:px-0">
-          <div className="inline-flex items-center">
-            <img
-              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-              className="w-[120px]"
-            />
-          </div>
-          <div className="mt-4 md:mt-0">
-            <p className="text-sm font-medium text-gray-500">
-              © 2024 pearlorg. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer> */}
-
       <footer class="bg-gray-50">
         <div class="mx-auto grid max-w-screen-xl gap-y-8 gap-x-12 px-4 py-10 md:grid-cols-2 xl:grid-cols-4 xl:px-10">
           <div class="max-w-sm">
             <div class="mb-6 flex h-12 items-center space-x-2">
-              {/* <span class="text-2xl font-bold">
-                PETHEEDS<span class="text-blue-600"> LLP</span>.
-              </span> */}
-              <a href="/">
+
+              <Link to="/">
                 <img
                   src={logo}
                   className="w-[60px]"
                 />
-              </a>
+              </Link>
             </div>
             <div class="text-gray-500">
-              Petheads LLP is an animal healthcare company that specializes in
+              Petheeds LLP is an animal healthcare company that specializes in
               the development, manufacturing, and marketing of quality finished
               veterinary formulations.
             </div>
@@ -106,6 +48,15 @@ const Footer = () => {
                     to="/privacy"
                   >
                     Privacy Policy
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    class="hover:text-blue-600 hover:underline"
+                    to="/refund_policy"
+                  >
+                    Refund Policy
                   </Link>
                 </li>
 
@@ -160,7 +111,7 @@ const Footer = () => {
           <div class="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
             <div class="">
               <Link to="https://www.pearlorganisation.com/">
-                © 2024 Pearl Organisation | All Rights Reserved
+                © 2024 Petheeds LLP | All Rights Reserved
               </Link>
             </div>
 
@@ -170,7 +121,7 @@ const Footer = () => {
               </Link>
               <span> | </span>
 
-              <Link class="" href="/privacy">
+              <Link class="" to="/terms">
                 Terms of Service
               </Link>
             </div>
