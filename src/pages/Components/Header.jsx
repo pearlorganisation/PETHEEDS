@@ -128,65 +128,76 @@ const Header = () => {
             <Link to="/">
               <img
                 src='./android-chrome-192x192.png'
-                className="h-16 w-[5rem]"
+                className="h-12 w-12 md:h-16 md:w-[5rem]"
               />
             </Link>
 
             <span className="font-bold"></span>
           </div>
-          <div className={` grow items-start lg:flex absolute left-0  top-[6.8rem] md:static z-50  w-full`}>
-            <ul className={` md:flex px-4 bg-blue-200/50 md:bg-transparent backdrop-blur  ${isMenuOpen ? ' min-h-[86vh] py-2' : 'min-h-[0vh] py-0'} md:h-auto md:min-h-[0] overflow-hidden transition-all  md:flex-row flex flex-col justify-around md:space-x-8   `}>
-              {menuItems.map((item) => (
-                <li key={item.name} className="h-0 md:h-auto">
-                  <Link
-                    to={item.href}
-                    onClick={toggleMenu}
-                    className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+          <div className={` grow items-start  lg:flex absolute left-0  top-[0] md:static z-50 h-auto  w-full`}>
+
+            <ul className={` flex flex-col py-3 md:py-0 md:flex-row md:justify-between w-full h-full bg-blue-200/50 md:bg-transparent backdrop-blur ${isMenuOpen ? ' translate-x-0 ' : 'translate-x-[-100%]'} md:translate-x-0 h-screen md:h-auto  transition-all     `}>
+              <div className=" md:flex py-2  md:flex-row flex flex-col h-full px-4 md:pl-4 md:items-center  justify-around md:space-x-8">
+                {menuItems.map((item) => (
+                  <li key={item.name} className="">
+                    <Link
+                      to={item.href}
+                      onClick={toggleMenu}
+                      className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+
+                ))}
+              </div>
+              <div className="flex gap-2">
+                {isUserLoggedIn ? (
+                  <ProfileDropDown class="" />
+                ) : (
+                  <div className="min-w-44 space-x-2 flex justify-center items-center">
+                    <button
+                      type="button"
+                      className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+
+                      onClick={handelnavigatelogin}
+
+                    >
+                      Log In
+                    </button>
+
+                    <button
+                      type="button"
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none "
+                      onClick={handelnavigatesignup}
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                )}
+
+              </div>
+
             </ul>
+
+
           </div>
-          <div className="flex gap-2">
-            {isUserLoggedIn ? (
-              <ProfileDropDown class="" />
-            ) : (
-              <div className="min-w-44 space-x-2 flex justify-center items-center">
-                <button
-                  type="button"
-                  className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 
-                  onClick={handelnavigatelogin}
 
-                >
-                  Log In
-                </button>
 
-                <button
-                  type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none "
-                  onClick={handelnavigatesignup}
-                >
-                  Sign Up
-                </button>
-              </div>
-            )}
+          <div className="flex gap-6 justify-center items-center md:pl-4 z-50">
 
-            <div className="flex gap-6 justify-center items-center md:pl-4">
-              <Link
-                to="/cart"
-                class="text-white relative bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
-              >
-                <FaCartShopping />{" "}
-                <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
-                  {cartData?.length || 0}
-                </span>
-              </Link>
-              <div className="lg:hidden">
-                <button type="button" onClick={toggleMenu}> {isMenuOpen ? <RxCross2 size={30} /> : <RxHamburgerMenu size={30} />}  </button>
-              </div>
+            <Link
+              to="/cart"
+              class="text-white relative  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
+            >
+              <FaCartShopping />{" "}
+              <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
+                {cartData?.length || 0}
+              </span>
+            </Link>
+            <div className="lg:hidden ">
+              <button type="button" onClick={toggleMenu}> {isMenuOpen ? <RxCross2 size={30} /> : <RxHamburgerMenu size={30} />}  </button>
             </div>
           </div>
           {/* {isMenuOpen && (
