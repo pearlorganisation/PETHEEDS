@@ -128,15 +128,15 @@ const Header = () => {
             <Link to="/">
               <img
                 src='./android-chrome-192x192.png'
-                className="h-12 w-12 md:h-16 md:w-[5rem]"
+                className="size-14 md:size-[5rem]"
               />
             </Link>
 
             <span className="font-bold"></span>
           </div>
-          <div className={` grow items-start  lg:flex absolute left-0  top-[0] md:static z-50 h-auto  w-full`}>
+          <div className={`  items-start  lg:flex absolute left-0  top-0 md:static z-50  bg-blue-200/50 md:bg-transparent backdrop-blur ${isMenuOpen ? ' translate-x-0 ' : 'translate-x-[-100%]'} md:translate-x-0 h-screen md:h-auto  transition-al w-full`}>
 
-            <ul className={` flex flex-col py-3 md:py-0 md:flex-row md:justify-between w-full h-full bg-blue-200/50 md:bg-transparent backdrop-blur ${isMenuOpen ? ' translate-x-0 ' : 'translate-x-[-100%]'} md:translate-x-0 h-screen md:h-auto  transition-all     `}>
+            <ul className={` flex flex-col py-3 md:py-0 md:flex-row md:justify-between w-full h-full l     `}>
               <div className=" md:flex py-2  md:flex-row flex flex-col h-full px-4 md:pl-4 md:items-center  justify-around md:space-x-8">
                 {menuItems.map((item) => (
                   <li key={item.name} className="">
@@ -185,18 +185,18 @@ const Header = () => {
 
 
 
-          <div className="flex gap-6 justify-center items-center md:pl-4 z-50">
+          <div className="flex gap-6 justify-center items-center md:pl-4 ">
 
             <Link
               to="/cart"
-              class="text-white relative  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
+              class="text-white relative -z-10  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium text-lg rounded-lg px-5 py-2.5    focus:outline-none "
             >
               <FaCartShopping />{" "}
               <span className="absolute w-[1.5rem] h-[1.5rem] shadow-md text-xs grid place-items-center bg-white text-blue-500 rounded-full top-[-0.5rem] right-[-0.5rem]">
                 {cartData?.length || 0}
               </span>
             </Link>
-            <div className="lg:hidden ">
+            <div className="lg:hidden z-50 ">
               <button type="button" onClick={toggleMenu}> {isMenuOpen ? <RxCross2 size={30} /> : <RxHamburgerMenu size={30} />}  </button>
             </div>
           </div>
