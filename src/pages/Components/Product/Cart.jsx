@@ -9,7 +9,7 @@ import {
   removeItem,
 } from "../../../features/slices/cartSlice";
 // import cart from "/cart.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
 export function Cart() {
   const [count, setcount] = useState(1);
@@ -218,7 +218,7 @@ export function Cart() {
                 </p>
               </div>
               <div class="relative mt-10 flex">
-                <button type="button" class="text-white bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</button>
+                <Link to='/checkout' type="button" class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
 
 
 
