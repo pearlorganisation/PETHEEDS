@@ -34,6 +34,9 @@ export function SignUp() {
     }
 
   }, [isOtpSentSuccessfullySignup])
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
   return (
     <section className="min-h-screen grid place-items-center">

@@ -37,6 +37,8 @@ import ProductByCollection from "./pages/ProductByCollection/ProductByCollection
 import Invoice from "./pages/Components/Product/Invoice";
 import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
 import ProfilePage from "./pages/Components/ProfilePage";
+import RefundPolicy from "./pages/Components/RefundPolicy/RefundPolicy";
+import TermsOfUse from "./pages/Components/TermsOfUse/TermsOfUse";
 
 
 function App() {
@@ -76,6 +78,8 @@ function App() {
         <Route path="order" element={<Order />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/refund_policy" element={<RefundPolicy />} />
+        <Route path="/terms" element={<TermsOfUse />} />
 
 
       </Routes>

@@ -35,15 +35,18 @@ export function SignIn() {
   useEffect(() => {
     dispatch(clearReduxStoreData())
   }, [])
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
 
   return (
     <section className="min-h-screen grid place-items-center">
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 w-full">
         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-          <div className="mb-2 flex justify-center">
+          <div className="mb-2 grid place-items-center">
             <img
-              src="https://petheeds.in/wp-content/uploads/2022/09/Petheeds-Aspect-Logo-1.png"
-              className="w-[150px]"
+              src="./android-chrome-192x192.png"
+              className="h-28"
             />
           </div>
           <h2 className="text-center text-2xl font-bold leading-tight text-black">
