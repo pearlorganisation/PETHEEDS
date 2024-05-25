@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa6";
 const CheckoutPage = () => {
     const { cartData } = useSelector((state) => state.cart);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [step, setStep] = useState(3)
+    const [step, setStep] = useState(2)
     useEffect(() => {
         console.log(
             "cartData::",
