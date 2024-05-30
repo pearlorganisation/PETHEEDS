@@ -11,51 +11,14 @@ import {
 // import cart from "/cart.png";
 import { Link, useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
-import axios from "axios";
 export function Cart() {
 
   
   const [count, setcount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const { cartData } = useSelector((state) => state.cart);
+  
   const dispatch = useDispatch();
-
-  const handlePayment = async(amount) =>{
-
-const { data:{
-  bookingId,order
-} } = await axios.post("http://localhost:8000/api/v1/booking/bookingOrder",{
-  amount
-})
-// console.log(window)
-
-const options = {
- key: import.meta.env.VITE_APP_RAZORPAY_KEY,
- amount: order.amount,
- currency: "INR",
- name: "PETHEEDS",
- description: "PETHEEDS",
- image:
-   "./apple-touch-icon.png",
- order_id: order.id,
-
- callback_url: `http://localhost:8000/api/v1/booking/verifyOrder/${bookingId}`,
-
- modal: {
-   ondismiss: function () {
-     alert("Payment window closed without completing the payment.");
-   }
- },
-
- theme: {
-   color: "#121212",
- },
-};
-
-const razorpayInstance = new window.Razorpay(options);
-razorpayInstance.open();
-
- }
 
 
   useEffect(() => {
@@ -260,7 +223,10 @@ razorpayInstance.open();
                 </p>
               </div>
               <div class="relative mt-10 flex">
-                <Link  type="button" onClick={()=>handlePayment(totalPrice)} class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
+                <Link
+                to='/checkout/1'
+             
+                 class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
 
 
 
