@@ -178,7 +178,7 @@ const SingleProduct = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      dispatch(addToCart({ ...singleProduct, ...price }));
+                      dispatch(addToCart({ ...singleProduct, productId: singleProduct?._id, ...price }));
                     }}
                     class="inline-flex gap-2 w-full sm:w-auto items-center justify-center rounded-md border-2 border-transparent bg-[#1D4ED8] bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-[#1D4ED8]"
                   >

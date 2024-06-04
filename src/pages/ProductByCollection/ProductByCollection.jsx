@@ -24,7 +24,7 @@ const ProductByCollection = () => {
 
     return (
         <div className='min-h-screen container mx-auto'>
-            <div class="container mx-auto px-4 py-12 md:px-6 lg:px-8">
+            <div class="container mx-auto px-4 py-20 md:px-6 lg:px-8">
                 <div class="mb-6 flex items-center justify-between">
                     <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 " data-id="5">Browse our collection of high-quality products.</p></div>
                     <div class="flex items-center space-x-4">

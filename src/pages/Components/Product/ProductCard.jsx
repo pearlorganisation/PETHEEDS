@@ -8,6 +8,7 @@ const ProductCard = ({ el }) => {
     const [price, setPrice] = useState({})
     const dispatch = useDispatch();
 
+
     return (
         <div class="w-full bg-white shadow-md rounded-md p-1 md:p-3 space-y-3">
             <Link to={`/singleproduct/${el?._id}`}>
@@ -38,7 +39,7 @@ const ProductCard = ({ el }) => {
                 <button
                     className="w-full rounded-md border bg-blue-700 text-sm hover:bg-blue-800 h-9 flex items-center justify-center gap-3 px-4 my-2" // Added margin here
                     onClick={() => {
-                        dispatch(addToCart({ ...el, ...price }));
+                        dispatch(addToCart({ productId: el?._id, ...el, ...price }));
                     }}
                 >
                     <div className="mr-1">
