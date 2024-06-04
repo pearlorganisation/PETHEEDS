@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
@@ -49,6 +49,7 @@ const Booknow = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
 
+  const [currentDate] = useState(new Date().toISOString().split("T")[0]);
 
   const onSubmit = data => {
     console.log("data", data)
@@ -207,16 +208,20 @@ const Booknow = () => {
                     Date{" "}
                   </label>
                   <input
-                    {...register("date", { required: "email is required" })}
+                    {...register("date", { required: "Date is Required", validate: (value) =>
+                      value && value >= currentDate || "Date must be current date or greater than current date"
+               
+
+                     })}
                     class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
                   "
                     id="date"
                     type="date"
                     
                   />
-                  {errors.date && (
+                  {errors?.date && (
                     <span className="text-red-500">
-                      Date is required
+                    { errors?.date?.message}
                     </span>
                   )}
                 </div>

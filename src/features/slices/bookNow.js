@@ -33,10 +33,12 @@ const appointmentSlice = createSlice({
 
       .addCase(createAppointment.rejected, (state, action) => {
         state.isLoading = false;
-
         state.errorMessage = action.payload
-          ? action.payload
-          : "An error occurred while creating the Appointment.";
+        ? action.payload
+        : "An error occurred while creating the Appointment.";
+        toast.error(state?.errorMessage, {
+          position: "top-right",
+        });
       });
   },
 });
