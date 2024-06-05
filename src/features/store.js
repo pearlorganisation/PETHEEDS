@@ -13,6 +13,7 @@ import auth from "./slices/auth";
 import appointment from "./slices/bookNow";
 import subject from "./slices/subject";
 import contactUs from "./slices/contactUs";
+import sendOrderMail from "./slices/sendOrderMail";
 
 // Combine your individual reducers here
 const rootReducer = combineReducers({
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   subject,
   contactUs,
   category: categoryReducer,
+  sendOrderMail
 });
 
 // Custom root reducer handling a clear action
