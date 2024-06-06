@@ -155,21 +155,21 @@ const CheckoutPage = () => {
   }, [cartData]);
 
   useEffect(() => {
-    if(codData?.status){
-        dispatch(sendOrderMail({
-            id: codData?.data?._id,
-            payload: codData?.data
-        }))
+    if (codData?.status) {
+      dispatch(sendOrderMail({
+        id: codData?.data?._id,
+        payload: codData?.data
+      }))
     }
 
   }, [codData]);
 
   useEffect(() => {
-    if(onlineData?.status){
-        dispatch(sendOrderMail({
-            id: onlineData?.data?._id,
-            payload: onlineData?.data
-        }))
+    if (onlineData?.status) {
+      dispatch(sendOrderMail({
+        id: onlineData?.data?._id,
+        payload: onlineData?.data
+      }))
     }
 
   }, [onlineData]);
@@ -182,9 +182,8 @@ const CheckoutPage = () => {
             <ul className="relative flex w-full  gap-4 flex-row items-center justify-between">
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white ${
-                    steps === 1 ? "ring ring-blue-500 ring-offset-2 " : ""
-                  }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white ${steps === 1 ? "ring ring-blue-500 ring-offset-2 " : ""
+                    }`}
                   href="#"
                 >
                   1
@@ -209,9 +208,8 @@ const CheckoutPage = () => {
               </svg>
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${
-                    steps === 2 ? "ring ring-blue-500 ring-offset-2 " : ""
-                  }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 2 ? "ring ring-blue-500 ring-offset-2 " : ""
+                    }`}
                   href="#"
                 >
                   2
@@ -236,9 +234,8 @@ const CheckoutPage = () => {
               </svg>
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${
-                    steps === 3 ? "ring ring-blue-500  ring-offset-2" : ""
-                  }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 3 ? "ring ring-blue-500  ring-offset-2" : ""
+                    }`}
                   href="#"
                 >
                   3
