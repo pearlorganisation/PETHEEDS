@@ -224,7 +224,7 @@ export function Cart() {
               </div>
               <div class="relative mt-10 flex">
                 <Link
-                to='/checkout/1'
+                to='/checkout'
              
                  class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
 
