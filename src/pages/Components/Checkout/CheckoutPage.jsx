@@ -2,11 +2,149 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import catimg from "../../../images/cat11.jpg"
 import { FaCheck } from "react-icons/fa6";
+import Address from './Address';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import axios from "axios";
+import { ClipLoader } from 'react-spinners';
+import { toast } from 'sonner';
 
 const CheckoutPage = () => {
+
+    const [order, setOrder] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
     const { cartData } = useSelector((state) => state.cart);
+    const { userData } = useSelector((state) => state.auth);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [step, setStep] = useState(3)
+    // const {step} = useParams()
+    const [steps, setStep] = useState(Number(2))
+    console.log(steps, "steps")
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+
+    }, [steps])
+
+
+    const { register,
+        handleSubmit } = useForm({
+            defaultValues: {
+                paymentMethod: 'online'
+            }
+        })
+
+
+    const handlePayment = async (amount) => {
+        setIsLoading(true)
+        try {
+            const productId = cartData?.map((item) => {
+                return item?._id
+            })
+
+            const orderById = userData?.data?._id
+
+            const { data: {
+                bookingId, order
+            } } = await axios.post("http://localhost:8000/api/v1/booking/bookingOrder", {
+                amount,
+                productId,
+                orderById
+            })
+            setOrder(order?.id)
+            setIsLoading(false)
+            // console.log(window)
+
+            const options = {
+                key: import.meta.env.VITE_APP_RAZORPAY_KEY,
+                amount: order.amount,
+                currency: "INR",
+                name: "PETHEEDS",
+                description: "PETHEEDS",
+                image:
+                    "./apple-touch-icon.png",
+                order_id: order.id,
+                handler: async function (response) {
+                    const body = { ...response, }
+                    try {
+                        const validateResponse = await axios.post(`http://localhost:8000/api/v1/booking/verifyOrder/${bookingId}`,
+                            body
+                        )
+                        var jsonResponse = validateResponse?.data
+                        if (jsonResponse.status) {
+                            setStep(3)
+                            toast.success(jsonResponse?.message, { position: "top-center" })
+                        }
+
+                    } catch (error) {
+                        console.error("Error verifying payment:", error);
+                        toast.error("Error verifying payment", { position: "top-center" })
+                    }
+
+                },
+                //  callback_url: `http://localhost:8000/api/v1/booking/verifyOrder/${bookingId}`,
+
+                modal: {
+                    ondismiss: function () {
+                        alert("Payment window closed without completing the payment.");
+                    }
+                },
+
+                theme: {
+                    color: "#121212",
+                },
+            };
+
+            const razorpayInstance = new window.Razorpay(options);
+            razorpayInstance.open();
+
+        } catch (error) {
+            console.error("Error creating or processing payment:", error);
+            toast.error("Error creating or processing payment", { position: "top-center" })
+            setIsLoading(false);
+
+        }
+
+    }
+
+    const handleCod = async () => {
+        setIsLoading(true)
+        try {
+            const productId = cartData?.map((item) => {
+                return item?._id
+            })
+
+            const orderById = userData?.data?._id
+
+            const { data } = await axios.post("http://localhost:8000/api/v1/booking/codOrder", {
+                productId,
+                orderById,
+                amount: totalPrice
+            })
+            setIsLoading(false)
+            setStep(3)
+            toast.success(data?.message, { position: "top-center" })
+
+        } catch (error) {
+            console.error("Error creating the COD order:", error);
+            setIsLoading(false)
+        }
+
+    }
+
+    const onSubmit = data => {
+        console.log("data", data)
+        const { paymentMethod } = data
+
+        if (paymentMethod === "online") {
+
+            handlePayment(totalPrice)
+        } else {
+            handleCod()
+        }
+    }
+
+
+
     useEffect(() => {
         console.log(
             "cartData::",
@@ -29,33 +167,12 @@ const CheckoutPage = () => {
                         <ul className="relative flex w-full  gap-4 flex-row items-center justify-between">
                             <li className="flex space-x-4 text-left">
                                 <a
-                                    className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-sm font-semibold text-white"
+                                    className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white ${steps === 1 ? 'ring ring-blue-500 ring-offset-2 ' : ''}`}
                                     href="#"
                                 >
                                     1
                                 </a>
                                 <span className=" sm:text-sm font-semibold text-blue-600">
-                                    Order Summary
-                                </span>
-                            </li>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="hidden h-4 w-4 text-gray-400 sm:block"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                            <li className="flex space-x-4 text-left">
-                                <a
-                                    className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-sm font-semibold text-white ring ring-blue-500 ring-offset-2"
-                                    href="#"
-                                >
-                                    2
-                                </a>
-                                <span className="text-sm font-semibold text-blue-600">
                                     Billing Information
                                 </span>
                             </li>
@@ -71,7 +188,28 @@ const CheckoutPage = () => {
                             </svg>
                             <li className="flex space-x-4 text-left">
                                 <a
-                                    className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-sm font-semibold text-white"
+                                    className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 2 ? 'ring ring-blue-500 ring-offset-2 ' : ''}`}
+                                    href="#"
+                                >
+                                    2
+                                </a>
+                                <span className="text-sm font-semibold text-blue-600">
+                                    Order Summary
+                                </span>
+                            </li>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="hidden h-4 w-4 text-gray-400 sm:block"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                            <li className="flex space-x-4 text-left">
+                                <a
+                                    className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 3 ? 'ring ring-blue-500  ring-offset-2' : ''}`}
                                     href="#"
                                 >
                                     3
@@ -86,7 +224,7 @@ const CheckoutPage = () => {
             </div>
 
             {
-                step === 1 && <div className='max-w-6xl mx-auto sm:px-10  lg:px-20 xl:px-32'>
+                steps === 2 && <div className='max-w-6xl mx-auto sm:px-10  lg:px-20 xl:px-32'>
                     <div className=''>
                         {/* Order summary */}
                         <div class="relative col-span-full flex flex-col pl-8 pr-4 py-6 lg:col-span-4">
@@ -161,11 +299,12 @@ const CheckoutPage = () => {
 
                             </div>
 
-                            <div className='pt-2'>
+                            <div className='pt-5'>
                                 <p class=" text-lg font-medium text-black">Payment Methods</p>
-                                <form class=" grid gap-6">
+                                <form class="pt-2 grid gap-6" onSubmit={handleSubmit(onSubmit)}>
                                     <div class="relative">
-                                        <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
+                                        <input  {...register("paymentMethod")}
+                                            class="peer hidden" id="radio_1" type="radio" value='cod' />
                                         <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                         <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
                                             <img class="w-14 object-contain" src="https://cdn-icons-png.flaticon.com/128/3812/3812106.png" alt="" />
@@ -176,7 +315,9 @@ const CheckoutPage = () => {
                                         </label>
                                     </div>
                                     <div class="relative">
-                                        <input class="peer hidden" id="radio_2" type="radio" name="radio" checked />
+                                        <input
+                                            {...register("paymentMethod")}
+                                            class="peer hidden" id="radio_2" type="radio" value='online' />
                                         <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
                                         <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
                                             <img class="w-14 object-contain" src="https://cdn-icons-png.flaticon.com/128/5097/5097344.png" alt="" />
@@ -186,6 +327,12 @@ const CheckoutPage = () => {
                                             </div>
                                         </label>
                                     </div>
+
+                                    <button disabled={isLoading} className='bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-md z-20'>
+                                        {isLoading ? (
+                                            <ClipLoader color="#c4c2c2" />
+                                        ) : (<span>Place the order</span>)}
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -195,79 +342,10 @@ const CheckoutPage = () => {
             }
 
             {
-                step === 2 && <div className='max-w-6xl  mx-auto sm:px-10  lg:px-20 xl:px-32'>
-
-                    <div class=" bg-gradient-to-t from-blue-50 to-blue-100 px-4 pt-8 lg:mt-0 h-full">
-                        <p class="text-xl font-medium">Address Details</p>
-                        <p class="text-gray-400">Complete your order by providing your payment details.</p>
-                        <div class=" space-y-4">
-
-                            <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">Contact Details</label>
-                            <div class="relative">
-                                <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Your full name here" />
-                                <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="relative">
-                                <input type="text" id="email" name="email" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="your.email@gmail.com" />
-                                <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="relative">
-                                <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Contact Number" />
-                                <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium"> Address</label>
-                            <div class="relative space-y-4">
-                                <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Pin Code" />
-                                <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Address (House No, Building, Street, Area)*" />
-                                <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Locality / Town*" />
-                                <div className='flex gap-2'>
-                                    <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="City / District*" />
-
-                                    <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="State*" />
-
-
-                                </div>
-
-                            </div>
-
-
-
-
-                            {/* <div class="mt-6 border-t border-b py-2">
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                <p class="font-semibold text-gray-900">$399.00</p>
-            </div>
-            <div class="flex items-center justify-between">
-                <p class="text-sm font-medium text-gray-900">Shipping</p>
-                <p class="font-semibold text-gray-900">$8.00</p>
-            </div>
-        </div>
-        <div class="mt-6 flex items-center justify-between">
-            <p class="text-sm font-medium text-gray-900">Total</p>
-            <p class="text-2xl font-semibold text-gray-900">$408.00</p>
-        </div> */}
-                        </div>
-                        <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
-                    </div>
-                </div>
+                steps === 1 && <Address />
             }
             {
-                step === 3 && <div class=" flex items-center justify-center">
+                steps === 3 && <div class=" flex items-center justify-center">
                     <div class="bg-white shadow-lg rounded-lg p-8 md:p-12 max-w-md text-center">
                         <div className='grid place-items-center w-full'>
                             <div className='bg-green-500 size-10 rounded-full grid place-items-center text-white'>
@@ -275,7 +353,7 @@ const CheckoutPage = () => {
                             </div>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-800 mb-2">Order Confirmed!</h2>
-                        <p class="text-gray-600 mb-4">Thank you for your purchase. Your order number is <span class="font-semibold text-gray-800">#123456</span>.</p>
+                        <p class="text-gray-600 mb-4">Thank you for your purchase. Your order Id is <span class="font-semibold text-gray-800">{order}</span>.</p>
                         <div className='space-x-2'>
                             <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mb-4">View Order Details</button>
                             <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">Continue Shopping</button>

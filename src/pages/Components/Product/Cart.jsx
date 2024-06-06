@@ -12,10 +12,15 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
 export function Cart() {
+
+  
   const [count, setcount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const { cartData } = useSelector((state) => state.cart);
+  
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     console.log(
       "cartData::",
@@ -218,7 +223,10 @@ export function Cart() {
                 </p>
               </div>
               <div class="relative mt-10 flex">
-                <Link to='/checkout' type="button" class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
+                <Link
+                to='/checkout/1'
+             
+                 class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
 
 
 
@@ -240,7 +248,7 @@ export function Cart() {
             <div className="flex justify-center items-center pb-14">
               <div>
                 <button
-                  onClick={handelnavigate}
+                  onClick={handelnavigate(totalPrice)}
                   type="button"
                   class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 md:px-6 lg:px-8 md:py-3 lg:py-4 text-center md:mb-2 lg:me-2 lg:mb-0    w-full md:w-auto h-10 md:h-auto"
                 >
