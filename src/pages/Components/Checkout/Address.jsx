@@ -1,8 +1,42 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { FaLocationCrosshairs } from "react-icons/fa6";
 
 const Address = () => {
+    const [location, setLocation] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        console.log("location", location)
+    }, [location])
+
+
+    const getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    try {
+                        const response = await axios.get(
+                            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAEg8nFyUAu8zlt1NK5N1HrqLYLhpPhIlQ`
+                        );
+                        const address = response.data.results[0].formatted_address;
+                        setLocation(address);
+                        setValue('address', location)
+
+                    } catch (error) {
+                        setError('Error retrieving location');
+                    }
+                },
+                (error) => {
+                    setError(error.message);
+                }
+            );
+        } else {
+            setError('Geolocation is not supported by this browser.');
+        }
+    };
     const {
         register,
         handleSubmit,
@@ -62,8 +96,10 @@ const Address = () => {
                             <input {...register("pincode", { required: true })} type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Pin Code" />
                         </div>
                         <div className='relative'>
-                            <input {...register("address", { required: true })} type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Address (House No, Building, Street, Area)*" />
-                            <button className='px-4 py-[0.4rem] active:scale-95 transition-all flex justify-center items-center gap-2 bg-blue-500 text-white rounded-md absolute right-[0.30rem] top-[0.29rem]' type="button"> <FaLocationCrosshairs />
+                            <input {...register("address", { required: true })} readOnly defaultValue={location} type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3  text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Address (House No, Building, Street, Area)*" />
+                            <button onClick={() => {
+                                getLocation()
+                            }} className='px-4 py-[0.4rem] active:scale-95 transition-all flex justify-center items-center gap-2 bg-blue-500 text-white rounded-md absolute right-[0.30rem] top-[0.29rem]' type="button"> <FaLocationCrosshairs />
                                 Use My Location</button>
                         </div>
                         <div>
