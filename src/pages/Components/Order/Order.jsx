@@ -4,32 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
 
-const products = [
-  {
-    id: 1,
-    name: 'Pedigree PRO Expert Nutrition for Large Breed Puppy(3 to 18 Months) Dry Food',
-    href: '#',
-    price: '₹47,199',
-    originalPrice: '₹48,900',
-    discount: '5% Off',
-    color: 'Orange',
-    size: '8 UK',
-    imageSrc: 'https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_8_f8bdf03e-8eb3-4487-a04a-3412bd61fe6f.jpg?v=1710935989'
-  },
-  {
-    id: 2,
-    name: 'Pedigree Chicken and Vegetables Adult Dry Dog Food',
-    href: '#',
-    price: '₹1,549',
-    originalPrice: '₹2,499',
-    discount: '38% off',
-    color: 'White',
-    leadTime: '3-4 weeks',
-    size: '8 UK',
-    imageSrc: "https://cdn.shopify.com/s/files/1/0565/8021/0861/files/1_2_521cc2a4-d6db-4aaf-a0f2-7fe4a40e52a9.jpg?v=1710934438",
-  },
 
-]
 
 export const Order = () => {
   const {state:item}= useLocation();
@@ -104,12 +79,20 @@ export const Order = () => {
                 <div className="py-6">
                   <h2 className="mb-2 text-base font-bold text-black">Shipping Information</h2>
                   <p className="mt-3 text-sm font-medium text-gray-700">{userData?.data?.fullName}</p>
-                  <p className="text-sm font-medium text-gray-700">1 Ronald Regan Court</p>
-                  <p className="text-sm font-medium text-gray-700">102-655-3689</p>
+                  <p className="text-sm font-medium text-gray-700">{item?.address?.address}</p>
+                  <p className="text-sm font-medium text-gray-700">{item?.address?.locality}</p>
+                  <p className="text-sm font-medium text-gray-700">{item?.address?.city}, {item?.address?.state}</p>
+                  <p className="text-sm font-medium text-gray-700">{item?.address?.pincode}</p>
+                
+                </div>
+                <div className="py-6">
+                  <h2 className="text-base font-bold text-black">Shipping Contact Number</h2>
+                  <p className="mt-3 text-sm font-medium text-gray-700">{item?.address?.phoneNumber}</p>
+              
                 </div>
                 <div className="py-6">
                   <h2 className="text-base font-bold text-black">Payment Information</h2>
-                  <p className="mt-3 text-sm font-medium text-gray-700">{item?.paymentType}</p>
+                  <p className={`mt-3 text-sm font-medium ${item?.paymentType === 'Online Paid'? "text-green-600" : "text-yellow-600" } `}>{item?.paymentType}</p>
               
                 </div>
               </div>
