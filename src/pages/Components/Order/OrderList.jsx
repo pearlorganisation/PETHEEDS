@@ -1,111 +1,136 @@
-import React from "react";
-import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
-const products = [
-  {
-    id: 1,
-    name: "Nomad Tumbler",
-    imageSrc: img,
-    href: "#",
-    price: "₹499",
-    details:
-      "Olive drab green insulated bottle with flared screw lid and flat top",
-    imageAlt: "Olive drab green .",
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: "Nomad Tumbler",
-    imageSrc: img2,
-    href: "#",
-    price: "₹300",
-    details:
-      "Olive drab green insulated bottle with flared screw lid and flat top",
-    imageAlt: "Olive drab green .",
-    quantity: 1,
-  },
-];
+import React, { useEffect } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { TbCheckbox } from "react-icons/tb";
+import { TbTruckDelivery } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllUserOrders } from "../../../features/actions/order";
+import { format } from 'date-fns';
 
 export const OrderList = () => {
+
+        const dispatch = useDispatch();
+        const navigate = useNavigate();
+        const {userData} = useSelector((state)=>state.auth)
+        const {ordersData} = useSelector((state)=>state.order)
+      
+console.log(ordersData)
+        useEffect(()=>{
+dispatch(getAllUserOrders(userData?.data?._id))
+        },[])
+
   return (
-    <div className="mx-auto my-4 max-w-6xl px-2 md:my-6 md:px-0">
-      <h2 className="text-3xl font-bold">Order Details</h2>
+    <div className="mx-auto my-8 max-w-6xl px-2 md:my-20 md:px-10">
+      <h2 className="text-3xl font-bold">Order History</h2>
       <div className="mt-3 text-sm">
-        Check the status of recent and old orders & discover more products
+        Check the status of recent and old orders 
       </div>
-      <div className="mt-8 flex flex-col overflow-hidden rounded-lg border border-gray-300 md:flex-row">
-        <div className="w-full border-r border-gray-300 bg-gray-100 md:max-w-xs">
-          <div className="p-8">
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">
-              {[
-                ["Order ID", "#74557994327"],
-                ["Date", "4 March, 2023"],
-                ["Total Amount", "₹799"],
-                ["Order Status", "Confirmed"],
-              ].map(([key, value]) => (
-                <div key={key} className="mb-4">
-                  <div className="text-sm font-semibold">{key}</div>
-                  <div className="text-sm font-medium text-gray-700">
-                    {value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="flex-1">
-          <div className="p-8">
-            <ul className="-my-7 divide-y divide-gray-200">
-              {products.map((product) => (
-                <li
-                  key={product.id}
-                  className="flex flex-col justify-between space-x-5 py-7 md:flex-row"
-                >
-                  <div className="flex flex-1 items-stretch">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="h-20 w-20 rounded-lg border border-gray-200 object-contain"
-                        src={product.imageSrc}
-                        alt={product.imageSrc}
-                      />
-                    </div>
-
-                    <div className="ml-5 flex flex-col justify-between">
-                      <div className="flex-1">
-                        <p className="text-sm font-bold text-gray-900">
-                          {product.name}
-                        </p>
-                        <p className="mt-1.5 text-sm font-medium text-gray-500">
-                          {product.details}
-                        </p>
-                      </div>
-
-                      <p className="mt-4 text-sm font-medium text-gray-500">
-                        x {product.quantity}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="ml-auto flex flex-col items-end justify-between">
-                    <p className="text-right text-sm font-bold text-gray-900">
-                      {product.price}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <hr className="my-8 border-t border-t-gray-200" />
-            <div className="space-x-4">
-              <button
-                type="button"
-                className="rounded-md bg-[#1E40AF] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-#1E40AF focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                View Invoice
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="mt-5 border rounded-sm bg-gray-100">
+        {/* //item 1 */}
+        { Array.isArray(ordersData) && 
+                ordersData.map((item,idx)=>
+                        (
+                        <div key={idx} onClick={()=>{navigate("/order", {state:item})}}  className="my-5 mx-5 flex justify-between items-center overflow-hidden rounded-sm border border-gray-300 bg-white  hover:bg-opacity-5 hover:bg-black ">
+        <div className="">
+    <div className="flex gap-3  p-3">
+      <div><TbTruckDelivery className="text-xl"/></div>
+      <div className="flex-grow"><div className="text-yellow-600 font-bold text-[13px] md:text-[14px]">On the Way</div>
+      <div className="text-[13px] md:text-[14px]">On {format(new Date(item.createdAt), 'EEE, d MMM yyyy')}</div></div>
+      <div className="md:hidden "><FaArrowRight className=""/></div>
     </div>
+ 
+    <div className="p-3 flex flex-wrap gap-7 text-[12px] md:text-[14px]">
+        
+    { Array.isArray(item?.product) && item?.product?.map((product,idy)=>(
+           <div key={idy} className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
+           <img src={product?.productId[0]?.productImg} className="rounded-lg w-24 h-20"/>
+           <div>
+             <div>
+     {product?.productId[0]?.productName}
+     </div>
+             <div>
+     Size: 350g
+     </div>
+           </div>
+           </div>
+    ))  
+ 
+      }
+     
+   
+     
+   
+    </div>
+ 
+    </div>
+    <div className="sm:hidden md:block mx-4"><FaArrowRight/></div>
+            </div>)
+                
+                )
+        
+}
+            {/* item 2 */}
+            {/* <div className="my-5 mx-5 flex justify-between items-center overflow-hidden rounded-sm border border-gray-300 bg-white">
+        <div className="">
+    <div className="flex  gap-3  p-3">
+      <div><TbCheckbox className="text-green-700 text-xl"/></div>
+      <div className=""><div className="text-emerald-600 font-bold text-[13px] md:text-[14px]">Delivered</div>
+      <div className="text-[13px] md:text-[14px]">On Tue, 4 Oct 2022</div></div>
+    </div>
+ 
+    <div className="p-3 flex flex-wrap gap-7 text-[12px] md:text-[14px]">
+      <div className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
+      <img src="https://m.media-amazon.com/images/I/41vlTxXQD7L._SX300_SY300_QL70_FMwebp_.jpg" className="w-24 h-20"/>
+      <div>
+        <div className="font-medium">Pedigree</div>
+        <div>
+Biscuits</div>
+        <div>
+Size: 350g
+</div>
+      </div>
+      </div>
+      <div className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
+      <img src="https://cdn.shopify.com/s/files/1/0565/8021/0861/files/Frame12314_89a8f769-48d6-4acd-8f9c-e3e10f1c8577.png?v=1696602504" className="w-24 h-20"/>
+      <div>
+        <div className="font-medium">Pedigree</div>
+        <div>
+Biscuits Biscuits...</div>
+        <div>
+Size: 350g
+</div>
+      </div>
+      </div>
+      <div className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
+      <img src="https://cdn.shopify.com/s/files/1/0565/8021/0861/files/DroolsOptimumPerformanceAdultDogFood_20kg.png?v=1699447569" className="w-24 h-20"/>
+      <div>
+        <div className="font-medium">Pedigree</div>
+        <div>
+Biscuits Biscuits...</div>
+        <div>
+Size: 350g
+</div>
+      </div>
+      </div>
+      <div className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
+      <img src="https://supertails.com/cdn/shop/files/DFODF0010PG_1.jpg?v=1713542639" className="w-24 h-20"/>
+      <div>
+        <div className="font-medium">Pedigree</div>
+        <div>
+Biscuits Biscuits...</div>
+        <div>
+Size: 350g
+</div>
+      </div>
+      </div>
+   
+    </div>
+ 
+    </div>
+    <div className="font-bold mx-4"><FaArrowRight/></div>
+            </div> */}
+            </div>
+          </div>
+   
   );
 };

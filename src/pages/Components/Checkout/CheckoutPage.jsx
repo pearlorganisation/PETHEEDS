@@ -35,19 +35,23 @@ const CheckoutPage = () => {
   const handlePayment = async (amount) => {
     setIsLoading(true);
     try {
-      const productId = cartData?.map((item) => {
-        return item?._id;
+      const product = cartData?.map((item) => {
+        return  {productId:item?.productId,
+          price:item?.totalSum,
+          weight:item?.weight,
+        totalItem:item?.items};
       });
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
       const {
         data: { bookingId, order },
-      } = await axios.post(
-        "http://localhost:8000/api/v1/booking/bookingOrder",
+      } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/bookingOrder`
+      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/bookingOrder`,
         {
           amount,
-          productId,
+          product,
           orderById,
           email,
         }
@@ -67,8 +71,10 @@ const CheckoutPage = () => {
         handler: async function (response) {
           const body = { ...response };
           try {
-            const validateResponse = await axios.post(
-              `http://localhost:8000/api/v1/booking/verifyOrder/${bookingId}`,
+            const validateResponse = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+            ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/verifyOrder/${bookingId}`
+            : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/verifyOrder/${bookingId}`
+              ,
               body
             );
             var jsonResponse = validateResponse?.data;
@@ -109,17 +115,23 @@ const CheckoutPage = () => {
   const handleCod = async () => {
     setIsLoading(true);
     try {
-      const productId = cartData?.map((item) => {
-        return item?._id;
+      const product = cartData?.map((item) => {
+        return  {productId:item?.productId,
+          price:item?.totalSum,
+          weight:item?.weight,
+          totalItem:item?.items};
       });
+   console.log("sas",product)
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
 
-      const { data } = await axios.post(
-        "http://localhost:8000/api/v1/booking/codOrder",
+      const { data } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/codOrder`
+      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/codOrder`
+       ,
         {
-          productId,
+          product,
           orderById,
           email,
           amount: totalPrice,

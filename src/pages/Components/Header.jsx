@@ -29,10 +29,7 @@ const menuItems = [
     name: "About Us",
     href: "/about",
   },
-  {
-    name: "Orders",
-    href: "/order",
-  },
+ 
   {
     name: "Contact us",
     href: "/contact",
@@ -45,8 +42,11 @@ const ProfileDropDown = (props) => {
   const profileRef = useRef();
 
   const navigation = [
-    { title: "Dashboard", path: "javascript:void(0)" },
     { title: "Profile", path: "/profile" },
+    {
+      title: "Orders",
+      path: "/orderList",
+    },
   ];
 
   useEffect(() => {
