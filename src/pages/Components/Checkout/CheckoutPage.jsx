@@ -16,14 +16,19 @@ const CheckoutPage = () => {
   const { cartData } = useSelector((state) => state.cart);
   const { userData } = useSelector((state) => state.auth);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [steps, setStep] = useState(Number(2));
+  const [steps, setStep] = useState(Number(1));
   const [codData, setCodData] = useState();
   const [onlineData, setOnlineData] = useState();
+
+  const { selectedAddress } = useSelector(state => state.address)
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [steps]);
 
+  useEffect(() => {
+    console.log(steps)
+  }, [steps]);
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -175,7 +180,7 @@ const CheckoutPage = () => {
   }, [onlineData]);
 
   return (
-    <div className="min-h-screen pt-6  sm:pt-20">
+    <div className="min-h-screen py-6 space-y-8 container mx-auto  sm:pt-20">
       <div className="px-4 pt-12 pb-8">
         <div className="mx-auto w-full max-w-lg">
           <div className="relative">
@@ -424,6 +429,15 @@ const CheckoutPage = () => {
           </div>
         </div>
       )}
+      {
+        steps < 2 && <div className=" grid place-items-center"><button onClick={() => {
+          if (selectedAddress) {
+            return setStep(steps + 1)
+
+          }
+          return
+        }} className="px-8 active:scale-95 transition-all py-2 text-white bg-blue-600 rounded" type="button">Next</button></div>
+      }
     </div>
   );
 };

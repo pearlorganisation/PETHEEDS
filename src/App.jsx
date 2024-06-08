@@ -32,7 +32,7 @@ import { Order } from "./pages/Components/Product/Order";
 import Category from "./pages/Category/Category";
 import { Toaster } from "sonner";
 import SignupOtpVerification from "./pages/Components/Auth/SignupOtpVerification";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
 import Invoice from "./pages/Components/Product/Invoice";
 import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
@@ -63,7 +63,7 @@ function App() {
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="productlist" element={<ProductList />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="checkout" element={isUserLoggedIn ? <CheckoutPage /> : <Navigate to='/login' />} />
 
         <Route path="contact" element={<Contactus />} />
 
