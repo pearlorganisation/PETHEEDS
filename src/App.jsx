@@ -28,11 +28,11 @@ import BlogDetails from "./pages/Blogs/BlogDetails";
 import Blog from "./pages/Blogs/Blog";
 import NewAddress from "./pages/Components/Address/NewAddress";
 import Billing from "./pages/Components/Payment/Billing";
-import { Order } from "./pages/Components/Product/Order";
+
 import Category from "./pages/Category/Category";
 import { Toaster } from "sonner";
 import SignupOtpVerification from "./pages/Components/Auth/SignupOtpVerification";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import ProductByCollection from "./pages/ProductByCollection/ProductByCollection";
 import Invoice from "./pages/Components/Product/Invoice";
 import PrivacyPolicy from "./pages/Components/Product/PrivacyPolicy";
@@ -40,6 +40,8 @@ import ProfilePage from "./pages/Components/ProfilePage";
 import RefundPolicy from "./pages/Components/RefundPolicy/RefundPolicy";
 import TermsOfUse from "./pages/Components/TermsOfUse/TermsOfUse";
 import CheckoutPage from "./pages/Components/Checkout/CheckoutPage";
+import { OrderList } from "./pages/Components/Order/OrderList";
+import { Order } from "./pages/Components/Order/Order";
 
 
 function App() {
@@ -63,7 +65,7 @@ function App() {
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="productlist" element={<ProductList />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="checkout" element={isUserLoggedIn ? <CheckoutPage /> : <Navigate to='/login' />} />
 
         <Route path="contact" element={<Contactus />} />
 
@@ -79,6 +81,7 @@ function App() {
         <Route path="addnewaddress" element={<NewAddress />} />
         <Route path="billing" element={<Billing />} />
         <Route path="order" element={<Order />} />
+        <Route path="orderList" element={<OrderList />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/refund_policy" element={<RefundPolicy />} />

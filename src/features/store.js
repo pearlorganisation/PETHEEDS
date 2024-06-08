@@ -13,7 +13,9 @@ import auth from "./slices/auth";
 import appointment from "./slices/bookNow";
 import subject from "./slices/subject";
 import contactUs from "./slices/contactUs";
+import address from "./slices/addressSlice";
 import sendOrderMail from "./slices/sendOrderMail";
+import order from "./slices/order";
 
 // Combine your individual reducers here
 const rootReducer = combineReducers({
@@ -26,7 +28,9 @@ const rootReducer = combineReducers({
   subject,
   contactUs,
   category: categoryReducer,
-  sendOrderMail
+  sendOrderMail,
+  order,
+  address: address,
 });
 
 // Custom root reducer handling a clear action
@@ -60,7 +64,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducerWithClear);
 // Configure and create the Redux store
 const store = configureStore({
   reducer: persistedReducer,
-  devTools: import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT == "development",
+  devTools: import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

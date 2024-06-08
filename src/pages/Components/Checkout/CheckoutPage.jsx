@@ -9,21 +9,29 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import { sendOrderMail } from "../../../features/actions/orderMail";
+import { selectAddress } from "../../../features/slices/addressSlice";
 
 const CheckoutPage = () => {
   const [order, setOrder] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { cartData } = useSelector((state) => state.cart);
   const { userData } = useSelector((state) => state.auth);
+
   const [totalPrice, setTotalPrice] = useState(0);
-  const [steps, setStep] = useState(Number(2));
+  const [steps, setStep] = useState(Number(1));
   const [codData, setCodData] = useState();
   const [onlineData, setOnlineData] = useState();
+  
+
+  const { selectedAddress } = useSelector(state => state.address)
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [steps]);
 
+  useEffect(() => {
+    console.log(steps)
+  }, [steps]);
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -35,21 +43,28 @@ const CheckoutPage = () => {
   const handlePayment = async (amount) => {
     setIsLoading(true);
     try {
-      const productId = cartData?.map((item) => {
-        return item?._id;
+      const product = cartData?.map((item) => {
+        return  {productId:item?.productId,
+          price:item?.totalSum,
+          weight:item?.weight,
+        totalItem:item?.items};
       });
+  
+    
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
       const {
         data: { bookingId, order },
-      } = await axios.post(
-        "http://localhost:8000/api/v1/booking/bookingOrder",
+      } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/bookingOrder`
+      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/bookingOrder`,
         {
           amount,
-          productId,
+          product,
           orderById,
           email,
+          address:selectedAddress
         }
       );
       setOrder(order?.id);
@@ -67,8 +82,10 @@ const CheckoutPage = () => {
         handler: async function (response) {
           const body = { ...response };
           try {
-            const validateResponse = await axios.post(
-              `http://localhost:8000/api/v1/booking/verifyOrder/${bookingId}`,
+            const validateResponse = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+            ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/verifyOrder/${bookingId}`
+            : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/verifyOrder/${bookingId}`
+              ,
               body
             );
             var jsonResponse = validateResponse?.data;
@@ -109,20 +126,26 @@ const CheckoutPage = () => {
   const handleCod = async () => {
     setIsLoading(true);
     try {
-      const productId = cartData?.map((item) => {
-        return item?._id;
+      const product = cartData?.map((item) => {
+        return  {productId:item?.productId,
+          price:item?.totalSum,
+          weight:item?.weight,
+          totalItem:item?.items};
       });
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
-
-      const { data } = await axios.post(
-        "http://localhost:8000/api/v1/booking/codOrder",
+      
+      const { data } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/codOrder`
+      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/codOrder`
+       ,
         {
-          productId,
+          product,
           orderById,
           email,
           amount: totalPrice,
+          address:selectedAddress
         }
       );
       setIsLoading(false);
@@ -175,7 +198,7 @@ const CheckoutPage = () => {
   }, [onlineData]);
 
   return (
-    <div className="min-h-screen pt-6  sm:pt-20">
+    <div className="min-h-screen py-6 space-y-8 container mx-auto  sm:pt-20">
       <div className="px-4 pt-12 pb-8">
         <div className="mx-auto w-full max-w-lg">
           <div className="relative">
@@ -424,6 +447,15 @@ const CheckoutPage = () => {
           </div>
         </div>
       )}
+      {
+        steps < 2 && <div className=" grid place-items-center"><button onClick={() => {
+          if (selectedAddress) {
+            return setStep(steps + 1)
+
+          }
+          return
+        }} className="px-8 active:scale-95 transition-all py-2 text-white bg-blue-600 rounded" type="button">Next</button></div>
+      }
     </div>
   );
 };
