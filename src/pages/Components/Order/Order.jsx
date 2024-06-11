@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import { format } from 'date-fns';
@@ -11,6 +11,10 @@ export const Order = () => {
   const {userData}= useSelector((state)=>state.auth)
 
   console.log(item)
+
+  useEffect(()=>{
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  },[])
   return (
     <div className="mx-auto my-4 max-w-5xl md:my-6 pt-16">
       <div className="overflow-hidden rounded-xl border border-gray-100 shadow">

@@ -22,7 +22,7 @@ const CheckoutPage = () => {
   const [codData, setCodData] = useState();
   const [onlineData, setOnlineData] = useState();
   
-
+const navigate = useNavigate()
   const { selectedAddress } = useSelector(state => state.address)
 
   useEffect(() => {
@@ -437,7 +437,7 @@ const CheckoutPage = () => {
               <span class="font-semibold text-gray-800">{order}</span>.
             </p>
             <div className="space-x-2">
-              <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mb-4">
+              <button onClick={()=>{navigate('/orderList')}} class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mb-4">
                 View Order Details
               </button>
               <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">

@@ -19,6 +19,10 @@ console.log(ordersData)
 dispatch(getAllUserOrders(userData?.data?._id))
         },[])
 
+        useEffect(()=>{
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              },[])
+
   return (
     <div className="mx-auto my-8 max-w-6xl px-2 md:my-20 md:px-10">
       <h2 className="text-3xl font-bold">Order History</h2>
@@ -27,15 +31,15 @@ dispatch(getAllUserOrders(userData?.data?._id))
       </div>
       <div className="mt-5 border rounded-sm bg-gray-100">
         {/* //item 1 */}
-        { Array.isArray(ordersData) && 
-                ordersData.map((item,idx)=>
+        { Array.isArray(ordersData) && ordersData?.length>0 && 
+                ordersData?.slice()?.reverse()?.map((item,idx)=>
                         (
                         <div key={idx} onClick={()=>{navigate("/order", {state:item})}}  className="my-5 mx-5 flex justify-between items-center overflow-hidden rounded-sm border border-gray-300 bg-white  hover:bg-opacity-5 hover:bg-black ">
         <div className="">
     <div className="flex gap-3  p-3">
       <div><TbTruckDelivery className="text-xl"/></div>
       <div className="flex-grow"><div className="text-yellow-600 font-bold text-[13px] md:text-[14px]">On the Way</div>
-      <div className="text-[13px] md:text-[14px]">On {format(new Date(item.createdAt), 'EEE, d MMM yyyy')}</div></div>
+      <div className="text-[13px] md:text-[14px]">On {format(new Date(item?.createdAt), 'EEE, d MMM yyyy')}</div></div>
       <div className="md:hidden "><FaArrowRight className=""/></div>
     </div>
  
@@ -43,10 +47,10 @@ dispatch(getAllUserOrders(userData?.data?._id))
         
     { Array.isArray(item?.product) && item?.product?.map((product,idy)=>(
            <div key={idy} className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72">
-           <img src={product?.productId[0]?.productImg} className="rounded-lg w-24 h-20"/>
+           <img src={Array.isArray(product?.productId) && product?.productId[0]?.productImg} className="rounded-lg w-24 h-20"/>
            <div>
              <div>
-     {product?.productId[0]?.productName}
+     {Array.isArray(product?.productId) && product?.productId[0]?.productName}
      </div>
              <div>
      Size: 350g
