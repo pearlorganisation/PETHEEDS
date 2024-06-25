@@ -46,17 +46,17 @@ const Contactus = () => {
 
   const onSubmit = data => {
     console.log("data", data)
-    const { name, email, subject, message, ...rest } = data;
-    const subjectValue = subject ? subject.value : '';
-    const postData = {
-      name,
-      email,
-      subject: subjectValue,
-      message,
-      ...rest
+    // const { name, email, subject, message, ...rest } = data;
+    // const subjectValue = subject ? subject.value : '';
+    // const postData = {
+    //   name,
+    //   email,
+    //   subject: subjectValue,
+    //   message,
+    //   ...rest
 
-    };
-    dispatch(createContactUs(postData))
+    // };
+    dispatch(createContactUs(data))
   }
 
   return (
@@ -77,7 +77,7 @@ const Contactus = () => {
                 for="name"
                 class="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Your name
+                Your Name
               </label>
               <input
                 {...register("name", { required: "Name is required" })}
@@ -98,7 +98,7 @@ const Contactus = () => {
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Your email
+                Your Email
               </label>
 
               <input
@@ -121,7 +121,7 @@ const Contactus = () => {
                 className="block mb-2 text-sm font-medium text-gray-900 
                 "
               >
-                Number
+                Contact Number
               </label>
 
               <input
@@ -149,52 +149,33 @@ const Contactus = () => {
             </div>
             <div>
               <label
-                htmlFor="subject"
-                className="block mb-2 text-sm font-medium text-gray-900 "
+                for="subject"
+                class="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Subject
+               Your Subject
               </label>
-              <Controller
-                control={control}
-                name="subject"
-                render={({ field, fieldState: { error } }) => (
-                  <Select
-                    value={field.value}
-                    options={subjectData.map(subject => ({ value: subject?._id, label: subject.subject }))}
-                    onChange={(selectedOption) => field.onChange(selectedOption)}
-                    className="mt-2 text-sm shadow"
-                    placeholder="Choose Subject "
-
-                    styles={{
-                      control: (provided) => ({
-                        ...provided,
-                        border: '1px solid #CBD5E1', // Set custom border style
-
-                      }),
-                      placeholder: (provided) => ({
-                        ...provided,
-                        color: '#9CA3AF', // Set custom placeholder color
-                      }),
-                    }}
-
-                  />
-                )}
-                rules={{ required: true }}
+              <input
+                {...register("subject", { required: "Name is required" })}
+                type="text"
+                id="subject"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                placeholder="Your Subject"
 
               />
-              {errors?.subject && (
+              {errors.subject && (
                 <span className="text-red-500">
-                  Subject is required
+                  {errors.subject.message}
                 </span>
               )}
             </div>
+          
             <div className="sm:col-span-2">
 
               <label
                 htmlFor="message"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Your message
+                Your Message
               </label>
 
               <textarea

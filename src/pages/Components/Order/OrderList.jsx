@@ -53,7 +53,7 @@ dispatch(getAllUserOrders(userData?.data?._id))
      {Array.isArray(product?.productId) && product?.productId[0]?.productName}
      </div>
              <div>
-     Size: 350g
+     Size: {product?.weight}
      </div>
            </div>
            </div>

@@ -35,19 +35,25 @@ export function Cart() {
     setTotalPrice(totalP);
     console.log("totalPrice::", totalP);
   }, [cartData]);
+
   const navigate = useNavigate();
   const handelnavigate = () => {
     navigate("/productlist");
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
+
   return (
     <div className="mx-auto container pt-12 px-5 lg:px-32 ">
       {cartData.length > 0 ? (
-        <div className="mx-auto  py-8 ">
+        <div className="mx-auto  md:py-8 ">
           <h1 className="text-3xl border-b-2 pb-3 font-bold tracking-tight text-gray-900 sm:text-4xl">
             Shopping Cart
           </h1>
-          <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+          <form className="md:mt-5 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
             <section
               aria-labelledby="cart-heading"
               className="rounded-lg bg-white lg:col-span-8"
@@ -226,7 +232,7 @@ export function Cart() {
                 <Link
                 to='/checkout'
              
-                 class="text-white text-center bg-[#2563EB] w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
+                 class="text-white text-center bg-blue-600 hover:bg-blue-700 w-full font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none ">Buy</Link>
 
 
 

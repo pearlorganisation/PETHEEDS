@@ -111,7 +111,7 @@ const Footer = () => {
           <div class="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
             <div class="">
               <Link to="https://www.pearlorganisation.com/">
-                © 2024 Petheeds LLP | All Rights Reserved
+                © 2021 Petheeds LLP | All Rights Reserved
               </Link>
             </div>
 

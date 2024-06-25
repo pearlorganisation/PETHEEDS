@@ -12,6 +12,7 @@ import { sendOrderMail } from "../../../features/actions/orderMail";
 import { selectAddress } from "../../../features/slices/addressSlice";
 
 const CheckoutPage = () => {
+        console.log(import.meta.env.VITE_APP_RAZORPAY_KEY, "razorpay keyy");
   const [order, setOrder] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { cartData } = useSelector((state) => state.cart);
@@ -21,16 +22,16 @@ const CheckoutPage = () => {
   const [steps, setStep] = useState(Number(1));
   const [codData, setCodData] = useState();
   const [onlineData, setOnlineData] = useState();
-  
-const navigate = useNavigate()
-  const { selectedAddress } = useSelector(state => state.address)
+
+  const navigate = useNavigate();
+  const { selectedAddress } = useSelector((state) => state.address);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [steps]);
 
   useEffect(() => {
-    console.log(steps)
+    console.log(steps);
   }, [steps]);
   const dispatch = useDispatch();
 
@@ -44,32 +45,37 @@ const navigate = useNavigate()
     setIsLoading(true);
     try {
       const product = cartData?.map((item) => {
-        return  {productId:item?.productId,
-          price:item?.totalSum,
-          weight:item?.weight,
-        totalItem:item?.items};
+        return {
+          productId: item?.productId,
+          price: item?.totalSum,
+          weight: item?.weight,
+          totalItem: item?.items,
+        };
       });
-  
-    
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
       const {
         data: { bookingId, order },
-      } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
-      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/bookingOrder`
-      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/bookingOrder`,
+      } = await axios.post(
+        import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+          ? `${
+              import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT
+            }/booking/bookingOrder`
+          : `${
+              import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION
+            }/booking/bookingOrder`,
         {
           amount,
           product,
           orderById,
           email,
-          address:selectedAddress
+          address: selectedAddress,
         }
       );
       setOrder(order?.id);
       setIsLoading(false);
-      // console.log(window)
+
 
       const options = {
         key: import.meta.env.VITE_APP_RAZORPAY_KEY,
@@ -82,10 +88,15 @@ const navigate = useNavigate()
         handler: async function (response) {
           const body = { ...response };
           try {
-            const validateResponse = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
-            ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/verifyOrder/${bookingId}`
-            : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/verifyOrder/${bookingId}`
-              ,
+            const validateResponse = await axios.post(
+              import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT ===
+                "development"
+                ? `${
+                    import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT
+                  }/booking/verifyOrder/${bookingId}`
+                : `${
+                    import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION
+                  }/booking/verifyOrder/${bookingId}`,
               body
             );
             var jsonResponse = validateResponse?.data;
@@ -127,25 +138,31 @@ const navigate = useNavigate()
     setIsLoading(true);
     try {
       const product = cartData?.map((item) => {
-        return  {productId:item?.productId,
-          price:item?.totalSum,
-          weight:item?.weight,
-          totalItem:item?.items};
+        return {
+          productId: item?.productId,
+          price: item?.totalSum,
+          weight: item?.weight,
+          totalItem: item?.items,
+        };
       });
 
       const orderById = userData?.data?._id;
       const email = userData?.data?.email;
-      
-      const { data } = await axios.post( import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
-      ? `${import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT}/booking/codOrder`
-      : `${import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION}/booking/codOrder`
-       ,
+
+      const { data } = await axios.post(
+        import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development"
+          ? `${
+              import.meta.env.VITE_REACT_APP_API_BASE_URL_DEVELOPMENT
+            }/booking/codOrder`
+          : `${
+              import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION
+            }/booking/codOrder`,
         {
           product,
           orderById,
           email,
           amount: totalPrice,
-          address:selectedAddress
+          address: selectedAddress,
         }
       );
       setIsLoading(false);
@@ -169,7 +186,6 @@ const navigate = useNavigate()
     }
   };
 
-
   useEffect(() => {
     const totalP = cartData?.reduce((acc, item) => {
       return acc + item.totalSum;
@@ -179,39 +195,42 @@ const navigate = useNavigate()
 
   useEffect(() => {
     if (codData?.status) {
-      dispatch(sendOrderMail({
-        id: codData?.data?._id,
-        payload: codData?.data
-      }))
+      dispatch(
+        sendOrderMail({
+          id: codData?.data?._id,
+          payload: codData?.data,
+        })
+      );
     }
-
   }, [codData]);
 
   useEffect(() => {
     if (onlineData?.status) {
-      dispatch(sendOrderMail({
-        id: onlineData?.data?._id,
-        payload: onlineData?.data
-      }))
+      dispatch(
+        sendOrderMail({
+          id: onlineData?.data?._id,
+          payload: onlineData?.data,
+        })
+      );
     }
-
   }, [onlineData]);
 
   return (
-    <div className="min-h-screen py-6 space-y-8 container mx-auto  sm:pt-20">
-      <div className="px-4 pt-12 pb-8">
+    <div className="min-h-screen py-8 space-y-8 container mx-auto  sm:pt-20">
+      <div className="px-4 pt-3 lg:pt-0 ">
         <div className="mx-auto w-full max-w-lg">
-          <div className="relative">
-            <ul className="relative flex w-full  gap-4 flex-row items-center justify-between">
+          <div className="">
+            <ul className=" flex w-full gap-4 flex-row justify-between">
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white ${steps === 1 ? "ring ring-blue-500 ring-offset-2 " : ""
-                    }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600  text-sm font-semibold text-white ${
+                    steps === 1 ? "ring ring-blue-600 ring-offset-2 " : ""
+                  }`}
                   href="#"
                 >
                   1
                 </a>
-                <span className=" sm:text-sm font-semibold text-blue-600">
+                <span className="text-sm md:text-base font-semibold text-blue-600">
                   Billing Information
                 </span>
               </li>
@@ -231,13 +250,14 @@ const navigate = useNavigate()
               </svg>
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 2 ? "ring ring-blue-500 ring-offset-2 " : ""
-                    }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600  text-sm font-semibold text-white  ${
+                    steps === 2 ? "ring ring-blue-600 ring-offset-2 " : ""
+                  }`}
                   href="#"
                 >
                   2
                 </a>
-                <span className="text-sm font-semibold text-blue-600">
+                <span className="text-sm  font-semibold text-blue-600">
                   Order Summary
                 </span>
               </li>
@@ -257,13 +277,14 @@ const navigate = useNavigate()
               </svg>
               <li className="flex space-x-4 text-left">
                 <a
-                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-500  text-sm font-semibold text-white  ${steps === 3 ? "ring ring-blue-500  ring-offset-2" : ""
-                    }`}
+                  className={`shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600  text-sm font-semibold text-white  ${
+                    steps === 3 ? "ring ring-blue-600  ring-offset-2" : ""
+                  }`}
                   href="#"
                 >
                   3
                 </a>
-                <span className="text-sm font-semibold text-gray-500">
+                <span className="text-sm  font-semibold text-gray-500">
                   Success
                 </span>
               </li>
@@ -276,8 +297,8 @@ const navigate = useNavigate()
         <div className="max-w-6xl mx-auto sm:px-10  lg:px-20 xl:px-32">
           <div className="">
             {/* Order summary */}
-            <div class="relative col-span-full flex flex-col pl-8 pr-4 py-6 lg:col-span-4">
-              <p class="text-xl font-medium py-2 z-10">Order summary</p>
+            <div class="relative col-span-full flex flex-col  rounded-md pl-8 pr-4 lg:col-span-4">
+              <p class="text-xl font-medium pb-4 z-10">Order summary</p>
 
               <div>
                 {/* <img
@@ -285,7 +306,7 @@ const navigate = useNavigate()
                                 alt=""
                                 class="absolute inset-0 h-full w-full object-cover"
                             /> */}
-                <div class="absolute inset-0 h-full w-full bg-gradient-to-t from-blue-50 to-blue-100   opacity-60"></div>
+                <div class="absolute inset-0 h-full w-full bg-gradient-to-t     opacity-60"></div>
               </div>
               <div class="relative">
                 <ul class="space-y-5">
@@ -293,7 +314,7 @@ const navigate = useNavigate()
                     return (
                       <li class="flex justify-between">
                         <div class="inline-flex">
-                          <img src={item?.productImg} alt="" class="size-16" />
+                          <img src={item?.productImg} alt="" class="size-16 rounded-lg" />
                           <div class="ml-3">
                             <p class="text-sm line-clamp-1 font-semibold ">
                               {item?.productName}
@@ -437,7 +458,12 @@ const navigate = useNavigate()
               <span class="font-semibold text-gray-800">{order}</span>.
             </p>
             <div className="space-x-2">
-              <button onClick={()=>{navigate('/orderList')}} class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mb-4">
+              <button
+                onClick={() => {
+                  navigate("/orderList");
+                }}
+                class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mb-4"
+              >
                 View Order Details
               </button>
               <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
@@ -447,15 +473,22 @@ const navigate = useNavigate()
           </div>
         </div>
       )}
-      {
-        steps < 2 && <div className=" grid place-items-center"><button onClick={() => {
-          if (selectedAddress) {
-            return setStep(steps + 1)
-
-          }
-          return
-        }} className="px-8 active:scale-95 transition-all py-2 text-white bg-blue-600 rounded" type="button">Next</button></div>
-      }
+      {steps < 2 && (
+        <div className=" grid place-items-center">
+          <button
+            onClick={() => {
+              if (selectedAddress) {
+                return setStep(steps + 1);
+              }
+              return;
+            }}
+            className="px-8 active:scale-95 transition-all py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
+            type="button"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

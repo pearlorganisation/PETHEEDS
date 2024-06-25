@@ -82,7 +82,7 @@ export const Order = () => {
                 </div>
                 <div className="py-6">
                   <h2 className="mb-2 text-base font-bold text-black">Shipping Information</h2>
-                  <p className="mt-3 text-sm font-medium text-gray-700">{userData?.data?.fullName}</p>
+                  <p className="mt-3 text-sm font-medium text-black">{userData?.data?.fullName}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.address}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.locality}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.city}, {item?.address?.state}</p>

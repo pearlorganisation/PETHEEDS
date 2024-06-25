@@ -119,7 +119,7 @@ const HomePage = () => {
         </div>
         <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563] ">
           <p>
-            Established in 2024, PETHEEDS is dedicated to enhancing the health
+            Established in 2021, PETHEEDS is dedicated to enhancing the health
             and well-being of pets through advanced nutraceutical solutions. As
             passionate advocates for animal health, we understand the profound
             bond between pets and their owners. That&#39;s why we&#39;re

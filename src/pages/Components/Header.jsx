@@ -45,7 +45,6 @@ const ProfileDropDown = (props) => {
 
   console.log(userData)
   const navigation = [
-    { title: "Profile", path: "/profile" },
     {
       title: "Orders",
       path: "/orderList",
@@ -84,7 +83,7 @@ const ProfileDropDown = (props) => {
           <li>
             <Link
               key={idx}
-              className="block text-gray-600 lg:hover:bg-gray-50 p-2.5"
+              className="block text-black font-semibold lg:hover:bg-gray-50 p-2.5"
               to={item.path}
             >
               {item.title}
@@ -96,9 +95,9 @@ const ProfileDropDown = (props) => {
             onClick={() => {
               dispatch(logout());
             }}
-            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 p-2.5"
+            className="block text-black w-full font-semibold text-left lg:hover:bg-gray-50 p-2.5"
           >
-            Log out
+            Log Out
           </button>
         </li>
       </ul>

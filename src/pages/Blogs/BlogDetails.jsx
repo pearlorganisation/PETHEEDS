@@ -17,16 +17,16 @@ const BlogDetails = () => {
           className="w-full max-h-[40rem] rounded-t-md"
         />
         <div className="space-y-2 py-3 flex flex-col justify-center gap-1 items-start p-1">
-          <div className=" rounded-2xl text-slate-950 bg-white w-fit font-medium flex gap-3">
+          {/* <div className=" rounded-2xl text-slate-950 bg-white w-fit font-medium flex gap-3">
             <div className="px-3 py-2 rounded-3xl border-2 border-yellow-400 bg-yellow-400/30">
               #Technology
             </div>{" "}
             <div className="px-3 py-2 rounded-3xl border-2 border-blue-400 bg-blue-400/30">
               #Science
             </div>
-          </div>
+          </div> */}
 
-          <div className="space-y-3 items-center gap-x-6 md:flex md:space-y-0">
+          {/* <div className="space-y-3 items-center gap-x-6 md:flex md:space-y-0">
             <div class="flex items-center space-x-3">
               <img
                 class="w-12 h-12 rounded-full object-cover"
@@ -40,7 +40,7 @@ const BlogDetails = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="">
             <p className=" text-2xl mt-1">{state?.topic}</p>
             <p>{state?.topicDescription}</p>
