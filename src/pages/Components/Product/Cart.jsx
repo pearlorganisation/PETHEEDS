@@ -1,7 +1,5 @@
-import { Heart, Trash } from "lucide-react";
+
 import React, { useEffect, useState } from "react";
-import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseItem,
@@ -47,7 +45,7 @@ export function Cart() {
 
 
   return (
-    <div className="mx-auto container pt-12 px-5 lg:px-32 ">
+    <div className="mx-auto container pt-12 h-screen px-5 lg:px-32 ">
       {cartData.length > 0 ? (
         <div className="mx-auto  md:py-8 ">
           <h1 className="text-3xl border-b-2 pb-3 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -76,6 +74,9 @@ export function Cart() {
                       <div class="relative flex flex-1 flex-col justify-between">
                         <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
                           <div class="pr-8 sm:pr-5 space-y-1">
+                          <p class="text-sm font-bold text-gray-900">
+                              {product?.brand?.brand}
+                            </p>
                             <p class="text-sm font-semibold text-gray-900">
                               {product?.productName}
                             </p>
@@ -93,7 +94,7 @@ export function Cart() {
                               </span>
                             </div>
                             <div className="font-semibold">
-                              Weight: <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500   text-white sm:order-2 ">
+                              Unit: <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500   text-white sm:order-2 ">
                                 {product?.weight}
                               </span>
                             </div>

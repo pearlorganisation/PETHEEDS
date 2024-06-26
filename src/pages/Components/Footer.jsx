@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           <div class="">
-            <div class="mt-4 mb-2 font-medium xl:mb-4">Links</div>
+            <div class="mt-4 mb-2 font-medium xl:mb-4">Policies</div>
 
             <nav aria-label="Footer Navigation" class="text-gray-500">
               <ul class="space-y-3">
@@ -59,6 +59,42 @@ const Footer = () => {
                     Refund Policy
                   </Link>
                 </li>
+{/* 
+                <li>
+                  <Link
+                    class="hover:text-blue-600 hover:underline"
+                    to="/productlist"
+                  >
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    class="hover:text-blue-600 hover:underline"
+                    to="/Booknow"
+                  >
+                    Book Appointment
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    class="hover:text-blue-600 hover:underline"
+                    to="/contact"
+                  >
+                    Contact Us
+                  </Link>
+                </li> */}
+              </ul>
+            </nav>
+          </div>
+          <div class="">
+            <div class="mt-4 mb-2 font-medium xl:mb-4">Links</div>
+
+            <nav aria-label="Footer Navigation" class="text-gray-500">
+              <ul class="space-y-3">
+           
+
+         
 
                 <li>
                   <Link
@@ -81,14 +117,14 @@ const Footer = () => {
                     class="hover:text-blue-600 hover:underline"
                     to="/contact"
                   >
-                    Contact
+                    Contact Us
                   </Link>
                 </li>
               </ul>
             </nav>
           </div>
 
-          <div class="">
+          {/* <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">
               Subscribe to our Newsletter
             </div>
@@ -104,7 +140,7 @@ const Footer = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div class="bg-gray-100">

@@ -1,6 +1,5 @@
 // import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../../features/actions/productActions";
 import { useEffect, useState } from "react";
@@ -159,7 +158,7 @@ const SingleProduct = () => {
 
                 <div class="lg:col-span-3">
                   <h1 className="text text-xl font-semibold py-2">
-                    Discription
+                    Description
                   </h1>
                   <p className="line-clamp-5">{singleProduct?.description}</p>
                 </div>
@@ -198,6 +197,13 @@ const SingleProduct = () => {
                     Cancel Anytime
                   </li>
                 </ul>
+
+                <div>
+                <h1 className="text text-xl font-semibold py-2">
+                    About
+                  </h1>
+                 <p className="text-slate-600"> {singleProduct?.about}</p>
+                </div>
               </div>
             </div>
           </div>

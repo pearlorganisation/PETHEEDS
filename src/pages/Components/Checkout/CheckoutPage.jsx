@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import catimg from "../../../images/cat11.jpg";
 import { FaCheck } from "react-icons/fa6";
 import Address from "./Address";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,10 +8,9 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import { sendOrderMail } from "../../../features/actions/orderMail";
-import { selectAddress } from "../../../features/slices/addressSlice";
+
 
 const CheckoutPage = () => {
-        console.log(import.meta.env.VITE_APP_RAZORPAY_KEY, "razorpay keyy");
   const [order, setOrder] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { cartData } = useSelector((state) => state.cart);
@@ -176,7 +174,6 @@ const CheckoutPage = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("data", data);
     const { paymentMethod } = data;
 
     if (paymentMethod === "online") {
@@ -454,7 +451,7 @@ const CheckoutPage = () => {
               Order Confirmed!
             </h2>
             <p class="text-gray-600 mb-4">
-              Thank you for your purchase. Your order Id is{" "}
+              Thank you for your purchase.
               <span class="font-semibold text-gray-800">{order}</span>.
             </p>
             <div className="space-x-2">

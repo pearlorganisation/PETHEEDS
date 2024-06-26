@@ -87,7 +87,7 @@ const About = () => {
 
           <div className=" mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold mb-8 p-5">Our Team</h2>
-            <p className="text-lg text-gray-700 mb-12 p-5">
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               Behind every great company is a team of dedicated individuals who
               share a common vision and commitment to excellence. At PETHEEDS,
               our team is comprised of passionate professionals with diverse

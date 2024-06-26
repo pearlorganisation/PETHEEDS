@@ -1,10 +1,5 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
-import { FaShoppingCart } from "react-icons/fa";
-import newimg from "../../../images/new.png"
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../../features/slices/cartSlice";
 import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
