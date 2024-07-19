@@ -21,7 +21,7 @@ export const getAddress = createAsyncThunk(
   "getAddress",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await instance.get(`/address/${id}`, {
+      const response = await instance.get(`/address`, {
         withCredentials: true,
       });
       return response?.data;
