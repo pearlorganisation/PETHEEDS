@@ -16,7 +16,20 @@ export const cartSlice = createSlice({
         (item) => item?._id === action.payload?._id
       );
       if (isExist) {
-        toast.error("Item Already Exist", {
+        const temp = current(state.cartData)?.map((item) => {
+          console.log("temp", action.payload);
+          if (item?._id === action.payload?._id) {
+            const updatedData = { ...item, items: item.items + 1 };
+            return {
+              ...updatedData,
+              totalSum: updatedData?.items * updatedData?.totalPrice,
+            };
+          }
+          return item;
+        });
+        state.cartData = temp;
+
+        toast.success("Added...", {
           position: "top-center",
         });
       } else {
