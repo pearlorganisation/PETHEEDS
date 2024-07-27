@@ -3,14 +3,14 @@ import { instance } from "../../services/axiosInterceptor";
 
 //create bookNow
 
-export const createAddress = createAsyncThunk(
-  "createAddress",
-  async (payload, { rejectWithValue }) => {
+export const addReview = createAsyncThunk(
+  "addReview",
+  async ({ productId, formData }, { rejectWithValue }) => {
     try {
-      const response = await instance.post(`/address`, payload, {
+      const response = await instance.post(`/review/${productId}`, formData, {
         withCredentials: true,
       });
-      return response;
+      return response?.data;
     } catch (e) {
       return rejectWithValue(e);
     }
@@ -18,10 +18,10 @@ export const createAddress = createAsyncThunk(
 );
 
 export const getAddress = createAsyncThunk(
-  "getAddress",
-  async (id, { rejectWithValue }) => {
+  "getReveiw",
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await instance.get(`/address`, {
+      const response = await instance.get(`/review`, {
         withCredentials: true,
       });
       return response?.data;
