@@ -9,6 +9,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { GrGlobe } from "react-icons/gr";
 import { CiCreditCard1 } from "react-icons/ci";
 import QuantityWithPrice from "./QuantityWithPrice";
+import ReveiwCard from "./ReveiwCard";
+import ImageViewer from "./ImageViewer";
 
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
@@ -207,6 +209,18 @@ const SingleProduct = () => {
               </div>
             </div>
           </div>
+          {/* Reveiw section starts */}
+
+          <div className="container mx-auto space-y-5 py-8">
+            <div className="text-4xl font-semibold">Customer Reviews:</div>
+            {
+              Array.from({ length: 5 }).map(item => {
+                return <ReveiwCard />
+              })
+            }
+          </div>
+
+          {/* Reveiw section ends */}
         </section>
       )}
     </>

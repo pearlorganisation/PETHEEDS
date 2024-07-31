@@ -12,11 +12,11 @@ import { FaUserCircle } from "react-icons/fa";
 const menuItems = [
   {
     name: "Home",
-    href: "/",
+    href: "/home",
   },
   {
     name: "Our Products",
-    href: "/productlist",
+    href: "/",
   },
   {
     name: "Book Appointment",

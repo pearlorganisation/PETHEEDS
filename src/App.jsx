@@ -52,7 +52,7 @@ function App() {
       <Toaster />
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
         <Route path="/product" element={<ProductByCollection />} />
@@ -63,7 +63,7 @@ function App() {
         <Route path="stats" element={<Stats />} />
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
-        <Route path="productlist" element={<ProductList />} />
+        <Route path="/" element={<ProductList />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={isUserLoggedIn ? <CheckoutPage /> : <Navigate to='/login' />} />
 
