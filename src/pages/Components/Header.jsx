@@ -7,15 +7,16 @@ import { logout } from "../../features/actions/auth";
 import logo from "../../images/petheedslogo.jpg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
+import { FaUserCircle } from "react-icons/fa";
 
 const menuItems = [
   {
     name: "Home",
-    href: "/",
+    href: "/home",
   },
   {
     name: "Our Products",
-    href: "/productlist",
+    href: "/",
   },
   {
     name: "Book Appointment",
@@ -39,10 +40,11 @@ const menuItems = [
 const ProfileDropDown = (props) => {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
+  const {userData} = useSelector(state=>state.auth)
   const profileRef = useRef();
 
+  console.log(userData)
   const navigation = [
-    { title: "Profile", path: "/profile" },
     {
       title: "Orders",
       path: "/orderList",
@@ -63,17 +65,14 @@ const ProfileDropDown = (props) => {
       <div className="flex items-center space-x-4">
         <button
           ref={profileRef}
-          className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
+          className="w-10 h-10 outline-none rounded-full lg:focus:ring-2 lg:focus:ring-blue-600"
           onClick={() => setState(!state)}
         >
-          <img
-            src="https://randomuser.me/api/portraits/men/46.jpg"
-            className="w-full h-full rounded-full"
-          />
+        <FaUserCircle   className="w-full h-full rounded-full"/>
         </button>
-        <div className="lg:hidden">
-          <span className="hidden md:block">Micheal John</span>
-          <span className="hidden md:block text-sm text-gray-500">john@gmail.com</span>
+        <div className="flex flex-col">
+          <span className="font-medium">{userData?.data?.fullName}</span>
+          <span className="text-sm text-gray-500">{userData?.data?.email}</span>
         </div>
       </div>
       <ul
@@ -84,7 +83,7 @@ const ProfileDropDown = (props) => {
           <li>
             <Link
               key={idx}
-              className="block text-gray-600 lg:hover:bg-gray-50 p-2.5"
+              className="block text-black font-semibold lg:hover:bg-gray-50 p-2.5"
               to={item.path}
             >
               {item.title}
@@ -96,9 +95,9 @@ const ProfileDropDown = (props) => {
             onClick={() => {
               dispatch(logout());
             }}
-            className="block text-gray-600 w-full text-left lg:hover:bg-gray-50 p-2.5"
+            className="block text-black w-full font-semibold text-left lg:hover:bg-gray-50 p-2.5"
           >
-            Log out
+            Log Out
           </button>
         </li>
       </ul>

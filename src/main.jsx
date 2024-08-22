@@ -14,16 +14,16 @@ import { BrowserRouter } from "react-router-dom";
 injectStore(store)
 let persistor = persistStore(store);
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-          <Toaster position="top-center" richColors />
+  // <React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        <Toaster position="top-center" richColors />
 
-        </PersistGate>
+      </PersistGate>
 
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+    </Provider>
+  </BrowserRouter>
+  // </React.StrictMode>
 );

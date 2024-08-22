@@ -66,8 +66,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducerWithClear);
 // Configure and create the Redux store
 const store = configureStore({
   reducer: persistedReducer,
-  devTools:
-    import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "development",
+  devTools: import.meta.env.VITE_REACT_APP_WORKING_ENVIRONMENT === "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

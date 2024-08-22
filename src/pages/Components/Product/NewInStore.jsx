@@ -19,7 +19,7 @@ const NewInStore = () => {
 
     function chunkArray(array, chunkSize) {
         const chunks = [];
-        for (let i = 0; i < array.length; i += chunkSize) {
+        for (let i = 0; i < array?.length; i += chunkSize) {
             chunks.push(array.slice(i, i + chunkSize));
         }
         return chunks;
@@ -39,7 +39,7 @@ const NewInStore = () => {
     return (
 
         <div className="container mx-auto my-5 ">
-            <div className="flex justify-center font-bold text-2xl mb-4 items-center">
+            <div className="flex justify-center font-bold text-2xl md:text-3xl mb-4 items-center">
                 <div><img src={newimg} /></div>
                 <div>New In Store</div>
             </div>
@@ -54,13 +54,13 @@ const NewInStore = () => {
                 {
                     chunkData.map(item => {
                         return <SwiperSlide>
-                            <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500">
+                            <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500 ">
                                 {
                                     item?.map(d => {
                                         return <Link
                                             className="" to={`/singleproduct/${d?._id}`}>
 
-                                            <img
+                                            <img className="rounded-md h-[197px] w-[742px]"
                                                 src={d?.productBanner}
                                             // src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942"
                                             />

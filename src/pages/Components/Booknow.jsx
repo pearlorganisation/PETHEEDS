@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getAllSubjects } from "../../features/actions/subject";
 import { clearAppointment } from "../../features/slices/bookNow";
+import bookNowImage from "/kutta.jpg"
 
 const Booknow = () => {
   useEffect(() => {
@@ -72,7 +73,7 @@ const Booknow = () => {
         <div class="grid md:grid-cols-2 gap-3  w-full ">
 
           <div className="relative   hidden md:block ">
-            <img className=" object-cover h-[95%] w-[80%]" src="https://source.unsplash.com/Mv9hjnEUHR4/400x600" alt="" srcset="" />
+            <img className=" object-cover h-[100%] w-[80%]" src={bookNowImage} alt="" srcset="" />
           </div>
           <div class="w-full  grid place-items-center  rounded-lg bg-white pt-4 md:p-5  lg:rounded-l-none ">
             <div className="w-full">
@@ -248,9 +249,9 @@ const Booknow = () => {
                   )}
                 </div>
 
-                <div class="mb-6 text-center">
+                <div class="mb-6  text-center">
                   <button
-                    class="focus:shadow-outline w-full rounded-full bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+                    class="focus:shadow-outline w-full rounded-lg bg-blue-700 px-4 py-2 mt-2 font-bold text-white hover:bg-blue-800 focus:outline-none"
 
                   >
                     {isLoading ? (

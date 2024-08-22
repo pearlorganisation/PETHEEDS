@@ -30,10 +30,11 @@ const BrandSlider = () => {
             swiperRef.current.swiper.slidePrev();
         }
     };
+    
     return (
         <>
-            < section className=" text-center space-y-3 container mx-auto py-4" >
-                <p className="flex justify-center font-bold text-2xl mb-4 items-center">Brands</p>
+            < section className=" text-center space-y-3 container mx-auto py-5" >
+                <p className="flex justify-center font-bold text-2xl md:text-4xl mb-8 items-center">Brands</p>
 
                 <div className='flex justify-center items-center relative'>
                     <div onClick={() => {
@@ -50,38 +51,41 @@ const BrandSlider = () => {
                         }}
                         breakpoints={{
                             640: {
-                                slidesPerView: 2,
+                                slidesPerView: 1,
                                 spaceBetween: 20,
                             },
                             768: {
-                                slidesPerView: 3,
+                                slidesPerView: 1,
                                 spaceBetween: 40,
                             },
                             1024: {
-                                slidesPerView: 5,
+                                slidesPerView: 1,
                                 spaceBetween: 50,
                             },
                         }}
+                   
                         modules={[]}
-                        className="flex "
+                        className=" w-full"
                     >
 
-                        {
+                       <div className=''>
+                       {
                             isLoading ? Array(6).fill(true).map(item => {
                                 return <div class="animate-pulse mx-12 shadow-md">
                                     <div class="flex flex-col justify-center items-center cursor-pointer">
-                                        <div class="h-36 w-36 bg-gray-200 rounded"></div>
+                                        <div class="h-30 w-36 bg-gray-200 rounded"></div>
                                         <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
                                     </div>
                                 </div>
                             }) : brands?.map(item => {
-                                return <SwiperSlide className='!w-[200px]'> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer w-full'><img className=' !h-[220px] translate-x-8  object-center'
+                                return <SwiperSlide className=' w-full'> <Link to={`/product?brand=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer w-full'><img className=' h-[205px]  object-center'
                                     src={item?.brandBanner}
                                     // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
                                     alt="product" /> <div>{item?.title}</div> </Link> </SwiperSlide>
                             })
                         }
 
+                       </div>
 
 
                     </Swiper>

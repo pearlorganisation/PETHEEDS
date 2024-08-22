@@ -62,12 +62,12 @@ const HomePage = () => {
           return <><SwiperSlide className="w-full !h-[45rem]">
             <section class="bg-white  h-full flex justify-center items-start md:items-center">
               <div class="grid gap-3 md:gap-28 px-4 py-8 md:grid-cols-2">
-                <div class="lg:mt-0  lg:grid bg-slate-100 p-3 grid place-items-center  h-full">
-                  <img src={el.banner} alt="mockup" class="md:size-[30rem]  size-[20rem] rounded" />
+                <div class="lg:mt-0  lg:grid  grid place-items-center  h-full">
+                  <img src={el.banner} alt="mockup" class="md:size-[35rem]  size-[20rem] rounded" />
                 </div>
                 <div class="flex justify-center items-center  h-full">
                   <div className="space-y-4 text-center md:text-left">
-                    <h1 class="max-w-2xl mb-4 text-3xl font-semibold uppercase tracking-tight leading-none md:text-5xl xl:text-6xl text-[#4b5563] ">
+                    <h1 class="max-w-2xl mb-4 text-3xl font-semibold uppercase tracking-tight leading-none md:text-5xl xl:text-6xl text-slate-700 ">
                       {el.title}
                     </h1>
 
@@ -111,7 +111,7 @@ const HomePage = () => {
 
       </Swiper>
 
-      <section className="container mx-auto p-2 ">
+      <section className="container mx-auto p-2 pt-10">
         <div className="text-center text-xl md:text-6xl font-semibold md:p-10">
           <h1 className="font-family:Raleway text-[#4b5563]">
             Welcome to PETHEEDS LLP
@@ -119,7 +119,7 @@ const HomePage = () => {
         </div>
         <div className="text-center text-xl md:text-2xl font-medium md:p-10 text-[#4B5563] ">
           <p>
-            Established in 2024, PETHEEDS is dedicated to enhancing the health
+            Established in 2021, PETHEEDS is dedicated to enhancing the health
             and well-being of pets through advanced nutraceutical solutions. As
             passionate advocates for animal health, we understand the profound
             bond between pets and their owners. That&#39;s why we&#39;re
@@ -131,14 +131,14 @@ const HomePage = () => {
 
       <Ourvision />
 
-      <section class="w-full py-12 container  mx-auto">
+      <section class="w-full py-28 container  mx-auto">
         <div class="container grid items-center gap-6 px-4">
           <div class="space-y-2">
             <div class="text-center text-3xl font-medium">
               Why Choose PETHEEDS?
             </div>
             <p class="text-center text-base text-gray-500 ">
-              The top 3 reasons to trust PETHEEDS for your pet's well-being.
+              The top 5 reasons to trust PETHEEDS for your pet's well-being.
             </p>
           </div>
           <div class="columns-1 md:columns-2 lg:columns-3 space-y-4 ">
@@ -182,8 +182,8 @@ const HomePage = () => {
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="30"
+                  height="30"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -251,7 +251,7 @@ const HomePage = () => {
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
-                <BsCheckCircleFill size={25} className="text-yellow-500" />
+                <BsCheckCircleFill size={22} className="text-yellow-500" />
                 <h3 class="text-lg md:text-xl font-semibold  leading-none tracking-tight ">
                   Tailored Solutions:
                 </h3>
@@ -272,7 +272,7 @@ const HomePage = () => {
               data-v0-t="card"
             >
               <div class="flex flex-col space-y-1.5 p-6 pb-4">
-                <FaRegHandshake size={30} className="text-green-500" />
+                <FaRegHandshake size={25} className="text-blue-500" />
                 <h3 class="text-lg md:text-xl  font-semibold leading-none tracking-tight">
                   Commitment to Excellence:
                 </h3>

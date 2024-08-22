@@ -26,7 +26,7 @@ const ProductByCollection = () => {
         <div className='min-h-screen container mx-auto'>
             <div class="container mx-auto px-4 py-20 md:px-6 lg:px-8">
                 <div class="mb-6 flex items-center justify-between">
-                    <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">Products</h1><p class="text-gray-500 " data-id="5">Browse our collection of high-quality products.</p></div>
+                    <div data-id="3"><h1 class="text-2xl font-bold" data-id="4">{filteredProduct[0]?.brand?.brand}</h1><p class="text-gray-500 " data-id="5">Browse our collection of high-quality products.</p></div>
                     <div class="flex items-center space-x-4">
                         <button class="ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-10 items-center justify-center space-x-2 whitespace-nowrap rounded-md border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" type="button" id="radix-:r28:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
                             <span>Filter</span>
@@ -42,7 +42,7 @@ const ProductByCollection = () => {
                         </button>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div class="container mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {isLoading ? Array(8).fill(true).map(item => {
                         return <div class="w-80 bg-gray-50 animate-pulse shadow-md rounded-md p-3 space-y-3">
                             <div class="bg-gray-200 w-full h-[18rem] rounded-md"></div>
@@ -56,7 +56,7 @@ const ProductByCollection = () => {
                         </div>
                     }) : Array.isArray(filteredProduct) && filteredProduct?.length > 0 ? filteredProduct?.map((el, id) => {
                         return (
-                            <div class="w-80 bg-white  shadow-md rounded-md p-3 space-y-3">
+                            <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3 space-y-3">
                                 <Link to={`/singleproduct/${el?._id}`}>
                                     <img
                                         src={el?.productImg}
@@ -65,11 +65,11 @@ const ProductByCollection = () => {
                                     />
 
                                     <div class="px-4 py-3">
-                                        <span class="text-gray-400 mr-3 uppercase text-xs">
-                                            Brand
+                                        <span class="text-black font-medium  mr-3 uppercase text-[10px] sm:text-xs">
+                                            {el?.brand?.brand}
                                         </span>
 
-                                        <p class="text-lg font-bold text-black truncate block capitalize">
+                                        <p class="text-xs font-poppins sm:text-lg font-bold text-black truncate block capitalize">
                                             {el?.productName}
                                         </p>
 
@@ -85,7 +85,7 @@ const ProductByCollection = () => {
                                     <button
                                         className="w-full rounded-md border bg-blue-700 text-sm hover:bg-blue-800 h-9 flex items-center justify-center gap-3 px-4 my-2" // Added margin here
                                         onClick={() => {
-                                            dispatch(addToCart({ ...el, ...price }));
+                                            dispatch(addToCart({ productId: el?._id, ...el, ...price }));
                                         }}
                                     >
                                         <div className="mr-1">

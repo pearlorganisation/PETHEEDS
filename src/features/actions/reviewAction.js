@@ -5,11 +5,15 @@ import { instance } from "../../services/axiosInterceptor";
 
 export const addReview = createAsyncThunk(
   "addReview",
-  async ({ productId, formData }, { rejectWithValue }) => {
+  async ({ formData }, { rejectWithValue }) => {
     try {
-      const response = await instance.post(`/review/${productId}`, formData, {
-        withCredentials: true,
-      });
+      const response = await instance.post(
+        `https://petheeds-backend-zqq1.onrender.com/api/v1/review`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       return response?.data;
     } catch (e) {
       return rejectWithValue(e);
@@ -17,14 +21,18 @@ export const addReview = createAsyncThunk(
   }
 );
 
-export const getAddress = createAsyncThunk(
+export const getReview = createAsyncThunk(
   "getReveiw",
-  async (data, { rejectWithValue }) => {
+  async (productId, { rejectWithValue }) => {
     try {
-      const response = await instance.get(`/review`, {
-        withCredentials: true,
-      });
-      return response?.data;
+      const response = await instance.get(
+        `https://petheeds-backend-zqq1.onrender.com/api/v1/review/${productId}?isApproved=true`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(response, "response");
+      return response?.data?.data;
     } catch (e) {
       return rejectWithValue(e);
     }

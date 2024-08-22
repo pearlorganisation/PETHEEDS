@@ -1,10 +1,5 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
-import { FaShoppingCart } from "react-icons/fa";
-import newimg from "../../../images/new.png"
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../../features/slices/cartSlice";
 import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,14 +22,15 @@ import NewInStore from "./NewInStore";
 
 export default function ProductList() {
   const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [limit, setLimit] = useState(4)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(Number(searchParams.get('page')) || 1)
   const [price, setPrice] = useState({})
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useLocation()
-  console.log(search, "search")
+  console.log(searchParams.get('page'), "searchParams.get('page')")
 
 
 
@@ -129,8 +125,14 @@ export default function ProductList() {
           <button
             onClick={() => {
               setPage((prev) => {
-                return prev > 1 ? prev - 1 : prev
-              })
+                if (prev > 1) {
+                  const nextPage = prev - 1;
+                  // Update the query parameter without using navigate
+                  setSearchParams({ page: nextPage });
+                  return nextPage;
+                }
+                return prev;
+              });
             }}
             className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Previous</button>
           <div>
@@ -139,8 +141,14 @@ export default function ProductList() {
           <button
             onClick={() => {
               setPage((prev) => {
-                return prev < totalPages ? prev + 1 : prev
-              })
+                if (prev < totalPages) {
+                  const nextPage = prev + 1;
+                  // Update the query parameter without using navigate
+                  setSearchParams({ page: nextPage });
+                  return nextPage;
+                }
+                return prev;
+              });
             }}
             className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Next</button>
         </div>

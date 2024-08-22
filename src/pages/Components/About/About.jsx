@@ -6,22 +6,22 @@ import cat2 from "../../../images/cutecat.jpg";
 const About = () => {
   return (
     <>
-      <div className="w-full container mx-auto py-12 md:py-24 lg:py-32">
-        <div className="container grid items-center justify-center gap-4 px-4 text-center md:gap-10 md:px-6 lg:gap-16 p-5">
-          <div className="space-y-4 lg:space-y-6">
-            <h1 className="text-3xl font-bold tracking-tighter md:text-5xl">
+      <div className="w-full container mx-auto py-12  lg:pt-16">
+        <div className="container grid items-center justify-center gap-4 px-4 text-center md:gap-10 md:px-6 lg:gap-16 ">
+          <div className="space-y-4 lg:space-y-4">
+            <h1 className="text-3xl font-bold tracking-tighter md:text-4xl">
               About PETHEEDS
             </h1>
             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Welcome to PETHEEDS, where passion for pets meets a commitment to
-              excellence in veterinary healthcare. Established in 2024, PETHEEDS
+              excellence in veterinary healthcare. Established in 2021, PETHEEDS
               was founded with a clear purpose: to redefine the standard of pet
               wellness through innovative nutraceutical products and unwavering
               dedication to our furry companions..
             </p>
           </div>
           <div className="grid container mx-auto  w-full grid-cols-1 items-center justify-center md:grid-cols-3 md:gap-4 lg:gap-8">
-            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+            <div className="mx-auto flex w-full items-center justify-center py-3 px-8">
               <img
                 src={cat}
                 width="400"
@@ -30,7 +30,7 @@ const About = () => {
                 className="aspect-video overflow-hidden rounded-lg object-cover object-center"
               />
             </div>
-            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+            <div className="mx-auto flex w-full items-center justify-center py-3 px-8">
               <img
                 src={cat1}
                 width="400"
@@ -39,7 +39,7 @@ const About = () => {
                 className="aspect-video overflow-hidden rounded-lg object-cover object-center"
               />
             </div>
-            <div className="mx-auto flex w-full items-center justify-center p-4 sm:p-8">
+            <div className="mx-auto flex w-full items-center justify-center py-3  px-8">
               <img
                 src={cat2}
                 width="400"
@@ -50,7 +50,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="container py-12 space-y-12 md:py-16 lg:space-y-16">
+        <div className="container py-12 space-y-12 md:py-12 lg:space-y-16">
           <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Story
@@ -86,8 +86,8 @@ const About = () => {
           </div>
 
           <div className=" mx-auto max-w-3xl">
-            <h2 className="text-3xl font-bold mb-8 p-5">Our Team</h2>
-            <p className="text-lg text-gray-700 mb-12 p-5">
+            <h2 className="text-3xl  md:text-4xl font-bold mb-8 p-5">Our Team</h2>
+            <p className="text-gray-500 md:text-xl/relaxed xl:text-base/relaxed  p-5">
               Behind every great company is a team of dedicated individuals who
               share a common vision and commitment to excellence. At PETHEEDS,
               our team is comprised of passionate professionals with diverse

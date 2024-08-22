@@ -1,28 +1,39 @@
 import React from 'react'
 import ImageViewer from './ImageViewer'
-
-const ReveiwCard = () => {
+import StarRating from '../StartRating/StarRating'
+const Star = ({ filled }) => {
+    return (
+        <svg
+            className={`w-6 h-6 ${filled ? 'text-yellow-500' : 'text-gray-300'}`}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+    );
+};
+const ReveiwCard = ({ item }) => {
     return (
         <div class="flex items-start p-6 bg-slate-100 hover:bg-slate-200/70 cursor-pointer rounded-md">
 
             <div class="">
                 <p class="flex items-baseline">
-                    <span class="text-gray-600 font-bold">Mary T.</span>
+                    <span class="text-gray-600 font-bold">Abhishek007</span>
 
                 </p>
                 <div class="flex items-center mt-1">
-                    <svg class="w-4 h-4 fill-current text-yellow-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                    <svg class="w-4 h-4 fill-current text-yellow-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                    <svg class="w-4 h-4 fill-current text-yellow-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                    <svg class="w-4 h-4 fill-current text-yellow-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                    <svg class="w-4 h-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
+                    <div className="flex space-x-1">
+                        {Array.from({ length: 5 }, (_, index) => (
+                            <Star key={index} filled={index < item?.rating} />
+                        ))}
+                    </div>
                 </div>
                 <div class="flex items-center gap-3 mt-4 text-gray-600">
-                    <ImageViewer />
+                    <ImageViewer key={item?._id} imageData={item?.reviewImages} />
                 </div>
                 <div class="mt-3">
-                    <span class="font-bold">Sapien consequat eleifend!</span>
-                    <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    {/* <span class="font-bold">Sapien consequat eleifend!</span> */}
+                    <p class="mt-1 font-bold">{item?.message}</p>
                 </div>
 
             </div>

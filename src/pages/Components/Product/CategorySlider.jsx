@@ -33,8 +33,8 @@ const CategorySlider = ({ data }) => {
     };
     return (
         <>
-            < section className=" text-center space-y-3 container mx-auto py-4" >
-                <p className="flex justify-center font-bold text-2xl mb-4 items-center">Category</p>
+            < section className=" text-center space-y-3 container mx-auto py-10" >
+                <p className="flex justify-center font-bold text-2xl md:text-4xl mb-6 items-center">Category</p>
 
                 <div className='flex justify-center items-center relative'>
                     <div onClick={() => {
@@ -76,7 +76,7 @@ const CategorySlider = ({ data }) => {
                                     </div>
                                 </div>
                             }) : categoryData?.map(item => {
-                                return <SwiperSlide> <Link to={`/product?category=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className=' h-[220px]  object-center' src={item?.categoryImg} alt="" /> <div>{item?.title}</div> </Link> </SwiperSlide>
+                                return <SwiperSlide> <Link to={`/product?category=${item?._id}`} className='flex flex-col justify-center items-center cursor-pointer'><img className=' h-[200px]  object-center' src={item?.categoryImg} alt="" /> <div className='font-poppins font-semibold pt-7 '>{item?.title}</div> </Link> </SwiperSlide>
                             })
                         }
 

@@ -26,7 +26,7 @@ const contactUsSlice = createSlice({
       .addCase(createContactUs.fulfilled, (state, action) => {
         state.isLoading = false;
         state.contactUsData = action.payload.data;
-        toast.success("contactUs Booked successfully", {
+        toast.success("Contact Details Submitted successfully", {
           position: "top-center",
         });
       })

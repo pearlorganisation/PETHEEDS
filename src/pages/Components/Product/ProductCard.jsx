@@ -10,7 +10,8 @@ const ProductCard = ({ el }) => {
 
 
     return (
-        <div class="w-full bg-white shadow-md rounded-md p-1 md:p-3 space-y-3">
+        <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3 space-y-3">
+            <div>
             <Link to={`/singleproduct/${el?._id}`}>
                 <img
                     src={el?.productImg}
@@ -20,11 +21,11 @@ const ProductCard = ({ el }) => {
             </Link>
 
             <div class="px-4 py-3">
-                <span class="text-gray-400 mr-3 uppercase text-[10px] sm:text-xs">
-                    Brand
+                <span class="text-black font-medium  mr-3 uppercase text-[10px] sm:text-xs">
+                    {el?.brand?.brand}
                 </span>
 
-                <p class="text-xs sm:text-lg font-bold text-black truncate block capitalize">
+                <p class="text-xs font-poppins sm:text-lg font-bold text-black truncate block capitalize">
                     {el?.productName}
                 </p>
 
@@ -33,6 +34,7 @@ const ProductCard = ({ el }) => {
 
                     <QuantityWithPrice item={el} price={price} setPrice={setPrice} />
                 </div>
+            </div>
             </div>
 
             <div className="w-full">
@@ -59,7 +61,7 @@ const ProductCard = ({ el }) => {
                         </svg>
                     </div>
 
-                    <div className="text-white font-semibold">ADD TO CART</div>
+                    <div className="text-white text-[10px] sm:text-sm font-semibold">ADD TO CART</div>
                 </button>
             </div>
         </div>

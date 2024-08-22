@@ -1,6 +1,5 @@
 // import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import img1 from "../../../../Images for Website/Aloevera Shampoo 250 ML/1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../../features/actions/productActions";
 import { useEffect, useState } from "react";
@@ -12,6 +11,8 @@ import { CiCreditCard1 } from "react-icons/ci";
 import QuantityWithPrice from "./QuantityWithPrice";
 import ReveiwCard from "./ReveiwCard";
 import ImageViewer from "./ImageViewer";
+import { getReview } from "../../../features/actions/reviewAction";
+import style from './style.module.css'
 
 // import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
 // import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
@@ -22,6 +23,7 @@ const SingleProduct = () => {
   const [image, setImage] = useState(0);
   const dispatch = useDispatch();
   const { singleProduct, isLoading } = useSelector((state) => state.products);
+  const { reviewData } = useSelector((state) => state.review);
   const [price, setPrice] = useState({});
 
   const navigate = useNavigate();
@@ -41,6 +43,14 @@ const SingleProduct = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
+
+  useEffect(() => {
+    dispatch(getReview(productId))
+  }, [productId])
+  useEffect(() => {
+    console.log(reviewData, "reviewData")
+  }, [reviewData])
+
 
   return (
     <>
@@ -117,8 +127,8 @@ const SingleProduct = () => {
                     </div>
                   </div>
 
-                  <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                    <div class="flex flex-row gap-3 items-start lg:flex-col">
+                  <div class={`mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0 h-[25rem]  py-2 overflow-auto ${style.productScroll}`}>
+                    <div class="flex flex-row gap-3  lg:flex-col  justify-center items-center">
                       {productImage?.map((el, ind) => {
                         return (
                           <button
@@ -161,7 +171,7 @@ const SingleProduct = () => {
 
                 <div class="lg:col-span-3">
                   <h1 className="text text-xl font-semibold py-2">
-                    Discription
+                    Description
                   </h1>
                   <p className="line-clamp-5">{singleProduct?.description}</p>
                 </div>
@@ -200,19 +210,28 @@ const SingleProduct = () => {
                     Cancel Anytime
                   </li>
                 </ul>
+
+                <div>
+                  <h1 className="text text-xl font-semibold py-2">
+                    About
+                  </h1>
+                  <p className="text-slate-600"> {singleProduct?.about}</p>
+                </div>
               </div>
             </div>
           </div>
           {/* Reveiw section starts */}
 
-          <div className="container mx-auto space-y-5 py-8">
-            <div className="text-4xl font-semibold">Customer Reviews:</div>
-            {
-              Array.from({ length: 5 }).map(item => {
-                return <ReveiwCard />
-              })
-            }
-          </div>
+          {
+            Array.isArray(reviewData) && reviewData?.length > 0 && <div className="container mx-auto space-y-5 py-8">
+              <div className="text-4xl font-semibold">Customer Reviews:</div>
+              {
+                reviewData?.map(item => {
+                  return <ReveiwCard item={item} />
+                })
+              }
+            </div>
+          }
 
           {/* Reveiw section ends */}
         </section>

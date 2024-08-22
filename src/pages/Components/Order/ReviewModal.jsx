@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form"
 import ImageViewer from '../Product/ImageViewer';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../../features/actions/reviewAction';
+import { clearReview } from '../../../features/slices/reviewSlice';
 
 const ReviewModal = ({ order, setOpenReview }) => {
-    const { singleReviewStar } = useSelector(state => state.review)
+    const { singleReviewStar, isLoading, reviewData } = useSelector(state => state.review)
+    const { userData } = useSelector(state => state.auth)
     const {
         register,
         handleSubmit,
@@ -21,16 +23,39 @@ const ReviewModal = ({ order, setOpenReview }) => {
         let formData = new FormData()
         formData.append('rating', singleReviewStar)
         formData.append('message', data.review)
-        imageFiles.length > 0 && imageFiles.forEach((image) => formData.append("photo", image));
-        // dispatch(addReview({ productId:order?._id, formData }))
+        formData.append('username', userData?.data?.fullName)
+        formData.append('product', order?.product[0]?.
+            productId[0]?._id)
+        console.log(imageFiles)
+        imageFiles.length > 0 && imageFiles.forEach((image) => formData.append("reviewImages", image));
+        dispatch(addReview({ productId: order?._id, formData }))
 
     }
 
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
+        setImageFiles(files)
         const imageUrls = files.map(file => URL.createObjectURL(file));
         setSelectedImages(imageUrls);
     };
+    console.log(order?.product[0]?.
+        productId[0]?._id
+    )
+    useEffect(() => {
+        if (reviewData?.status) {
+            setOpenReview(false)
+        }
+
+    }, [reviewData])
+    useEffect(() => {
+
+
+        return () => {
+            dispatch(clearReview())
+        }
+    }, [])
+
+
 
 
     return (
@@ -42,9 +67,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
                 }} class="absolute top-4 right-4 text-gray-500"><IoMdClose /></button>
                 <h2 class="text-center text-lg md:text-xl font-semibold mb-4">WRITE REVIEW</h2>
 
-                <div class="bg-blue-100 text-center py-2 mb-4 rounded-md">
-                    <p class="text-blue-500 text-transparent">Review</p>
-                </div>
+
 
                 <div class="flex items-center mb-4">
                     <img src={order?.product[0]?.productId[0]?.productImg} alt="Product Image" class="w-12 h-12 rounded-full mr-4" />
@@ -92,7 +115,9 @@ const ReviewModal = ({ order, setOpenReview }) => {
                     <a href="#" class="text-blue-500 underline">Privacy Policy</a>
                 </p>
 
-                <button type='submit' class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">SUBMIT</button>
+                {
+                    isLoading ? <button disabled={isLoading} type='button' class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Loading...</button> : <button type='submit' class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">SUBMIT</button>
+                }
             </form>
 
         </div>

@@ -5,7 +5,7 @@ import { MdOutlinePets } from "react-icons/md";
 const OurService = () => {
   return (
 
-    <section className="pb-12 pt-20  lg:pb-[90px] lg:pt-[120px]">
+    <section className=" lg:pb-[20px] ">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
@@ -13,13 +13,13 @@ const OurService = () => {
               <span className="mb-2 block text-lg font-semibold text-primary">
                 Our Services
               </span>
-              <h2 className="mb-3 text-3xl font-bold leading-[1.2] text-dark  sm:text-4xl md:text-[40px]">
+              <h2 className=" text-3xl font-bold leading-[1.2] text-dark  sm:text-4xl md:text-[40px]">
                 What We Offer
               </h2>
-              <p className="text-base text-body-color ">
+              {/* <p className="text-base text-body-color ">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in some form.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -27,17 +27,27 @@ const OurService = () => {
         <div className="-mx-4 flex flex-wrap">
           <ServiceCard
             title="Medical "
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            details="Our medical-grade supplements are formulated to address specific health concerns in pets.
+Whether it&#39;s joint support, skin and coat health, or immune system boosting, our products are
+developed with the highest standards of veterinary science. Trust PETHEEDS to provide your
+pets with the essential nutrients they need for optimal health and longevity."
             icon={<GiJumpingDog size={50} className="text-[#a38660]" />}
           />
           <ServiceCard
             title=" Nutrition"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            details="We understand that proper nutrition is the foundation of a healthy pet. Our range of nutritional
+supplements is designed to complement your pet&#39;s diet, providing essential vitamins, minerals,
+
+and other nutrients that may be missing from their regular food. From daily multivitamins to
+specialized supplements, we ensure your pets receive the balanced nutrition they deserve."
             icon={<FaCat size={50} className="text-[#1A4E8D]" />}
           />
           <ServiceCard
             title="Care"
-            details="We dejoy working with discerning clients, people for whom qualuty, service, integrity & aesthetics."
+            details="Caring for your pet goes beyond just their physical health. Our care products are crafted to
+enhance your pet&#39;s overall well-being. This includes stress relief supplements, probiotics for
+digestive health, and products aimed at improving cognitive function. At PETHEEDS, we care
+about every aspect of your pet&#39;s life, ensuring they are happy and healthy in every way."
             icon={<MdOutlinePets size={50} className="text-[#FFAF00]" />}
           />
         </div>
