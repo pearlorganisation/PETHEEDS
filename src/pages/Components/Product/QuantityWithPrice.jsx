@@ -8,7 +8,6 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
     setPrice(priceData);
   }, [priceData]);
 
-  console.log(item);
 
   return (
     <div className="flex flex-col py-3 gap-2">
@@ -45,7 +44,6 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
 
         <div className="flex gap-1 justify-start items-start flex-wrap">
           {item?.price?.map((pr, ind) => {
-            console.log(pr?.weight, "pr?.weight");
             return (
               <>
                 <label

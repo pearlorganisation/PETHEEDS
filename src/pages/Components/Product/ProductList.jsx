@@ -1,59 +1,30 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import img from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-import img2 from "../../../../Images for Website/Aloevera Shampoo 500 ML/2.png";
-import { FaShoppingCart } from "react-icons/fa";
-import newimg from "../../../images/new.png"
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../../features/slices/cartSlice";
 import React, { useEffect, useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-// import required modules
-import { Pagination } from "swiper/modules";
 import { getBrands, getProducts } from "../../../features/actions/productActions";
-import QuantityWithPrice from "./QuantityWithPrice";
 import { getCategory } from "../../../features/actions/categoryAction";
 import BrandSlider from "./BrandSlider";
 import CategorySlider from "./CategorySlider";
 import ProductCard from "./ProductCard";
 import NewInStore from "./NewInStore";
-
+import { GoArrowRight } from "react-icons/go";
 
 
 export default function ProductList() {
   const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
 
-  const [limit, setLimit] = useState(4)
-  const [page, setPage] = useState(1)
-  const [price, setPrice] = useState({})
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { search } = useLocation()
-  console.log(search, "search")
-
-
-
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    dispatch(getProducts({ page, limit }));
-  }, [page]);
-  useEffect(() => {
-    console.log(price, "price")
-  }, [price]);
+    dispatch(getProducts({ page: 1, limit: 8 }));
+  }, []);
 
   useEffect(() => {
     dispatch(getCategory())
     dispatch(getBrands())
   }, []);
 
-  useEffect(() => {
-    console.log(brands, "brands")
-  }, [brands]);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
@@ -101,7 +72,7 @@ export default function ProductList() {
         </div>
         <section
           id="Projects"
-          class=" container mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class=" container mx-auto grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4"
         >
 
           {isLoading ? Array(8).fill(true).map(item => {
@@ -120,30 +91,18 @@ export default function ProductList() {
               <ProductCard el={el} />
             );
           })}
+
+          
         </section>
-      </div>
-
-
-      <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8 py-6">
-        <div className="flex items-center justify-between text-sm text-gray-600 font-medium">
-          <button
-            onClick={() => {
-              setPage((prev) => {
-                return prev > 1 ? prev - 1 : prev
-              })
-            }}
-            className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Previous</button>
-          <div>
-            Page {page} of {totalPages}
+        <div className="flex justify-end w-full mt-6">
+            <button 
+              onClick={() => {
+                navigate('/products')
+              }}
+            className="flex px-5 py-2 rounded-md items-center space-x-2 text-[#7568c7] border-[#7568c7] border  ">
+              <span>View More</span> <GoArrowRight />
+            </button>
           </div>
-          <button
-            onClick={() => {
-              setPage((prev) => {
-                return prev < totalPages ? prev + 1 : prev
-              })
-            }}
-            className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Next</button>
-        </div>
       </div>
 
     </div>

@@ -42,6 +42,7 @@ import TermsOfUse from "./pages/Components/TermsOfUse/TermsOfUse";
 import CheckoutPage from "./pages/Components/Checkout/CheckoutPage";
 import { OrderList } from "./pages/Components/Order/OrderList";
 import { Order } from "./pages/Components/Order/Order";
+import Products from "./pages/Products/Products";
 
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/refund_policy" element={<RefundPolicy />} />
         <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/products" element={<Products />} />
 
 
       </Routes>
