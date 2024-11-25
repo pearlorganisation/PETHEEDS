@@ -104,7 +104,7 @@ const Footer = () => {
                 <li>
                   <Link
                     class="hover:text-blue-600 hover:underline"
-                    to="/productlist"
+                    to="/productsList"
                   >
                     Products
                   </Link>

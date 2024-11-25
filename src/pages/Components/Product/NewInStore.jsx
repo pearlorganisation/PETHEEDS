@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import required modules
+// Import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 import newimg from "../../../images/new.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,7 @@ const NewInStore = () => {
   const dispatch = useDispatch();
   const { filteredProduct } = useSelector((state) => state.products);
 
+  // Function to divide array into chunks
   function chunkArray(array, chunkSize) {
     const chunks = [];
     for (let i = 0; i < array?.length; i += chunkSize) {
@@ -25,22 +26,30 @@ const NewInStore = () => {
     return chunks;
   }
 
+  // Memoized chunk data
   const chunkData = useMemo(() => {
-    // const originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const dividedArray = chunkArray(filteredProduct, 4);
-    return dividedArray;
-  }, []);
+    if (!filteredProduct || filteredProduct.length === 0) return [];
+    return chunkArray(filteredProduct, 4);
+  }, [filteredProduct]);
+
+  // Fetch new products on component mount
+  useEffect(() => {
+    console.log("Fetching new products...");
+    dispatch(getProductByCategory({ query: `?newInStore=true` }));
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getProductByCategory({ query: `?newInStore=true` }));
-  }, []);
+    console.log("Filtered products updated:", filteredProduct);
+  }, [filteredProduct]);
 
   return (
-    <div className="container mx-auto my-5 ">
+    <div className="container mx-auto my-5">
+      {/* Section Header */}
       <div className="flex justify-center font-bold text-2xl md:text-3xl mb-4 items-center">
         <div>
           <img
             src={newimg}
+            alt="New In Store"
             onError={(event) => {
               event.target.src = "/placeholder.jpg";
               event.onerror = null;
@@ -49,40 +58,41 @@ const NewInStore = () => {
         </div>
         <div>New In Store</div>
       </div>
-      <Swiper
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{delay: 4000}}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper"
-      >
-        {chunkData.map((item) => {
-          return (
-            <SwiperSlide>
-              <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5 border-red-500 ">
-                {item?.map((d) => {
-                  return (
-                    <Link className="" to={`/singleproduct/${d?._id}`}>
-                      <img
-                        className="rounded-md h-[197px] w-[742px]"
-                        src={d?.productBanner}
-                        // src="https://headsupfortails.com/cdn/shop/files/hypoallergenic_web_02_b1c2e966-7195-4b23-a765-165e250bb676.webp?v=1709716942"
-                        onError={(event) => {
-                            event.target.src =
-                              "/placeholder.jpg";
-                            event.onerror = null;
-                          }}
-                      />
-                    </Link>
-                  );
-                })}
+
+      {/* Content */}
+      {chunkData.length > 0 ? (
+        <Swiper
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{ delay: 4000 }}
+          modules={[Pagination, Autoplay]}
+          className="mySwiper"
+        >
+          {chunkData.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5">
+                {item.map((d) => (
+                  <Link key={d._id} to={`/singleproduct/${d?._id}`}>
+                    <img
+                      className="rounded-md h-[197px] w-[742px]"
+                      src={d?.productBanner}
+                      alt={d?.name || "Product"}
+                      onError={(event) => {
+                        event.target.src = "/placeholder.jpg";
+                        event.onerror = null;
+                      }}
+                    />
+                  </Link>
+                ))}
               </div>
             </SwiperSlide>
-          );
-        })}
-      </Swiper>
+          ))}
+        </Swiper>
+      ) : (
+        <div className="text-center my-5">No new products available.</div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
@@ -118,9 +118,14 @@ export default function ProductList() {
           })}
         </section>
       </div>
+      <div className="grid place-items-center pb-5  ">
+        <Link to='/productsList'>
+          <button className="px-6 py-2 rounded-md text-blue-600 hover:underline font-medium" type="button">View More...</button>
+        </Link>
+      </div>
 
 
-      <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8 py-6">
+      {/* <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8 py-6">
         <div className="flex items-center justify-between text-sm text-gray-600 font-medium">
           <button
             onClick={() => {
@@ -152,7 +157,7 @@ export default function ProductList() {
             }}
             className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">Next</button>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

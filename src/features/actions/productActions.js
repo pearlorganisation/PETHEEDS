@@ -5,10 +5,12 @@ import { instance } from "../../services/axiosInterceptor";
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",
-  async ({ page, limit = 2 }, { rejectWithValue }) => {
+  async ({ page, limit = 2, search, category, sort }, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(
-        `/product/?page=${page}&limit=${limit}`,
+        `/product/?page=${page}&limit=${limit}&productName=${
+          search || ""
+        }&category=${category || ""}&sort=${sort || ""}`,
         {
           withCredentials: true,
         }

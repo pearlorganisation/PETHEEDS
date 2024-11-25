@@ -8,6 +8,7 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import { sendOrderMail } from "../../../features/actions/orderMail";
+import { clearCart } from "../../../features/slices/cartSlice";
 
 
 const CheckoutPage = () => {
@@ -157,6 +158,7 @@ const CheckoutPage = () => {
           address: selectedAddress,
         }
       );
+      dispatch(clearCart())
       setIsLoading(false);
       setCodData(data);
       setStep(3);

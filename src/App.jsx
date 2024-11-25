@@ -42,6 +42,7 @@ import TermsOfUse from "./pages/Components/TermsOfUse/TermsOfUse";
 import CheckoutPage from "./pages/Components/Checkout/CheckoutPage";
 import { OrderList } from "./pages/Components/Order/OrderList";
 import { Order } from "./pages/Components/Order/Order";
+import Products from "./pages/Products/Products";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         <Route path="ourvision" element={<Ourvision />} />
         <Route path="ourservice" element={<Ourservice />} />
         <Route path="/" element={<ProductList />} />
+        <Route path="/productsList" element={<Products />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={isUserLoggedIn ? <CheckoutPage /> : <Navigate to='/login' />} />
 

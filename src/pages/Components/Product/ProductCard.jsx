@@ -10,36 +10,36 @@ const ProductCard = ({ el }) => {
 
 
     return (
-        <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3 space-y-3">
-            <div>
-            <Link to={`/singleproduct/${el?._id}`}>
-                <img
-                    src={el?.productImg}
-                    alt="Product"
-                    class="h-80 w-full object-cover rounded-t-xl"
-                    onError={(event) => {
-                        event.target.src =
-                          "/placeholder.jpg";
-                        event.onerror = null;
-                      }}
-                />
-            </Link>
+        <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3">
+            <div className=''>
+                <Link to={`/singleproduct/${el?._id}`}>
+                    <img
+                        src={el?.productImg}
+                        alt="Product"
+                        class="h-80 w-full object-contain rounded-t-xl"
+                        onError={(event) => {
+                            event.target.src =
+                                "/placeholder.jpg";
+                            event.onerror = null;
+                        }}
+                    />
+                </Link>
 
-            <div class="px-4 py-3">
-                <span class="text-black font-medium  mr-3 uppercase text-[10px] sm:text-xs">
-                    {el?.brand?.brand}
-                </span>
+                <div class="px-4 pt-3">
+                    <span class="text-black font-medium  mr-3 uppercase text-[10px] sm:text-xs">
+                        {el?.brand?.brand}
+                    </span>
 
-                <p class="text-xs font-poppins sm:text-lg font-bold text-black truncate block capitalize">
-                    {el?.productName}
-                </p>
+                    <p class="text-xs font-poppins sm:text-lg font-bold text-black truncate block capitalize">
+                        {el?.productName}
+                    </p>
 
-                <div class="flex flex-col">
+                    <div class="flex flex-col">
 
 
-                    <QuantityWithPrice item={el} price={price} setPrice={setPrice} />
+                        <QuantityWithPrice item={el} price={price} setPrice={setPrice} />
+                    </div>
                 </div>
-            </div>
             </div>
 
             <div className="w-full">
