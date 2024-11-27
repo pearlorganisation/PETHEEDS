@@ -5,10 +5,12 @@ import {
   decreaseItem,
   increaseItem,
   removeItem,
+  updateCart,
 } from "../../../features/slices/cartSlice";
 // import cart from "/cart.png";
 import { Link, useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
+const channel = new BroadcastChannel('cart-sync')
 export function Cart() {
 
 
@@ -41,9 +43,33 @@ export function Cart() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  const [message, setMessage] = useState('Hello, Tab!');
+
+  // Handle incoming messages from other tabs
+  // useEffect(() => {
+  //   channel.onmessage = (event) => {
+  //     if (event.data?.type === 'UPDATE_CART') {
+  //       dispatch(updateCart(event.data?.data))
+  //     }
+  //     setMessage(event.data?.type); // Update state with received message
+  //   };
+
+  //   return () => {
+  //     channel.close(); // Clean up channel on unmount
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+
+  //   channel.postMessage({ type: 'UPDATE_CART', data: cartData })
+  // }, [cartData])
+
+
 
   return (
     <div className="mx-auto container pt-12 min-h-screen px-5 lg:px-32 ">
+      <h1>{message}</h1>
+
       {cartData.length > 0 ? (
         <div className="mx-auto  md:py-8 ">
           <h1 className="text-3xl border-b-2 pb-3 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -127,9 +153,11 @@ export function Cart() {
                               <button
                                 type="button"
                                 onClick={() => {
-                                  dispatch(
-                                    increaseItem({ id: product?._id })
-                                  );
+                                  channel.postMessage({ type: 'INCREASE_CART', data: { id: product?._id } })
+
+                                  // dispatch(
+                                  //   increaseItem({ id: product?._id })
+                                  // );
                                 }}
                                 class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
                               >
@@ -142,7 +170,8 @@ export function Cart() {
                         <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
                           <button
                             onClick={() => {
-                              dispatch(removeItem({ id: product?._id }));
+                              dispatch(removeItem({ id: product?._id }))
+
                             }}
                             type="button"
                             class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"

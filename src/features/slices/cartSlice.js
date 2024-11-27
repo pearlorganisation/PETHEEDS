@@ -1,10 +1,19 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import { data } from "autoprefixer";
 import { toast } from "sonner";
-
 const initialState = {
   isLoading: false,
   cartData: [],
   errorMessage: "",
+};
+
+const channel = new BroadcastChannel("cart-sync");
+
+channel.onmessage = (event) => {
+  if (data.type === "INCREASE_CART") {
+    // store.dispatch(increaseItem(data.data));
+  }
+  console.log("sagsagfjsadf", event);
 };
 
 export const cartSlice = createSlice({
@@ -60,6 +69,7 @@ export const cartSlice = createSlice({
         return item;
       });
       state.cartData = temp;
+      // increaseChannel.postMessage({ type: "INCREASE_CART", data: { state } });
 
       console.log("temp", temp);
     },
@@ -89,9 +99,18 @@ export const cartSlice = createSlice({
     clearCart: (state, action) => {
       state.cartData = [];
     },
+    updateCart: (state, action) => {
+      state.cartData = action.payload;
+    },
   },
 });
 
-export const { addToCart, increaseItem, decreaseItem, removeItem, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  increaseItem,
+  decreaseItem,
+  removeItem,
+  clearCart,
+  updateCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;
