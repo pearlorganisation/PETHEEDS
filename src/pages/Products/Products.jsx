@@ -57,7 +57,7 @@ const Products = () => {
 
     return (
         <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 pt-20  relative">
-            <div className="mb-6 flex md:flex-row flex-col md:gap-0 gap-3 w-full">
+            <div className="mb-6 flex lg:flex-row flex-col lg:gap-0 gap-3 w-full">
                 <div className="w-full">
                     <h1 className="text-2xl font-bold">Products</h1>
                     <p className="text-gray-500">Browse our collection of high-quality products.</p>
@@ -73,8 +73,8 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 ">
-                <div className="w-full md:w-1/4">
+            <div className="flex flex-col lg:flex-row gap-6 ">
+                <div className="w-full lg:w-1/4 ">
                     <ProductFilters
                         categories={categories}
                         onCategoryChange={handleCategoryChange}
@@ -84,9 +84,9 @@ const Products = () => {
 
                 </div>
 
-                <div className="w-full md:w-3/4">
+                <div className="w-full lg:w-3/4">
                     {
-                        productsData?.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                        productsData?.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {isLoading
                                 ? Array(8)
                                     .fill(true)

@@ -65,14 +65,14 @@ const ProfileDropDown = (props) => {
       <div className="flex items-center space-x-4">
         <button
           ref={profileRef}
-          className="w-10 h-10 outline-none rounded-full lg:focus:ring-2 lg:focus:ring-blue-600"
+          className="md:w-10 md:h-10 w-8 h-8 outline-none rounded-full lg:focus:ring-2 lg:focus:ring-blue-600"
           onClick={() => setState(!state)}
         >
-          <FaUserCircle className="w-full h-full rounded-full" />
+          <FaUserCircle className="w-full   h-full rounded-full" />
         </button>
         <div className="flex flex-col">
           <span className="font-medium">{userData?.data?.fullName}</span>
-          <span className="text-sm text-gray-500">{userData?.data?.email}</span>
+          {/* <span className="text-sm text-gray-500">{userData?.data?.email}</span> */}
         </div>
       </div>
       <ul
@@ -129,7 +129,7 @@ const Header = () => {
             <Link to="/">
               <img
                 src='/android-chrome-192x192.png'
-                className="size-14 md:size-[5rem]"
+                className="size-10 md:size-[4rem] lg:size-[5rem]"
                 onError={(event) => {
                   event.target.src =
                     "/placeholder.jpg";
@@ -142,14 +142,14 @@ const Header = () => {
           </div>
           <div className={`  items-start  lg:flex absolute left-0  top-0 md:static z-50  bg-blue-200/50 md:bg-transparent backdrop-blur ${isMenuOpen ? ' translate-x-0 ' : 'translate-x-[-100%]'} md:translate-x-0 h-screen md:h-auto  transition-al w-full`}>
 
-            <ul className={` flex flex-col py-3 md:py-0 md:flex-row md:justify-between w-full h-full l     `}>
-              <div className=" md:flex py-2  md:flex-row flex flex-col h-full px-4 md:pl-4 md:items-center  justify-around md:space-x-8">
+            <ul className={` flex flex-col py-3 md:py-0 md:flex-row md:justify-between w-full h-full `}>
+              <div className=" md:flex py-2 w-full lg:w-auto  md:flex-row flex flex-col h-full px-4 md:pl-4 md:items-center justify-around space-x-2 lg:space-x-8">
                 {menuItems.map((item) => (
                   <li key={item.name} className="">
                     <Link
                       to={item.href}
                       onClick={toggleMenu}
-                      className="inline-flex items-center text-sm font-semibold  text-gray-800 hover:text-gray-900"
+                      className="inline-flex items-center text-xs lg:text-sm font-semibold  text-gray-800 hover:text-gray-900"
                     >
                       {item.name}
                     </Link>

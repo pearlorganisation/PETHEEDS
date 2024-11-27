@@ -65,8 +65,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="container py-12 space-y-12 md:py-12 lg:space-y-16">
-          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+        <div className="container py-12 md:py-12">
+          <div className="mx-auto max-w-3xl space-y- md:space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Story
             </h2>
@@ -85,7 +85,7 @@ const About = () => {
               natural, holistic approach to pet wellness.
             </p>
           </div>
-          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+          <div className="mx-auto max-w-3xl space-y- md:space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Philosophy
             </h2>
@@ -117,7 +117,7 @@ const About = () => {
 
           </div>
 
-          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+          <div className="mx-auto max-w-3xl space-y- md:space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Our Promise
             </h2>
@@ -131,7 +131,7 @@ const About = () => {
               help you every step of the way.
             </p>
           </div>
-          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
+          <div className="mx-auto max-w-3xl space-y- md:space-y-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl p-5">
               Join Us
             </h2>
