@@ -16,13 +16,7 @@ export function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartChannel = new BroadcastChannel("cartChannel");
-  
-  // useEffect(()=>{
 
-  //   return ()=>{
-  //     cartChannel.close();
-  //   }
-  // },[]);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
@@ -31,14 +25,29 @@ export function Cart() {
       cartChannel.close();
     };
   }, []);
+  useEffect(() => {
+    console.log(
+      "cartData::",
+      cartData?.reduce((acc, item) => {
+        console.log(acc, item.items);
+        return item.items + acc;
+      }, 0)
+    );
+    const totalP = cartData?.reduce((acc, item) => {
+      return acc + item.totalSum;
+    }, 0);
+    setTotalPrice(totalP);
+    console.log("totalPrice::", totalP);
+  }, [cartData]);
+
 
   // To update the total price of all items in the cart
-  useEffect(() => {
-    const updatedTotalPrice = cartData.reduce((acc, product) => {
-      return acc + product.totalPrice;
-    }, 0);
-    setTotalPrice(updatedTotalPrice);
-  }, [cartData]);
+  // useEffect(() => {
+  //   const updatedTotalPrice = cartData.reduce((acc, product) => {
+  //     return acc + product.totalPrice;
+  //   }, 0);
+  //   setTotalPrice(updatedTotalPrice);
+  // }, [cartData]);
 
    const handleIncreaseItem = (product) => {
     // dispatch(increaseItem({ id: product?._id }));
