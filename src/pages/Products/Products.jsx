@@ -14,7 +14,7 @@ const Products = () => {
     const [search, setSearch] = useState(() => searchParams.get("search") || "");
     const [category, setCategory] = useState(() => searchParams.get("category") || "");
     const [sort, setSort] = useState(() => searchParams.get("sort") || "");
-    const [discount, setDiscount] = useState(() => searchParams.get("discount") === "true");
+    const [discount, setDiscount] = useState(() => searchParams.get("discount") === "");
 
     const dispatch = useDispatch();
     const { productsData, isLoading, totalPages } = useSelector((state) => state.products);
@@ -86,7 +86,7 @@ const Products = () => {
 
                 <div className="w-full lg:w-3/4">
                     {
-                        productsData?.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        productsData?.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                             {isLoading
                                 ? Array(8)
                                     .fill(true)

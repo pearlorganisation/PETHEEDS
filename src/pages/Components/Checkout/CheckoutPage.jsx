@@ -470,7 +470,11 @@ const CheckoutPage = () => {
               >
                 View Order Details
               </button>
-              <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
+              <button
+                onClick={() => {
+                  navigate("/productsList");
+                }}
+                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
                 Continue Shopping
               </button>
             </div>

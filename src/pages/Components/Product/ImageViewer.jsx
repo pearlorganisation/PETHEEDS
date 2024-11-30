@@ -20,7 +20,7 @@ const ImageViewer = ({ imageData }) => {
         `https://images.unsplash.com/photo-1455541504462-57ebb2a9cec1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=320&q=80`,
 
     ]
-    const isDatAvailable = imageData?.length > 0 ? imageData : dummyData
+    const isDatAvailable = imageData?.length > 0 ? imageData : []
     const onInit = () => {
         console.log('lightGallery has been initialized');
     };
@@ -33,7 +33,7 @@ const ImageViewer = ({ imageData }) => {
                 plugins={[lgThumbnail, lgZoom]}
                 mode="lg-fade">
                 {
-                    isDatAvailable.map(item => {
+                    isDatAvailable?.length <= 0 ? <div className='font-medium bg-slate-200 px-6 py-2'>No Photos</div> : isDatAvailable.map(item => {
                         return <a
                             data-lg-size="1400-1400"
                             data-pinterest-text="Shinimamiya, Osaka, Japan"
@@ -47,9 +47,9 @@ const ImageViewer = ({ imageData }) => {
                                 src={item}
                                 onError={(event) => {
                                     event.target.src =
-                                      "/placeholder.jpg";
+                                        "/placeholder.jpg";
                                     event.onerror = null;
-                                  }}
+                                }}
                             />
                         </a>
                     })

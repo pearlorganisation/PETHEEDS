@@ -40,6 +40,7 @@ export const reviewSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.reviewData = action.payload;
+        toast.success("Review Added Successfully!");
         state.errorMessage = "";
       })
       .addCase(addReview.rejected, (state, action) => {

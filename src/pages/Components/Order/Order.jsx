@@ -7,14 +7,14 @@ import { useSelector } from 'react-redux';
 
 
 export const Order = () => {
-  const {state:item}= useLocation();
-  const {userData}= useSelector((state)=>state.auth)
+  const { state: item } = useLocation();
+  const { userData } = useSelector((state) => state.auth)
 
   console.log(item)
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  },[])
+  }, [])
   return (
     <div className="mx-auto my-4 max-w-5xl md:my-6 pt-16">
       <div className="overflow-hidden rounded-xl border border-gray-100 shadow">
@@ -54,14 +54,14 @@ export const Order = () => {
                     </div>
                     <div className="ml-auto flex flex-col items-end justify-between">
                       <p className="text-right text-sm font-bold text-gray-900">{product?.price}</p>
-                    
+
                     </div>
                   </li>
                 ))}
               </ul>
               <hr className="mt-6 border-gray-200" />
               <ul className="mt-6 space-y-3">
-              
+
                 <li className="flex items-center justify-between">
                   <p className=" font-medium ">Total Amount</p>
                   <p className="text-sm font-bold ">₹{item?.amount}</p>
@@ -91,17 +91,17 @@ export const Order = () => {
                   <p className="text-sm font-medium text-gray-700">{item?.address?.locality}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.city}, {item?.address?.state}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.pincode}</p>
-                
+
                 </div>
                 <div className="py-6">
                   <h2 className="text-base font-bold text-black">Shipping Contact Number</h2>
                   <p className="mt-3 text-sm font-medium text-gray-700">{item?.address?.phoneNumber}</p>
-              
+
                 </div>
                 <div className="py-6">
                   <h2 className="text-base font-bold text-black">Payment Information</h2>
-                  <p className={`mt-3 text-sm font-medium ${item?.paymentType === 'Online Paid'? "text-green-600" : "text-yellow-600" } `}>{item?.paymentType}</p>
-              
+                  <p className={`mt-3 text-sm font-medium ${item?.paymentType === 'Online Paid' ? "text-green-600" : "text-yellow-600"} `}>{item?.paymentType}</p>
+
                 </div>
               </div>
             </div>

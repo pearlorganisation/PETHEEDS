@@ -75,41 +75,40 @@ const BrandSlider = () => {
           >
             <div className="">
               {isLoading
-                ? Array(6)
-                    .fill(true)
-                    .map((item) => {
-                      return (
-                        <div class="animate-pulse mx-12 shadow-md">
-                          <div class="flex flex-col justify-center items-center cursor-pointer">
-                            <div class="h-30 w-36 bg-gray-200 rounded"></div>
-                            <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
-                          </div>
-                        </div>
-                      );
-                    })
-                : brands?.map((item) => {
+                ? Array(1)
+                  .fill(true)
+                  .map((item) => {
                     return (
-                      <SwiperSlide className=" w-full">
-                        {" "}
-                        <Link
-                          to={`/product?brand=${item?._id}`}
-                          className="flex flex-col justify-center items-center cursor-pointer w-full"
-                        >
-                          <img
-                            className=" h-[205px]  object-center"
-                            src={item?.brandBanner}
-                            // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
-                            alt="product"
-                            onError={(event) => {
-                              event.target.src = "/placeholder.jpg";
-                              event.onerror = null;
-                            }}
-                          />{" "}
-                          <div>{item?.title}</div>{" "}
-                        </Link>{" "}
-                      </SwiperSlide>
+                      <div class="animate-pulse mx-12 shadow-md">
+                        <div class="flex  flex-col justify-center items-center cursor-pointer">
+                          <div class="size-32 md:size-48 lg:size-60 rounded-full bg-gray-200 "></div>
+                        </div>
+                      </div>
                     );
-                  })}
+                  })
+                : brands?.map((item) => {
+                  return (
+                    <SwiperSlide className=" w-full">
+                      {" "}
+                      <Link
+                        to={`/product?brand=${item?._id}`}
+                        className="flex flex-col justify-center items-center cursor-pointer w-full"
+                      >
+                        <img
+                          className=" h-[205px]  object-center"
+                          src={item?.brandBanner}
+                          // src="https://headsupfortails.com/cdn/shop/files/sassy-sausages-web-65d736c98424c.webp?v=1708611835"
+                          alt="product"
+                          onError={(event) => {
+                            event.target.src = "/placeholder.jpg";
+                            event.onerror = null;
+                          }}
+                        />{" "}
+                        <div>{item?.title}</div>{" "}
+                      </Link>{" "}
+                    </SwiperSlide>
+                  );
+                })}
             </div>
           </Swiper>
 

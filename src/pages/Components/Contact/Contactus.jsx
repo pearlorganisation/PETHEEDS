@@ -1,209 +1,186 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
-import Select from 'react-select'
 import { getAllSubjects } from "../../../features/actions/subject";
 import { clearcontactUs } from "../../../features/slices/contactUs";
 import { createContactUs } from "../../../features/actions/contactUs";
 
-
-
-
-
 const Contactus = () => {
-
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }, [])
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { contactUsData, isLoading } = useSelector((state) => state.contactUs)
-  const { subjectData } = useSelector((state) => state.subject)
+  const { contactUsData, isLoading } = useSelector((state) => state.contactUs);
 
-  const { register, handleSubmit, formState: { errors }, control, } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
-    dispatch(getAllSubjects())
-
-  }, [getAllSubjects])
+    dispatch(getAllSubjects());
+  }, [dispatch]);
 
   useEffect(() => {
     if (contactUsData?.status) {
-      navigate("/")
+      navigate("/");
     }
-  }, [contactUsData]);
+  }, [contactUsData, navigate]);
 
   useEffect(() => {
-
     return () => {
-      dispatch(clearcontactUs())
-    }
-  }, [])
+      dispatch(clearcontactUs());
+    };
+  }, [dispatch]);
 
-  const onSubmit = data => {
-    console.log("data", data)
-    // const { name, email, subject, message, ...rest } = data;
-    // const subjectValue = subject ? subject.value : '';
-    // const postData = {
-    //   name,
-    //   email,
-    //   subject: subjectValue,
-    //   message,
-    //   ...rest
-
-    // };
-    dispatch(createContactUs(data))
-  }
+  const onSubmit = (data) => {
+    dispatch(createContactUs(data));
+  };
 
   return (
-    <>
-      <section className="bg-white ">
-
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md" >
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">
-            Contact Us
-          </h2>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500  sm:text-xl">
-            Got a technical issue? Want to send feedback about a beta feature?
-            Need details about our Business plan? Let us know.
+    <section className="bg-gray-50 py-12">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-7 px-4">
+        {/* Left Side - Contact Info */}
+        <div className="bg-transparent p-8 rounded-lg">
+          <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Us</h2>
+          <p className="text-gray-600 mb-4">
+            Email, call, or complete the form to learn how we can help solve your issue.
           </p>
-          <form onSubmit={handleSubmit(onSubmit)} class="space-y-8">
-            <div>
-              <label
-                for="name"
-                class="block mb-2 text-sm font-medium text-gray-900 "
-              >
-                Your Name
-              </label>
-              <input
-                {...register("name", { required: "Name is required" })}
-                type="text"
-                id="name"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                placeholder="Your name"
+          <p className="mb-4">
+            <span className="font-semibold">Email: </span>
+            <a href="mailto:info@example.com" className="text-blue-600 hover:underline">
+              petheedsllp@gmail.com
+            </a>
+          </p>
+          <p className="mb-4">
+            <span className="font-semibold">Phone: </span>
+            <a href="tel:+321221231" className="text-blue-600 hover:underline">
+              +321-221-231
+            </a>
+          </p>
+          <p className="mb-4">
+            <span className="font-semibold">Address: </span>
+            <p className="text-blue-600 hover:underline">
+              B4, North EX Mall, Sector-9 Rohini,
+              New Delhi – 110085
+            </p>
+          </p>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">Customer Support</h3>
+            <p className="text-gray-600 mb-4">
+              Our team is available around the clock to address any concerns or queries you may
+              have.
+            </p>
+          </div>
+        </div>
 
-              />
-              {errors.name && (
-                <span className="text-red-500">
-                  {errors.name.message}
-                </span>
-              )}
+        {/* Right Side - Contact Form */}
+        <div className="bg-white p-8 rounded-lg shadow-md">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
+          <p className="text-gray-600 mb-6">You can reach us anytime.</p>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="name">
+                  First Name
+                </label>
+                <input
+                  {...register("name", { required: "First name is required" })}
+                  type="text"
+                  id="name"
+                  className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="John"
+                />
+                {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="lastName">
+                  Last Name
+                </label>
+                <input
+                  {...register("lastName")}
+                  type="text"
+                  id="lastName"
+                  className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Doe"
+                />
+              </div>
             </div>
+
             <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 "
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">
                 Your Email
               </label>
-
               <input
                 {...register("email", { required: "Email is required" })}
                 type="email"
                 id="email"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                placeholder="name@.com"
-
+                className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="you@example.com"
               />
-              {errors.email && (
-                <span className="text-red-500">
-                  {errors.email.message}
-                </span>
-              )}
+              {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 
-                "
-              >
-                Contact Number
-              </label>
 
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="number">
+                Phone Number
+              </label>
               <input
                 {...register("number", {
-                  required: { value: true, message: 'Number is required' },
+                  required: "Phone number is required",
                   pattern: {
                     value: /^\d{10}$/,
-                    message: 'Invalid mobile number'
+                    message: "Invalid phone number",
                   },
-
-
-
                 })}
-                type="number"
-                id="email"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-
-
+                type="text"
+                id="number"
+                className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="+62 123 456"
               />
               {errors.number && (
-                <span className="text-red-500">
-                  {errors.number.message}
-                </span>
+                <span className="text-red-500 text-sm">{errors.number.message}</span>
               )}
             </div>
+
             <div>
-              <label
-                for="subject"
-                class="block mb-2 text-sm font-medium text-gray-900 "
-              >
-               Your Subject
+              <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="message">
+                How Can We Help?
               </label>
-              <input
-                {...register("subject", { required: "Name is required" })}
-                type="text"
-                id="subject"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                placeholder="Your Subject"
-
-              />
-              {errors.subject && (
-                <span className="text-red-500">
-                  {errors.subject.message}
-                </span>
-              )}
-            </div>
-          
-            <div className="sm:col-span-2">
-
-              <label
-                htmlFor="message"
-                className="block mb-2 text-sm font-medium text-gray-900 "
-              >
-                Your Message
-              </label>
-
               <textarea
                 {...register("message", { required: "Message is required" })}
                 id="message"
-                rows="6"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-                placeholder="Leave a comment..."
-
+                rows="5"
+                className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Write your message..."
               ></textarea>
               {errors.message && (
-                <span className="text-red-500">
-                  {errors.message.message}
-                </span>
+                <span className="text-red-500 text-sm">{errors.message.message}</span>
               )}
             </div>
-            <button
 
-              class="py-3 px-5 text-sm font-medium text-center bg-[#1E40AF] text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 "
+            <button
+              type="submit"
+              className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {isLoading ? (
-                <ClipLoader color="#c4c2c2" />
-              ) : (<>Send Message</>)}
+              {isLoading ? <ClipLoader color="#fff" size={24} /> : "Submit"}
             </button>
+            <p className="text-sm text-gray-500 text-center mt-4">
+              By contacting us, you agree to our{" "}
+              <a href="#" className="text-blue-600 hover:underline">
+                Terms of Service
+              </a>{" "}
+              and{" "}
+              <a href="#" className="text-blue-600 hover:underline">
+                Privacy Policy
+              </a>.
+            </p>
           </form>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

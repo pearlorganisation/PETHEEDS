@@ -1,46 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
-import { ClipLoader } from "react-spinners";
-import { createAppointment } from "../../features/actions/bookNow";
-import Select from "react-select";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from "react";
+import { PawPrint, ChevronDown } from 'lucide-react';
+import { useForm, Controller } from 'react-hook-form';
 import { getAllSubjects } from "../../features/actions/subject";
+import { useDispatch, useSelector } from "react-redux";
+import { createAppointment } from "../../features/actions/bookNow";
+import { useNavigate } from "react-router-dom";
 import { clearAppointment } from "../../features/slices/bookNow";
-import bookNowImage from "/kutta.jpg"
 
-const Booknow = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
-
-  const dispatch = useDispatch();
+export default function Booknow() {
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
   const navigate = useNavigate();
-
-  const { appointmentData, isLoading } = useSelector(
+  const dispatch = useDispatch();
+  const { subjectData } = useSelector((state) => state.subject);
+  const { appointmentData } = useSelector(
     (state) => state.appointment
   );
-  const { subjectData } = useSelector((state) => state.subject);
+
+  useEffect(() => {
+    dispatch(getAllSubjects());
+  }, [dispatch]);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
     control,
+    formState: { errors },
+    reset,
   } = useForm();
 
-  useEffect(() => {
-    dispatch(getAllSubjects());
-  }, [getAllSubjects]);
+  const onSubmit = async (data) => {
+    setIsLoading(true); // Set loading to true when submission starts
+    console.log("data", data);
+    const { name, email, date, subject, message, phoneNumber } = data;
+    const subjectValue = subject ? subject.value : "";
+    const postData = {
+      name,
+      email,
+      phoneNumber,
+      date,
+      subject,
+      message,
+    };
 
+    try {
+      await dispatch(createAppointment(postData)); // Assume dispatch returns a promise
+      // Handle success logic here (e.g., show success message)
+    } catch (error) {
+      console.error("Error creating appointment:", error);
+      // Handle error logic here (e.g., show error message)
+    } finally {
+      setIsLoading(false); // Set loading to false once submission is complete
+    }
+  };
   useEffect(() => {
     if (appointmentData?.status) {
       navigate("/");
     }
   }, [appointmentData]);
-
   useEffect(() => {
     return () => {
       dispatch(clearAppointment())
@@ -49,227 +66,179 @@ const Booknow = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [])
-
-  const [currentDate] = useState(new Date().toISOString().split("T")[0]);
-
-  const onSubmit = data => {
-    console.log("data", data)
-    const { name, email, date, subject, message, phoneNumber } = data;
-    const subjectValue = subject ? subject.value : "";
-    const postData = {
-      name,
-      email,
-      phoneNumber,
-      date,
-      subject: subjectValue,
-      message,
-    };
-    dispatch(createAppointment(postData));
-  };
-
   return (
-    <>
-      <div class="pt-10  min-h-[90dvh] w-[80%] container mx-auto  grid place-items-center">
-        <div class="grid md:grid-cols-2 gap-3  w-full ">
+    <div className="container mx-auto px-4 py-16 bg-gray-50 min-h-screen">
+      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Book Your Pet's Appointment</h1>
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+            <PawPrint className="h-6 w-6 text-blue-600" />
+            Appointment Details
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">Fill in the details to schedule your pet's visit</p>
+        </div>
+        <form className="p-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className=" grid md:grid-cols-2 gap-4 ">
+            {/* Pet's Name */}
+            <div className="md:col-span-2">
+              <label htmlFor="pet-name" className="block text-sm font-medium text-gray-700 mb-1">
+                Pet's Name
+              </label>
+              <input
+                type="text"
+                id="pet-name"
+                name="pet-name"
+                {...register('name', {
+                  required: 'Pet name is required',
+                  minLength: { value: 2, message: 'Pet name must be at least 2 characters' },
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your pet's name"
+              />
+              {errors.petName && (
+                <span className="text-red-500 text-sm">{errors.petName.message}</span>
+              )}
+            </div>
 
-          <div className="relative   hidden md:block ">
-            <img className=" object-cover h-[100%] w-[80%]" src={bookNowImage} alt="" srcset=""  onError={(event) => {
-                    event.target.src =
-                      "/placeholder.jpg";
-                    event.onerror = null;
-                  }}/>
-          </div>
-          <div class="w-full  grid place-items-center  rounded-lg bg-white pt-4 md:p-5  lg:rounded-l-none ">
-            <div className="w-full">
-              <h3 class=" text-center text-2xl text-gray-800 mb-5">
-                Book Your Pet's Appointment
-              </h3>
-              <form class="rounded bg-white space-y-2  " onSubmit={handleSubmit(onSubmit)}>
-                <div class="">
-                  <div class="mb-4 md:mb-0 ">
-                    <label
-                      class="mb-2 block text-sm font-bold text-gray-700 "
-                      for="firstName"
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: 'Please enter a valid email address',
+                  },
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your email address"
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">{errors.email.message}</span>
+              )}
+            </div>
+
+            {/* Service */}
+            <div>
+              <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+                Service
+              </label>
+              <div className="relative">
+                <Controller
+                  name="subject"
+                  control={control}
+                  rules={{ required: 'Please select a service' }}
+                  render={({ field }) => (
+                    <select
+                      id="service"
+                      name="service"
+                      {...field}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
                     >
-                      {" "}
-                      Name{" "}
-                    </label>
-                    <input
-                      {...register("name", { required: "name is required" })}
-                      class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
-                    "
-                      id="firstName"
-                      type="text"
-                      placeholder=" Name"
-                    />
-                    {errors.name && (
-                      <span className="text-red-500">
-                        Name is required
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div class=" ">
-                  <label
-                    class="mb-2 block text-sm font-bold text-gray-700 
-                  "
-                    for="email"
-                  >
-                    {" "}
-                    Email{" "}
-                  </label>
-                  <input
-                    {...register("email", { required: "email is required" })}
-                    class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
-                  "
-                    id="email"
-                    type="email"
-                    placeholder="Email"
-                  />
-                  {errors.email && (
-                    <span className="text-red-500">
-                      Email is required
-                    </span>
+                      <option value="">Select service</option>
+                      {subjectData?.map((item) => (
+                        <option value={item?._id} key={item?.subject}>
+                          {item?.subject}
+                        </option>
+                      ))}
+                    </select>
                   )}
-                </div>
-                <div class="">
-                  <label
-                    class="mb-2 block text-sm font-bold text-gray-700 
-                  "
-                    for="email"
-                  >
-                    {" "}
-                    Phone Number {" "}
-                  </label>
-                  <input
-                    {...register("phoneNumber", {
-                      required: "Phonenumber is required",
-                      minLength: { value: 10, message: "Phone number must be exactly 10 digits" },
-                      maxLength: { value: 10, message: "Phone number must be exactly 10 digits" },
-                    })}
-                    class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
-                  "
-                    id="number"
-                    type="Number"
-                    placeholder="Enter Your Number"
-                  />
-                  {errors.phoneNumber && (
-                    <span className="text-red-500">
-                      {errors.phoneNumber.message}
-                    </span>
-                  )}
-                </div>
-                <div class="">
-                  <label
-                    class="mb-2 block text-sm font-bold text-gray-700 
-                  "
-                    for="email"
-                  >
-                    {" "}
-                    Subject{" "}
-                  </label>
-                  <Controller
-                    control={control}
-                    name="subject"
-                    render={({ field, fieldState: { error } }) => (
-                      <Select
-                        value={field.value}
-                        options={subjectData.map(subject => ({ value: subject?._id, label: subject.subject }))}
-                        onChange={(selectedOption) => field.onChange(selectedOption)}
-                        className="mt-2 text-sm shadow"
-                        placeholder="Choose Subject "
+                />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+              </div>
+              {errors.subject && (
+                <span className="text-red-500 text-sm">{errors.subject.message}</span>
+              )}
+            </div>
 
-                        styles={{
-                          control: (provided) => ({
-                            ...provided,
-                            border: '1px solid #CBD5E1', // Set custom border style
+            {/* Appointment Date */}
+            <div>
+              <label htmlFor="appointment-date" className="block text-sm font-medium text-gray-700 mb-1">
+                Appointment Date
+              </label>
+              <input
+                type="date"
+                id="appointment-date"
+                name="appointment-date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                {...register('date', {
+                  required: 'Appointment date is required',
+                  validate: (value) =>
+                    value >= new Date().toISOString().split('T')[0] || 'Date must be today or in the future',
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              {errors.date && (
+                <span className="text-red-500 text-sm">{errors.date.message}</span>
+              )}
+            </div>
 
-                          }),
-                          placeholder: (provided) => ({
-                            ...provided,
-                            color: '#9CA3AF', // Set custom placeholder color
-                          }),
-                        }}
+            {/* Phone Number */}
+            <div>
+              <label htmlFor="phone-number" className="block text-sm font-medium text-gray-700 mb-1">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone-number"
+                name="phone-number"
+                {...register('phoneNumber', {
+                  required: 'Phone number is required',
+                  pattern: {
+                    value: /^[0-9]{10}$/,
+                    message: 'Phone number must be 10 digits',
+                  },
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your phone number"
+              />
+              {errors.phoneNumber && (
+                <span className="text-red-500 text-sm">{errors.phoneNumber.message}</span>
+              )}
+            </div>
 
-                      />
-                    )}
-                    rules={{ required: true }}
-
-                  />
-                  {errors?.subject && (
-                    <span className="text-red-500">
-                      Subject is required
-                    </span>
-                  )}
-                </div>
-                <div class="">
-                  <label
-                    class="mb-2 block text-sm font-bold text-gray-700 
-                  "
-                    for="email"
-                  >
-                    {" "}
-                    Date{" "}
-                  </label>
-                  <input
-                    {...register("date", { required: "Date is Required", validate: (value) =>
-                      value && value >= currentDate || "Date must be current date or greater than current date"
-               
-
-                     })}
-                    class="focus:shadow-outline mb-3 w-full appearance-none rounded border px-3 py-2 text-sm leading-tight text-gray-700 shadow focus:outline-none 
-                  "
-                    id="date"
-                    type="date"
-                    
-                  />
-                  {errors?.date && (
-                    <span className="text-red-500">
-                    { errors?.date?.message}
-                    </span>
-                  )}
-                </div>
-
-
-                <div class="">
-                  <label class="mb-2 block text-sm font-bold text-gray-700 
-                ">
-                    {" "}
-                    Your Message{" "}
-                  </label>
-                  <textarea
-                    {...register("message", { required: "message is required" })}
-                    id="message"
-                    rows="4"
-                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 
-                  "
-                    placeholder="Write your thoughts here..."
-                  ></textarea>
-                  {errors.message && (
-                    <span className="text-red-500">
-                      Message is required
-                    </span>
-                  )}
-                </div>
-
-                <div class="mb-6  text-center">
-                  <button
-                    class="focus:shadow-outline w-full rounded-lg bg-blue-700 px-4 py-2 mt-2 font-bold text-white hover:bg-blue-800 focus:outline-none"
-
-                  >
-                    {isLoading ? (
-                      <ClipLoader color="#c4c2c2" />
-                    ) : (<>Book Now</>)}
-                  </button>
-                </div>
-              </form>
+            {/* Additional Notes */}
+            <div className="md:col-span-2">
+              <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
+                Additional Notes
+              </label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows={4}
+                {...register('message', { required: 'Additional notes are optional' })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Any special requirements or concerns?"
+              />
+              {errors.notes && (
+                <span className="text-red-500 text-sm">{errors.notes.message}</span>
+              )}
             </div>
           </div>
-        </div>
-      </div>
-    </>
-  );
-};
 
-export default Booknow;
+          {/* Submit Button */}
+          <div className="mt-8">
+            <button
+              type="submit"
+              disabled={isLoading} // Disable button while loading
+              className={`w-full py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+            >
+              {isLoading ? (
+                <span>Loading...</span> // Show loading text or spinner
+              ) : (
+                'Book Appointment'
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

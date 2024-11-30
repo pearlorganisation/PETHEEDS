@@ -43,7 +43,6 @@ export function Cart() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
-  const [message, setMessage] = useState('Hello, Tab!');
 
   // Handle incoming messages from other tabs
   // useEffect(() => {
@@ -68,7 +67,7 @@ export function Cart() {
 
   return (
     <div className="mx-auto container pt-12 min-h-screen px-5 lg:px-32 ">
-      <h1>{message}</h1>
+
 
       {cartData.length > 0 ? (
         <div className="mx-auto  md:py-8 ">
@@ -155,9 +154,9 @@ export function Cart() {
                                 onClick={() => {
                                   channel.postMessage({ type: 'INCREASE_CART', data: { id: product?._id } })
 
-                                  // dispatch(
-                                  //   increaseItem({ id: product?._id })
-                                  // );
+                                  dispatch(
+                                    increaseItem({ id: product?._id })
+                                  );
                                 }}
                                 class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
                               >

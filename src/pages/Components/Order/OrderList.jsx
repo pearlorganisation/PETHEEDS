@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { TbCheckbox } from "react-icons/tb";
 import { TbTruckDelivery } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +8,7 @@ import { format } from "date-fns";
 import StarRating from "../StartRating/StarRating";
 import { createPortal } from "react-dom";
 import ReviewModal from "./ReviewModal";
+import OrderStatus from "./OrderStatus";
 
 export const OrderList = () => {
   const [openReview, setOpenReview] = useState(false);
@@ -19,7 +19,6 @@ export const OrderList = () => {
   const { userData } = useSelector((state) => state.auth);
   const { ordersData } = useSelector((state) => state.order);
 
-  console.log(ordersData);
   useEffect(() => {
     dispatch(getAllUserOrders(userData?.data?._id));
   }, []);
@@ -30,93 +29,87 @@ export const OrderList = () => {
     } else {
       document.body.style.overflow = "unset";
     }
-
-    // Cleanup when the component is unmounted or modal is closed
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [openReview]);
 
-  // if (!openReview) return null;
-
   return (
-    <div className="mx-auto my-8 max-w-6xl px-2 md:my-20 md:px-10">
-      <h2 className="text-3xl font-bold">Order History</h2>
-      <div className="mt-3 text-sm">
-        Check the status of recent and old orders
-      </div>
-      <div className="mt-5 border rounded-sm bg-gray-100">
-        {/* //item 1 */}
+    <div className="mx-auto pt-16 max-w-6xl px-4 md:px-10 bg-gray-50">
+      <h2 className="text-3xl font-bold text-gray-800 mb-2">Order History</h2>
+      <p className="text-sm text-gray-600 mb-6">
+        Check the status of recent and past orders.
+      </p>
+
+      <div className="space-y-6">
         {Array.isArray(ordersData) &&
           ordersData.map((item, idx) => (
-            <div className="px-5 py-5 space-y-2">
+            <div key={idx} className="bg-white shadow-md rounded-md">
+              {/* Order Info */}
               <div
-                key={idx}
-                onClick={() => {
-                  navigate("/order", { state: item });
-                }}
-                className=" flex justify-between items-center overflow-hidden rounded-sm border border-gray-300 bg-white  hover:bg-opacity-5 hover:bg-black "
+                onClick={() => navigate("/order", { state: item })}
+                className="flex justify-between items-center p-4 hover:bg-gray-100 cursor-pointer rounded-t-md"
               >
-                <div className="">
-                  <div className="flex gap-3  p-3">
-                    <div>
-                      <TbTruckDelivery className="text-xl" />
-                    </div>
-                    <div className="flex-grow">
-                      <div className="text-yellow-600 font-bold text-[13px] md:text-[14px]">
-                        On the Way
-                      </div>
-                      <div className="text-[13px] md:text-[14px]">
-                        On {format(new Date(item.createdAt), "EEE, d MMM yyyy")}
-                      </div>
-                    </div>
-                    <div className="md:hidden ">
-                      <FaArrowRight className="" />
-                    </div>
+                <OrderStatus status={item?.orderStatus} createdAt={item?.createdAt} key={idx} />
+                {/* <div className="flex items-center space-x-4">
+                  <TbTruckDelivery className="text-2xl text-blue-600" />
+                  <div>
+                    <p className="text-sm font-bold text-blue-700">
+                      On the Way
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      On {format(new Date(item.createdAt), "EEE, d MMM yyyy")}
+                    </p>
                   </div>
-
-                  <div className="p-3 flex flex-wrap gap-7 text-[12px] md:text-[14px]">
-                    {Array.isArray(item?.product) &&
-                      item?.product?.map((product, idy) => (
-                        <div
-                          key={idy}
-                          className="shadow-md rounded-lg flex gap-5 items-center p-2 w-72"
-                        >
-                          <img
-                            src={product?.productId[0]?.productImg}
-                            className="rounded-lg w-24 h-20"
-                            onError={(event) => {
-                              event.target.src = "/placeholder.jpg";
-                              event.onerror = null;
-                            }}
-                          />
-                          <div>
-                            <div>{product?.productId[0]?.productName}</div>
-                            <div>Size: 350g</div>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-                <div className="sm:hidden md:block mx-4">
-                  <FaArrowRight />
-                </div>
+                </div> */}
+                <FaArrowRight className="text-gray-400 hidden md:block" />
               </div>
-              <div className="flex justify-between items-center  bg-white px-3 py-2 ">
-                <StarRating totalStars={5} />{" "}
+
+              {/* Products */}
+              <div className="p-4 border-t flex flex-wrap gap-4">
+                {Array.isArray(item?.product) &&
+                  item.product.map((product, idy) => (
+                    <div
+                      key={idy}
+                      className="flex items-center bg-gray-100 p-3 rounded-lg shadow-sm w-full"
+                    >
+                      <img
+                        src={product?.productId[0]?.productImg}
+                        alt="Product"
+                        className="w-20 h-20 rounded-md object-cover"
+                        onError={(event) => {
+                          event.target.src = "/placeholder.jpg";
+                          event.onerror = null;
+                        }}
+                      />
+                      <div className="ml-4 text-sm">
+                        <p className="font-semibold text-gray-800">
+                          {product?.productId[0]?.productName}
+                        </p>
+                        <p className="text-gray-600 text-xs">Size: 350g</p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+
+              {/* Review Section */}
+              <div className="flex justify-between items-center bg-gray-50 p-3 rounded-b-md">
+                <StarRating totalStars={5} />
                 <button
                   onClick={() => {
                     setOrder(item);
                     setOpenReview(true);
                   }}
-                  className=" text-blue-600 font-semibold"
+                  className="text-sm font-semibold text-blue-600 hover:underline"
                 >
                   Write a Review
-                </button>{" "}
+                </button>
               </div>
             </div>
           ))}
       </div>
+
+      {/* Review Modal */}
       {openReview &&
         createPortal(
           <ReviewModal order={order} setOpenReview={setOpenReview} />,

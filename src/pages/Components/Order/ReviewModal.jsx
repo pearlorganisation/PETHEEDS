@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../../../features/actions/reviewAction";
 import { clearReview } from "../../../features/slices/reviewSlice";
 import StarRating from "../StartRating/StarRating";
+import { toast } from "sonner";
 
 const ReviewModal = ({ order, setOpenReview }) => {
   const { singleReviewStar, isLoading, reviewData } = useSelector(
@@ -24,14 +25,19 @@ const ReviewModal = ({ order, setOpenReview }) => {
 
   const onSubmit = (data) => {
     let formData = new FormData();
-    formData.append("rating", singleReviewStar);
-    formData.append("message", data.review);
-    formData.append("username", userData?.data?.fullName);
-    formData.append("product", order?.product[0]?.productId[0]?._id);
-    console.log(imageFiles);
-    imageFiles.length > 0 &&
-      imageFiles.forEach((image) => formData.append("reviewImages", image));
-    dispatch(addReview({ productId: order?._id, formData }));
+    if (Number(singleReviewStar) < 1) {
+      toast.error("Please Select Rating Star!")
+    } else {
+      formData.append("rating", singleReviewStar);
+      formData.append("message", data.review);
+      formData.append("username", userData?.data?.fullName);
+      formData.append("product", order?.product[0]?.productId[0]?._id);
+      console.log(imageFiles);
+      imageFiles.length > 0 &&
+        imageFiles.forEach((image) => formData.append("reviewImages", image));
+      dispatch(addReview({ productId: order?._id, formData }));
+    }
+
   };
 
   const handleImageChange = (e) => {

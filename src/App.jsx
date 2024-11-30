@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 
-import Header from "./pages/Components/Header";
 import Footer from "./pages/Components/Footer";
 import About from "./pages/Components/About/About";
 import OurProject from "./pages/Components/OurProduct/OurProject";
@@ -43,6 +42,9 @@ import CheckoutPage from "./pages/Components/Checkout/CheckoutPage";
 import { OrderList } from "./pages/Components/Order/OrderList";
 import { Order } from "./pages/Components/Order/Order";
 import Products from "./pages/Products/Products";
+import Settings from "./pages/Settings/Settings";
+import Profile from "./pages/Settings/Profile";
+import Header from "./pages/Components/Header";
 
 
 function App() {
@@ -54,6 +56,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/home" element={<HomePage />} />
+        <Route path="/profile" element={isUserLoggedIn ? <Settings /> : <Navigate to='/login' />} >
+          <Route index={true} element={<Profile />} />
+          <Route path="orderList" element={<OrderList />} />
+        </Route>
         <Route path="/about" element={<About />} />
         <Route path="/ourProduct" element={<OurProject />} />
         <Route path="/product" element={<ProductByCollection />} />
@@ -80,11 +86,11 @@ function App() {
 
         <Route path="/formSignup" element={!isUserLoggedIn && isOtpVerifiedSignup ? <FormSignUp /> : <SignUp />} />
 
-        <Route path="addnewaddress" element={<NewAddress />} />
+        <Route path="addnewaddress" element={isUserLoggedIn ? <NewAddress /> : <Navigate to='/login' />} />
         <Route path="billing" element={<Billing />} />
-        <Route path="order" element={<Order />} />
-        <Route path="orderList" element={<OrderList />} />
-        <Route path="/invoice" element={<Invoice />} />
+        <Route path="order" element={isUserLoggedIn ? <Order /> : <Navigate to='/login' />} />
+        <Route path="orderList" element={isUserLoggedIn ? <OrderList /> : <Navigate to='/login' />} />
+        <Route path="/invoice" element={isUserLoggedIn ? <Invoice /> : <Navigate to='/login' />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/refund_policy" element={<RefundPolicy />} />
         <Route path="/terms" element={<TermsOfUse />} />
