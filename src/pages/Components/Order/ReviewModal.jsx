@@ -7,6 +7,7 @@ import { addReview } from "../../../features/actions/reviewAction";
 import { clearReview } from "../../../features/slices/reviewSlice";
 import StarRating from "../StartRating/StarRating";
 import { toast } from "sonner";
+import { getAllUserOrders } from "../../../features/actions/order";
 
 const ReviewModal = ({ order, setOpenReview }) => {
   console.log(order, "order")
@@ -18,10 +19,15 @@ const ReviewModal = ({ order, setOpenReview }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      review: order?.rating?.message
+    }
+  });
 
   const dispatch = useDispatch();
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedImages, setSelectedImages] = useState(order?.rating?.
+    reviewImages || []);
   const [imageFiles, setImageFiles] = useState([]);
 
   const onSubmit = (data) => {
@@ -58,6 +64,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
   useEffect(() => {
     return () => {
       dispatch(clearReview());
+      dispatch(getAllUserOrders(userData?.data?._id));
     };
   }, []);
 
@@ -78,7 +85,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
           <IoMdClose />
         </button>
         <h2 class="text-center text-lg md:text-xl font-semibold mb-4">
-          WRITE REVIEW
+          {order?.rating ? 'View Review' : 'WRITE REVIEW'}
         </h2>
 
         <div class="flex items-center mb-4">
@@ -96,7 +103,9 @@ const ReviewModal = ({ order, setOpenReview }) => {
               {order?.productId[0]?.productName}
             </h3>
             <div class="flex items-center">
-              <StarRating totalStars={5} />
+              <StarRating
+                selectedStars={Number(order?.rating?.rating || 0)}
+                totalStars={5} />
             </div>
           </div>
         </div>

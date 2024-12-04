@@ -22,7 +22,10 @@ const StarRating = ({ totalStars = 5, selectedStars }) => {
 
 
     return (
-        <div className="flex">
+        <div className="flex relative">
+            {
+                selectedStars > 0 ? <div className={`absolute w-full h-full `}></div> : ''
+            }
             {Array.from({ length: totalStars }).map((_, index) => (
                 <svg
                     key={index}
