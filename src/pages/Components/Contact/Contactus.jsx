@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { ClipLoader } from "react-spinners";
 import { getAllSubjects } from "../../../features/actions/subject";
 import { clearcontactUs } from "../../../features/slices/contactUs";
 import { createContactUs } from "../../../features/actions/contactUs";
+import { PawPrint, ChevronDown } from 'lucide-react';
 
 const Contactus = () => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Contactus = () => {
 
   const { contactUsData, isLoading } = useSelector((state) => state.contactUs);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, control, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
     dispatch(getAllSubjects());
@@ -38,6 +39,14 @@ const Contactus = () => {
   const onSubmit = (data) => {
     dispatch(createContactUs(data));
   };
+  const { subjectData } = useSelector((state) => state.subject);
+  const { appointmentData } = useSelector(
+    (state) => state.appointment
+  );
+
+  useEffect(() => {
+    dispatch(getAllSubjects());
+  }, [dispatch]);
 
   return (
     <section className="bg-gray-50 py-12">
@@ -107,6 +116,38 @@ const Contactus = () => {
                   placeholder="Doe"
                 />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+                Service
+              </label>
+              <div className="relative">
+                <Controller
+                  name="subject"
+                  control={control}
+                  rules={{ required: 'Please select a service' }}
+                  render={({ field }) => (
+                    <select
+                      id="service"
+                      name="service"
+                      {...field}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                      <option value="">Select service</option>
+                      {subjectData?.map((item) => (
+                        <option value={item?._id} key={item?.subject}>
+                          {item?.subject}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                />
+                <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+              </div>
+              {errors.subject && (
+                <span className="text-red-500 text-sm">{errors.subject.message}</span>
+              )}
             </div>
 
             <div>

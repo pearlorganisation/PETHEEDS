@@ -69,42 +69,48 @@ export const OrderList = () => {
               <div className="p-4 border-t flex flex-wrap gap-4">
                 {Array.isArray(item?.product) &&
                   item.product.map((product, idy) => (
-                    <div
-                      key={idy}
-                      className="flex items-center bg-gray-100 p-3 rounded-lg shadow-sm w-full"
-                    >
-                      <img
-                        src={product?.productId[0]?.productImg}
-                        alt="Product"
-                        className="w-20 h-20 rounded-md object-cover"
-                        onError={(event) => {
-                          event.target.src = "/placeholder.jpg";
-                          event.onerror = null;
-                        }}
-                      />
-                      <div className="ml-4 text-sm">
-                        <p className="font-semibold text-gray-800">
-                          {product?.productId[0]?.productName}
-                        </p>
-                        <p className="text-gray-600 text-xs">Size: 350g</p>
+                    <div className="w-full grid">
+                      <div
+                        key={idy}
+                        className="flex w-full items-center bg-gray-100 p-3 rounded-lg shadow-sm "
+                      >
+                        <img
+                          src={product?.productId[0]?.productImg}
+                          alt="Product"
+                          className="w-20 h-20 rounded-md object-cover"
+                          onError={(event) => {
+                            event.target.src = "/placeholder.jpg";
+                            event.onerror = null;
+                          }}
+                        />
+                        <div className="ml-4 text-sm">
+                          <p className="font-semibold text-gray-800">
+                            {product?.productId[0]?.productName}
+                          </p>
+                          <p className="text-gray-600 text-xs">Size: 350g</p>
+                        </div>
+
                       </div>
+                      {/* Review Section */}
+                      <div className="flex w-full justify-between items-center bg-gray-50 p-3 rounded-b-md">
+                        <StarRating selectedStars={Number(product?.rating?.rating | 0)} totalStars={5} />
+                        <button
+                          onClick={() => {
+                            setOrder({ ...product, orderId: item?._id });
+                            setOpenReview(true);
+                          }}
+                          className="text-sm font-semibold text-blue-600 hover:underline"
+                        >
+                          {product?.rating ? 'View Review' : 'Write a Review'}
+                        </button>
+                      </div>
+
                     </div>
                   ))}
+
               </div>
 
-              {/* Review Section */}
-              <div className="flex justify-between items-center bg-gray-50 p-3 rounded-b-md">
-                <StarRating totalStars={5} />
-                <button
-                  onClick={() => {
-                    setOrder(item);
-                    setOpenReview(true);
-                  }}
-                  className="text-sm font-semibold text-blue-600 hover:underline"
-                >
-                  Write a Review
-                </button>
-              </div>
+
             </div>
           ))}
       </div>

@@ -137,7 +137,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5 text-xs lg:text-base lg:gap-8">
           {
             menuItems?.map(item => {
               return <Link to={`${item?.href}`} className="text-gray-700 hover:text-gray-900">

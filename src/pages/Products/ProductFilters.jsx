@@ -41,7 +41,7 @@ const ProductFilters = ({ categories, onCategoryChange, onSortChange, onDiscount
 
             {/* Sidebar */}
             <div
-                className={`fixed top-[5.5rem] left-0 w-3/4  max-w-sm h-full bg-white shadow-md transform transition-transform duration-300 ease-in-out z-40 lg:relative lg:w-full lg:transform-none ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed top-[4.5rem] md:top-[5.5rem] left-0 w-3/4  max-w-sm h-full bg-white shadow-md transform transition-transform duration-300 ease-in-out z-40 lg:relative lg:w-full lg:transform-none ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 h-full overflow-y-auto">

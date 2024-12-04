@@ -23,6 +23,10 @@ const Products = () => {
         fetchDebouncedData();
     }, [page, limit, search, category, sort, discount]);
 
+    useEffect(() => {
+        console.log(search, "search")
+    }, [search])
+
     const fetchDebouncedData = useDebouncedCallback(() => {
         dispatch(getProducts({ page, limit, search, category, sort }));
         setSearchParams({ page, limit, search, category, sort, });

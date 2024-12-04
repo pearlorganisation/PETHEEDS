@@ -9,6 +9,7 @@ import StarRating from "../StartRating/StarRating";
 import { toast } from "sonner";
 
 const ReviewModal = ({ order, setOpenReview }) => {
+  console.log(order, "order")
   const { singleReviewStar, isLoading, reviewData } = useSelector(
     (state) => state.review
   );
@@ -31,11 +32,13 @@ const ReviewModal = ({ order, setOpenReview }) => {
       formData.append("rating", singleReviewStar);
       formData.append("message", data.review);
       formData.append("username", userData?.data?.fullName);
-      formData.append("product", order?.product[0]?.productId[0]?._id);
+      formData.append("product", order?.productId[0]?._id);
+      formData.append("orderId", order?.orderId);
+      formData.append("productData", JSON.stringify({ ...order, productId: order?.productId[0]?._id }));
       console.log(imageFiles);
       imageFiles.length > 0 &&
         imageFiles.forEach((image) => formData.append("reviewImages", image));
-      dispatch(addReview({ productId: order?._id, formData }));
+      dispatch(addReview({ formData }));
     }
 
   };
@@ -46,7 +49,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
     const imageUrls = files.map((file) => URL.createObjectURL(file));
     setSelectedImages(imageUrls);
   };
-  console.log(order?.product[0]?.productId[0]?._id);
+  console.log(order?.productId[0]?._id);
   useEffect(() => {
     if (reviewData?.status) {
       setOpenReview(false);
@@ -57,10 +60,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
       dispatch(clearReview());
     };
   }, []);
-  useEffect(() => {
-    console.log(order?.product[0]?.productId[0]?.productName
-      , "order")
-  }, [])
+
 
 
   return (
@@ -83,7 +83,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
 
         <div class="flex items-center mb-4">
           <img
-            src={order?.product[0]?.productId[0]?.productImg}
+            src={order?.productId[0]?.productImg}
             alt="Product Image"
             class="w-12 h-12 rounded-full mr-4"
             onError={(event) => {
@@ -93,7 +93,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
           />
           <div>
             <h3 class="text-xs sm:text-sm md:text-lg font-semibold">
-              {order?.product[0]?.productId[0]?.productName}
+              {order?.productId[0]?.productName}
             </h3>
             <div class="flex items-center">
               <StarRating totalStars={5} />
@@ -118,31 +118,33 @@ const ReviewModal = ({ order, setOpenReview }) => {
             <ImageViewer imageData={selectedImages} />
           ) : null}
 
-          <label class="cursor-pointer flex items-center space-x-2">
-            <div class="flex items-center justify-center w-10 md:w-14 h-10 md:h-14 border border-dashed border-gray-400 rounded-md">
-              <svg
-                class="w-8 h-8 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 4v16m8-8H4"
-                ></path>
-              </svg>
-            </div>
-            <input
-              multiple
-              onChange={handleImageChange}
-              type="file"
-              class="hidden"
-            />
-            <span class="text-blue-500">Add Photos</span>
-          </label>
+          {
+            order?.rating ? null : <label class="cursor-pointer flex items-center space-x-2">
+              <div class="flex items-center justify-center w-10 md:w-14 h-10 md:h-14 border border-dashed border-gray-400 rounded-md">
+                <svg
+                  class="w-8 h-8 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                multiple
+                onChange={handleImageChange}
+                type="file"
+                class="hidden"
+              />
+              <span class="text-blue-500">Add Photos</span>
+            </label>
+          }
         </div>
 
         <p class="text-xs text-gray-500 mb-4">
@@ -157,7 +159,7 @@ const ReviewModal = ({ order, setOpenReview }) => {
           </a>
         </p>
 
-        {isLoading ? (
+        {order?.rating ? null : isLoading ? (
           <button
             disabled={isLoading}
             type="button"

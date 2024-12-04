@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setStar } from '../../../features/slices/reviewSlice';
 
-const StarRating = ({ totalStars = 5 }) => {
-    const [rating, setRating] = useState(0);
+const StarRating = ({ totalStars = 5, selectedStars }) => {
+    const [rating, setRating] = useState(selectedStars);
     const [hover, setHover] = useState(0);
     const dispatch = useDispatch()
 
