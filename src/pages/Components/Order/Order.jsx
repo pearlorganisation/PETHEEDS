@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 
-export const Order = () => {
+export default function Order() {
   const { state: item } = useLocation();
   const { userData } = useSelector((state) => state.auth)
 
@@ -53,7 +53,7 @@ export const Order = () => {
                       </div>
                     </div>
                     <div className="ml-auto flex flex-col items-end justify-between">
-                      <p className="text-right text-sm font-bold text-gray-900">{product?.price}</p>
+                      <p className="text-right text-sm font-bold text-gray-900">₹{product?.price}</p>
 
                     </div>
                   </li>

@@ -11,7 +11,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import catimg from "../../../images/cat11.jpg"
 const channel = new BroadcastChannel('cart-sync')
-export function Cart() {
+export default function Cart() {
 
 
   const [count, setcount] = useState(1);
@@ -44,24 +44,7 @@ export function Cart() {
   }, []);
 
 
-  // Handle incoming messages from other tabs
-  // useEffect(() => {
-  //   channel.onmessage = (event) => {
-  //     if (event.data?.type === 'UPDATE_CART') {
-  //       dispatch(updateCart(event.data?.data))
-  //     }
-  //     setMessage(event.data?.type); // Update state with received message
-  //   };
 
-  //   return () => {
-  //     channel.close(); // Clean up channel on unmount
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-
-  //   channel.postMessage({ type: 'UPDATE_CART', data: cartData })
-  // }, [cartData])
 
 
 
@@ -84,11 +67,11 @@ export function Cart() {
               </h2>
               <ul role="list" className="divide-y divide-gray-200">
                 {cartData?.map((product, productIdx) => (
-                  <div key={product.id} className="">
+                  <div key={product._id} className="">
                     <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
 
                       <div class="relative flex flex-1  justify-between ">
-                        <Link to={`/singleproduct/${product?.productId}`} className="flex flex-1 justify-between ">
+                        <Link to={`/singleproduct/${product?.productId}`} className="flex flex-1 gap-2 justify-between ">
                           <div class="shrink-0">
                             <img
                               class="h-24 w-24 max-w-full rounded-lg object-cover"
@@ -216,9 +199,9 @@ export function Cart() {
               </div>
               <div class="relative">
                 <ul class="space-y-5">
-                  {cartData?.map((item) => {
+                  {cartData?.map((item, idx) => {
                     return (
-                      <li class="flex justify-between">
+                      <li key={idx} class="flex justify-between">
                         <div class="inline-flex">
                           <img
                             src={item?.productImg}

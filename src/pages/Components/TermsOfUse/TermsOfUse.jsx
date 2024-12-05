@@ -34,7 +34,7 @@ export default function TermsOfUse() {
                     </div>
                     <div className="mt-10 sm:mt-12 text-center">
                         <Link
-                            href="/"
+                            to="/"
                             className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300 hover:bg-blue-700 text-sm sm:text-base"
                         >
                             Back to Home

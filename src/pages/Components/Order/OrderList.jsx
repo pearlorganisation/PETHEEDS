@@ -8,7 +8,7 @@ import ReviewModal from "./ReviewModal";
 import OrderStatus from "./OrderStatus";
 import StarRating from "../StartRating/StarRating";
 
-export const OrderList = () => {
+export default function OrderList() {
   const [openReview, setOpenReview] = useState(false);
   const [order, setOrder] = useState("");
 

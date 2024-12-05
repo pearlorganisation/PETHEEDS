@@ -87,7 +87,7 @@ const Blog = () => {
               </a>
               <div class="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl  font-bold line-clamp-1 tracking-tight text-gray-900 ">
+                  <h5 class="mb-2 md:text-2xl  font-bold line-clamp-2 tracking-tight text-gray-900 ">
                     {item?.topic}
                   </h5>
                 </a>
