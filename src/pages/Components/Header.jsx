@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
+import { logout } from '../../features/actions/auth';
 
 
 const ProfileDropDown = (props) => {

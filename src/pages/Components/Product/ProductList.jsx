@@ -81,7 +81,7 @@ export default function ProductList() {
         }
       `}</style>
 
-      <NewInStore />
+      {/* <NewInStore /> */}
 
 
 
@@ -113,7 +113,7 @@ export default function ProductList() {
             </div>
           }) : productsData?.map((el, id) => {
             return (
-              <ProductCard el={el} />
+              <ProductCard el={el} key={id} />
             );
           })}
         </section>

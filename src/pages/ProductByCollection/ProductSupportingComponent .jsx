@@ -8,13 +8,15 @@ const ProductSupportingComponent = ({ el }) => {
     const [price, setPrice] = useState({});
     const dispatch = useDispatch();
 
+    console.log("YAHUUU", el);
+
     return (
-        <div class="w-80 bg-white  shadow-md rounded-md p-3 space-y-3">
-            <Link to={`/singleproduct/${el?._id}`}>
+        <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3 space-y-3">
+            <Link to={`/singleproduct/${el.productSlug}`} >
                 <img
                     src={el?.productImg}
                     alt="Product"
-                    class="h-80 w-full object-cover rounded-t-xl"
+                    class="h-80 w-full object-contain rounded-t-xl"
                 />
 
                 <div class="px-4 py-3">

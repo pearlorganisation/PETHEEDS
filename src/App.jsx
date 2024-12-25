@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 // Components
 import Header from "./pages/Components/Header";
 import Footer from "./pages/Components/Footer";
+import NotFound from "./pages/Components/404/NotFound";
 
 // Lazy-loaded Pages
 const HomePage = React.lazy(() => import("./pages/HomePage"));
@@ -65,6 +66,7 @@ function App() {
       </div>}>
         <Routes>
           {/* Public Routes */}
+          <Route path="/*" element={<NotFound />} />
           <Route path="/" element={<ProductList />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<About />} />

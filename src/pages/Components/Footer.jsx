@@ -35,9 +35,7 @@ const Footer = () => {
           <div class="">
             <div class="mt-4 mb-2 font-medium xl:mb-4">Address</div>
             <div class="text-gray-500">
-              B4, North EX Mall, Sector-9 Rohini,
-              <br />
-              New Delhi – 110085
+              Petheeds LLP at B-223, Eldeco Sidcul Industrial Park, Sitarganj, Uttarakhand, 262405
               <br />
             </div>
           </div>
@@ -151,9 +149,9 @@ const Footer = () => {
         <div class="bg-gray-100">
           <div class="mx-auto flex max-w-screen-xl flex-col gap-y-4 px-4 py-3 text-center text-gray-500 sm:flex-row sm:justify-between sm:text-left">
             <div class="">
-              <Link to="https://www.pearlorganisation.com/">
-                © {new Date().getFullYear()} Petheeds LLP | All Rights Reserved
-              </Link>
+
+              © {new Date().getFullYear()} Petheeds LLP | All Rights Reserved
+
             </div>
 
             <div class="">

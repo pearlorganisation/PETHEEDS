@@ -12,7 +12,7 @@ const ProductCard = ({ el }) => {
     return (
         <div class="w-full bg-white flex flex-col justify-between shadow-md rounded-md p-1 md:p-3">
             <div className=''>
-                <Link to={`/singleproduct/${el?._id}`}>
+                <Link to={`/singleproduct/${el?.productSlug}`}>
                     <img
                         src={el?.productImg}
                         alt="Product"

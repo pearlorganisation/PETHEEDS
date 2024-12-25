@@ -7,7 +7,7 @@ import { clearReduxStoreData, storeEmailData } from "../../../features/slices/au
 import { ClipLoader } from "react-spinners";
 
 
-export function SignUp() {
+export default function SignUp() {
   const { isLoading } = useSelector((state) => state.auth)
   const navigate = useNavigate();
   const dispatch = useDispatch()

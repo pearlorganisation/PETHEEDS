@@ -7,7 +7,7 @@ import { signUp } from "../../../features/actions/auth";
 import { ClipLoader } from "react-spinners";
 
 
-export function FormSignUp() {
+export default function FormSignUp() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

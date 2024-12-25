@@ -7,7 +7,7 @@ import { ClipLoader } from "react-spinners";
 import { logIn } from "../../../features/actions/auth";
 import { clearReduxStoreData } from "../../../features/slices/auth";
 
-export function SignIn() {
+export default function SignIn() {
   const { isLoading, userData } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();

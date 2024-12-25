@@ -74,7 +74,7 @@ const NewInStore = () => {
             <SwiperSlide key={index}>
               <div className="grid md:grid-cols-2 md:grid-rows-2 gap-3 container mx-auto p-5">
                 {item.map((d) => (
-                  <Link key={d._id} to={`/singleproduct/${d?._id}`}>
+                  <Link key={d._id} to={`/singleproduct/${d?.productSlug}`}>
                     <img
                       className="rounded-md h-[197px] w-[742px]"
                       src={d?.productBanner}

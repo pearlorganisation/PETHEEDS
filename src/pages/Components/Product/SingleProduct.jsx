@@ -39,11 +39,12 @@ const SingleProduct = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getReview(productId))
+    dispatch(getReview(singleProduct?._id))
   }, [productId])
   useEffect(() => {
     console.log(reviewData, "reviewData")
   }, [reviewData])
+
 
 
 

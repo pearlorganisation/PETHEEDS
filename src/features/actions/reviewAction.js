@@ -22,9 +22,7 @@ export const getReview = createAsyncThunk(
   async (productId, { rejectWithValue }) => {
     try {
       const response = await instance.get(
-        `${
-          import.meta.env.VITE_REACT_APP_API_BASE_URL_MAIN_PRODUCTION
-        }/review/${productId}?isApproved=true`,
+        `/review/${productId}?isApproved=true`,
         {
           withCredentials: true,
         }

@@ -9,8 +9,9 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
   }, [priceData]);
 
   useEffect(() => {
-    console.log("fdsgfsdfsja", price);
-  }, []);
+    console.log("price", price);
+    console.log("priceData", priceData);
+  }, [priceData, price]);
   console.log(item, "blah,blah");
 
   return (

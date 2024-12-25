@@ -56,9 +56,9 @@ const Category = () => {
                                         class="h-80 w-full object-cover rounded-t-xl"
                                         onError={(event) => {
                                             event.target.src =
-                                              "/placeholder.jpg";
+                                                "/placeholder.jpg";
                                             event.onerror = null;
-                                          }}
+                                        }}
                                     />
 
                                     <div class="px-4 py-3">

@@ -49,7 +49,7 @@ export default function Cart() {
 
 
   return (
-    <div className="mx-auto container pt-12 min-h-screen px-5 lg:px-32 ">
+    <div className="mx-auto container  pt-12 min-h-screen px-5  ">
 
 
       {cartData.length > 0 ? (
@@ -68,13 +68,13 @@ export default function Cart() {
               <ul role="list" className="divide-y divide-gray-200">
                 {cartData?.map((product, productIdx) => (
                   <div key={product._id} className="">
-                    <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+                    <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0 relative">
 
                       <div class="relative flex flex-1  justify-between ">
-                        <Link to={`/singleproduct/${product?.productId}`} className="flex flex-1 gap-2 justify-between ">
+                        <Link to={`/singleproduct/${product?.productSlug}`} className="flex flex-1 gap-2 justify-between ">
                           <div class="shrink-0">
                             <img
-                              class="h-24 w-24 max-w-full rounded-lg object-cover"
+                              class="h-24 w-24 max-w-full rounded-lg object-contain"
                               src={product?.productImg}
                               alt=""
                               onError={(event) => {
@@ -84,12 +84,12 @@ export default function Cart() {
                               }}
                             />
                           </div>
-                          <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                          <div class="sm:col-gap-5 sm:grid sm:grid-cols-[80%_auto]">
                             <div class="pr-8 sm:pr-5 space-y-1">
                               <p class="text-sm font-bold text-gray-900">
                                 {product?.brand?.brand}
                               </p>
-                              <p class="text-sm font-semibold text-gray-900">
+                              <p class="text-xs md:text-sm font-semibold text-gray-900 line-clamp-2 md:line-clamp-none">
                                 {product?.productName}
                               </p>
                               <p class="shrink-0 w-20 text-base  font-semibold text-gray-900 sm:order-2 ">
@@ -101,12 +101,12 @@ export default function Cart() {
                                     ₹{product?.price}
                                   </span>
                                 </del>
-                                <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500  font-semibold text-white sm:order-2 ">
+                                <span class="shrink-0 px-2 py-[2px] rounded text-xs md:text-sm bg-blue-500  font-semibold text-white sm:order-2 ">
                                   {product?.discount}% OFF
                                 </span>
                               </div>
-                              <div className="font-semibold">
-                                Unit: <span class="shrink-0 px-2 py-[2px] rounded text-sm bg-blue-500   text-white sm:order-2 ">
+                              <div className="font-semibold text-xs md:text-base">
+                                Unit: <span class="shrink-0 px-2 py-[2px] rounded text-xs md:text-sm bg-blue-500   text-white sm:order-2 ">
                                   {product?.weight}
                                 </span>
                               </div>
@@ -117,39 +117,43 @@ export default function Cart() {
                         <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
 
 
-                          <div class="sm:order-1">
-                            <div class="mx-auto flex h-8 items-stretch text-gray-600">
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  dispatch(decreaseItem({ id: product._id }));
-                                }}
-                                class="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
-                              >
-                                -
-                              </button>
-                              <div class="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
-                                {" "}
-                                {product.items}
-                              </div>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  channel.postMessage({ type: 'INCREASE_CART', data: { id: product?._id } })
-
-                                  dispatch(
-                                    increaseItem({ id: product?._id })
-                                  );
-                                }}
-                                class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
                         </div>
 
-                        <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
+
+
+                      </div>
+                      <div className="flex flex-col justify-between ">
+                        <div class="sm:order-1">
+                          <div class="mx-auto flex h-8 items-stretch text-gray-600">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                dispatch(decreaseItem({ id: product._id }));
+                              }}
+                              class="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                            >
+                              -
+                            </button>
+                            <div class="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">
+                              {" "}
+                              {product.items}
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                channel.postMessage({ type: 'INCREASE_CART', data: { id: product?._id } })
+
+                                dispatch(
+                                  increaseItem({ id: product?._id })
+                                );
+                              }}
+                              class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                        <div class="absolute md:static md:flex justify-end top-0  right-0  w-fit md:w-full">
                           <button
                             onClick={() => {
                               dispatch(removeItem({ id: product?._id }))
@@ -206,7 +210,7 @@ export default function Cart() {
                           <img
                             src={item?.productImg}
                             alt=""
-                            class="size-16"
+                            class="size-16 object-contain"
                             onError={(event) => {
                               event.target.src =
                                 "/placeholder.jpg";
@@ -217,9 +221,7 @@ export default function Cart() {
                             <p class="text-sm line-clamp-1 font-semibold ">
                               {item?.productName}
                             </p>
-                            <p class="text-sm font-medium text-[#333333] text-opacity-80">
-                              Pdf, doc Kindle
-                            </p>
+
                             <p class="text-sm font-medium text-[#333333]  text-opacity-80">
                               Quantity : {item?.items}
                             </p>

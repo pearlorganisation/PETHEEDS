@@ -65,15 +65,15 @@ const Contactus = () => {
           </p>
           <p className="mb-4">
             <span className="font-semibold">Phone: </span>
-            <a href="tel:+321221231" className="text-blue-600 hover:underline">
-              +321-221-231
+            <a href="tel:96501 85800" className="text-blue-600 hover:underline">
+              +91 96501 85800
             </a>
           </p>
           <p className="mb-4">
             <span className="font-semibold">Address: </span>
             <p className="text-blue-600 hover:underline">
-              B4, North EX Mall, Sector-9 Rohini,
-              New Delhi – 110085
+              Petheeds LLP at B-223, Eldeco Sidcul Industrial Park, Sitarganj,
+              Uttarakhand 262405
             </p>
           </p>
           <div>
