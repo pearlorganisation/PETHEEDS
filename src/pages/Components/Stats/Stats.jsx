@@ -15,25 +15,25 @@ const Stats = () => {
             data: "20+",
             title: "States"
         }
-    
-    ]
-  return (
-    <>
-       
 
-    <section className="py-14">
-        <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
-            <div className="max-w-2xl mx-auto text-center">
-                <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                    Our Customers are Always Happy 
-                </h3>
-                <p className="mt-3">
-                At PETHEEDS, we are dedicated to the well-being of your pets. Our commitment to quality and
-innovation in pet nutraceuticals ensures that every product we offer supports a healthier, happier life
-for your furry friends.
-                </p>
-            </div>
-            {/* <div className="mt-12">
+    ]
+    return (
+        <>
+
+
+            <section className="py-14">
+                <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+                    <div className="max-w-2xl mx-auto text-center">
+                        <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                            Our Customers are Always Happy
+                        </h3>
+                        <p className="mt-3">
+                            At PETHEEDS, we are dedicated to the well-being of your pets. Our commitment to quality and
+                            innovation in pet nutraceuticals ensures that every product we offer supports a healthier, happier life
+                            for your furry friends.
+                        </p>
+                    </div>
+                    {/* <div className="mt-12">
                 <ul className="flex flex-col items-center justify-center gap-y-10 sm:flex-row sm:flex-wrap lg:divide-x">
                     {
                         stats.map((item, idx) => (
@@ -45,11 +45,11 @@ for your furry friends.
                     }
                 </ul>
             </div> */}
-        </div>
-    </section>
+                </div>
+            </section>
 
-    </>
-  )
+        </>
+    )
 }
 
 export default Stats

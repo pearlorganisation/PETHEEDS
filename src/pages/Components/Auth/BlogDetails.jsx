@@ -16,9 +16,9 @@ const BlogDetails = () => {
                     className="w-full rounded-t-md"
                     onError={(event) => {
                         event.target.src =
-                          "/placeholder.jpg";
+                            "/placeholder.jpg";
                         event.onerror = null;
-                      }}
+                    }}
                 />
                 <div className="space-y-2 py-3 flex flex-col justify-center gap-1 items-start p-1">
                     <div className=" rounded-2xl text-slate-950 bg-white w-fit font-medium flex gap-3">
@@ -33,9 +33,9 @@ const BlogDetails = () => {
                                 alt=""
                                 onError={(event) => {
                                     event.target.src =
-                                      "/placeholder.jpg";
+                                        "/placeholder.jpg";
                                     event.onerror = null;
-                                  }}
+                                }}
                             />{" "}
                             <div>
                                 <span class="text-white text-sm">

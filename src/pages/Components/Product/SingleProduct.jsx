@@ -33,7 +33,6 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(getSingleProduct({ productId }));
   }, []);
-
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);

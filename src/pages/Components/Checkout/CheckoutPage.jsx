@@ -10,7 +10,6 @@ import { toast } from "sonner";
 import { sendOrderMail } from "../../../features/actions/orderMail";
 import { clearCart } from "../../../features/slices/cartSlice";
 
-
 const CheckoutPage = () => {
   const [order, setOrder] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +71,6 @@ const CheckoutPage = () => {
       );
       setOrder(order?.id);
       setIsLoading(false);
-
 
       const options = {
         key: import.meta.env.VITE_APP_RAZORPAY_KEY,
@@ -507,6 +505,6 @@ const CheckoutPage = () => {
       )}
     </div>
   );
-};
+}
 
 export default CheckoutPage;

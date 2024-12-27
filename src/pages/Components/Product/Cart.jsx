@@ -221,7 +221,6 @@ export default function Cart() {
                             <p class="text-sm line-clamp-1 font-semibold ">
                               {item?.productName}
                             </p>
-
                             <p class="text-sm font-medium text-[#333333]  text-opacity-80">
                               Quantity : {item?.items}
                             </p>

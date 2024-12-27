@@ -13,11 +13,11 @@ const Booking = () => {
       <div className="container mx-auto grid md:grid-cols-3 place-items-center py-5 my-5 rounded">
         {/* Dog Image */}
         <div className="flex justify-center md:justify-start ">
-          <img src={dog} alt="Dog" className=" w-[250px]"  onError={(event) => {
-                    event.target.src =
-                      "/placeholder.jpg";
-                    event.onerror = null;
-                  }} />
+          <img src={dog} alt="Dog" className=" w-[250px]" onError={(event) => {
+            event.target.src =
+              "/placeholder.jpg";
+            event.onerror = null;
+          }} />
         </div>
         {/* Spacer */}
         <div className="w-full flex flex-col items-center">
@@ -39,11 +39,11 @@ const Booking = () => {
         </div>
         {/* Cat Image */}
         <div className="flex justify-center md:justify-end">
-          <img src={cat} alt="Cat" className=" w-[250px]"  onError={(event) => {
-                    event.target.src =
-                      "/placeholder.jpg";
-                    event.onerror = null;
-                  }}/>
+          <img src={cat} alt="Cat" className=" w-[250px]" onError={(event) => {
+            event.target.src =
+              "/placeholder.jpg";
+            event.onerror = null;
+          }} />
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createAddress, updateAddress } from '../../../features/actions/addressAction';
 
 
-const BillingAddress = ({data}) => {
+const BillingAddress = ({ data }) => {
     const { userData } = useSelector(state => state.auth)
     const [location, setLocation] = useState(null);
     const [error, setError] = useState(null);
@@ -47,22 +47,22 @@ const BillingAddress = ({data}) => {
         watch,
         formState: { errors },
     } = useForm(data ? {
-        defaultValues:{
-            phoneNumber:data?.phoneNumber,
-            pincode:data?.pincode,
-            locality:data?.locality,
-            city:data?.city,
-            state:data?.state,
-            address:data?.address
+        defaultValues: {
+            phoneNumber: data?.phoneNumber,
+            pincode: data?.pincode,
+            locality: data?.locality,
+            city: data?.city,
+            state: data?.state,
+            address: data?.address
         }
     } : {})
 
     const onSubmit = (formData) => {
         const finalData = { ...formData, userId: userData?.data?._id }
         console.log(finalData)
-        if(data){
-            dispatch(updateAddress({id:data?._id,payload:finalData}))
-        }else{
+        if (data) {
+            dispatch(updateAddress({ id: data?._id, payload: finalData }))
+        } else {
             dispatch(createAddress(finalData))
 
         }
@@ -75,7 +75,7 @@ const BillingAddress = ({data}) => {
             <div class=" space-y-4">
 
                 <div class="relative mt-4 space-y-4">
-                <div class="relative">
+                    <div class="relative">
                         <input
                             {...register("phoneNumber", { required: true })}
                             type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-9   shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Contact Number*" />
@@ -88,7 +88,7 @@ const BillingAddress = ({data}) => {
                     <div>
                         <input {...register("pincode", { required: true })} type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3    shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Pin Code*" />
                     </div>
-               
+
                     {errors.phoneNumber && <span className='text-red-500'>This field is required</span>}
                     <div className='relative'>
                         <input {...register("address", { required: true })} defaultValue={location} type="text" id="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3    shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Address (House No, Building, Street, Area)*" />

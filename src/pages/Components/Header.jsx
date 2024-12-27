@@ -40,7 +40,6 @@ const ProfileDropDown = (props) => {
         </button>
         <div className="flex flex-col">
           <span className="font-medium">{userData?.data?.fullName}</span>
-          {/* <span className="text-sm text-gray-500">{userData?.data?.email}</span> */}
         </div>
       </div>
       <ul

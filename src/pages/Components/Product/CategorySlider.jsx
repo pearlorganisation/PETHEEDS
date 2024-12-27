@@ -67,47 +67,47 @@ const CategorySlider = ({ data }) => {
                 spaceBetween: 50,
               },
             }}
-            autoplay={{delay:4000}}
+            autoplay={{ delay: 4000 }}
             modules={[Autoplay]}
             className="flex"
           >
             {isLoading
               ? Array(6)
-                  .fill(true)
-                  .map((item) => {
-                    return (
-                      <div class="animate-pulse mx-12 shadow-md">
-                        <div class="flex flex-col justify-center items-center cursor-pointer">
-                          <div class="h-36 w-36 bg-gray-200 rounded"></div>
-                          <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
-                        </div>
-                      </div>
-                    );
-                  })
-              : categoryData?.map((item) => {
+                .fill(true)
+                .map((item) => {
                   return (
-                    <SwiperSlide>
-                      {" "}
-                      <Link
-                        to={`/product?category=${item?._id}`}
-                        className="flex flex-col justify-center items-center cursor-pointer"
-                      >
-                        <img
-                          className=" h-[200px]  object-center"
-                          src={item?.categoryImg}
-                          alt=""
-                          onError={(event) => {
-                            event.target.src = "/placeholder.jpg";
-                            event.onerror = null;
-                          }}
-                        />{" "}
-                        <div className="font-poppins font-semibold pt-7 ">
-                          {item?.title}
-                        </div>{" "}
-                      </Link>{" "}
-                    </SwiperSlide>
+                    <div class="animate-pulse mx-12 shadow-md">
+                      <div class="flex flex-col justify-center items-center cursor-pointer">
+                        <div class="h-36 w-36 bg-gray-200 rounded"></div>
+                        <div class="h-4 mt-2 bg-gray-200 w-1/2 rounded"></div>
+                      </div>
+                    </div>
                   );
-                })}
+                })
+              : categoryData?.map((item) => {
+                return (
+                  <SwiperSlide>
+                    {" "}
+                    <Link
+                      to={`/product?category=${item?._id}`}
+                      className="flex flex-col justify-center items-center cursor-pointer"
+                    >
+                      <img
+                        className=" h-[200px]  object-center"
+                        src={item?.categoryImg}
+                        alt=""
+                        onError={(event) => {
+                          event.target.src = "/placeholder.jpg";
+                          event.onerror = null;
+                        }}
+                      />{" "}
+                      <div className="font-poppins font-semibold pt-7 ">
+                        {item?.title}
+                      </div>{" "}
+                    </Link>{" "}
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
 
           <div

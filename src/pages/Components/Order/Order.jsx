@@ -61,7 +61,6 @@ export default function Order() {
               </ul>
               <hr className="mt-6 border-gray-200" />
               <ul className="mt-6 space-y-3">
-
                 <li className="flex items-center justify-between">
                   <p className=" font-medium ">Total Amount</p>
                   <p className="text-sm font-bold ">₹{item?.amount}</p>
@@ -91,7 +90,6 @@ export default function Order() {
                   <p className="text-sm font-medium text-gray-700">{item?.address?.locality}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.city}, {item?.address?.state}</p>
                   <p className="text-sm font-medium text-gray-700">{item?.address?.pincode}</p>
-
                 </div>
                 <div className="py-6">
                   <h2 className="text-base font-bold text-black">Shipping Contact Number</h2>

@@ -2,7 +2,7 @@ import React from 'react'
 import BillingAddress from './BillingAddress'
 import { MdClose } from "react-icons/md";
 
-const Modal = ({ setModal, modal ,data}) => {
+const Modal = ({ setModal, modal, data }) => {
     return (
         <div className='fixed w-full h-full bg-black/30 top-0 z-50 grid md:grid-cols-[auto_30rem]'>
             <button onClick={() => {
