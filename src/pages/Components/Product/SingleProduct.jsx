@@ -113,51 +113,6 @@ const SingleProduct = () => {
 
             <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
               <ProductImageSlider singleProduct={singleProduct} />
-              {/* <div class="lg:col-span-3 lg:row-end-1">
-                <div class="lg:flex  space-y-4 lg:space-y-0 lg:items-start">
-                  <div class="lg:order-2 lg:ml-5  ">
-                    <div class="max-w-xl overflow-hidden rounded-lg border shadow-lg  mx-auto ">
-                      <img
-                        class="h-[25rem] w-full max-w-full object-cover"
-                        src={productImage[image]}
-                        alt=""
-                        onError={(event) => {
-                          event.target.src =
-                            "/placeholder.jpg";
-                          event.onerror = null;
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div class={`mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0 h-[25rem]  py-2 overflow-auto ${style.productScroll}`}>
-                    <div class="flex flex-row gap-3  lg:flex-col  justify-center items-center">
-                      {productImage?.map((el, ind) => {
-                        return (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setImage(ind);
-                            }}
-                            class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg ring  ring-blue-100 text-center"
-                          >
-                            <img
-                              class="h-full w-full object-cover"
-                              src={el}
-                              alt=""
-                              onError={(event) => {
-                                event.target.src =
-                                  "/placeholder.jpg";
-                                event.onerror = null;
-                              }}
-                            />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div> */}
 
               <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
                 <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">

@@ -29,16 +29,16 @@ const ProductImageSlider = ({ singleProduct }) => {
     };
 
     // Toggle loop based on isPlaying state
-    useEffect(() => {
-        if (isPlaying) {
-            startLoop();
-        } else {
-            stopLoop();
-        }
+    // useEffect(() => {
+    //     if (isPlaying) {
+    //         startLoop();
+    //     } else {
+    //         stopLoop();
+    //     }
 
-        // Clean up interval on component unmount
-        return () => stopLoop();
-    }, [isPlaying, productImage.length]);
+    //     // Clean up interval on component unmount
+    //     return () => stopLoop();
+    // }, [isPlaying, productImage.length]);
 
     return (
         <div class="lg:col-span-3 lg:row-end-1  ">
@@ -46,12 +46,12 @@ const ProductImageSlider = ({ singleProduct }) => {
                 <div class="lg:order-2 lg:ml-5  ">
                     <div class="max-w-xl overflow-hidden rounded-lg border shadow-lg  mx-auto ">
                         <img
-                            onMouseOver={() => {
-                                stopLoop()
-                            }}
-                            onMouseLeave={() => {
-                                startLoop()
-                            }}
+                            // onMouseOver={() => {
+                            //     stopLoop()
+                            // }}
+                            // onMouseLeave={() => {
+                            //     startLoop()
+                            // }}
                             class="h-[25rem] w-full max-w-full object-cover"
                             src={productImage[image]}
                             alt=""
