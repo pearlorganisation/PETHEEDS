@@ -1,98 +1,92 @@
-import React, { useEffect, useRef, useState } from 'react'
-import style from './style.module.css'
+import React, { useEffect, useState } from 'react';
+import style from './style.module.css';
 
 const ProductImageSlider = ({ singleProduct }) => {
-    useEffect(() => {
-        if (singleProduct) {
-            const temp = singleProduct?.gallery?.map(item => item)
-            const allImages = [singleProduct?.productImg, ...temp]
-            console.log(allImages, "allImages")
-            setProductImage(allImages)
-        }
-    }, [singleProduct]);
     const [productImage, setProductImage] = useState([]);
     const [image, setImage] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(true);
-    const intervalRef = useRef(null);
-    const startLoop = () => {
-        intervalRef.current = setInterval(() => {
-            setImage((prevIndex) => (prevIndex + 1) % productImage.length);
-        }, 4000);
-    };
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
 
-    // Function to stop the interval
-    const stopLoop = () => {
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
+    useEffect(() => {
+        if (singleProduct) {
+            const temp = singleProduct?.gallery?.map(item => item);
+            const allImages = [singleProduct?.productImg, ...temp];
+            setProductImage(allImages);
         }
+    }, [singleProduct]);
+
+    // Detect swipe direction
+    const handleTouchStart = (e) => {
+        setTouchStart(e.touches[0].clientX);
     };
 
-    // Toggle loop based on isPlaying state
-    // useEffect(() => {
-    //     if (isPlaying) {
-    //         startLoop();
-    //     } else {
-    //         stopLoop();
-    //     }
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.touches[0].clientX);
+    };
 
-    //     // Clean up interval on component unmount
-    //     return () => stopLoop();
-    // }, [isPlaying, productImage.length]);
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const swipeDistance = touchStart - touchEnd;
+        if (swipeDistance > 50) {
+            // Swipe Left - Next Image
+            setImage((prevIndex) => (prevIndex + 1) % productImage.length);
+        } else if (swipeDistance < -50) {
+            // Swipe Right - Previous Image
+            setImage((prevIndex) => (prevIndex - 1 + productImage.length) % productImage.length);
+        }
+
+        setTouchStart(null);
+        setTouchEnd(null);
+    };
 
     return (
-        <div class="lg:col-span-3 lg:row-end-1  ">
-            <div class="lg:flex  space-y-4 lg:space-y-0 lg:items-start ">
-                <div class="lg:order-2 lg:ml-5  ">
-                    <div class="max-w-xl overflow-hidden rounded-lg border shadow-lg  mx-auto ">
-                        <img
-                            // onMouseOver={() => {
-                            //     stopLoop()
-                            // }}
-                            // onMouseLeave={() => {
-                            //     startLoop()
-                            // }}
-                            class="h-[25rem] w-full max-w-full object-cover"
-                            src={productImage[image]}
-                            alt=""
-                            onError={(event) => {
-                                event.target.src =
-                                    "/placeholder.jpg";
-                                event.onerror = null;
-                            }}
-                        />
-                    </div>
+        <div className="lg:col-span-3 lg:row-end-1">
+            <div className="lg:flex space-y-4 lg:space-y-0 lg:items-start">
+                <div className="lg:order-2 lg:ml-5 relative">
+                    <img
+                        className="h-[19rem] lg:h-[25rem] w-full rounded-lg shadow-lg max-w-full object-contain lg:object-cover"
+                        src={productImage[image]}
+                        alt="Product"
+                        onError={(event) => {
+                            event.target.src = "/placeholder.jpg";
+                            event.onerror = null;
+                        }}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    />
                 </div>
 
-                <div class={`mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0 max-h-[25rem]  py-2 overflow-auto ${style.productScroll}`}>
-                    <div class="flex flex-row gap-3  lg:flex-col  justify-center items-center">
-                        {productImage?.map((el, ind) => {
-                            return (
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setImage(ind);
+                <div
+                    className={`mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0 max-h-[25rem] py-2 overflow-auto ${style.productScroll}`}
+                >
+                    <div className="flex flex-row gap-3 lg:flex-col justify-center items-center">
+                        {productImage?.map((el, ind) => (
+                            <button
+                                key={ind}
+                                type="button"
+                                onClick={() => setImage(ind)}
+                                className={`flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg ${
+                                    image === ind ? 'ring-2 ring-blue-500' : 'ring ring-blue-100'
+                                }`}
+                            >
+                                <img
+                                    className="h-full w-full object-cover"
+                                    src={el}
+                                    alt="Thumbnail"
+                                    onError={(event) => {
+                                        event.target.src = "/placeholder.jpg";
+                                        event.onerror = null;
                                     }}
-                                    class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg ring  ring-blue-100 text-center"
-                                >
-                                    <img
-                                        class="h-full w-full object-cover"
-                                        src={el}
-                                        alt=""
-                                        onError={(event) => {
-                                            event.target.src =
-                                                "/placeholder.jpg";
-                                            event.onerror = null;
-                                        }}
-                                    />
-                                </button>
-                            );
-                        })}
+                                />
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProductImageSlider
+export default ProductImageSlider;

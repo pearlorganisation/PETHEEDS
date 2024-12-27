@@ -1,5 +1,5 @@
 // import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../../features/actions/productActions";
 import { useEffect, useRef, useState } from "react";
@@ -15,10 +15,6 @@ import { getReview } from "../../../features/actions/reviewAction";
 import style from './style.module.css'
 import ProductImageSlider from "./ProductImageSlider";
 
-// import img2 from "../../../../Images for Website/Aloevera Shampoo 250 ML/2.png";
-// import img3 from "../../../../Images for Website/Aloevera Shampoo 250 ML/3.png";
-// import img4 from "../../../../Images for Website/Aloevera Shampoo 250 ML/4.png";
-
 const SingleProduct = () => {
 
 
@@ -27,22 +23,24 @@ const SingleProduct = () => {
   const { reviewData } = useSelector((state) => state.review);
   const [price, setPrice] = useState({});
 
-  const navigate = useNavigate();
+
   const { productId } = useParams();
-  console.log(productId, "product id hai");
+  console.log(singleProduct?._id, "product id hai");
+  
+  
+  
+  
+
   useEffect(() => {
     dispatch(getSingleProduct({ productId }));
-  }, []);
-  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
   useEffect(() => {
+    if(singleProduct?._id)
     dispatch(getReview(singleProduct?._id))
-  }, [productId])
-  useEffect(() => {
-    console.log(reviewData, "reviewData")
-  }, [reviewData])
+  }, [singleProduct?._id])
+ 
 
 
 
@@ -82,7 +80,7 @@ const SingleProduct = () => {
                 <li class="text-left">
                   <div class="-m-1">
                     <a
-                      href="#"
+                      href="/"
                       class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                     >
                       {" "}
@@ -96,7 +94,7 @@ const SingleProduct = () => {
                     <span class="mx-2 text-gray-400">/</span>
                     <div class="-m-1">
                       <a
-                        href="#"
+                        href="/productsList"
                         class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800"
                       >
                         {" "}
@@ -127,7 +125,7 @@ const SingleProduct = () => {
                     <IoStar className="text-yellow-400" />
                   </div>
                   <p class="ml-2 text-sm font-medium text-gray-500">
-                    1,209 Reviews
+                    829 Reviews
                   </p>
                 </div>
 

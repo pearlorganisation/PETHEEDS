@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Toaster } from "sonner";
+
 
 // Components
 import Header from "./pages/Components/Header";
@@ -54,7 +54,6 @@ function App() {
 
   return (
     <div className="pt-16">
-      <Toaster />
       <Header />
       <Suspense fallback={<div className="flex items-center justify-center min-h-screen ">
         <div className="flex flex-col items-center space-y-4">

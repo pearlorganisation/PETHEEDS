@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCheck } from "react-icons/fa6";
 import Address from "./Address";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
@@ -28,9 +28,7 @@ const CheckoutPage = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [steps]);
 
-  useEffect(() => {
-    console.log(steps);
-  }, [steps]);
+
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -311,9 +309,7 @@ const CheckoutPage = () => {
                             <p class="text-sm line-clamp-1 font-semibold ">
                               {item?.productName}
                             </p>
-                            <p class="text-sm font-medium text-[#333333] text-opacity-80">
-                              Pdf, doc Kindle
-                            </p>
+                       
                             <p class="text-sm font-medium text-[#333333]  text-opacity-80">
                               Quantity : {item?.items}
                             </p>
