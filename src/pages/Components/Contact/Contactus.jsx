@@ -60,7 +60,7 @@ const Contactus = () => {
           <p className="mb-4">
             <span className="font-semibold">Email: </span>
             <a href="mailto:info@example.com" className="text-blue-600 hover:underline">
-              petheedsllp@gmail.com
+            info@petheeds.in
             </a>
           </p>
           <p className="mb-4">

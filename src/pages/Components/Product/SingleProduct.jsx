@@ -2,7 +2,7 @@
 import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../../features/actions/productActions";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { addToCart } from "../../../features/slices/cartSlice";
 import { IoStar } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
@@ -10,9 +10,7 @@ import { GrGlobe } from "react-icons/gr";
 import { CiCreditCard1 } from "react-icons/ci";
 import QuantityWithPrice from "./QuantityWithPrice";
 import ReveiwCard from "./ReveiwCard";
-import ImageViewer from "./ImageViewer";
 import { getReview } from "../../../features/actions/reviewAction";
-import style from './style.module.css'
 import ProductImageSlider from "./ProductImageSlider";
 
 const SingleProduct = () => {
@@ -22,14 +20,7 @@ const SingleProduct = () => {
   const { singleProduct, isLoading } = useSelector((state) => state.products);
   const { reviewData } = useSelector((state) => state.review);
   const [price, setPrice] = useState({});
-
-
   const { productId } = useParams();
-  console.log(singleProduct?._id, "product id hai");
-  
-  
-  
-  
 
   useEffect(() => {
     dispatch(getSingleProduct({ productId }));
@@ -41,8 +32,6 @@ const SingleProduct = () => {
     dispatch(getReview(singleProduct?._id))
   }, [singleProduct?._id])
  
-
-
 
 
 
@@ -122,10 +111,10 @@ const SingleProduct = () => {
                     <IoStar className="text-yellow-400" />
                     <IoStar className="text-yellow-400" />
                     <IoStar className="text-yellow-400" />
-                    <IoStar className="text-yellow-400" />
+                    
                   </div>
                   <p class="ml-2 text-sm font-medium text-gray-500">
-                    829 Reviews
+                    {singleProduct?.discount + 50} Reviews
                   </p>
                 </div>
 
