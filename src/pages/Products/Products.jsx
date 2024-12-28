@@ -9,7 +9,7 @@ import ProductCard from "../Components/Product/ProductCard";
 const Products = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [limit, setLimit] = useState(() => parseInt(searchParams.get("limit")) || 8);
+    const [limit, setLimit] = useState(() => parseInt(searchParams.get("limit")) || 12);
     const [page, setPage] = useState(() => parseInt(searchParams.get("page")) || 1);
     const [search, setSearch] = useState(() => searchParams.get("search") || "");
     const [category, setCategory] = useState(() => searchParams.get("category") || "");

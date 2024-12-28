@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductByCategory } from "../../features/actions/productActions";
 import { useLocation } from "react-router-dom";
-import ProductSupportingComponent from "./ProductSupportingComponent ";
 import ProductCard from "../Components/Product/ProductCard";
 
 const ProductByCollection = () => {

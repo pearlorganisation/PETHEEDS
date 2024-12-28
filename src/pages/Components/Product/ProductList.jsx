@@ -1,27 +1,27 @@
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+// import { Pagination } from "swiper/modules";
 import { getBrands, getProducts } from "../../../features/actions/productActions";
-import QuantityWithPrice from "./QuantityWithPrice";
+// import QuantityWithPrice from "./QuantityWithPrice";
 import { getCategory } from "../../../features/actions/categoryAction";
 import BrandSlider from "./BrandSlider";
 import CategorySlider from "./CategorySlider";
 import ProductCard from "./ProductCard";
-import NewInStore from "./NewInStore";
+// import NewInStore from "./NewInStore";
 
 
 
 export default function ProductList() {
-  const { productsData, isLoading, totalPages, brands } = useSelector((state) => state.products);
+  const { productsData, isLoading, brands } = useSelector((state) => state.products);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [limit, setLimit] = useState(4)

@@ -16,7 +16,7 @@ const ProductCard = ({ el }) => {
                     <img
                         src={el?.productImg}
                         alt="Product"
-                        class="h-80 w-full object-contain rounded-t-xl"
+                        class="h-36 lg:h-80 w-full object-contain rounded-t-xl"
                         onError={(event) => {
                             event.target.src =
                                 "/placeholder.jpg";
@@ -25,7 +25,7 @@ const ProductCard = ({ el }) => {
                     />
                 </Link>
 
-                <div class="px-4 pt-3">
+                <div class="px-1 md:px-4 pt-3">
                     <span class="text-black font-medium  mr-3 uppercase text-[10px] sm:text-xs">
                         {el?.brand?.brand}
                     </span>
@@ -44,7 +44,7 @@ const ProductCard = ({ el }) => {
 
             <div className="w-full">
                 <button
-                    className="w-full rounded-md border bg-blue-700 text-sm hover:bg-blue-800 h-9 flex items-center justify-center gap-3 px-4 my-2" // Added margin here
+                    className="w-full  rounded-md border bg-blue-700 text-sm hover:bg-blue-800 h-9 flex items-center justify-center gap-3 px-4 my-2" // Added margin here
                     onClick={() => {
                         dispatch(addToCart({ productId: el?._id, ...el, ...price }));
                     }}

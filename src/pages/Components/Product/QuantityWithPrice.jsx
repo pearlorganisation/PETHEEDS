@@ -16,7 +16,7 @@ const QuantityWithPrice = ({ item, price, setPrice }) => {
 
   return (
     <div className="flex flex-col py-3 gap-2">
-      <div className="flex justify-start items-center  space-x-2">
+      <div className="md:flex justify-start items-center  md:space-x-2">
         <p class="text-sm md:text-lg font-semibold text-black cursor-auto  ">
           ₹{priceData?.totalPrice}
         </p>
