@@ -5,7 +5,7 @@ import { TbTruckDelivery, TbClock, TbX, TbCircleCheck } from "react-icons/tb";
 const OrderStatus = ({ status, createdAt }) => {
     let icon, statusText, statusColor, textColor;
 
-    switch (status.toLowerCase()) {
+    switch (status?.toLowerCase()) {
         case 'on the way':
             icon = <TbTruckDelivery className="text-2xl text-blue-600" />;
             statusText = "On the Way";

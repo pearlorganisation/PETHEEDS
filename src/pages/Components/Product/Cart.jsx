@@ -70,11 +70,11 @@ export default function Cart() {
                   <div key={product._id} className="">
                     <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0 relative">
 
-                      <div class="relative flex flex-1  justify-between ">
-                        <Link to={`/singleproduct/${product?.productSlug}`} className="flex flex-1 gap-2 justify-between ">
+                      <div class="relative flex flex-1  ">
+                        <Link to={`/singleproduct/${product?.productSlug}`} className="flex flex-1 gap-4  ">
                           <div class="shrink-0">
                             <img
-                              class="h-24 w-24 max-w-full rounded-lg object-contain"
+                              class="h-24 w-24 lg:h-24 lg:w-32 max-w-full rounded-lg object-contain"
                               src={product?.productImg}
                               alt=""
                               onError={(event) => {
@@ -114,10 +114,7 @@ export default function Cart() {
 
                           </div>
                         </Link>
-                        <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-
-
-                        </div>
+              
 
 
 

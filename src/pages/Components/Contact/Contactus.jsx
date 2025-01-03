@@ -120,13 +120,12 @@ const Contactus = () => {
 
             <div>
               <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                Service
+                Service (Optional)
               </label>
               <div className="relative">
                 <Controller
                   name="subject"
                   control={control}
-                  rules={{ required: 'Please select a service' }}
                   render={({ field }) => (
                     <select
                       id="service"
@@ -136,7 +135,7 @@ const Contactus = () => {
                     >
                       <option value="">Select service</option>
                       {subjectData?.map((item) => (
-                        <option value={item?._id} key={item?.subject}>
+                        <option value={item?.subject} key={item?.subject}>
                           {item?.subject}
                         </option>
                       ))}
@@ -145,9 +144,7 @@ const Contactus = () => {
                 />
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
               </div>
-              {errors.subject && (
-                <span className="text-red-500 text-sm">{errors.subject.message}</span>
-              )}
+  
             </div>
 
             <div>
