@@ -21,6 +21,7 @@ const CheckoutPage = () => {
   const [promoDiscount,setPromoDiscount] = useState(0)
   const [promoResponse,setPromoResponse] = useState()
 
+
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartPrice, setCartPrice] = useState(0);
   const [steps, setStep] = useState(Number(1));
@@ -212,6 +213,9 @@ const CheckoutPage = () => {
   
 
   useEffect(() => {
+    if(cartData.length===0 || !cartData){
+      navigate("/")
+    }
     const totalP = cartData?.reduce((acc, item) => {
       return acc + item.totalSum;
     }, 0);
