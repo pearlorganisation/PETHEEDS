@@ -61,9 +61,18 @@ export default function Order() {
               </ul>
               <hr className="mt-6 border-gray-200" />
               <ul className="mt-6 space-y-3">
+              {item?.discount > 0 && <>     <p class="flex justify-between = ">
+                    <span>Sub Total</span>
+                    <span>₹{Number(item?.amount) + Number(item?.discount)}</span>
+                  </p>
+                  <p class="flex justify-between   ">
+                    <span>Discount</span>
+                    <span>- ₹{item?.discount}</span>
+                  </p>
+                  </> }
                 <li className="flex items-center justify-between">
-                  <p className=" font-medium ">Total Amount</p>
-                  <p className="text-sm font-bold ">₹{item?.amount}</p>
+                  <p className=" font-medium text-lg ">Total Amount</p>
+                  <p className=" font-bold text-lg">₹{item?.amount}</p>
                 </li>
               </ul>
             </div>

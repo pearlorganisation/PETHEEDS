@@ -9,26 +9,26 @@ import { ClipLoader } from "react-spinners";
 import { toast } from "sonner";
 import { sendOrderMail } from "../../../features/actions/orderMail";
 import { clearCart } from "../../../features/slices/cartSlice";
+import { instance } from "../../../services/axiosInterceptor";
 
 const CheckoutPage = () => {
   const [order, setOrder] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { cartData } = useSelector((state) => state.cart);
   const { userData } = useSelector((state) => state.auth);
+  const [promoCode,setPromoCode]= useState()
+  const [validPromo,setValidPromo]= useState(false)
+  const [promoDiscount,setPromoDiscount] = useState(0)
+  const [promoResponse,setPromoResponse] = useState()
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartPrice, setCartPrice] = useState(0);
   const [steps, setStep] = useState(Number(1));
   const [codData, setCodData] = useState();
   const [onlineData, setOnlineData] = useState();
 
   const navigate = useNavigate();
   const { selectedAddress, addressData } = useSelector((state) => state.address);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [steps]);
-
-
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -36,6 +36,7 @@ const CheckoutPage = () => {
       paymentMethod: "online",
     },
   });
+
 
   const handlePayment = async (amount) => {
     setIsLoading(true);
@@ -65,6 +66,7 @@ const CheckoutPage = () => {
           orderById,
           email,
           address: selectedAddress,
+               discount:promoDiscount,
         }
       );
       setOrder(order?.id);
@@ -151,6 +153,7 @@ const CheckoutPage = () => {
           orderById,
           email,
           amount: totalPrice,
+          discount:promoDiscount,
           address: selectedAddress,
         }
       );
@@ -174,11 +177,45 @@ const CheckoutPage = () => {
       handleCod();
     }
   };
+  const handlePromo = async () => {
+    try {
+      const payload = { promoCode, cartPrice };
+      if (payload?.promoCode && payload?.cartPrice) {
+        const response = await instance.post(
+          `/couponCode/checkCouponCode`,
+          payload,
+          {
+            withCredentials: true,
+          }
+        );
+  
+        if (!response.data.status) {
+          setValidPromo(false)
+          setTotalPrice(cartPrice)
+          toast.error(response.data.message || "Failed to apply promo code");
+        } else {
+          setValidPromo(true)
+          setPromoResponse(response?.data?.data[0])
+          setPromoDiscount( Math.floor(cartPrice * (response?.data?.data[0]?.discount/100)))
+          toast.success(response.data.message || "Promo code applied successfully!");
+        }
+      } else {
+        toast.error("Promo code is required");
+      }
+    } catch (error) {
+      setValidPromo(false)
+      setPromoDiscount(0)
+      setTotalPrice(cartPrice)
+        toast.error(error);
+      }
+  };
+  
 
   useEffect(() => {
     const totalP = cartData?.reduce((acc, item) => {
       return acc + item.totalSum;
     }, 0);
+    setCartPrice(totalP);
     setTotalPrice(totalP);
   }, [cartData]);
 
@@ -203,6 +240,15 @@ const CheckoutPage = () => {
       );
     }
   }, [onlineData]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [steps]);
+
+  useEffect(()=>{
+    if(validPromo)
+    setTotalPrice(Number(cartPrice-promoDiscount))
+  },[promoCode,validPromo,promoDiscount])
 
   return (
     <div className="min-h-screen py-8 space-y-8 container mx-auto  sm:pt-20">
@@ -287,11 +333,6 @@ const CheckoutPage = () => {
               <p class="text-xl font-medium pb-4 z-10">Order summary</p>
 
               <div>
-                {/* <img
-                                src={catimg}
-                                alt=""
-                                class="absolute inset-0 h-full w-full object-cover"
-                            /> */}
                 <div class="absolute inset-0 h-full w-full bg-gradient-to-t     opacity-60"></div>
               </div>
               <div class="relative">
@@ -316,19 +357,53 @@ const CheckoutPage = () => {
                           </div>
                         </div>
 
-                        <p class="text-sm font-semibold ">₹{item?.totalSum}</p>
+                        <p class="text-sm font-semibold ps-4">₹{item?.totalSum}</p>
                       </li>
                     );
                   })}
                 </ul>
-                <div class="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
-                <div class="space-y-2">
+    
+                <div class="space-y-2 mt-8">
+           {validPromo && <>     <p class="flex justify-between = ">
+                    <span>Sub Total</span>
+                    <span>₹{cartPrice}</span>
+                  </p>
+                  <p class="flex justify-between   ">
+                    <span>Discount</span>
+                    <span>- ₹{promoDiscount}</span>
+                  </p>
+                  </> }
                   <p class="flex justify-between text-lg font-bold ">
-                    <span>Total price:</span>
+                    <span>Total</span>
                     <span>₹{totalPrice}</span>
                   </p>
                 </div>
               </div>
+              {  validPromo &&      <div class="mt-4 flex items-center justify-between rounded-lg border border-dashed border-green-300 bg-green-100 p-3">
+  <span class="text-xs sm:text-sm font-medium text-green-800 md:text-base"> Promo code applied.</span>
+
+  <div class="space-x-3 text-xs md:text-sm">
+    <span class="font-medium text-green-800">{promoResponse?.discount}% OFF</span>
+    <span class="border border-dashed border-green-500 px-1 py-[0.20] font-medium text-green-800">  {promoResponse?.couponCode}</span>
+  </div>
+</div>}
+              <div class="relative mt-4 flex w-full  gap-3">
+                <input
+                  placeholder="Promo Code"
+                  type="text"
+                  className="rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm shadow-sm focus:border-[#6366f1] focus:outline-none focus:ring-1 focus:ring-[#6366f1] dark:border-[#4b5563] dark:bg-[#1f2937] dark:text-gray-200"
+                  onChange={(e)=>setPromoCode(e.target.value)}
+                  onInput={(e) => e.target.value = e.target.value.toUpperCase()}
+                />
+                <button
+                onClick={handlePromo}
+                  type="button"
+                  class="text-white bg-[#2563EB] font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none "
+                >
+                  Apply
+                </button>
+              </div>
+
               <div class="relative mt-10 text-[#333333]">
                 <h3 class="mb-5 text-lg font-bold text-[#333333]">Support</h3>
                 <a href="tel:9650185800" class="text-sm font-semibold">
@@ -341,19 +416,6 @@ const CheckoutPage = () => {
                 <p class="mt-2 text-xs font-medium text-[#333333]">
                   Call us now for payment related issues
                 </p>
-              </div>
-              <div class="relative mt-10 flex w-full  gap-3">
-                <input
-                  placeholder="Promo Code"
-                  type="text"
-                  className="rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm shadow-sm focus:border-[#6366f1] focus:outline-none focus:ring-1 focus:ring-[#6366f1] dark:border-[#4b5563] dark:bg-[#1f2937] dark:text-gray-200"
-                />
-                <button
-                  type="button"
-                  class="text-white bg-[#2563EB] font-medium rounded-lg text-sm px-7 py-2.5 me-2 mb-2focus:outline-none "
-                >
-                  Apply
-                </button>
               </div>
 
               <div className="pt-5">
@@ -434,6 +496,7 @@ const CheckoutPage = () => {
                   </button>
                 </form>
               </div>
+              
             </div>
           </div>
         </div>

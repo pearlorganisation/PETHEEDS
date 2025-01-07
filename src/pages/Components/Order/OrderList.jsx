@@ -33,7 +33,7 @@ export default function OrderList() {
   }, [openReview]);
 
   return (
-    <div className="mx-auto pt-16 max-w-6xl px-4 md:px-10 bg-gray-50 min-h-screen my-2">
+    <div className="mx-auto pt-5 lg:pt-16 max-w-6xl px-4 md:px-10 bg-gray-50 min-h-[75vh] lg:min-h-screen my-2">
       <h2 className="text-3xl font-bold text-gray-800 mb-2">Order History</h2>
       <p className="text-sm text-gray-600 mb-6">
         Check the status of recent and past orders.
@@ -56,7 +56,7 @@ export default function OrderList() {
             </p>
             <div className="mt-5">
               <Link to="/productsList"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 mb-10 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Return to Home
               </Link>
@@ -104,7 +104,7 @@ export default function OrderList() {
                               ? product.productId[0].productName
                               : "Unknown Product"}
                           </p>
-                          <p className="text-gray-600 text-xs">Size: 350g</p>
+                          <p className="text-gray-600 text-xs">Size: {product?.weight}</p>
                         </div>
                       </div>
                       {/* Review Section */}

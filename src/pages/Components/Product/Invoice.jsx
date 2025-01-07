@@ -200,6 +200,7 @@ const Invoice = () => {
               </div>
               <div class="p-9 border-b border-gray-200">
                 <div class="space-y-3">
+                  
                   <div class="flex justify-between">
                     <div>
                       <p class="font-bold text-black text-lg">Total Amount </p>
