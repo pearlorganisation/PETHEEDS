@@ -74,7 +74,7 @@ function App() {
           <Route path="/singleproduct/:productId" element={<SingleProduct />} />
           <Route path="/booknow" element={<Booknow />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blogDetails" element={<BlogDetails />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/ourvision" element={<Ourvision />} />
           <Route path="/ourservice" element={<Ourservice />} />

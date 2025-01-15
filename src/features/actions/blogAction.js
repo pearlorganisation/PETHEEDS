@@ -16,5 +16,18 @@ export const getBlog = createAsyncThunk(
     }
   }
 );
+export const getBlogBySlug = createAsyncThunk(
+  "blog/getBlogBySlug",
+  async ({ slug }, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`/blog/single/${slug}`, {
+        withCredentials: true,
+      });
+      return data?.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 // ================================================== THE END ==================================================

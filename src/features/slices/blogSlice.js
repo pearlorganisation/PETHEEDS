@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------------------------------
 
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlog } from "../actions/blogAction";
+import { getBlog, getBlogBySlug } from "../actions/blogAction";
 import { toast } from "sonner";
 
 const initialState = {
@@ -36,6 +36,24 @@ export const blogSlice = createSlice({
         state.isSuccess = false;
         state.errorMessage = action.payload;
         toast.error(action?.payload || "Something went wrong");
+      })
+
+      // get blog by slug
+      .addCase(getBlogBySlug.pending, (state, action) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.errorMessage = "";
+      })
+      .addCase(getBlogBySlug.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.blogData = action.payload;
+      })
+      .addCase(getBlogBySlug.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.errorMessage = action.payload;
+        toast.error("Error while getting blog!!", { position: "top-center" });
       });
   },
 });
