@@ -100,7 +100,7 @@ const SignupOtpVerification = () => {
                           })}
                           type="text" data-index={index} placeholder="0" className="w-12 h-12 rounded-lg border focus:border-indigo-600 outline-none text-center text-2xl"
 
-                          onKeyUp={inputFocus}
+                          onInput={inputFocus}
                           maxLength={1}
                         />
 
